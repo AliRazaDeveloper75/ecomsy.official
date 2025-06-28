@@ -12,22 +12,25 @@ body {
   color: white;
   /* animation: backgroundPulse 10s infinite; */
 }
-
 .navbar {
   display: flex;
   justify-content: space-between;
   padding: 20px 50px;
   align-items: center;
-  background-color: #0e0e0e;
+  background-color: transparent;
+  position: fixed; /* or 'sticky' depending on your needs */
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
   animation: slideInFromTop 1s ease forwards;
 }
 
-/* .logo {
-  font-size: 22px;
-  font-weight: bold;
-  color: white;
-} */
+.navbar.scrolled {
+  background-color: #0e0e0e;
+}
 
+/* Rest of your existing CSS */
 .logo img {
   color: #888;
   margin-left: 5px;
@@ -36,7 +39,7 @@ body {
 
 .nav-links a {
   color: white;
-  margin-left: 30px;
+  margin-left: 10px;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
@@ -46,8 +49,14 @@ body {
   color: #ccc;
 }
 
+.navbar.scrolled {
+  background-color: rgba(14, 14, 14, 0.9); /* 90% opacity */
+}
+
+
+/* hero section */
 .hero {
-  padding: 60px 50px;
+  padding: 40px 50px;
   background: #0e0e0e;
   display: flex;
   justify-content: space-between;
