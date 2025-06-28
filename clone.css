@@ -1,0 +1,79 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  /* color: #000; */
+}
+
+.how-it-works {
+  padding: 60px 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.intro h5 {
+  color: #00539C;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.intro h2 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.step {
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  min-height: 250px;
+}
+
+.step h3 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.step p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.step .number {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 100px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.05);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.step.dark {
+  background-color: #0e0e0e;
+  color: white;
+}
+
+.step.light {
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+.step.dark .number {
+  color: rgba(255, 255, 255, 0.05);
+}
+
+.step.light .number {
+  color: rgba(0, 0, 0, 0.05);
+}
