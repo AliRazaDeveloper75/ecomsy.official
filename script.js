@@ -31,3 +31,57 @@ function typeLoop() {
 }
 
 window.onload = typeLoop;
+// slider testimonial
+
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll(".testimonial-slide");
+  const dots = document.querySelectorAll(".slider-dot");
+  const prevArrow = document.querySelector(".prev");
+  const nextArrow = document.querySelector(".next");
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    // Hide all slides
+    slides.forEach((slide) => slide.classList.remove("active"));
+    dots.forEach((dot) => dot.classList.remove("active"));
+
+    // Show the selected slide
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+    currentIndex = index;
+  }
+
+  // Dot navigation
+  dots.forEach((dot) => {
+    dot.addEventListener("click", function () {
+      const slideIndex = parseInt(this.getAttribute("data-index"));
+      showSlide(slideIndex);
+    });
+  });
+
+  // Arrow navigation
+  prevArrow.addEventListener("click", function () {
+    let newIndex = currentIndex - 1;
+    if (newIndex < 0) {
+      newIndex = slides.length - 1;
+    }
+    showSlide(newIndex);
+  });
+
+  nextArrow.addEventListener("click", function () {
+    let newIndex = currentIndex + 1;
+    if (newIndex >= slides.length) {
+      newIndex = 0;
+    }
+    showSlide(newIndex);
+  });
+
+  // Auto-rotate slides every 5 seconds
+  setInterval(() => {
+    let newIndex = currentIndex + 1;
+    if (newIndex >= slides.length) {
+      newIndex = 0;
+    }
+    showSlide(newIndex);
+  }, 5000);
+});
