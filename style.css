@@ -1,13 +1,12 @@
 * {
   margin: 0;
   padding: 0;
-    
 
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   overflow-x: hidden;
   /* background-color: #0e0e0e; */
   color: white;
@@ -136,7 +135,8 @@ body {
 }
 
 @keyframes backgroundPulse {
-  0%, 100% {
+  0%,
+  100% {
     background-color: #0e0e0e;
   }
   50% {
@@ -160,7 +160,6 @@ body {
   }
 }
 
-
 .typing {
   border-right: 2px solid black;
   white-space: nowrap;
@@ -171,34 +170,35 @@ body {
 }
 
 @keyframes blink {
-  0% { border-color: black; }
-  50% { border-color: transparent; }
-  100% { border-color: black; }
+  0% {
+    border-color: black;
+  }
+  50% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: black;
+  }
 }
 
-
-
-
-
-
-.about-title h1{
+.about-title h1 {
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 50px;
 }
-.about-title{
+.about-title {
   display: flex;
   font-size: 10px;
   background-color: #f4f4f4;
-  padding-left: 2%;
-  padding-right: 2%;
+  /* padding-left: 2%;
+  padding-right: 2%; */
+  padding: 0px 40px;
   margin: 0 auto;
-  color: blue;
-  
-  gap: 40px;
+  color: #00539c;
 }
 .about {
-  padding-left: 2%;
-  padding-right: 2%;
+  padding: 0px 40px 50px ;
+  /* padding-left: 2%;
+  padding-right: 2%; */
   display: flex;
   background-color: #f4f4f4;
   margin: 0 auto;
@@ -212,7 +212,6 @@ body {
 .about-right {
   flex: 1;
 }
-
 
 .about .about-left h1 {
   font-size: 2.5rem;
@@ -241,28 +240,25 @@ body {
     padding: 30px 15px;
     gap: 20px;
   }
-  
+
   .about h1 {
     font-size: 2rem;
   }
-  
+
   .about p {
     font-size: 1rem;
   }
 }
 
-
-
-
 /* how-it-works */
 .how-it-works {
   padding: 60px 40px;
-  max-width: 1200px;
+  
   margin: auto;
 }
 
 .intro h5 {
-  color: #00539C;
+  color: #00539c;
   font-size: 16px;
   margin-bottom: 10px;
   font-weight: 700;
