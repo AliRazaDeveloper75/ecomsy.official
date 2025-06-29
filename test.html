@@ -3,145 +3,121 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Navbar</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Strategic Partners</title>
     <style>
-      /* Reset and Base Styles */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      .partners-section {
+        background-color: #f4f4f4;
+        margin: auto;
       }
 
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #111;
-        color: #fff;
-        width: 100%;
-      }
-
-      /* Navbar */
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 30px;
-        background-color: transparent;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        transition: background-color 0.3s ease;
-      }
-
-      /* Scroll effect */
-      .navbar.scrolled {
-        background-color: rgba(14, 14, 14, 0.95);
-      }
-
-      /* Logo */
-      .logo img {
-        width: 170px;
-      }
-
-      /* Nav links */
-      .nav-links {
-        display: flex;
-        gap: 20px;
-      }
-
-      .nav-links a {
-        color: white;
-        text-decoration: none;
+      .section-title {
+        color: #d90429;
         font-weight: bold;
-        transition: color 0.3s ease;
+        font-size: 14px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
       }
 
-      .nav-links a:hover {
-        color: #ccc;
+      .main-heading {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 40px;
       }
 
-      /* Hamburger (hidden on desktop) */
-      .hamburger {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
-        gap: 5px;
+      .partners {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
       }
 
-      .hamburger span {
-        width: 25px;
-        height: 3px;
-        background-color: white;
+      .partner-box {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        flex: 1;
+        min-width: 300px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       }
 
-      /* Responsive Styles */
+      .partner-logo {
+        height: 50px;
+        margin-bottom: 20px;
+      }
+
+      .partner-text {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .google-partner-logo {
+        display: block;
+        margin: auto;
+        height: 80px;
+      }
+
+      .google-label {
+        text-align: center;
+        margin-top: 5px;
+        background: #333;
+        color: #fff;
+        font-size: 12px;
+        padding: 3px 6px;
+        display: inline-block;
+      }
+
       @media (max-width: 768px) {
-        .hamburger {
-          display: flex;
-        }
-
-        .nav-links {
-          display: none;
-          position: absolute;
-          top: 70px;
-          right: 20px;
-          background-color: rgba(14, 14, 14, 0.95);
-          flex-direction: column;
-          width: 75%;
-          padding: 20px;
-          border-radius: 10px;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-links.active {
-          display: flex;
-        }
-
-        .logo img {
-          width: 140px;
+        .main-heading {
+          font-size: 28px;
         }
       }
     </style>
   </head>
   <body>
+    <div class="partners-section">
+      <div class="section-title">Strategic Partners 🔻</div>
+      <div class="main-heading">The reason why brands choose us.</div>
 
-    <main style="padding-top: 100px">
-      <h1>Welcome to ECOMSY</h1>
-      <p>Scroll and resize the screen to test navbar behavior.</p>
-    </main>
-    <main style="padding-top: 100px">
-      <h1>Welcome to ECOMSY</h1>
-      <p>Scroll and resize the screen to test navbar behavior.</p>
-    </main>
-    <main style="padding-top: 100px">
-      <h1>Welcome to ECOMSY</h1>
-      <p>Scroll and resize the screen to test navbar behavior.</p>
-    </main>
-    <main style="padding-top: 100px">
-      <h1>Welcome to ECOMSY</h1>
-      <p>Scroll and resize the screen to test navbar behavior.</p>
-    </main>
-    <main style="padding-top: 100px">
-      <h1>Welcome to ECOMSY</h1>
-      <p>Scroll and resize the screen to test navbar behavior.</p>
-    </main>
-    <main style="padding-top: 100px">
-      <h1>Welcome to ECOMSY</h1>
-      <p>Scroll and resize the screen to test navbar behavior.</p>
-    </main>
-    <main style="padding-top: 100px">
-      <h1>Welcome to ECOMSY</h1>
-      <p>Scroll and resize the screen to test navbar behavior.</p>
-    </main>
-    <main style="padding-top: 100px">
-      <h1>Welcome to ECOMSY</h1>
-      <p>Scroll and resize the screen to test navbar behavior.</p>
-    </main>
-    <main style="padding-top: 100px">
-      <h1>Welcome to ECOMSY</h1>
-      <p>Scroll and resize the screen to test navbar behavior.</p>
-    </main>
+      <div class="partners">
+        <div class="partner-box">
+          <img
+            class="partner-logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/0/08/TikTok_logo.svg"
+            alt="TikTok Marketing Partners"
+          />
+          <div class="partner-text">
+            Recognized as a TikTok Marketing Partner, we bring valuable insights
+            to our clients, helping them effectively scale their business and
+            presence on TikTok Ads.
+          </div>
+        </div>
 
+        <div class="partner-box">
+          <img
+            class="google-partner-logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Google_2015_logo.svg"
+            alt="Google Partner"
+          />
+          <div class="google-label">PREMIER 2024</div>
+          <div class="partner-text">
+            As one of the top 10 Google agencies in APAC, we have been awarded
+            by Google as their Premier Partner, a testament to our exceptional
+            services and outstanding performance.
+          </div>
+        </div>
+
+        <div class="partner-box">
+          <img
+            class="partner-logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+            alt="Microsoft Partner"
+          />
+          <div class="partner-text">
+            Trusted by Microsoft as one of the best solution partners, Mega
+            Digital provided an effective and efficient performance strategy for
+            our global clients.
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

@@ -41,6 +41,7 @@
     .nav-links {
       display: flex;
       gap: 20px;
+      align-items: center;
     }
 
     .nav-links a {
@@ -68,6 +69,21 @@
       background-color: white;
     }
 
+    .get-touch-btn {
+      padding: 5%;
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      width: 150px;
+      height: 50px;
+      cursor: pointer;
+    }
+    .get-touch-btn:hover {
+      color: black;
+      background: white;
+      transition: 0.7sec;
+    }
+
     /* Responsive Styles */
     @media (max-width: 768px) {
       .hamburger {
@@ -77,6 +93,7 @@
       .nav-links {
         display: none;
         position: absolute;
+        align-items: left;
         top: 40px;
         right: 0px;
         background-color: rgba(14, 14, 14, 0.95);
@@ -90,6 +107,7 @@
         display: flex;
         width: 100%;
         padding: 10%;
+        align-items: flex-start;
       }
 
       .logo img {
@@ -97,7 +115,79 @@
       }
     }
   </style>
+  <style>
 
+    .partners-section {
+      background-color: #f4f4f4;
+      padding:20px 40px;
+      margin: auto;
+    }
+
+    .partners-section-title {
+      color: black;
+      font-weight: bold;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .main-heading {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      color:black;
+    }
+
+    .partners {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .partner-box {
+       
+      padding: 20px;
+      border-radius: 10px;
+      flex: 1;
+      min-width: 300px;
+      color:black;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .partner-logo {
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    .partner-text {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .google-partner-logo {
+      display: block;
+      margin: auto;
+      height: 80px;
+    }
+
+    .google-label {
+      text-align: center;
+      margin-top: 5px;
+      background: #333;
+      color: #fff;
+      font-size: 12px;
+      padding: 10px 16px;
+      display: inline-block;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    }
+
+    @media (max-width: 768px) {
+      .main-heading {
+        font-size: 28px;
+      }
+    }
+  </style>
   <body>
     <div id="header-Container"></div>
     <!-- Load header here -->
@@ -112,22 +202,39 @@
         </h1>
 
         <p>
-          At <strong>Ecomsy</strong>, we bring together expert engineers, bold
-          thinking, and unstoppable passion to solve real-world business
-          problems through custom software. We specialize in digitally
-          empowering <strong>startups and SMEs</strong>, turning complex ideas
-          into powerful, scalable solutions. We listen closely, build with
-          precision, and deliver software that fuels your growth, not just
-          solves your problems. <br />
-          <strong>We don’t just build products — we build momentum.</strong>
+          At Ecomsy, we bring together expert engineers, bold thinking, and
+          unstoppable passion to solve real-world business problems through
+          custom software. We specialize in digitally empowering startups and
+          SMEs, turning complex ideas into powerful, scalable solutions. We
+          listen closely, build with precision, and deliver software that fuels
+          your growth, not just solves your problems. 
+        </br>
+        <strong>We turn solutions into
+          forward momentum.</strong>
         </p>
         <button class="cta-button">Let’s Talk</button>
+
+        
       </div>
 
       <div class="hero-logo">
         <img src="assets/logo.png" alt="Code Huddle Logo" />
       </div>
     </section>
+    <div class="trusted-section">
+  <h2 class="trusted-heading">Trusted by industry leaders</h2>
+  <div class="trusted-logos">
+    <img src="https://megadigital.ai/wp-content/uploads/2023/02/TikTok.svg" alt="TikTok" width="83" height="24" />
+    <img src="https://megadigital.ai/wp-content/uploads/2023/02/Google.svg" alt="Google" width="71" height="24" />
+    <img src="https://megadigital.ai/wp-content/uploads/2023/02/Shopify.svg" alt="Shopify" width="85" height="24" />
+    <img src="https://megadigital.ai/wp-content/uploads/2025/05/microsoft-logo.webp" alt="Microsoft" width="188" height="56" />
+    <img src="https://megadigital.ai/wp-content/uploads/2025/05/snapchat-logo.png" alt="Snapchat" width="60" height="60" />
+    <img src="https://megadigital.ai/wp-content/uploads/2023/02/Payoneer.svg" alt="Payoneer" width="104" height="20" class="hide-on-mobile" />
+    <img src="https://megadigital.ai/wp-content/uploads/2023/02/PayPal.svg" alt="PayPal" width="91" height="24" class="hide-on-mobile" />
+    <img src="https://megadigital.ai/wp-content/uploads/2023/02/Stripe.svg" alt="Stripe" width="58" height="24" class="hide-on-mobile" />
+  </div>
+</div>
+
 
     <!--service card-->
     <section class="services-section-title">
@@ -193,6 +300,55 @@
       <button class="service-section-button">Learn More</button>
     </section>
 
+    <div class="partners-section">
+      <div class="partners-section-title">Strategic Partners_></div>
+      <div class="main-heading">The reason why brands choose us.</div>
+
+      <div class="partners">
+        <div class="partner-box">
+          <img
+            class="partner-logo"
+            src="/assets/shopify.png"
+            alt="TikTok Marketing Partners"
+          />
+          <div class="google-label">Shopify Plus Partner</div>
+          <div class="partner-text">
+            Recognized as a TikTok Marketing Partner, we bring valuable insights
+            to our clients, helping them effectively scale their business and
+            presence on TikTok Ads.
+          </div>
+        </div>
+
+        <div class="partner-box">
+          <img
+            class="google-partner-logo"
+            src="/assets/google.png"
+            alt="Google Partner"
+          />
+          <div class="google-label">Platinum Certified WooExpert</div>
+          <div class="partner-text">
+            As one of the top 10 Google agencies in APAC, we have been awarded
+            by Google as their Premier Partner, a testament to our exceptional
+            services and outstanding performance.
+          </div>
+        </div>
+
+        <div class="partner-box">
+          <img
+            class="partner-logo"
+            src="/assets/woo.png"
+            alt="Microsoft Partner"
+          />
+          <div class="google-label">WordPress VIP Silver Agency partner </div>
+          <div class="partner-text">
+            Trusted by Microsoft as one of the best solution partners, Mega
+            Digital provided an effective and efficient performance strategy for
+            our global clients.
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!--about-->
     <div class="about-title">
       <h1>About</h1>
@@ -221,6 +377,9 @@
         </p>
       </div>
     </div>
+
+
+    
     <!--imga icon -->
     <div class="stats-container">
       <div class="stat-item">

@@ -1,43 +1,42 @@
-const textData = {
-  a:'Code',
-  b:'Solve',
-  c:'Grow',
-}
-const text = textData.a;
+const texts = ["Dream ", "Design ", "Deliver"];
 const typingSpeed = 150;
 const erasingSpeed = 100;
 const delayBeforeErase = 1000;
 const delayBeforeType = 500;
-let i = 0;
+
+let textIndex = 0;
+let charIndex = 0;
 let typing = true;
 
 function typeLoop() {
   const element = document.getElementById("type-text");
+  const currentText = texts[textIndex];
 
   if (typing) {
-    if (i < text.length) {
-      element.textContent += text.charAt(i);
-      i++;
+    if (charIndex < currentText.length) {
+      element.textContent += currentText.charAt(charIndex);
+      charIndex++;
       setTimeout(typeLoop, typingSpeed);
     } else {
       typing = false;
       setTimeout(typeLoop, delayBeforeErase);
     }
   } else {
-    if (i > 0) {
-      element.textContent = text.substring(0, i - 1);
-      i--;
+    if (charIndex > 0) {
+      element.textContent = currentText.substring(0, charIndex - 1);
+      charIndex--;
       setTimeout(typeLoop, erasingSpeed);
     } else {
       typing = true;
+      textIndex = (textIndex + 1) % texts.length; // move to next word in list
       setTimeout(typeLoop, delayBeforeType);
     }
   }
 }
 
 window.onload = typeLoop;
-// slider testimonial
 
+// slider testimonial
 document.addEventListener("DOMContentLoaded", function () {
   const slides = document.querySelectorAll(".testimonial-slide");
   const dots = document.querySelectorAll(".slider-dot");
@@ -91,25 +90,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 5000);
 });
 
-
-
 // static header
 
-fetch('header.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('header-Container').innerHTML = data;
+fetch("header.html")
+  .then((res) => res.text())
+  .then((data) => {
+    document.getElementById("header-Container").innerHTML = data;
 
     // Initialize behavior after load
     setupHeaderFunctions();
   });
 
-  // phone responsive burger icon 
-  function toggleMenu() {
-        document.getElementById("navLinks").classList.toggle("active");
-      }
+// phone responsive burger icon
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("active");
+}
 
-      window.addEventListener("scroll", () => {
-        const navbar = document.querySelector(".navbar");
-        navbar.classList.toggle("scrolled", window.scrollY > 50);
-      });
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  navbar.classList.toggle("scrolled", window.scrollY > 50);
+});
