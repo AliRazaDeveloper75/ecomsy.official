@@ -10,22 +10,96 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
+  <style>
+    /* Reset and Base Styles */
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: transparent;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Scroll effect */
+    .navbar.scrolled {
+      background-color: rgba(14, 14, 14, 0.95);
+    }
+
+    /* Logo */
+    .logo img {
+      width: 170px;
+    }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ccc;
+    }
+
+    /* Hamburger (hidden on desktop) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background-color: rgba(14, 14, 14, 0.95);
+        flex-direction: column;
+        width: 75%;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .logo img {
+        width: 140px;
+      }
+    }
+  </style>
+
   <body>
-    <header class="navbar">
-      <div class="logo">
-        <img src="/assets/ecomsy.png" />
-      </div>
-      <nav class="nav-links">
-        <a href="pages/service/service.html">Services</a>
-        <a href="pages/course/course.html">Course</a>
-        <a href="pages/our-work/our-work.html">Our Work</a>
-        <a href="pages/case-study/case-study.html">Case Studies</a>
-        <a href="pages/about/about.html">About</a>
-        <a href="pages/testimonial/testimonial.html">Testimonials</a>
-        <a href="pages/contact/contact.html">Contacts</a>
-        <a href="pages/invoice/invoice.html">Invoice</a>
-      </nav>
-    </header>
+    <div id="header-Container"></div>
+    <!-- Load header here -->
 
     <section class="hero">
       <div class="hero-text">
@@ -69,7 +143,7 @@
       </div>
 
       <div class="service-card">
-        <div class="service-icon"><img src="assets/course/2.gif" /></div>
+        <div class="service-icon"><img src="assets/course/1.gif" /></div>
         <div class="service-title">Shopify Store Design & Development</div>
         <div class="service-description">
           We create professional Shopify stores tailored for sales, performance,

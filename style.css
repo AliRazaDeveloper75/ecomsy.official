@@ -1,56 +1,104 @@
 * {
   margin: 0;
   padding: 0;
-
   box-sizing: border-box;
 }
 
 body {
   font-family: "Arial", sans-serif;
   overflow-x: hidden;
-  /* background-color: #0e0e0e; */
   color: white;
-  /* animation: backgroundPulse 10s infinite; */
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    background-color: rgba(14, 14, 14, 0.95);
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Ensure header uses full width on mobile */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 20px 50px;
   align-items: center;
-  background-color: transparent;
-  position: fixed; /* or 'sticky' depending on your needs */
+  padding: 15px 20px;
   width: 100%;
+  position: fixed;
   top: 0;
-  z-index: 1000;
+  background-color: transparent;
+  z-index: 999;
   transition: background-color 0.3s ease;
-  animation: slideInFromTop 1s ease forwards;
 }
 
-.navbar.scrolled {
-  background-color: #0e0e0e;
+/* Hamburger styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
 }
 
-/* Rest of your existing CSS */
-.logo img {
-  color: #888;
-  margin-left: 5px;
-  width: 190px;
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
 }
 
-.nav-links a {
-  color: white;
-  margin-left: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
+/* Mobile Nav Links */
+.nav-links {
+  display: flex;
+  gap: 15px;
 }
 
-.nav-links a:hover {
-  color: #ccc;
-}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 20px;
+    top: 60px;
+    background-color: rgba(14, 14, 14, 0.95);
+    width: 70%;
+    padding: 20px;
+    border-radius: 8px;
+  }
 
-.navbar.scrolled {
-  background-color: rgba(14, 14, 14, 0.9); /* 90% opacity */
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .logo img {
+    width: 140px;
+  }
 }
 
 /* hero section */
@@ -635,6 +683,7 @@ body {
 .contacts-container p {
   color: black;
 }
+/* contact us card  */
 .contact-section-cards {
   display: flex;
   justify-content: center;
@@ -686,14 +735,17 @@ body {
   line-height: 1.6;
   color: #718096;
 }
+/* Existing styles ... */
 
 @media (max-width: 768px) {
-  .section-title {
-    font-size: 26px;
+  .contact-section-cards {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .contact-card {
-    min-width: 100%;
+  .contact-section-card {
+    width: 90%;
+    max-width: 400px;
   }
 }
 
@@ -779,6 +831,34 @@ h2 {
 
 .submit-btn:hover {
   background-color: #2980b9;
+}
+
+/* Existing styles above this remain unchanged */
+
+@media (max-width: 768px) {
+  .contact-section-form-div {
+    padding: 20px;
+  }
+
+  .contact-section-form h1 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .contact-section-form p {
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .contact-form {
+    padding: 20px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    font-size: 18px;
+  }
 }
 
 /* footer */

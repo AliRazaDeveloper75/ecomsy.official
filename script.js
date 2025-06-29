@@ -93,13 +93,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+// static header
 
-// sticky navbar scroll
-window.addEventListener('scroll', function() {
-  const navbar = document.querySelector('.navbar');
-  if (window.scrollY > 50) { // You can adjust this value
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
+fetch('header.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('header-Container').innerHTML = data;
+
+    // Initialize behavior after load
+    setupHeaderFunctions();
+  });
+
+  function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+      }
+
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
+      });

@@ -1,2 +1,180 @@
-<script src='test.js'>
-</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navbar</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: #fff;
+        width: 100%;
+      }
+
+      /* Navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background-color: transparent;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: background-color 0.3s ease;
+      }
+
+      /* Scroll effect */
+      .navbar.scrolled {
+        background-color: rgba(14, 14, 14, 0.95);
+      }
+
+      /* Logo */
+      .logo img {
+        width: 170px;
+      }
+
+      /* Nav links */
+      .nav-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #ccc;
+      }
+
+      /* Hamburger (hidden on desktop) */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 70px;
+          right: 20px;
+          background-color: rgba(14, 14, 14, 0.95);
+          flex-direction: column;
+          width: 75%;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .logo img {
+          width: 140px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <img src="/assets/ecomsy.png" alt="Ecomsy Logo" />
+      </div>
+
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="pages/service/service.html">Services</a>
+        <a href="pages/course/course.html">Course</a>
+        <a href="pages/our-work/our-work.html">Our Work</a>
+        <a href="pages/case-study/case-study.html">Case Studies</a>
+        <a href="pages/about/about.html">About</a>
+        <a href="pages/testimonial/testimonial.html">Testimonials</a>
+        <a href="pages/contact/contact.html">Contacts</a>
+        <a href="pages/invoice/invoice.html">Invoice</a>
+      </nav>
+    </header>
+
+    <main style="padding-top: 100px">
+      <h1>Welcome to ECOMSY</h1>
+      <p>Scroll and resize the screen to test navbar behavior.</p>
+    </main>
+    <main style="padding-top: 100px">
+      <h1>Welcome to ECOMSY</h1>
+      <p>Scroll and resize the screen to test navbar behavior.</p>
+    </main>
+    <main style="padding-top: 100px">
+      <h1>Welcome to ECOMSY</h1>
+      <p>Scroll and resize the screen to test navbar behavior.</p>
+    </main>
+    <main style="padding-top: 100px">
+      <h1>Welcome to ECOMSY</h1>
+      <p>Scroll and resize the screen to test navbar behavior.</p>
+    </main>
+    <main style="padding-top: 100px">
+      <h1>Welcome to ECOMSY</h1>
+      <p>Scroll and resize the screen to test navbar behavior.</p>
+    </main>
+    <main style="padding-top: 100px">
+      <h1>Welcome to ECOMSY</h1>
+      <p>Scroll and resize the screen to test navbar behavior.</p>
+    </main>
+    <main style="padding-top: 100px">
+      <h1>Welcome to ECOMSY</h1>
+      <p>Scroll and resize the screen to test navbar behavior.</p>
+    </main>
+    <main style="padding-top: 100px">
+      <h1>Welcome to ECOMSY</h1>
+      <p>Scroll and resize the screen to test navbar behavior.</p>
+    </main>
+    <main style="padding-top: 100px">
+      <h1>Welcome to ECOMSY</h1>
+      <p>Scroll and resize the screen to test navbar behavior.</p>
+    </main>
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+      }
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
+      });
+    </script>
+  </body>
+</html>
