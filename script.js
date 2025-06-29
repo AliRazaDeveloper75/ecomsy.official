@@ -1,4 +1,9 @@
-const text = " Solve";
+const textData = {
+  a:'Code',
+  b:'Solve',
+  c:'Grow',
+}
+const text = textData.a;
 const typingSpeed = 150;
 const erasingSpeed = 100;
 const delayBeforeErase = 1000;
