@@ -104,6 +104,7 @@ fetch('header.html')
     setupHeaderFunctions();
   });
 
+  // phone responsive burger icon 
   function toggleMenu() {
         document.getElementById("navLinks").classList.toggle("active");
       }

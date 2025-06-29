@@ -1,1 +1,98 @@
-<h1>course page</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navbar</title>
+    <link rel="stylesheet" href="course.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <a href='../../index.html'>
+            <img src="/assets/ecomsy.png" alt="Ecomsy Logo" />
+        </a>
+      </div>
+
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="../../pages/service/service.html">Services</a>
+        <a href="../../pages/course/course.html">Course</a>
+        <a href="../../pages/our-work/our-work.html">Our Work</a>
+        <a href="../../pages/case-study/case-study.html">Case Studies</a>
+        <a href="../../pages/about/about.html">About</a>
+        <a href="../../pages/testimonial/testimonial.html">Testimonials</a>
+        <a href="../../pages/contact/contact.html">Contacts</a>
+        <a href="../../pages/invoice/invoice.html">Invoice</a>
+      </nav>
+    </header>
+    <!--content section-->
+    <section>
+      <main class="about-us-container">
+        <h1>Welcome to Course Page</h1>
+        <p>Scroll and resize the screen to test navbar behavior.</p>
+      </main>
+    </section>
+
+    <!--footer section-->
+        <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section footer-about">
+            <img src="/assets/ecomsy.png" />
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              quam velit, vulputate eu pharetra nec.
+            </p>
+          </div>
+
+          <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Portfolio</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> 123 Street, City, Country
+            </p>
+            <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+            <p><i class="fas fa-envelope"></i> info@example.com</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2023 Your Company. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // phone responsive burger icon
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+      }
+
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
+      });
+    </script>
+  </body>
+</html>
