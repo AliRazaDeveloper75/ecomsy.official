@@ -157,6 +157,8 @@ body {
   }
 
   .phone-hero-logo {
+        display: block;
+
     justify-content: center;
     margin-top: 0px;
     position: absolute;
