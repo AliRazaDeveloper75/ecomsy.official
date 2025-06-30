@@ -170,6 +170,7 @@ body {
   .trusted-logos img {
     width: 80px;
   }
+  
 }
 
 .typing {
@@ -245,17 +246,16 @@ body {
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
+  .about .about-left p{
+    font-size: 1.2rem;
+  }
   .about {
     flex-direction: column;
     padding: 30px 15px;
     gap: 20px;
   }
 
-  .about h1 {
-    font-size: 2rem;
-  }
-
-  .about p {
+    .about p {
     font-size: 1rem;
   }
 }
@@ -386,6 +386,9 @@ body {
 }
 
 @media (max-width: 768px) {
+  .grid{
+    gap: 0;
+  }
   .stats-container {
     flex-direction: column;
     gap: 30px;
@@ -468,6 +471,14 @@ body {
   background: black;
   color: white;
 }
+
+
+@media (max-width: 768px) {
+  .service-icon img {
+    width: 80px;
+}
+}
+
 
 /* testimonial section */
 
