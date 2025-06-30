@@ -1,10 +1,12 @@
-.phone-hero-logo{
+.phone-hero-logo {
   display: none;
 }
 .trusted-section {
   text-align: center;
   padding: 40px 20px;
   background-color: #111111;
+  border-end-end-radius: 25px;
+  border-end-start-radius: 25px;
 }
 
 .trusted-heading {
@@ -153,12 +155,11 @@ body {
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
-    padding: 20px 25px;
+    padding: 0px 25px;
   }
 
   .phone-hero-logo {
-        display: block;
-
+    display: block;
     justify-content: center;
     margin-top: 0px;
     position: absolute;
@@ -185,7 +186,7 @@ body {
   }
   .hero-text h1 {
     font-size: 30px;
-    margin-top: 10%;
+    margin-top: 40%;
   }
   .hero-text p {
     font-size: 0.9rem;
