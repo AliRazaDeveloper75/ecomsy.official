@@ -33,6 +33,7 @@
   .hide-on-mobile {
     display: none;
   }
+  
 }
 
 
@@ -48,6 +49,7 @@ body {
   overflow-x: hidden;
   color: white;
 }
+
 /* hero section */
 .hero {
   padding: 40px 50px;
@@ -156,6 +158,7 @@ body {
   .hero-logo {
     justify-content: center;
     margin-top: 30px;
+    display: none;
   }
 
   .hero-logo img {
@@ -581,6 +584,12 @@ body {
 }
 
 @media (max-width: 768px) {
+  
+.service-card {
+  background: #fff;
+  border-radius: 8px;
+  width: 100%;
+}
   .section-subtitle {
     font-size: 28px;
   }
