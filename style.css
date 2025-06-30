@@ -170,6 +170,13 @@ body {
   .trusted-logos img {
     width: 80px;
   }
+  .hero-text h1 {
+    font-size: 22px;
+    margin-top: 20%;
+  }
+  .hero-text p {
+    font-size: 10px;
+}
   
 }
 
