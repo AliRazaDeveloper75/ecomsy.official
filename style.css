@@ -164,6 +164,12 @@ body {
   .hero-logo img {
     max-width: 60%;
   }
+  .on-phone{
+    display: none;
+  }
+  .trusted-logos img {
+    width: 80px;
+  }
 }
 
 .typing {
