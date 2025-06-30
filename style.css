@@ -1,7 +1,10 @@
+.phone-hero-logo{
+  display: none;
+}
 .trusted-section {
   text-align: center;
   padding: 40px 20px;
-  background-color: black;
+  background-color: #111111;
 }
 
 .trusted-heading {
@@ -33,10 +36,7 @@
   .hide-on-mobile {
     display: none;
   }
-  
 }
-
-
 
 * {
   margin: 0;
@@ -53,7 +53,7 @@ body {
 /* hero section */
 .hero {
   padding: 40px 50px;
-  background: black;
+  background: #111111;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -153,8 +153,19 @@ body {
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
+    padding: 20px 25px;
   }
 
+  .phone-hero-logo {
+    justify-content: center;
+    margin-top: 0px;
+    position: absolute;
+    opacity: 10%;
+  }
+
+  .phone-hero-logo img {
+    max-width: 100%;
+  }
   .hero-logo {
     justify-content: center;
     margin-top: 30px;
@@ -164,20 +175,19 @@ body {
   .hero-logo img {
     max-width: 60%;
   }
-  .on-phone{
+  .on-phone {
     display: none;
   }
   .trusted-logos img {
     width: 80px;
   }
   .hero-text h1 {
-    font-size: 22px;
-    margin-top: 20%;
+    font-size: 30px;
+    margin-top: 10%;
   }
   .hero-text p {
-    font-size: 10px;
-}
-  
+    font-size: 0.9rem;
+  }
 }
 
 .typing {
@@ -253,7 +263,7 @@ body {
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-  .about .about-left p{
+  .about .about-left p {
     font-size: 1.2rem;
   }
   .about {
@@ -262,7 +272,7 @@ body {
     gap: 20px;
   }
 
-    .about p {
+  .about p {
     font-size: 1rem;
   }
 }
@@ -393,7 +403,7 @@ body {
 }
 
 @media (max-width: 768px) {
-  .grid{
+  .grid {
     gap: 0;
   }
   .stats-container {
@@ -479,13 +489,11 @@ body {
   color: white;
 }
 
-
 @media (max-width: 768px) {
   .service-icon img {
     width: 80px;
+  }
 }
-}
-
 
 /* testimonial section */
 
@@ -608,12 +616,11 @@ body {
 }
 
 @media (max-width: 768px) {
-  
-.service-card {
-  background: #fff;
-  border-radius: 8px;
-  width: 100%;
-}
+  .service-card {
+    background: #fff;
+    border-radius: 8px;
+    width: 100%;
+  }
   .section-subtitle {
     font-size: 28px;
   }
@@ -940,13 +947,11 @@ h2 {
   }
 }
 
-
-
 .blog-section {
   background-color: #111;
   color: #fff;
   padding: 60px 40px;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .blog-header {
