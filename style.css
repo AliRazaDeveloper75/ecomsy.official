@@ -221,6 +221,7 @@ body {
   margin-bottom: 10px;
   margin-top: 50px;
   display: flex;
+  padding: 0px 40px 0px;
   flex-direction: row;
 }
 .about-title .about-icon-box-icon {
@@ -286,6 +287,9 @@ body {
   .about p {
     font-size: 1rem;
   }
+  .about-title h1 {
+  padding: 0px 15px;
+}
 }
 
 /* how-it-works */
@@ -294,10 +298,9 @@ body {
   margin: auto;
   display: flex;
   justify-content: space-around;
-}
-.intro {
-  width: 20%;
-  padding-right: 5%;
+}.intro {
+  width: 60%;
+  padding-right: 20px;
 }
 
 .intro h5 {
@@ -314,7 +317,7 @@ body {
 }
 
 .intro h2 {
-  font-size: 28px;
+  font-size: 1.53rem;
   font-weight: 700;
   line-height: 1.4;
   color: #000;
@@ -322,8 +325,7 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+  gap: 5px;
   margin-top: 40px;
 }
 
@@ -331,7 +333,7 @@ body {
   padding: 30px;
   position: relative;
   overflow: hidden;
-  min-height: 250px;
+  min-height: 220px;
 }
 
 .step h3 {
@@ -346,7 +348,7 @@ body {
 
 .step .number {
   position: absolute;
-  top: 10px;
+  top: 0px;
   right: 15px;
   font-size: 200px;
   font-weight: bold;
@@ -425,6 +427,11 @@ body {
   text-align: center;
 }
 
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 @media (max-width: 768px) {
   .grid {
     gap: 0;
@@ -442,16 +449,13 @@ body {
     gap: 8px;
   }
 
-
-
   .how-it-works {
-
-  display: flex;
-  flex-direction: column;
-}
-.intro {
-  width: 100%;
-}
+    display: flex;
+    flex-direction: column;
+  }
+  .intro {
+    width: 100%;
+  }
 }
 
 /* <!--service card-- >  */
