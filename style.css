@@ -1,4 +1,3 @@
-
 .phone-hero-logo {
   display: none;
 }
@@ -160,7 +159,6 @@ body {
     flex-direction: column;
     padding: 0 25px;
     padding-top: 40%;
-    
   }
 
   .phone-hero-logo {
@@ -293,8 +291,13 @@ body {
 /* how-it-works */
 .how-it-works {
   padding: 60px 20px;
-
   margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+.intro {
+  width: 20%;
+  padding-right: 5%;
 }
 
 .intro h5 {
@@ -306,7 +309,7 @@ body {
   flex-direction: row;
 }
 
-.intro-icon-box-icon{
+.intro-icon-box-icon {
   margin-left: 5px;
 }
 
@@ -363,8 +366,8 @@ body {
 }
 
 .step.dark .number {
- color: white;
- opacity: 35%;
+  color: white;
+  opacity: 35%;
 }
 
 .step.light .number {
@@ -438,6 +441,17 @@ body {
   .stat-header {
     gap: 8px;
   }
+
+
+
+  .how-it-works {
+
+  display: flex;
+  flex-direction: column;
+}
+.intro {
+  width: 100%;
+}
 }
 
 /* <!--service card-- >  */
@@ -535,7 +549,7 @@ body {
   display: flex;
   flex-direction: row;
 }
-.section-title-icon-box-icon{
+.section-title-icon-box-icon {
   margin-left: 5px;
 }
 
@@ -685,7 +699,7 @@ body {
   display: flex;
   flex-direction: row;
 }
-.section-tag-icon-box-icon{
+.section-tag-icon-box-icon {
   margin-left: 5px;
 }
 
@@ -1006,7 +1020,7 @@ h2 {
   display: flex;
   flex-direction: row;
 }
-.blog-label-icon-box-icon{
+.blog-label-icon-box-icon {
   margin-left: 5px;
 }
 
