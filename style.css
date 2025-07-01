@@ -6,8 +6,8 @@
   text-align: center;
   padding: 40px 20px;
   background-color: #111111;
-  border-end-end-radius: 25px;
-  border-end-start-radius: 25px;
+  border-end-end-radius: 45px;
+  border-end-start-radius: 45px;
 }
 
 .trusted-heading {
@@ -222,6 +222,11 @@ body {
 .about-title h1 {
   margin-bottom: 10px;
   margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+}
+.about-title .about-icon-box-icon {
+  margin-left: 5px;
 }
 .about-title {
   display: flex;
@@ -297,6 +302,12 @@ body {
   font-size: 16px;
   margin-bottom: 10px;
   font-weight: 700;
+  display: flex;
+  flex-direction: row;
+}
+
+.intro-icon-box-icon{
+  margin-left: 5px;
 }
 
 .intro h2 {
@@ -520,6 +531,11 @@ body {
   letter-spacing: 2px;
   margin-bottom: 10px;
   text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+}
+.section-title-icon-box-icon{
+  margin-left: 5px;
 }
 
 .section-subtitle {
@@ -665,6 +681,11 @@ body {
   letter-spacing: 2px;
   color: #4a6bdf;
   text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+}
+.section-tag-icon-box-icon{
+  margin-left: 5px;
 }
 
 .contact-section-title {
@@ -981,6 +1002,11 @@ h2 {
   font-weight: bold;
   color: #ff3d3d;
   font-size: 14px;
+  display: flex;
+  flex-direction: row;
+}
+.blog-label-icon-box-icon{
+  margin-left: 5px;
 }
 
 .read-all-button {
