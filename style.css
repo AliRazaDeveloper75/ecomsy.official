@@ -1,3 +1,4 @@
+
 .phone-hero-logo {
   display: none;
 }
@@ -70,7 +71,9 @@ body {
 .hero-text h1 {
   font-size: 48px;
   line-height: 1.2;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+  display: flex;
+  align-items: center;
 }
 
 .hero-text .highlight {
@@ -113,7 +116,7 @@ body {
 .hero-logo img {
   max-width: 90%;
   height: auto;
-  opacity: 0.265;
+  opacity: 65%;
   filter: grayscale(100%);
   /* transform: rotate(45deg); */
 }
@@ -155,7 +158,9 @@ body {
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
-    padding: 0px 25px;
+    padding: 0 25px;
+    padding-top: 40%;
+    
   }
 
   .phone-hero-logo {
@@ -163,7 +168,7 @@ body {
     justify-content: center;
     margin-top: 0px;
     position: absolute;
-    opacity: 25%;
+    opacity: 65%;
   }
 
   .phone-hero-logo img {
@@ -186,7 +191,7 @@ body {
   }
   .hero-text h1 {
     font-size: 30px;
-    margin-top: 40%;
+    margin-top: 0%;
   }
   .hero-text p {
     font-size: 0.9rem;
