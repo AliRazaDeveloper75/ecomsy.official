@@ -528,7 +528,7 @@ body {
 
 .section-title {
   font-size: 14px;
-  color: white;
+  color: #00539c;
   letter-spacing: 2px;
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -1001,7 +1001,7 @@ h2 {
 
 .blog-label {
   font-weight: bold;
-  color: #ff3d3d;
+  color: #00539c;
   font-size: 14px;
   display: flex;
   flex-direction: row;
