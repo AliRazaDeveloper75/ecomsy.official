@@ -305,11 +305,13 @@ body {
 
 .intro h5 {
   color: #00539c;
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 10px;
   font-weight: 700;
   display: flex;
   flex-direction: row;
+
+  
 }
 
 .intro-icon-box-icon {
@@ -317,10 +319,11 @@ body {
 }
 
 .intro h2 {
-  font-size: 1.53rem;
+  font-size: 2rem;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.6;
   color: #000;
+  text-align: left;
 }
 
 .grid {
@@ -472,8 +475,16 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
-  padding: 20px 20px;
+  padding: 20px;
   background: #fff;
+  max-width: 1200px; /* Optional: set a max-width for better control */
+  margin: 0 auto; /* Center the container */
+}
+
+.services-section > * {
+  flex: 1 1 calc(33.333% - 30px); /* Adjust for gap */
+  min-width: 300px; /* Minimum width before wrapping */
+  max-width: 100%; /* Ensure items don't overflow */
 }
 
 .service-card {
@@ -545,7 +556,7 @@ body {
 }
 
 .section-title {
-  font-size: 14px;
+  font-size: 17px;
   color: #00539c;
   letter-spacing: 2px;
   margin-bottom: 10px;
@@ -666,6 +677,7 @@ body {
   }
   .section-subtitle {
     font-size: 28px;
+    text-align: left;
   }
 
   .testimonial-text {
@@ -683,7 +695,7 @@ body {
 
 /* contact */
 .contacts-container {
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
   padding: 80px 20px;
   font-family: "Inter", sans-serif;
@@ -698,7 +710,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 2px;
-  color: #4a6bdf;
+  color: #00539c;
   text-transform: uppercase;
   display: flex;
   flex-direction: row;
@@ -1015,12 +1027,13 @@ h2 {
   font-weight: bold;
   margin: 10px 0 0;
   color: white;
+  text-align: left;
 }
 
 .blog-label {
   font-weight: bold;
   color: #00539c;
-  font-size: 14px;
+  font-size: 16px;
   display: flex;
   flex-direction: row;
 }
