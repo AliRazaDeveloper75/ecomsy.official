@@ -234,7 +234,7 @@ body {
   background-color: #f4f4f4;
   /* padding-left: 2%;
   padding-right: 2%; */
-  padding: 0px 40px;
+  padding: 0px 5px;
   margin: 0 auto;
   color: #00539c;
 }
@@ -277,11 +277,11 @@ body {
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
   .about .about-left p {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
   .about {
     flex-direction: column;
-    padding: 30px 15px;
+    padding: 10px 15px;
     gap: 20px;
   }
 
