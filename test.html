@@ -1,123 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Strategic Partners</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Digital Footer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
     <style>
-      .partners-section {
-        background-color: #f4f4f4;
-        margin: auto;
-      }
-
-      .section-title {
-        color: #d90429;
-        font-weight: bold;
-        font-size: 14px;
-        text-transform: uppercase;
-        margin-bottom: 10px;
-      }
-
-      .main-heading {
-        font-size: 36px;
-        font-weight: bold;
-        margin-bottom: 40px;
-      }
-
-      .partners {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 40px;
-      }
-
-      .partner-box {
-        background: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        flex: 1;
-        min-width: 300px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      }
-
-      .partner-logo {
-        height: 50px;
-        margin-bottom: 20px;
-      }
-
-      .partner-text {
-        font-size: 16px;
-        line-height: 1.6;
-      }
-
-      .google-partner-logo {
-        display: block;
-        margin: auto;
-        height: 80px;
-      }
-
-      .google-label {
-        text-align: center;
-        margin-top: 5px;
-        background: #333;
-        color: #fff;
-        font-size: 12px;
-        padding: 3px 6px;
-        display: inline-block;
-      }
-
-      @media (max-width: 768px) {
-        .main-heading {
-          font-size: 28px;
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
-      }
+        
+        .footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 40px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            margin-bottom: 30px;
+            width: 23%;
+            min-width: 200px;
+        }
+        
+        .footer-section h3 {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #cccccc;
+            line-height: 1.6;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .footer-section a:hover {
+            color: #ffffff;
+        }
+        
+        .footer-bottom {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #333333;
+            color: #999999;
+            font-size: 14px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .dmca-protected {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #666666;
+        }
+        
+        .review-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .review-links a {
+            color: #ffffff;
+            background-color: #333333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-section {
+                width: 48%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-section {
+                width: 100%;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <div class="partners-section">
-      <div class="section-title">Strategic Partners 🔻</div>
-      <div class="main-heading">The reason why brands choose us.</div>
-
-      <div class="partners">
-        <div class="partner-box">
-          <img
-            class="partner-logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/0/08/TikTok_logo.svg"
-            alt="TikTok Marketing Partners"
-          />
-          <div class="partner-text">
-            Recognized as a TikTok Marketing Partner, we bring valuable insights
-            to our clients, helping them effectively scale their business and
-            presence on TikTok Ads.
-          </div>
+</head>
+<body>
+    <footer class="footer">
+        <div class="footer-section">
+            <h3>CONTACT</h3>
+            <p>Global: (-84)-98-190-6239</p>
+            <p>HCMC: (-84)-97-256-7418</p>
+            <p>sales@megadigital.ai</p>
+            
+            <p>Mega Agency Global Limited</p>
+            <p>Unit 1603, The L. Plaza, 367-375 Queen's Road Central, Sheung Wan, Hong Kong, 122001, Hong Kong</p>
+            
+            <p>Mega Digital JSC.</p>
+            <p>• HQ: GP Invest Building, 170 La Thanh, Dong Da, Hanoi, Vietnam 100000</p>
+            <p>• HCMC Office: 2nd Floor, D-eyes, 371 Nguyen Kiem, Go Vap, Ho Chi Minh City 700000</p>
         </div>
-
-        <div class="partner-box">
-          <img
-            class="google-partner-logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Google_2015_logo.svg"
-            alt="Google Partner"
-          />
-          <div class="google-label">PREMIER 2024</div>
-          <div class="partner-text">
-            As one of the top 10 Google agencies in APAC, we have been awarded
-            by Google as their Premier Partner, a testament to our exceptional
-            services and outstanding performance.
-          </div>
+        
+        <div class="footer-section">
+            <h3>SOCIAL MEDIA</h3>
+            <!-- Add social media icons/links here -->
+            <div class="social-links">
+                <!-- Example social media icons -->
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
-
-        <div class="partner-box">
-          <img
-            class="partner-logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
-            alt="Microsoft Partner"
-          />
-          <div class="partner-text">
-            Trusted by Microsoft as one of the best solution partners, Mega
-            Digital provided an effective and efficient performance strategy for
-            our global clients.
-          </div>
+        
+        <div class="footer-section">
+            <h3>SERVICES</h3>
+            <a href="#">Google Ads Agency Account for Rent</a>
+            <a href="#">TikTok Agency Account for Rent</a>
+            <a href="#">Google Ads Management Services</a>
+            <a href="#">Microsoft Ads Agency Account for Rent</a>
+            <a href="#">Snapchat Agency Account for Rent</a>
+            <a href="#">Twitter (X) Ads Agency Account for Rent</a>
         </div>
-      </div>
-    </div>
-  </body>
+        
+        <div class="footer-section">
+            <h3>COMPANY</h3>
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <a href="#">About Us</a>
+                    <a href="#">Referral Program</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Our Works</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Refund Policy</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Our Partners</a>
+                    <a href="#">Support Ticket</a>
+                </div>
+            </div>
+            
+            <div class="dmca-protected">DMCAPROTECTED</div>
+            
+            <div class="review-links">
+                <a href="#">Review us on ▼ Trustpilot</a>
+                <a href="#">Review us on Google</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            © Copyright 2021–2024 Mega Digital. All rights reserved.
+        </div>
+    </footer>
+    
+    <!-- Font Awesome for social icons (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
 </html>
