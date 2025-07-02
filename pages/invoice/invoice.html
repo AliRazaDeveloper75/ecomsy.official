@@ -1,98 +1,797 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Navbar</title>
-    <link rel="stylesheet" href="invoice.css" />
-  </head>
-  <body>
-    <header class="navbar">
-      <div class="logo">
-        <a href='../../index.html'>
-            <img src="/assets/ecomsy.png" alt="Ecomsy Logo" />
-        </a>
-      </div>
-
-      <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <nav class="nav-links" id="navLinks">
-        <a href="../../pages/service/service.html">Solutions</a>
-        <a href="../../pages/course/course.html">Course</a>
-        <a href="../../pages/our-work/our-work.html">Our Work</a>
-        <a href="../../pages/case-study/case-study.html">Case Studies</a>
-        <a href="../../pages/about/about.html">About</a>
-        <a href="../../pages/testimonial/testimonial.html">Testimonials</a>
-        <a href="../../pages/contact/contact.html">Contacts</a>
-        <a href="../../pages/invoice/invoice.html">Invoice</a>
-      </nav>
-    </header>
-    <!--content section-->
-    <section>
-      <main class="about-us-container">
-        <h1>Welcome to Invoice Page</h1>
-        <p>Scroll and resize the screen to test navbar behavior.</p>
-      </main>
-    </section>
-
-    <!--footer section-->
-        <footer class="site-footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-section footer-about">
-            <img src="/assets/ecomsy.png" />
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              quam velit, vulputate eu pharetra nec.
-            </p>
-          </div>
-
-          <div class="footer-section links">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Solutions</a></li>
-              <li><a href="#">Portfolio</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-section contact">
-            <h3>Contact Us</h3>
-            <p>
-              <i class="fas fa-map-marker-alt"></i> 123 Street, City, Country
-            </p>
-            <p><i class="fas fa-phone"></i> +1 234 567 890</p>
-            <p><i class="fas fa-envelope"></i> info@example.com</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-linkedin"></i></a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Service Invoice System</title>
+    <style>
+        :root {
+            --primary-dark: #0a192f;
+            --primary-blue: #1e6fbf;
+            --accent-blue: #64ffda;
+            --light-gray: #ccd6f6;
+            --pure-white: #ffffff;
+            --dark-gray: #333333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: var(--dark-gray);
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            background: var(--pure-white);
+            padding: 0;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: var(--primary-dark);
+            color: var(--pure-white);
+            padding: 25px 30px;
+            border-bottom: 4px solid var(--primary-blue);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            margin: 5px 0 0;
+            color: var(--light-gray);
+            font-size: 14px;
+        }
+        
+        .content-area {
+            padding: 30px;
+        }
+        
+        h2, h3 {
+            color: var(--primary-dark);
+            margin-top: 0;
+        }
+        
+        h2 {
+            font-size: 22px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-blue);
+            margin-bottom: 20px;
+        }
+        
+        .form-section, .invoice-section, .search-section {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 6px;
+            background-color: var(--pure-white);
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 15px;
+            transition: border 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(30, 111, 191, 0.2);
+        }
+        
+        button {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        button:hover {
+            background-color: #165a9e;
+            transform: translateY(-1px);
+        }
+        
+        button.secondary {
+            background-color: var(--pure-white);
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+        
+        button.secondary:hover {
+            background-color: #f0f7ff;
+        }
+        
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f8fafc;
+            border-radius: 4px;
+            border-left: 3px solid var(--primary-blue);
+        }
+        
+        .service-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-info input[type="checkbox"] {
+            width: auto;
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+        
+        .service-price {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        .total {
+            font-size: 18px;
+            font-weight: 600;
+            text-align: right;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 2px solid #eee;
+            color: var(--primary-dark);
+        }
+        
+        .total-amount {
+            color: var(--primary-blue);
+            font-size: 22px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .invoice-preview {
+            background-color: var(--pure-white);
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .invoice-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .invoice-details {
+            text-align: right;
+        }
+        
+        .invoice-body {
+            margin-bottom: 30px;
+        }
+        
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .invoice-table th {
+            background-color: var(--primary-dark);
+            color: var(--pure-white);
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        .invoice-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .invoice-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .invoice-footer {
+            margin-top: 30px;
+            text-align: right;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+        
+        .alert-success {
+            background-color: #e6f7ee;
+            color: #0a5c36;
+            border-left: 4px solid #0a5c36;
+        }
+        
+        .alert-danger {
+            background-color: #fde8e8;
+            color: #9b1c1c;
+            border-left: 4px solid #9b1c1c;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .consultation-hours {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .consultation-hours input {
+            width: 70px;
+        }
+        
+        /* Animation for section transitions */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .invoice-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .invoice-details {
+                text-align: left;
+            }
+            
+            .service-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .container {
+                margin: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>IT Service Invoice System</h1>
+            <p>Professional IT services with transparent pricing</p>
+        </div>
+        
+        <div class="content-area">
+            <!-- Search Existing Invoice -->
+            <div class="search-section fade-in">
+                <h2>Retrieve Existing Invoice</h2>
+                <div class="form-group">
+                    <label for="search-invoice-id">Invoice ID</label>
+                    <input type="text" id="search-invoice-id" placeholder="Enter your invoice number">
+                </div>
+                <button id="search-invoice-btn">Search Invoice</button>
+                <div id="search-result" class="hidden"></div>
             </div>
-          </div>
+            
+            <!-- Service Selection Form -->
+            <div class="form-section fade-in" id="service-form">
+                <h2>Select IT Services</h2>
+                
+                <div class="form-group">
+                    <label for="customer-name">Full Name</label>
+                    <input type="text" id="customer-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-email">Email</label>
+                    <input type="email" id="customer-email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-phone">Phone Number</label>
+                    <input type="tel" id="customer-phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-address">Address</label>
+                    <textarea id="customer-address" rows="3" required></textarea>
+                </div>
+                
+                <h3>IT Services</h3>
+                <p>Our fixed price services:</p>
+                
+                <div class="service-item">
+                    <div class="service-info">
+                        <input type="checkbox" id="service1" value="Website Development" data-price="500">
+                        <label for="service1">Website Development</label>
+                    </div>
+                    <div class="service-price">$500</div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-info">
+                        <input type="checkbox" id="service2" value="SEO Optimization" data-price="300">
+                        <label for="service2">SEO Optimization</label>
+                    </div>
+                    <div class="service-price">$300</div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-info">
+                        <input type="checkbox" id="service3" value="Mobile App Development" data-price="800">
+                        <label for="service3">Mobile App Development</label>
+                    </div>
+                    <div class="service-price">$800</div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-info">
+                        <input type="checkbox" id="service4" value="IT Consultation" data-price="200">
+                        <label for="service4">IT Consultation (per hour)</label>
+                    </div>
+                    <div class="consultation-hours">
+                        <label for="consultation-hours">Hours:</label>
+                        <input type="number" id="consultation-hours" min="1" value="1" disabled>
+                        <div class="service-price">$200/hr</div>
+                    </div>
+                </div>
+                
+                <div class="total">
+                    Total: $<span id="total-amount" class="total-amount">0</span>
+                </div>
+                
+                <button id="generate-invoice-btn">Generate Invoice</button>
+            </div>
+            
+            <!-- Payment Section -->
+            <div class="form-section hidden fade-in" id="payment-section">
+                <h2>Payment Information</h2>
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                </div>
+                
+                <div class="form-group">
+                    <label for="card-expiry">Expiry Date</label>
+                    <input type="text" id="card-expiry" placeholder="MM/YY">
+                </div>
+                
+                <div class="form-group">
+                    <label for="card-cvc">CVC</label>
+                    <input type="text" id="card-cvc" placeholder="123">
+                </div>
+                
+                <div class="btn-group">
+                    <button id="pay-now-btn">Pay Now</button>
+                    <button id="back-to-form-btn" class="secondary">Back to Form</button>
+                </div>
+            </div>
+            
+            <!-- Invoice Preview Section -->
+            <div class="invoice-section hidden fade-in" id="invoice-section">
+                <h2>Your Invoice</h2>
+                <div id="invoice-alert" class="alert hidden"></div>
+                
+                <div class="invoice-preview" id="invoice-preview">
+                    <!-- Invoice content will be generated here -->
+                </div>
+                
+                <div class="btn-group">
+                    <button id="download-invoice-btn">Download Invoice</button>
+                    <button id="new-invoice-btn" class="secondary">Create New Invoice</button>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div class="footer-bottom">
-          <p>&copy; 2023 Your Company. All Rights Reserved.</p>
-        </div>
-      </div>
-    </footer>
     <script>
-      // phone responsive burger icon
-      function toggleMenu() {
-        document.getElementById("navLinks").classList.toggle("active");
-      }
-
-      window.addEventListener("scroll", () => {
-        const navbar = document.querySelector(".navbar");
-        navbar.classList.toggle("scrolled", window.scrollY > 50);
-      });
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const serviceForm = document.getElementById('service-form');
+            const paymentSection = document.getElementById('payment-section');
+            const invoiceSection = document.getElementById('invoice-section');
+            const totalAmountSpan = document.getElementById('total-amount');
+            const generateInvoiceBtn = document.getElementById('generate-invoice-btn');
+            const payNowBtn = document.getElementById('pay-now-btn');
+            const backToFormBtn = document.getElementById('back-to-form-btn');
+            const downloadInvoiceBtn = document.getElementById('download-invoice-btn');
+            const newInvoiceBtn = document.getElementById('new-invoice-btn');
+            const invoicePreview = document.getElementById('invoice-preview');
+            const searchInvoiceBtn = document.getElementById('search-invoice-btn');
+            const searchInvoiceId = document.getElementById('search-invoice-id');
+            const searchResult = document.getElementById('search-result');
+            const consultationHours = document.getElementById('consultation-hours');
+            const service4 = document.getElementById('service4');
+            const invoiceAlert = document.getElementById('invoice-alert');
+            
+            // Service prices
+            const servicePrices = {
+                'Website Development': 500,
+                'SEO Optimization': 300,
+                'Mobile App Development': 800,
+                'IT Consultation': 200
+            };
+            
+            // Variables to store data
+            let currentInvoice = null;
+            let invoices = JSON.parse(localStorage.getItem('invoices')) || [];
+            
+            // Enable/disable consultation hours based on checkbox
+            service4.addEventListener('change', function() {
+                consultationHours.disabled = !this.checked;
+                if (!this.checked) {
+                    consultationHours.value = 1;
+                }
+                calculateTotal();
+            });
+            
+            consultationHours.addEventListener('change', calculateTotal);
+            
+            // Calculate total amount
+            function calculateTotal() {
+                let total = 0;
+                
+                document.querySelectorAll('.service-item input[type="checkbox"]:checked').forEach(service => {
+                    const price = parseFloat(service.dataset.price);
+                    if (service.id === 'service4') {
+                        const hours = parseInt(consultationHours.value) || 1;
+                        total += price * hours;
+                    } else {
+                        total += price;
+                    }
+                });
+                
+                totalAmountSpan.textContent = total.toFixed(2);
+                return total;
+            }
+            
+            // Add event listeners to all service checkboxes
+            document.querySelectorAll('.service-item input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', calculateTotal);
+            });
+            
+            // Generate invoice button click
+            generateInvoiceBtn.addEventListener('click', function() {
+                const selectedServices = [];
+                let total = 0;
+                
+                document.querySelectorAll('.service-item input[type="checkbox"]:checked').forEach(service => {
+                    const serviceName = service.value;
+                    let serviceTotal = parseFloat(service.dataset.price);
+                    
+                    if (service.id === 'service4') {
+                        const hours = parseInt(consultationHours.value) || 1;
+                        serviceTotal *= hours;
+                    }
+                    
+                    selectedServices.push({
+                        name: serviceName,
+                        price: serviceTotal
+                    });
+                    
+                    total += serviceTotal;
+                });
+                
+                if (selectedServices.length === 0) {
+                    showAlert('Please select at least one service', 'danger', invoiceAlert);
+                    return;
+                }
+                
+                const customerName = document.getElementById('customer-name').value;
+                const customerEmail = document.getElementById('customer-email').value;
+                const customerPhone = document.getElementById('customer-phone').value;
+                const customerAddress = document.getElementById('customer-address').value;
+                
+                if (!customerName || !customerEmail || !customerPhone || !customerAddress) {
+                    showAlert('Please fill in all customer details', 'danger', invoiceAlert);
+                    return;
+                }
+                
+                // Create temporary invoice object (without ID)
+                currentInvoice = {
+                    customer: {
+                        name: customerName,
+                        email: customerEmail,
+                        phone: customerPhone,
+                        address: customerAddress
+                    },
+                    services: selectedServices,
+                    total: total,
+                    date: new Date().toISOString(),
+                    paid: false
+                };
+                
+                // Show payment section with animation
+                serviceForm.classList.add('hidden');
+                paymentSection.classList.remove('hidden');
+                paymentSection.classList.add('fade-in');
+            });
+            
+            // Back to form button
+            backToFormBtn.addEventListener('click', function() {
+                paymentSection.classList.add('hidden');
+                serviceForm.classList.remove('hidden');
+                serviceForm.classList.add('fade-in');
+            });
+            
+            // Pay now button
+            payNowBtn.addEventListener('click', function() {
+                // Simple validation (in a real app, use a proper payment processor)
+                const cardNumber = document.getElementById('card-number').value;
+                const cardExpiry = document.getElementById('card-expiry').value;
+                const cardCvc = document.getElementById('card-cvc').value;
+                
+                if (!cardNumber || !cardExpiry || !cardCvc) {
+                    showAlert('Please fill in all payment details', 'danger', invoiceAlert);
+                    return;
+                }
+                
+                // Show loading state
+                payNowBtn.textContent = 'Processing...';
+                payNowBtn.disabled = true;
+                
+                // Simulate payment processing
+                setTimeout(() => {
+                    // Generate invoice ID (timestamp + random 3 digits)
+                    const invoiceId = 'INV-' + Date.now() + Math.floor(Math.random() * 1000);
+                    currentInvoice.id = invoiceId;
+                    currentInvoice.paid = true;
+                    currentInvoice.paymentDate = new Date().toISOString();
+                    
+                    // Save to local storage
+                    invoices.push(currentInvoice);
+                    localStorage.setItem('invoices', JSON.stringify(invoices));
+                    
+                    // Show invoice
+                    showInvoice(currentInvoice);
+                    
+                    // Clear payment form
+                    document.getElementById('card-number').value = '';
+                    document.getElementById('card-expiry').value = '';
+                    document.getElementById('card-cvc').value = '';
+                    
+                    // Hide payment section, show invoice
+                    paymentSection.classList.add('hidden');
+                    invoiceSection.classList.remove('hidden');
+                    invoiceSection.classList.add('fade-in');
+                    
+                    // Show success message
+                    showAlert('Payment successful! Invoice has been generated.', 'success');
+                    
+                    // Reset button state
+                    payNowBtn.textContent = 'Pay Now';
+                    payNowBtn.disabled = false;
+                }, 1500);
+            });
+            
+            // Show invoice function
+            function showInvoice(invoice) {
+                const invoiceDate = new Date(invoice.date);
+                const paymentDate = invoice.paid ? new Date(invoice.paymentDate) : null;
+                
+                const formattedDate = invoiceDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                const formattedPaymentDate = paymentDate ? paymentDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }) : '';
+                
+                invoicePreview.innerHTML = `
+                    <div class="invoice-header">
+                        <div>
+                            <div class="invoice-title">INVOICE</div>
+                            <div><strong>Invoice #:</strong> ${invoice.id}</div>
+                            <div><strong>Date:</strong> ${formattedDate}</div>
+                        </div>
+                        <div class="invoice-details">
+                            <div style="color: var(--primary-blue); font-weight: 600;">IT Services Pro</div>
+                            <div>123 Tech Street</div>
+                            <div>Silicon Valley, CA 94000</div>
+                            <div>Phone: (555) 123-4567</div>
+                            <div>Email: billing@itservicespro.com</div>
+                        </div>
+                    </div>
+                    
+                    <div class="invoice-body">
+                        <div style="margin-bottom: 30px; display: flex; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: 600; color: var(--primary-blue); margin-bottom: 5px;">Bill To:</div>
+                                <div>${invoice.customer.name}</div>
+                                <div>${invoice.customer.address.replace(/\n/g, '<br>')}</div>
+                                <div>Phone: ${invoice.customer.phone}</div>
+                                <div>Email: ${invoice.customer.email}</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 600; color: var(--primary-blue); margin-bottom: 5px;">Payment Status</div>
+                                <div style="font-size: 18px; color: ${invoice.paid ? '#0a5c36' : '#9b1c1c'}; font-weight: 600;">
+                                    ${invoice.paid ? 'PAID' : 'PENDING'}
+                                </div>
+                                ${invoice.paid ? `<div style="margin-top: 10px;"><strong>Paid On:</strong> ${formattedPaymentDate}</div>` : ''}
+                            </div>
+                        </div>
+                        
+                        <table class="invoice-table">
+                            <thead>
+                                <tr>
+                                    <th>Service Description</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${invoice.services.map(service => `
+                                    <tr>
+                                        <td>${service.name}</td>
+                                        <td>$${service.price.toFixed(2)}</td>
+                                    </tr>
+                                `).join('')}
+                                <tr style="background-color: #f8fafc;">
+                                    <td style="font-weight: 600;">TOTAL</td>
+                                    <td style="font-weight: 600; color: var(--primary-blue);">$${invoice.total.toFixed(2)}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="invoice-footer">
+                        <div style="text-align: center; margin-top: 40px; color: #666; font-size: 14px;">
+                            Thank you for choosing IT Services Pro. Please contact us for any questions regarding this invoice.
+                        </div>
+                        <div style="text-align: center; margin-top: 10px; color: #999; font-size: 12px;">
+                            Invoice generated on ${new Date().toLocaleString()}
+                        </div>
+                    </div>
+                `;
+                
+                currentInvoice = invoice;
+            }
+            
+            // Download invoice button
+            downloadInvoiceBtn.addEventListener('click', function() {
+                if (!currentInvoice) return;
+                
+                const invoiceContent = invoicePreview.innerHTML;
+                const originalContent = document.body.innerHTML;
+                
+                // Replace buttons in the printed version
+                const printContent = invoiceContent.replace(/<button.*?<\/button>/g, '');
+                
+                document.body.innerHTML = `
+                    <div style="padding: 30px; max-width: 800px; margin: 0 auto; font-family: Arial, sans-serif;">
+                        ${printContent}
+                    </div>
+                `;
+                
+                window.print();
+                
+                // Restore original content
+                document.body.innerHTML = originalContent;
+                
+                // Reattach event listeners
+                attachEventListeners();
+            });
+            
+            // New invoice button
+            newInvoiceBtn.addEventListener('click', function() {
+                // Clear form
+                document.getElementById('customer-name').value = '';
+                document.getElementById('customer-email').value = '';
+                document.getElementById('customer-phone').value = '';
+                document.getElementById('customer-address').value = '';
+                document.querySelectorAll('.service-item input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                consultationHours.value = 1;
+                consultationHours.disabled = true;
+                totalAmountSpan.textContent = '0';
+                
+                // Hide invoice section, show form
+                invoiceSection.classList.add('hidden');
+                serviceForm.classList.remove('hidden');
+                serviceForm.classList.add('fade-in');
+                
+                // Clear current invoice
+                currentInvoice = null;
+            });
+            
+            // Search invoice button
+            searchInvoiceBtn.addEventListener('click', function() {
+                const invoiceId = searchInvoiceId.value.trim();
+                
+                if (!invoiceId) {
+                    showAlert('Please enter an invoice ID', 'danger', searchResult);
+                    return;
+                }
+                
+                const foundInvoice = invoices.find(inv => inv.id.toString() === invoiceId || inv.id.toString().includes(invoiceId));
+                
+                if (foundInvoice) {
+                    showInvoice(foundInvoice);
+                    serviceForm.classList.add('hidden');
+                    paymentSection.classList.add('hidden');
+                    invoiceSection.classList.remove('hidden');
+                    invoiceSection.classList.add('fade-in');
+                    showAlert('Invoice found and displayed below', 'success');
+                    searchInvoiceId.value = '';
+                } else {
+                    showAlert('Invoice not found. Please check the ID and try again.', 'danger', searchResult);
+                }
+            });
+            
+            // Show alert message
+            function showAlert(message, type, element = invoiceAlert) {
+                element.innerHTML = message;
+                element.className = `alert alert-${type}`;
+                element.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    element.classList.add('hidden');
+                }, 5000);
+            }
+            
+            // Reattach event listeners after printing
+            function attachEventListeners() {
+                // Reattach all event listeners here if needed
+                downloadInvoiceBtn.addEventListener('click', arguments.callee);
+                newInvoiceBtn.addEventListener('click', arguments.callee);
+            }
+        });
     </script>
-  </body>
+</body>
 </html>
