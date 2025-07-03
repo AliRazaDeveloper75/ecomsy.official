@@ -200,9 +200,11 @@
     }
   </style>
   <body>
+    <!--
     <div class="phone-hero-logo">
             <img src="assets/logo.png" alt="Code Huddle Logo" />
           </div>
+          -->
     <div id="header-Container"></div>
     <!-- Load header here -->
     <section class="hero">
@@ -232,10 +234,11 @@
         </p>
         <button class="cta-button">Get in Touch</button>
       </div>
-
+<!--
       <div class="hero-logo">
         <img src="assets/logo.png" alt="Code Huddle Logo" />
       </div>
+      -->
     </section>
     <div class="trusted-section">
   <h2 class="trusted-heading">Trusted by industry leaders</h2>
@@ -464,6 +467,105 @@
       />
     </div>
 -->
+    <section class="brands-section">
+      <h2 class="brands-title">Brands <strong>we've helped</strong></h2>
+
+      <div class="brands-marquee-container">
+        <div class="gradient-overlay-left"></div>
+        <div class="gradient-overlay-right"></div>
+
+        <!-- First Marquee Row -->
+        <div class="marquee">
+          <div class="marquee-content">
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo1.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo3.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo5.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo7.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo8.png" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Marquee Row -->
+        <div class="marquee">
+          <div class="marquee-content marquee-content-2">
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo14.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo9.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo10.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo11.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo12.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo13.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo1.png" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Third Marquee Row -->
+        <div class="marquee">
+          <div class="marquee-content marquee-content-3">
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo14.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo15.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo7.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo16.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo17.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo18.png" />
+            </div>
+            <div class="brand-logo">
+              <img src="assets/brands-logo/b-logo1.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+     <div class='count-section'>
+      <div class="stat">
+        <div class="number" data-target-per="95">0</div>
+        <div class="label">YEARS OPERATING</div>
+      </div>
+      <div class="stat">
+        <div class="number" data-target="200">0</div>
+        <div class="label">CLIENTS</div>
+      </div>
+      <div class="stat">
+        <div class="number" data-target="1150">0</div>
+        <div class="label">MARKETING CAMPAIGNS</div>
+      </div>
+    </div>
     <!--section how-it-works-->
     <section class="how-it-works">
       <div class="intro">
@@ -779,5 +881,45 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+      const counters = document.querySelectorAll(".number");
+
+      counters.forEach((counter) => {
+        const updateCount = () => {
+          const target = +counter.getAttribute("data-target-per");
+          const count = +counter.innerText;
+
+          // Change the speed here
+          const speed = target / 200;
+
+          if (count < target) {
+            counter.innerText = Math.ceil(count + speed);
+            setTimeout(updateCount, 20);
+          } else {
+            counter.innerText = target.toLocaleString() + "%";
+          }
+        };
+
+        updateCount();
+      });
+      counters.forEach((counter) => {
+        const updateCount = () => {
+          const target = +counter.getAttribute("data-target");
+          const count = +counter.innerText;
+
+          // Change the speed here
+          const speed = target / 200;
+
+          if (count < target) {
+            counter.innerText = Math.ceil(count + speed);
+            setTimeout(updateCount, 20);
+          } else {
+            counter.innerText = target.toLocaleString() + "+";
+          }
+        };
+
+        updateCount();
+      });
+    </script>
   </body>
 </html>

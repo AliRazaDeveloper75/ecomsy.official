@@ -1,335 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice #12345</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stats Section</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        body {
-            background-color: #f5f5f5;
-            padding: 20px;
-        }
-        
-        .invoice-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .company-info h1 {
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .company-info p {
-            color: #777;
-            line-height: 1.5;
-        }
-        
-        .invoice-info h2 {
-            color: #555;
-            text-align: right;
-            margin-bottom: 10px;
-        }
-        
-        .invoice-details {
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .bill-to, .ship-to {
-            flex: 1;
-        }
-        
-        .bill-to h3, .ship-to h3 {
-            color: #444;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .bill-to p, .ship-to p {
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        .items-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 30px;
-        }
-        
-        .items-table th {
-            background-color: #f9f9f9;
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-            color: #555;
-        }
-        
-        .items-table td {
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-            color: #666;
-        }
-        
-        .items-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        .text-right {
-            text-align: right;
-        }
-        
-        .totals {
-            margin-left: auto;
-            width: 300px;
-        }
-        
-        .totals table {
-            width: 100%;
-        }
-        
-        .totals td {
-            padding: 8px;
-        }
-        
-        .totals .label {
-            font-weight: bold;
-            color: #555;
-        }
-        
-        .totals .amount {
-            text-align: right;
-            color: #333;
-        }
-        
-        .grand-total {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #222;
-            border-top: 2px solid #ddd;
-            padding-top: 10px;
-        }
-        
-        .footer {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            text-align: center;
-            color: #777;
-            font-size: 0.9em;
-        }
-        
-        .notes {
-            margin-top: 20px;
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        .notes h3 {
-            margin-bottom: 10px;
-            color: #444;
-        }
-        
-        .action-buttons {
-            margin-top: 30px;
-            text-align: center;
-        }
-        
-        .btn {
-            padding: 10px 20px;
-            margin: 0 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .btn-print {
-            background-color: #4CAF50;
-            color: white;
-        }
-        
-        .btn-download {
-            background-color: #2196F3;
-            color: white;
-        }
-        
-        .btn-email {
-            background-color: #ff9800;
-            color: white;
-        }
-        
-        .btn:hover {
-            opacity: 0.9;
-        }
+      body {
+        background-color: #0c1022;
+        color: white;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        margin: 0;
+      }
+
+      .stat {
+        text-align: center;
+      }
+
+      .stat .number {
+        font-size: 60px;
+        font-weight: bold;
+        color: #e84600;
+      }
+
+      .stat .label {
+        font-size: 20px;
+        margin-top: 10px;
+      }
     </style>
-</head>
-<body>
-    <div class="invoice-container">
-        <div class="header">
-            <div class="company-info">
-                <h1>Your Company Name</h1>
-                <p>123 Business Street<br>
-                City, State 12345<br>
-                Phone: (123) 456-7890<br>
-                Email: info@yourcompany.com<br>
-                Website: www.yourcompany.com</p>
-            </div>
-            <div class="invoice-info">
-                <h2>INVOICE</h2>
-                <p><strong>Invoice #:</strong> INV-2023-12345</p>
-                <p><strong>Date:</strong> <span id="invoice-date">October 15, 2023</span></p>
-                <p><strong>Due Date:</strong> <span id="due-date">November 15, 2023</span></p>
-            </div>
-        </div>
-        
-        <div class="invoice-details">
-            <div class="bill-to">
-                <h3>Bill To:</h3>
-                <p>Client Company Name<br>
-                Attn: John Doe<br>
-                456 Client Avenue<br>
-                Client City, State 67890<br>
-                Phone: (987) 654-3210</p>
-            </div>
-            <div class="ship-to">
-                <h3>Ship To:</h3>
-                <p>Client Company Name<br>
-                Attn: John Doe<br>
-                456 Client Avenue<br>
-                Client City, State 67890<br>
-                Phone: (987) 654-3210</p>
-            </div>
-        </div>
-        
-        <table class="items-table">
-            <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Description</th>
-                    <th>Quantity</th>
-                    <th>Unit Price</th>
-                    <th>Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Web Design</td>
-                    <td>Company Website Redesign</td>
-                    <td>1</td>
-                    <td>$1,200.00</td>
-                    <td>$1,200.00</td>
-                </tr>
-                <tr>
-                    <td>Hosting</td>
-                    <td>Annual Web Hosting</td>
-                    <td>1</td>
-                    <td>$300.00</td>
-                    <td>$300.00</td>
-                </tr>
-                <tr>
-                    <td>SEO</td>
-                    <td>Search Engine Optimization</td>
-                    <td>1</td>
-                    <td>$500.00</td>
-                    <td>$500.00</td>
-                </tr>
-                <tr>
-                    <td>Maintenance</td>
-                    <td>Monthly Website Maintenance</td>
-                    <td>3</td>
-                    <td>$150.00</td>
-                    <td>$450.00</td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <div class="totals">
-            <table>
-                <tr>
-                    <td class="label">Subtotal:</td>
-                    <td class="amount">$2,450.00</td>
-                </tr>
-                <tr>
-                    <td class="label">Tax (10%):</td>
-                    <td class="amount">$245.00</td>
-                </tr>
-                <tr>
-                    <td class="label">Discount:</td>
-                    <td class="amount">-$100.00</td>
-                </tr>
-                <tr>
-                    <td class="label grand-total">Total:</td>
-                    <td class="amount grand-total">$2,595.00</td>
-                </tr>
-            </table>
-        </div>
-        
-        <div class="notes">
-            <h3>Notes</h3>
-            <p>Thank you for your business. Payment is due within 30 days. Please make checks payable to Your Company Name and mail to the address above. For any questions concerning this invoice, contact our accounting department at accounting@yourcompany.com.</p>
-        </div>
-        
-        <div class="footer">
-            <p>Your Company Name | 123 Business Street | City, State 12345 | Phone: (123) 456-7890</p>
-        </div>
-        
-        <div class="action-buttons">
-            <button class="btn btn-print" onclick="window.print()">Print Invoice</button>
-            <button class="btn btn-download" onclick="downloadInvoice()">Download PDF</button>
-            <button class="btn btn-email" onclick="emailInvoice()">Email Invoice</button>
-        </div>
+  </head>
+  <body>
+    <div cla>
+      <div class="stat">
+        <div class="number" data-target="20">0</div>
+        <div class="label">HAPPY CUSTOMERS</div>
+      </div>
+      <div class="stat">
+        <div class="number" data-target="200">0</div>
+        <div class="label">CLIENTS</div>
+      </div>
+      <div class="stat">
+        <div class="number" data-target="1150">0</div>
+        <div class="label">PROJECTS COMPLETED</div>
+      </div>
     </div>
 
     <script>
-        // Set current date as invoice date
-        document.getElementById('invoice-date').textContent = new Date().toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-        
-        // Set due date (30 days from now)
-        const dueDate = new Date();
-        dueDate.setDate(dueDate.getDate() + 30);
-        document.getElementById('due-date').textContent = dueDate.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-        
-        // Function to handle PDF download (would need a PDF library in a real implementation)
-        function downloadInvoice() {
-            alert('In a real implementation, this would generate and download a PDF version of the invoice.');
-            // In a real app, you might use libraries like jsPDF or html2pdf.js
-        }
-        
-        // Function to handle emailing the invoice
-        function emailInvoice() {
-            alert('In a real implementation, this would open the default email client with the invoice attached.');
-            // In a real app, you might use a backend service to handle this
-        }
+      const counters = document.querySelectorAll(".number");
+
+      counters.forEach((counter) => {
+        const updateCount = () => {
+          const target = +counter.getAttribute("data-target");
+          const count = +counter.innerText;
+
+          // Change the speed here
+          const speed = target / 200;
+
+          if (count < target) {
+            counter.innerText = Math.ceil(count + speed);
+            setTimeout(updateCount, 20);
+          } else {
+            counter.innerText = target.toLocaleString() + "+";
+          }
+        };
+
+        updateCount();
+      });
     </script>
-</body>
+  </body>
 </html>

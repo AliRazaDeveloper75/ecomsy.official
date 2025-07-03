@@ -55,7 +55,7 @@ body {
 /* hero section */
 .hero {
   padding: 40px 50px;
-  background: #111111;
+    background-image: url('assets/hero.jpg');
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1110,3 +1110,174 @@ h2 {
     margin-top: 20px;
   }
 }
+/* banner logos */
+      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap");
+
+      body {
+        font-family: "Outfit", sans-serif;
+      }
+
+      .brands-section {
+        background-color: black;
+        /* padding: 3rem 2rem; */
+        /* border-radius: 1rem; */
+        padding-top: 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .brands-title {
+        font-size: 2.25rem;
+        line-height: 1.2;
+        color: #f8f8f8;
+        font-weight: 500;
+        margin-bottom: 2rem;
+      }
+
+      .brands-title strong {
+        font-weight: 700;
+        color: #00a0e9;
+        display: block;
+      }
+
+      .brands-marquee-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        position: relative;
+      }
+
+      .gradient-overlay-left,
+      .gradient-overlay-right {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 25%;
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      .gradient-overlay-left {
+        left: 0;
+        background: linear-gradient(to right, #00a0e9, transparent);
+      }
+
+      .gradient-overlay-right {
+        right: 0;
+        background: linear-gradient(to left, #00a0e9, transparent);
+      }
+
+      .marquee {
+        display: flex;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .marquee-content {
+        display: flex;
+        animation: marquee 20s linear infinite;
+      }
+
+      .marquee-content-2 {
+        animation: marquee-2 25s linear infinite;
+      }
+
+      .marquee-content-3 {
+        animation: marquee 30s linear infinite;
+      }
+
+      .brand-logo {
+        width: auto;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 1.5rem;
+        flex-shrink: 0;
+        color: white;
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+      .brand-logo img {
+        mix-blend-mode: multiply;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      @keyframes marquee-2 {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(50%);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        
+
+        .brands-title {
+          font-size: 3.5rem;
+          margin-bottom: 1rem;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .brands-title {
+          font-size: 4.25rem;
+        }
+      }
+
+
+    /* count down section css */
+      .count-section {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px;
+        margin: 0;
+      }
+
+      .stat {
+        text-align: center;
+      }
+
+      .stat .number {
+        font-size: 60px;
+        font-weight: bold;
+        color: #e84600;
+      }
+
+      .stat .label {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+  
+        @media (max-width: 768px) {
+      .count-section {
+        flex-direction: column;
+        height: auto;
+        padding: 40px 20px;
+        gap: 20px;
+      }
+      .stat {
+        flex: 1 1 100%;
+      }
+
+      .stat .number {
+        font-size: 50px;
+      }
+
+      .stat .label {
+        font-size: 18px;
+      }
+      }
