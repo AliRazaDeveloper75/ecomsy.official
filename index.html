@@ -70,12 +70,13 @@
     }
 
     .get-touch-btn {
-      padding: 5%;
-      background: transparent;
-      border: 2px solid white;
-      color: white;
-      width: 150px;
-      height: 50px;
+     padding: 12px 30px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
       cursor: pointer;
     }
     .get-touch-btn:hover {
@@ -206,21 +207,15 @@
           </div>
           -->
     <div id="header-Container"></div>
+    <div class='min-hero-sec'>
     <!-- Load header here -->
     <section class="hero">
-      
       <div class="hero-text">
         <h1>
           <br />Let's <br />
         </h1>
-        <h1>
-          <span class="highlight typing" id="type-text" style="
-    margin-right: 10px;
-"></span> Your <br />
-          
-        </h1>
+        <h1><span class="highlight typing" id="type-text" style="margin-right: 10px;"></span> Your <br /></h1>
         <h1>Vision Together</h1>
-
         <p>
           At Ecomsy, we bring together expert engineers, bold thinking, and
           unstoppable passion to solve real-world business problems through
@@ -240,9 +235,10 @@
       </div>
       -->
     </section>
+    
     <div class="trusted-section">
-  <h2 class="trusted-heading">Trusted by industry leaders</h2>
-  <div class="trusted-logos">
+      <h2 class="trusted-heading">Trusted by industry leaders</h2>
+      <div class="trusted-logos">
     <img class='on-phone'src="https://megadigital.ai/wp-content/uploads/2023/02/TikTok.svg" alt="TikTok" width="83" height="24" />
     <img class='on-phone'src="https://megadigital.ai/wp-content/uploads/2023/02/Google.svg" alt="Google" width="71" height="24" />
     <img class=''src="https://megadigital.ai/wp-content/uploads/2023/02/Shopify.svg" alt="Shopify" width="85" height="24" />
@@ -252,6 +248,7 @@
     <img class='on-phone'src="https://megadigital.ai/wp-content/uploads/2023/02/PayPal.svg" alt="PayPal" width="91" height="24" class="hide-on-mobile" />
     <img class='on-phone'src="https://megadigital.ai/wp-content/uploads/2023/02/Stripe.svg" alt="Stripe" width="58" height="24" class="hide-on-mobile" />
   </div>
+</div>
 </div>
 
 
@@ -555,7 +552,7 @@
      <div class='count-section'>
       <div class="stat">
         <div class="number" data-target-per="95">0</div>
-        <div class="label">YEARS OPERATING</div>
+        <div class="label">HAPPY CUSTOMERS</div>
       </div>
       <div class="stat">
         <div class="number" data-target="200">0</div>
@@ -563,7 +560,7 @@
       </div>
       <div class="stat">
         <div class="number" data-target="1150">0</div>
-        <div class="label">MARKETING CAMPAIGNS</div>
+        <div class="label">PROJECTS COMPLETED</div>
       </div>
     </div>
     <!--section how-it-works-->
@@ -912,7 +909,7 @@
 
           if (count < target) {
             counter.innerText = Math.ceil(count + speed);
-            setTimeout(updateCount, 20);
+            setTimeout(updateCount, 100);
           } else {
             counter.innerText = target.toLocaleString() + "+";
           }

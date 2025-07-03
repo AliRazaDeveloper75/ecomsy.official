@@ -4,7 +4,7 @@
 .trusted-section {
   text-align: center;
   padding: 40px 20px;
-  background-color: #111111;
+  /* background-color: #111111; */
   border-end-end-radius: 45px;
   border-end-start-radius: 45px;
 }
@@ -53,9 +53,13 @@ body {
 }
 
 /* hero section */
+.min-hero-sec {
+  /* padding: 40px 50px; */
+    background-image: url('assets/hero.jpg');
+}
 .hero {
   padding: 40px 50px;
-    background-image: url('assets/hero.jpg');
+    /* background-image: url('assets/hero.jpg'); */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1159,12 +1163,12 @@ h2 {
 
       .gradient-overlay-left {
         left: 0;
-        background: linear-gradient(to right, #00a0e9, transparent);
+        background: linear-gradient(to right, black, transparent);
       }
 
       .gradient-overlay-right {
         right: 0;
-        background: linear-gradient(to left, #00a0e9, transparent);
+        background: linear-gradient(to left, black, transparent);
       }
 
       .marquee {
@@ -1254,7 +1258,7 @@ h2 {
       .stat .number {
         font-size: 60px;
         font-weight: bold;
-        color: #e84600;
+        color: #00a0e9;
       }
 
       .stat .label {
