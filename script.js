@@ -111,43 +111,62 @@ window.addEventListener("scroll", () => {
   navbar.classList.toggle("scrolled", window.scrollY > 50);
 });
 
-// countdown functionality
-const counters = document.querySelectorAll(".number");
-const countersPer = document.querySelectorAll(".PerNumber");
+// Counter functions
+function runCounters() {
+  const counters = document.querySelectorAll(".number");
+  const countersPer = document.querySelectorAll(".PerNumber");
 
-countersPer.forEach((counter) => {
-  const updateCount = () => {
-    const target = +counter.getAttribute("data-target-per");
-    const count = +counter.innerText;
+  counters.forEach((counter) => {
+    const updateCount = () => {
+      const target = +counter.getAttribute("data-target");
+      const count = +counter.innerText;
 
-    // Change the speed here
-    const speed = target / 200;
+      const speed = target / 200;
 
-    if (count < target) {
-      counter.innerText = Math.ceil(count + speed);
-      setTimeout(updateCount, 20);
-    } else {
-      counter.innerText = target.toLocaleString() + "%";
+      if (count < target) {
+        counter.innerText = Math.ceil(count + speed);
+        setTimeout(updateCount, 100);
+      } else {
+        counter.innerText = target.toLocaleString() + "+";
+      }
+    };
+
+    updateCount();
+  });
+
+  countersPer.forEach((counter) => {
+    const updateCount = () => {
+      const target = +counter.getAttribute("data-target-per");
+      const count = +counter.innerText;
+
+      const speed = target / 200;
+
+      if (count < target) {
+        counter.innerText = Math.ceil(count + speed);
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target.toLocaleString() + "%";
+      }
+    };
+
+    updateCount();
+  });
+}
+
+// Observer to trigger only when visible
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      runCounters();
+      observer.unobserve(entry.target); // only run once
     }
-  };
-
-  updateCount();
+  });
+}, {
+  threshold: 0.5 // Adjust if needed
 });
-counters.forEach((counter) => {
-  const updateCount = () => {
-    const target = +counter.getAttribute("data-target");
-    const count = +counter.innerText;
 
-    // Change the speed here
-    const speed = target / 200;
-
-    if (count < target) {
-      counter.innerText = Math.ceil(count + speed);
-      setTimeout(updateCount, 100);
-    } else {
-      counter.innerText = target.toLocaleString() + "+";
-    }
-  };
-
-  updateCount();
-});
+// Observe the section that contains counters
+const counterSection = document.querySelector(".counter-section");
+if (counterSection) {
+  observer.observe(counterSection);
+}
