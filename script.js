@@ -110,3 +110,44 @@ window.addEventListener("scroll", () => {
   const navbar = document.querySelector(".navbar");
   navbar.classList.toggle("scrolled", window.scrollY > 50);
 });
+
+// countdown functionality
+const counters = document.querySelectorAll(".number");
+const countersPer = document.querySelectorAll(".PerNumber");
+
+countersPer.forEach((counter) => {
+  const updateCount = () => {
+    const target = +counter.getAttribute("data-target-per");
+    const count = +counter.innerText;
+
+    // Change the speed here
+    const speed = target / 200;
+
+    if (count < target) {
+      counter.innerText = Math.ceil(count + speed);
+      setTimeout(updateCount, 20);
+    } else {
+      counter.innerText = target.toLocaleString() + "%";
+    }
+  };
+
+  updateCount();
+});
+counters.forEach((counter) => {
+  const updateCount = () => {
+    const target = +counter.getAttribute("data-target");
+    const count = +counter.innerText;
+
+    // Change the speed here
+    const speed = target / 200;
+
+    if (count < target) {
+      counter.innerText = Math.ceil(count + speed);
+      setTimeout(updateCount, 100);
+    } else {
+      counter.innerText = target.toLocaleString() + "+";
+    }
+  };
+
+  updateCount();
+});
