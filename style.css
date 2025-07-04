@@ -57,6 +57,8 @@ body {
     position: relative;
     overflow: hidden;
     margin-bottom: 40px;
+    border-end-end-radius: 45px;
+  border-end-start-radius: 45px;
 }
 
 .min-hero-sec::before {
@@ -121,6 +123,7 @@ body {
   color: white;
   font-size: 16px;
   cursor: pointer;
+  border-radius: 25px;
   transition: all 0.3s ease;
 }
 
@@ -782,7 +785,7 @@ body {
 .contact-section-card-icon {
   width: 60px;
   height: 60px;
-  background: black;
+  /* background: black; */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -793,6 +796,9 @@ body {
 .contact-section-card-icon svg {
   width: 24px;
   height: 24px;
+}
+.contact-section-card-icon img{
+  width: 90px;
 }
 
 .contact-section-card-title {
@@ -889,7 +895,7 @@ h2 {
 }
 
 .submit-btn {
-  background-color: #3498db;
+  background-color: black;
   color: white;
   border: none;
   padding: 12px 20px;
@@ -902,7 +908,9 @@ h2 {
 }
 
 .submit-btn:hover {
-  background-color: #2980b9;
+  background-color: white;
+  color: black;
+  border: 2px solid #000;
 }
 
 /* Existing styles above this remain unchanged */
