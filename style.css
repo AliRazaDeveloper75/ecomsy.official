@@ -57,8 +57,8 @@ body {
     position: relative;
     overflow: hidden;
     margin-bottom: 40px;
-    border-end-end-radius: 45px;
-  border-end-start-radius: 45px;
+    border-end-end-radius: 30px;
+  border-end-start-radius: 30px;
 }
 
 .min-hero-sec::before {
@@ -1169,7 +1169,7 @@ h2 {
 
       .brands-title strong {
         font-weight: 700;
-        color: #00a0e9;
+        color: white;
         display: block;
       }
 
@@ -1287,12 +1287,12 @@ h2 {
       .stat .number {
         font-size: 60px;
         font-weight: bold;
-        color: #00a0e9;
+        color: white;
       }
       .stat .PerNumber {
         font-size: 60px;
         font-weight: bold;
-        color: #00a0e9;
+        color: white;
       }
 
       .stat .label {
