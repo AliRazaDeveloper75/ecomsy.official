@@ -121,7 +121,7 @@ function runCounters() {
       const target = +counter.getAttribute("data-target");
       const count = +counter.innerText;
 
-      const speed = target / 200;
+      const speed = target / 20;
 
       if (count < target) {
         counter.innerText = Math.ceil(count + speed);

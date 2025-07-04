@@ -555,6 +555,7 @@ body {
   padding: 12px 30px;
   background: transparent;
   border: 2px solid black;
+  border-radius: 25px;
   color: black;
   font-size: 16px;
   cursor: pointer;
@@ -897,9 +898,9 @@ h2 {
 .submit-btn {
   background-color: black;
   color: white;
-  border: none;
+  border: 2px solid #000;
   padding: 12px 20px;
-  border-radius: 4px;
+  border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
   display: block;
@@ -1208,15 +1209,15 @@ h2 {
 
       .marquee-content {
         display: flex;
-        animation: marquee 20s linear infinite;
+        animation: marquee 50s linear infinite;
       }
 
       .marquee-content-2 {
-        animation: marquee-2 25s linear infinite;
+        animation: marquee-2 50s linear infinite;
       }
 
       .marquee-content-3 {
-        animation: marquee 30s linear infinite;
+        animation: marquee 50s linear infinite;
       }
 
       .brand-logo {
