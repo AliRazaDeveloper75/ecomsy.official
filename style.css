@@ -1156,8 +1156,11 @@ h2 {
         /* padding: 3rem 2rem; */
         /* border-radius: 1rem; */
         padding-top: 3rem;
+        padding-bottom: 3rem;
         position: relative;
         overflow: hidden;
+        margin: 20px;
+        border-radius: 20px;
       }
 
       .brands-title {
@@ -1170,7 +1173,7 @@ h2 {
 
       .brands-title strong {
         font-weight: 700;
-        color: white;
+        color: #00539c;
         display: block;
       }
 
@@ -1288,12 +1291,12 @@ h2 {
       .stat .number {
         font-size: 60px;
         font-weight: bold;
-        color: white;
+        color: #00539c;
       }
       .stat .PerNumber {
         font-size: 60px;
         font-weight: bold;
-        color: white;
+        color: #00539c;
       }
 
       .stat .label {
