@@ -1007,7 +1007,7 @@ h2 {
 .footer-divider {
   height: 1px;
   background-color: #333;
-  margin: 30px 0;
+  /* margin: 30px 0; */
 }
 
 .social-icons {
@@ -1051,16 +1051,18 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #000;
+      padding: 0px 20px;
 }
 /* Responsive styles */
 @media (max-width: 768px) {
-  .footer-section {
-    width: 100%;
-  }
-
-  .footer-section.about {
-    width: 100%;
-  }
+ 
+.footer-section-content {
+  gap: 10px;
+  display: flex;
+ flex-direction: column;
+        padding: 0px 20px;
+}
 }
 /* blog css */
 .blog-section {
