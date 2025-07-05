@@ -1,73 +1,215 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Stats Section</title>
-    <style>
-      body {
-        background-color: #0c1022;
-        color: white;
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+<style>
+  .footer {
+    background-color: #000;
+    color: #fff;
+    padding: 40px 20px;
+  }
 
-        margin: 0;
-      }
+  .footer-section {
+    margin-bottom: 30px;
+  }
+  .footer-section-content {
+    display: flex;
+    justify-content: space-around;
+  }
 
-      .stat {
-        text-align: center;
-      }
+  .footer-heading-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
 
-      .stat .number {
-        font-size: 60px;
-        font-weight: bold;
-        color: #e84600;
-      }
+  .footer-heading-line h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
 
-      .stat .label {
-        font-size: 20px;
-        margin-top: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div cla>
-      <div class="stat">
-        <div class="number" data-target="20">0</div>
-        <div class="label">HAPPY CUSTOMERS</div>
+    white-space: nowrap;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .footer-heading-line::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #444;
+  }
+
+  .footer-content p,
+  .footer-content a,
+  .footer-list li {
+    font-size: 14px;
+    color: #ccc;
+    margin: 6px 0;
+    text-decoration: none;
+  }
+
+  .footer-list {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 10px 0;
+  }
+
+  .footer-divider {
+    height: 1px;
+    background-color: #333;
+    margin: 30px 0;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 5rem;
+    font-size: 20px;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  .social-icons a {
+    color: #fff;
+    transition: 0.3s;
+  }
+
+  .social-icons a:hover {
+    color: #00bfff;
+  }
+  .copyright-social-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  .copyright-social-icons a {
+    color: #fff;
+    transition: 0.3s;
+    padding: 5px;
+  }
+
+  .copyright-social-icons a:hover {
+    color: black;
+    background: white;
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .copy-right-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
+<footer class="footer">
+  <!-- Contact -->
+  <div class="footer-section">
+    <div class="footer-heading-line">
+      <h3>CONTACT</h3>
+    </div>
+    <div class="footer-section-content">
+      <div class="footer-content">
+        <p>Whatsapp: +44 7743 140847‬</p>
+        <p>Whatsapp: +92 349 5573280‬</p>
       </div>
-      <div class="stat">
-        <div class="number" data-target="200">0</div>
-        <div class="label">CLIENTS</div>
+      <div class="footer-content">
+        <p>Info: info@ecomsy.co.uk</p>
+        <p>CEO: ceo@ecomsy.co.uk</p>
+        <p>Sale: sales@ecomsy.co.uk</p>
       </div>
-      <div class="stat">
-        <div class="number" data-target="1150">0</div>
-        <div class="label">PROJECTS COMPLETED</div>
+      <div class="footer-content">
+        <p>
+          Freeland Park, Wareham Road, Poole,<br />
+          Dorset BH16 6FA, United Kingdom
+        </p>
+        <p>Khan Plaza, Kamra Road, Attock 43600, Pakistan</p>
       </div>
     </div>
+  </div>
+  <!-- Services -->
+  <div class="footer-section">
+    <div class="footer-heading-line">
+      <h3>Services</h3>
+    </div>
+    <div class="footer-section-content">
+      <div class="footer-content">
+        <p>Digital Marketing & SEO</p>
+        <p>Content Writing & Copywriting</p>
+        <p>UI/UX Planning & Research</p>
+        <p>Interface Design</p>
+        <p>UI/UX for Development</p>
+      </div>
+      <div class="footer-content">
+        <p>Strategic Branding Plan</p>
+        <p>Visual Identity Design</p>
+        <p>Marketing Collateral & Creative Assets</p>
+        <p>Technical Support & Integrations</p>
+        <p>Brand Strategy & Discovery</p>
+      </div>
+      <div class="footer-content">
+        <p>WordPress + E-Commerce Development</p>
+        <p>Shopify Store Design & Development</p>
+        <p>Custom-Coded Stores (HTML, CSS, JavaScript, PHP)</p>
+        <p>Business Website Development</p>
+        <p>Android & iOS App Development</p>
+        <p>Software Development</p>
+      </div>
+    </div>
+  </div>
+  <!-- Social Media -->
+  <div class="footer-section">
+    <div class="footer-heading-line">
+      <h3>SOCIAL MEDIA</h3>
+    </div>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+    </div>
+  </div>
 
-    <script>
-      const counters = document.querySelectorAll(".number");
-
-      counters.forEach((counter) => {
-        const updateCount = () => {
-          const target = +counter.getAttribute("data-target");
-          const count = +counter.innerText;
-
-          // Change the speed here
-          const speed = target / 200;
-
-          if (count < target) {
-            counter.innerText = Math.ceil(count + speed);
-            setTimeout(updateCount, 20);
-          } else {
-            counter.innerText = target.toLocaleString() + "+";
-          }
-        };
-
-        updateCount();
-      });
-    </script>
-  </body>
-</html>
+  <!-- Company -->
+  <div class="footer-section">
+    <div class="footer-heading-line">
+      <h3>Company</h3>
+    </div>
+    <div class="footer-section-content">
+      <div class="footer-content">
+        <p>Home</p>
+        <p>Contact Us</p>
+        <p>About Us</p>
+        <p>Our Solution</p>
+      </div>
+      <div class="footer-content">
+        <p>Home</p>
+        <p>Contact Us</p>
+        <p>About Us</p>
+        <p>Our Solution</p>
+      </div>
+      <div class="footer-content">
+        <p>Home</p>
+        <p>Contact Us</p>
+        <p>About Us</p>
+        <p>Our Solution</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="copy-right-section">
+    <div>© Copyright 2021-2024 Mega Digital. All rights reserved.</div>
+    <div class="copyright-social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+    </div>
+  </div>
+</footer>
