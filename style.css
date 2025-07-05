@@ -826,6 +826,9 @@ body {
     width: 90%;
     max-width: 400px;
   }
+  .contact-section-card-icon img{
+  width: 65px;
+}
 }
 
 .contact-section-form-div {
@@ -1152,7 +1155,7 @@ h2 {
       }
 
       .brands-section {
-        background-color: black;
+        background-color: #111111;
         /* padding: 3rem 2rem; */
         /* border-radius: 1rem; */
         padding-top: 3rem;
@@ -1196,12 +1199,12 @@ h2 {
 
       .gradient-overlay-left {
         left: 0;
-        background: linear-gradient(to right, black, transparent);
+        background: linear-gradient(to right, #111111, transparent);
       }
 
       .gradient-overlay-right {
         right: 0;
-        background: linear-gradient(to left, black, transparent);
+        background: linear-gradient(to left, #111111, transparent);
       }
 
       .marquee {
@@ -1274,7 +1277,7 @@ h2 {
 
     /* count down section css */
       .count-section {
-        background-color: black;
+        background-color: #111111;
         color: white;
         font-family: Arial, sans-serif;
         display: flex;
