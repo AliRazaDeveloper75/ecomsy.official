@@ -377,7 +377,7 @@ body {
   line-height: 1.6;
 }
 
-.step .number {
+.step .step-number {
   position: absolute;
   top: 0px;
   right: 15px;
@@ -398,12 +398,12 @@ body {
   color: #000;
 }
 
-.step.dark .number {
+.step.dark .step-number {
   color: white;
   opacity: 35%;
 }
 
-.step.light .number {
+.step.light .step-number {
   color: rgba(0, 0, 0, 0.05);
 }
 
