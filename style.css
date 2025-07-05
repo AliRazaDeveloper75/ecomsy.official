@@ -1054,6 +1054,9 @@ h2 {
   background-color: #000;
   padding: 0px 20px;
 }
+.menu-for-phone {
+  display: none;
+}
 /* Responsive styles */
 @media (max-width: 768px) {
   .footer-section-content {
@@ -1065,15 +1068,26 @@ h2 {
   .copy-right-section {
     padding: 20px 20px;
     flex-direction: column;
- 
   }
   .social-icons {
-  display: flex;
-  gap: 50px;
-  font-size: 20px;
-  margin-top: 10px;
-  justify-content: center;
+    display: flex;
+    gap: 50px;
+    font-size: 20px;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  .navbar-menu-btn-text {
+    display: flex;
+    margin-bottom: 5px;
+  }
 }
+.navbar-menu-btn-text {
+  display: none;
+}
+.navbar-menu-btn {
+  gap: 12px;
+  display: flex;
+  align-items: center;
 }
 /* blog css */
 .blog-section {

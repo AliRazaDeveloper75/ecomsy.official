@@ -101,25 +101,48 @@
         display: none;
         position: absolute;
         align-items: left;
-        top: 60px;
+        top: 0px;
         right: 0px;
-        background-color: rgba(14, 14, 14, 0.95);
+        background-color: #333;
         flex-direction: column;
         width: 100%;
         padding: 20px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       }
 
+      .nav-links.active .navbar{
+        display:none;
+      }
       .nav-links.active {
         display: flex;
         width: 100%;
-        padding: 10%;
-        align-items: flex-start;
+        height:100vh;
+        padding: 22px 15px;
+        align-items: normal;
       }
 
       .logo img {
         width: 160px;
       }
+      .nav-links.active  .navbar-menu-btn-text {
+    display: flex;
+    margin-bottom: 5px;
+  }
+  .nav-links.active  .navbar-menu-btn-text p{
+    margin-top:25px;
+  }
+      .nav-links.active   .navbar-menu-btn {
+    gap: 14px;
+    padding-right:12px;
+    padding-top:15rem;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+        .nav-links.active .menu-for-phone{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
     }
   </style>
   <style>
