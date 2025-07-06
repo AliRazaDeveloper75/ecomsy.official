@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Invoice Page</title>
     <link rel="stylesheet" href="invoice.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
   </head>
   <body>
     <header class="navbar">
       <div class="logo">
-        <a href='../../index.html'>
-            <img src="../../assets/ecomsy.png" alt="Ecomsy Logo" />
+        <a href="../../index.html">
+          <img src="../../assets/ecomsy.png" alt="Ecomsy Logo" />
         </a>
       </div>
 
@@ -51,47 +54,49 @@
           <div class="progress-step" data-step="3">Services</div>
           <div class="progress-step" data-step="4">Review & Pay</div>
         </div>
-        
+
         <h3>User Information</h3>
         <form id="userInfoForm">
           <div class="form-group">
             <label for="name">Full Name*</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" required />
           </div>
-          
+
           <div class="form-group">
             <label for="email">Email*</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required />
           </div>
-          
+
           <div class="form-group">
             <label for="phone">Phone Number*</label>
-            <input type="tel" id="phone" name="phone" required>
+            <input type="tel" id="phone" name="phone" required />
           </div>
-          
+
           <div class="form-group">
             <label for="address">Address*</label>
             <textarea id="address" name="address" rows="3" required></textarea>
           </div>
-          
+
           <div class="form-row">
             <div class="form-group">
               <label for="state">State*</label>
-              <input type="text" id="state" name="state" required>
+              <input type="text" id="state" name="state" required />
             </div>
-            
+
             <div class="form-group">
               <label for="postalCode">Postal Code*</label>
-              <input type="text" id="postalCode" name="postalCode" required>
+              <input type="text" id="postalCode" name="postalCode" required />
             </div>
           </div>
-          
+
           <div class="form-actions">
-            <button type="button" class="btn-next" onclick="nextStep(2)">Next</button>
+            <button type="button" class="btn-next" onclick="nextStep(2)">
+              Next
+            </button>
           </div>
         </form>
       </div>
-      
+
       <!-- Step 2: Project Information -->
       <div class="invoice-step hidden" id="step2">
         <h2>Create New Invoice</h2>
@@ -101,19 +106,24 @@
           <div class="progress-step" data-step="3">Services</div>
           <div class="progress-step" data-step="4">Review & Pay</div>
         </div>
-        
+
         <h3>Project Information</h3>
         <form id="projectInfoForm">
           <div class="form-group">
             <label for="projectName">Project Name*</label>
-            <input type="text" id="projectName" name="projectName" required>
+            <input type="text" id="projectName" name="projectName" required />
           </div>
-          
+
           <div class="form-group">
             <label for="projectDescription">Project Description*</label>
-            <textarea id="projectDescription" name="projectDescription" rows="5" required></textarea>
+            <textarea
+              id="projectDescription"
+              name="projectDescription"
+              rows="5"
+              required
+            ></textarea>
           </div>
-          
+
           <div class="form-group">
             <label for="projectTimeline">Project Timeline*</label>
             <select id="projectTimeline" name="projectTimeline" required>
@@ -124,14 +134,18 @@
               <option value="More than 6 months">More than 6 months</option>
             </select>
           </div>
-          
+
           <div class="form-actions">
-            <button type="button" class="btn-prev" onclick="prevStep(1)">Previous</button>
-            <button type="button" class="btn-next" onclick="nextStep(3)">Next</button>
+            <button type="button" class="btn-prev" onclick="prevStep(1)">
+              Previous
+            </button>
+            <button type="button" class="btn-next" onclick="nextStep(3)">
+              Next
+            </button>
           </div>
         </form>
       </div>
-      
+
       <!-- Step 3: Services Information -->
       <div class="invoice-step hidden" id="step3">
         <h2>Create New Invoice</h2>
@@ -141,54 +155,142 @@
           <div class="progress-step active" data-step="3">Services</div>
           <div class="progress-step" data-step="4">Review & Pay</div>
         </div>
-        
+
         <h3>Services Information</h3>
         <form id="servicesForm">
           <div class="form-group">
             <label>Select Services*</label>
             <div class="services-grid">
               <div class="service-card">
-                <input type="checkbox" id="web" name="services" value="Web Development">
+                <input
+                  type="checkbox"
+                  id="web"
+                  name="services"
+                  value="Web Development"
+                  data-fixed-price="1500"
+                  data-hourly-rate="50"
+                />
                 <label for="web">Web Development</label>
+                <div class="service-prices">
+                  <span class="fixed-price">$1500 fixed</span>
+                  <span class="hourly-rate">$50/hour</span>
+                </div>
               </div>
-              
+
               <div class="service-card">
-                <input type="checkbox" id="mobile" name="services" value="Mobile App Development">
+                <input
+                  type="checkbox"
+                  id="mobile"
+                  name="services"
+                  value="Mobile App Development"
+                  data-fixed-price="2000"
+                  data-hourly-rate="60"
+                />
                 <label for="mobile">Mobile App Development</label>
+                <div class="service-prices">
+                  <span class="fixed-price">$2000 fixed</span>
+                  <span class="hourly-rate">$60/hour</span>
+                </div>
               </div>
-              
+
               <div class="service-card">
-                <input type="checkbox" id="graphic" name="services" value="Graphic Design">
+                <input
+                  type="checkbox"
+                  id="graphic"
+                  name="services"
+                  value="Graphic Design"
+                  data-fixed-price="500"
+                  data-hourly-rate="40"
+                />
                 <label for="graphic">Graphic Design</label>
+                <div class="service-prices">
+                  <span class="fixed-price">$500 fixed</span>
+                  <span class="hourly-rate">$40/hour</span>
+                </div>
               </div>
-              
+
               <div class="service-card">
-                <input type="checkbox" id="seo" name="services" value="SEO Services">
+                <input
+                  type="checkbox"
+                  id="seo"
+                  name="services"
+                  value="SEO Services"
+                  data-fixed-price="800"
+                  data-hourly-rate="45"
+                />
                 <label for="seo">SEO Services</label>
+                <div class="service-prices">
+                  <span class="fixed-price">$800 fixed</span>
+                  <span class="hourly-rate">$45/hour</span>
+                </div>
               </div>
-              
+
               <div class="service-card">
-                <input type="checkbox" id="shopify" name="services" value="Shopify Development">
+                <input
+                  type="checkbox"
+                  id="shopify"
+                  name="services"
+                  value="Shopify Development"
+                  data-fixed-price="1200"
+                  data-hourly-rate="55"
+                />
                 <label for="shopify">Shopify Development</label>
+                <div class="service-prices">
+                  <span class="fixed-price">$1200 fixed</span>
+                  <span class="hourly-rate">$55/hour</span>
+                </div>
               </div>
-              
+
               <div class="service-card">
-                <input type="checkbox" id="wordpress" name="services" value="WordPress Development">
+                <input
+                  type="checkbox"
+                  id="wordpress"
+                  name="services"
+                  value="WordPress Development"
+                  data-fixed-price="900"
+                  data-hourly-rate="45"
+                />
                 <label for="wordpress">WordPress Development</label>
+                <div class="service-prices">
+                  <span class="fixed-price">$900 fixed</span>
+                  <span class="hourly-rate">$45/hour</span>
+                </div>
               </div>
-              
+
               <div class="service-card">
-                <input type="checkbox" id="custom" name="services" value="Custom Coding">
+                <input
+                  type="checkbox"
+                  id="custom"
+                  name="services"
+                  value="Custom Coding"
+                  data-fixed-price="1000"
+                  data-hourly-rate="65"
+                />
                 <label for="custom">Custom Coding</label>
+                <div class="service-prices">
+                  <span class="fixed-price">$1000 fixed</span>
+                  <span class="hourly-rate">$65/hour</span>
+                </div>
               </div>
-              
+
               <div class="service-card">
-                <input type="checkbox" id="consulting" name="services" value="IT Consulting">
+                <input
+                  type="checkbox"
+                  id="consulting"
+                  name="services"
+                  value="IT Consulting"
+                  data-fixed-price="700"
+                  data-hourly-rate="75"
+                />
                 <label for="consulting">IT Consulting</label>
+                <div class="service-prices">
+                  <span class="fixed-price">$700 fixed</span>
+                  <span class="hourly-rate">$75/hour</span>
+                </div>
               </div>
             </div>
           </div>
-          
+
           <div class="form-group">
             <label for="serviceType">Service Type*</label>
             <select id="serviceType" name="serviceType" required>
@@ -197,25 +299,65 @@
               <option value="Custom Plan">Custom Plan</option>
               <option value="Hourly Rate">Hourly Rate</option>
             </select>
+            <small class="form-text">
+              <strong>Fixed Price:</strong> Standard pricing for each service<br />
+              <strong>Custom Plan:</strong> Enter your own budget<br />
+              <strong>Hourly Rate:</strong> Pay based on hours worked
+            </small>
           </div>
-          
+
           <div class="form-group">
             <label for="budget">Estimated Budget (USD)</label>
-            <input type="number" id="budget" name="budget" min="0" step="100">
+            <input
+              type="number"
+              id="budget"
+              name="budget"
+              min="0"
+              step="1"
+              readonly
+              placeholder="Select services and type to calculate"
+            />
+            <small id="budgetHelp" class="form-text">
+              Budget will be calculated automatically based on your selections
+            </small>
           </div>
-          
+
+          <div class="form-group hidden" id="hoursEstimateContainer">
+            <label for="hoursEstimate">Estimated Hours</label>
+            <input
+              type="number"
+              id="hoursEstimate"
+              name="hoursEstimate"
+              min="1"
+              value="20"
+              step="1"
+            />
+            <small class="form-text">
+              Adjust the hours estimate for hourly rate calculation
+            </small>
+          </div>
+
           <div class="form-group">
             <label for="additionalNotes">Additional Notes</label>
-            <textarea id="additionalNotes" name="additionalNotes" rows="3"></textarea>
+            <textarea
+              id="additionalNotes"
+              name="additionalNotes"
+              rows="3"
+              placeholder="Any special requirements or instructions..."
+            ></textarea>
           </div>
-          
+
           <div class="form-actions">
-            <button type="button" class="btn-prev" onclick="prevStep(2)">Previous</button>
-            <button type="button" class="btn-next" onclick="nextStep(4)">Next</button>
+            <button type="button" class="btn-prev" onclick="prevStep(2)">
+              Previous
+            </button>
+            <button type="button" class="btn-next" onclick="nextStep(4)">
+              Next
+            </button>
           </div>
         </form>
       </div>
-      
+
       <!-- Step 4: Review & Payment -->
       <div class="invoice-step hidden" id="step4">
         <h2>Create New Invoice</h2>
@@ -225,25 +367,25 @@
           <div class="progress-step completed" data-step="3">Services</div>
           <div class="progress-step active" data-step="4">Review & Pay</div>
         </div>
-        
+
         <h3>Review Your Information</h3>
         <div class="review-section">
           <div class="review-column">
             <h4>User Information</h4>
             <div id="reviewUserInfo"></div>
           </div>
-          
+
           <div class="review-column">
             <h4>Project Information</h4>
             <div id="reviewProjectInfo"></div>
           </div>
-          
+
           <div class="review-column">
             <h4>Services Information</h4>
             <div id="reviewServicesInfo"></div>
           </div>
         </div>
-        
+
         <div class="invoice-summary">
           <h4>Invoice Summary</h4>
           <div class="summary-details">
@@ -261,39 +403,74 @@
             </div>
           </div>
         </div>
-        
+
         <div class="payment-options">
           <h4>Payment Options</h4>
           <div class="payment-methods">
             <div class="payment-method">
-              <input type="radio" id="paypal" name="paymentMethod" value="PayPal" checked>
+              <input
+                type="radio"
+                id="paypal"
+                name="paymentMethod"
+                value="PayPal"
+                checked
+              />
               <label for="paypal"><i class="fab fa-paypal"></i> PayPal</label>
             </div>
             <div class="payment-method">
-              <input type="radio" id="creditCard" name="paymentMethod" value="Credit Card">
-              <label for="creditCard"><i class="far fa-credit-card"></i> Credit Card</label>
+              <input
+                type="radio"
+                id="creditCard"
+                name="paymentMethod"
+                value="Credit Card"
+              />
+              <label for="creditCard"
+                ><i class="far fa-credit-card"></i> Credit Card</label
+              >
             </div>
             <div class="payment-method">
-              <input type="radio" id="bankTransfer" name="paymentMethod" value="Bank Transfer">
-              <label for="bankTransfer"><i class="fas fa-university"></i> Bank Transfer</label>
+              <input
+                type="radio"
+                id="bankTransfer"
+                name="paymentMethod"
+                value="Bank Transfer"
+              />
+              <label for="bankTransfer"
+                ><i class="fas fa-university"></i> Bank Transfer</label
+              >
             </div>
           </div>
         </div>
-        
+
         <div class="form-actions">
-          <button type="button" class="btn-prev" onclick="prevStep(3)">Previous</button>
-          <button type="button" class="btn-generate" onclick="generateInvoice()">Generate Invoice</button>
-          <button type="button" class="btn-pay hidden" id="payNowBtn" onclick="processPayment()">Pay Now</button>
+          <button type="button" class="btn-prev" onclick="prevStep(3)">
+            Previous
+          </button>
+          <button
+            type="button"
+            class="btn-generate"
+            onclick="generateInvoice()"
+          >
+            Generate Invoice
+          </button>
+          <button
+            type="button"
+            class="btn-pay hidden"
+            id="payNowBtn"
+            onclick="processPayment()"
+          >
+            Pay Now
+          </button>
         </div>
       </div>
-      
+
       <!-- Invoice Generated View -->
       <div class="invoice-generated hidden" id="invoiceGenerated">
         <div class="invoice-header">
           <h2>Invoice #<span id="invoiceNumber"></span></h2>
           <div class="invoice-status unpaid" id="invoiceStatus">Unpaid</div>
         </div>
-        
+
         <div class="invoice-details">
           <div class="invoice-from">
             <h4>From:</h4>
@@ -302,18 +479,18 @@
             <p>California, USA</p>
             <p>contact@ecomsy.com</p>
           </div>
-          
+
           <div class="invoice-to">
             <h4>To:</h4>
             <div id="invoiceTo"></div>
           </div>
-          
+
           <div class="invoice-meta">
             <p><strong>Date:</strong> <span id="invoiceDate"></span></p>
             <p><strong>Due Date:</strong> <span id="dueDate"></span></p>
           </div>
         </div>
-        
+
         <div class="invoice-items">
           <table>
             <thead>
@@ -342,13 +519,19 @@
             </tfoot>
           </table>
         </div>
-        
+
         <div class="invoice-notes">
           <h4>Notes</h4>
-          <p>Payment is due within 15 days. Please make checks payable to Ecomsy IT Services.</p>
-          <p>For any questions regarding this invoice, please contact our accounting department at accounting@ecomsy.com.</p>
+          <p>
+            Payment is due within 15 days. Please make checks payable to Ecomsy
+            IT Services.
+          </p>
+          <p>
+            For any questions regarding this invoice, please contact our
+            accounting department at accounting@ecomsy.com.
+          </p>
         </div>
-        
+
         <div class="invoice-actions">
           <button class="btn-download" onclick="downloadInvoice()">
             <i class="fas fa-download"></i> Download PDF
@@ -364,18 +547,7 @@
           </button>
         </div>
       </div>
-      
-      <!-- Invoice Search Section -->
-      <div class="invoice-search" id="invoiceSearch">
-        <h2>Search Existing Invoice</h2>
-        <div class="search-box">
-          <input type="text" id="searchInvoiceId" placeholder="Enter Invoice Number">
-          <button onclick="searchInvoice()"><i class="fas fa-search"></i> Search</button>
-        </div>
-        <div class="search-results hidden" id="searchResults">
-          <!-- Results will be shown here -->
-        </div>
-      </div>
+
     </section>
 
     <!--footer section-->
@@ -383,7 +555,7 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-section footer-about">
-            <img src="../../assets/ecomsy.png" />
+            <img src="../../assets/ecomsy.png" style="height: 60px" />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
               quam velit, vulputate eu pharetra nec.
