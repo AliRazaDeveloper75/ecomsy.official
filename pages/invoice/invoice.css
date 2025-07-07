@@ -22,7 +22,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
   color: var(--dark);
   background-color: #f5f7ff;
@@ -30,7 +30,12 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -98,7 +103,7 @@ p {
 }
 
 .nav-links a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -171,7 +176,7 @@ p {
 }
 
 .progress-bar::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 0;
@@ -228,7 +233,7 @@ p {
 .progress-step.completed::before {
   background-color: var(--success);
   color: var(--white);
-  content: '✓';
+  content: "✓";
 }
 
 /* Form Styles */
@@ -352,70 +357,86 @@ p {
 .btn-prev {
   background-color: var(--light);
   color: var(--dark);
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 2px;
+  border: 2px solid black;
+  border-radius: 0px;
+  padding: 10px 30px;
   cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .btn-next,
 .btn-generate {
-  background-color: var(--primary);
-  color: var(--white);
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 2px;
+  background-color: white;
+  color: var(--dark);
+  border: 2px solid black;
+  border-radius: 0px;
+  padding: 10px 30px;
   cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .btn-pay,
 .btn-download {
   background-color: var(--success);
   color: var(--white);
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 2px;
+  border: 2px solid black;
+  border-radius: 0px;
+  padding: 10px 30px;
   cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .btn-print {
   background-color: var(--info);
   color: var(--white);
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 2px;
+  border: 2px solid black;
+  border-radius: 0px;
+  padding: 10px 30px;
   cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .btn-new {
   background-color: var(--secondary);
   color: var(--white);
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 2px;
+  border: 2px solid black;
+  border-radius: 0px;
+  padding: 10px 30px;
   cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .btn-prev:hover {
   background-color: #e2e6ea;
+  transition: 0.5s;
 }
 
 .btn-next:hover,
 .btn-generate:hover {
   background-color: var(--primary-dark);
+  color: white;
+  transition: 0.5s;
 }
 
 .btn-pay:hover,
 .btn-download:hover {
   background-color: #3ab5d8;
+  transition: 0.5s;
 }
 
 .btn-print:hover {
   background-color: #3d84d1;
+  transition: 0.5s;
 }
 
 .btn-new:hover {
   background-color: #3730a3;
+  transition: 0.5s;
 }
 
 .form-actions {
@@ -631,7 +652,7 @@ p {
 }
 
 .footer-section h3::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -696,11 +717,11 @@ p {
   .navbar {
     padding: 1rem;
   }
-  
+
   .invoice-container {
     padding: 1rem;
   }
-  
+
   .progress-step {
     width: 80px;
   }
@@ -710,7 +731,7 @@ p {
   .hamburger {
     display: flex;
   }
-  
+
   .nav-links {
     position: fixed;
     top: 0;
@@ -723,28 +744,28 @@ p {
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
   }
-  
+
   .nav-links.active {
     right: 0;
   }
-  
+
   .nav-links a {
     padding: 0.75rem 0;
     border-bottom: 1px solid #e9ecef;
   }
-  
+
   .form-row {
     flex-direction: column;
     gap: 0;
   }
-  
+
   .progress-bar {
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
     margin: 2rem 0;
   }
-  
+
   .progress-bar::before {
     height: 100%;
     width: 2px;
@@ -752,26 +773,26 @@ p {
     top: 0;
     transform: none;
   }
-  
+
   .progress-step {
     flex-direction: row;
     width: auto;
     gap: 1rem;
     align-items: center;
   }
-  
+
   .progress-step::before {
     margin-bottom: 0;
   }
-  
+
   .services-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .invoice-actions {
     flex-direction: column;
   }
-  
+
   .invoice-actions .btn {
     width: 100%;
   }
@@ -781,11 +802,11 @@ p {
   .invoice-details {
     grid-template-columns: 1fr;
   }
-  
+
   .invoice-meta {
     text-align: left;
   }
-  
+
   .footer-content {
     grid-template-columns: 1fr;
   }
@@ -800,20 +821,42 @@ p {
   text-align: center;
 }
 
-.mt-1 { margin-top: 0.5rem; }
-.mt-2 { margin-top: 1rem; }
-.mt-3 { margin-top: 1.5rem; }
-.mt-4 { margin-top: 2rem; }
+.mt-1 {
+  margin-top: 0.5rem;
+}
+.mt-2 {
+  margin-top: 1rem;
+}
+.mt-3 {
+  margin-top: 1.5rem;
+}
+.mt-4 {
+  margin-top: 2rem;
+}
 
-.mb-1 { margin-bottom: 0.5rem; }
-.mb-2 { margin-bottom: 1rem; }
-.mb-3 { margin-bottom: 1.5rem; }
-.mb-4 { margin-bottom: 2rem; }
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 1rem;
+}
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+.mb-4 {
+  margin-bottom: 2rem;
+}
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .invoice-step {
