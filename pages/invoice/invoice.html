@@ -167,13 +167,15 @@
                   id="web"
                   name="services"
                   value="Web Development"
-                  data-fixed-price="1500"
-                  data-hourly-rate="50"
+                  data-basic-price="1000"
+                  data-intermediate-price="1500"
+                  data-advanced-price="2500"
                 />
                 <label for="web">Web Development</label>
                 <div class="service-prices">
-                  <span class="fixed-price">$1500 fixed</span>
-                  <span class="hourly-rate">$50/hour</span>
+                  <span class="basic-price">Basic: $1000</span>
+                  <span class="intermediate-price">Intermediate: $1500</span>
+                  <span class="advanced-price">Advanced: $2500</span>
                 </div>
               </div>
 
@@ -183,13 +185,15 @@
                   id="mobile"
                   name="services"
                   value="Mobile App Development"
-                  data-fixed-price="2000"
-                  data-hourly-rate="60"
+                  data-basic-price="1500"
+                  data-intermediate-price="2000"
+                  data-advanced-price="3000"
                 />
                 <label for="mobile">Mobile App Development</label>
                 <div class="service-prices">
-                  <span class="fixed-price">$2000 fixed</span>
-                  <span class="hourly-rate">$60/hour</span>
+                  <span class="basic-price">Basic: $1500</span>
+                  <span class="intermediate-price">Intermediate: $2000</span>
+                  <span class="advanced-price">Advanced: $3000</span>
                 </div>
               </div>
 
@@ -199,13 +203,15 @@
                   id="graphic"
                   name="services"
                   value="Graphic Design"
-                  data-fixed-price="500"
-                  data-hourly-rate="40"
+                  data-basic-price="300"
+                  data-intermediate-price="500"
+                  data-advanced-price="800"
                 />
                 <label for="graphic">Graphic Design</label>
                 <div class="service-prices">
-                  <span class="fixed-price">$500 fixed</span>
-                  <span class="hourly-rate">$40/hour</span>
+                  <span class="basic-price">Basic: $300</span>
+                  <span class="intermediate-price">Intermediate: $500</span>
+                  <span class="advanced-price">Advanced: $800</span>
                 </div>
               </div>
 
@@ -215,13 +221,15 @@
                   id="seo"
                   name="services"
                   value="SEO Services"
-                  data-fixed-price="800"
-                  data-hourly-rate="45"
+                  data-basic-price="500"
+                  data-intermediate-price="800"
+                  data-advanced-price="1200"
                 />
                 <label for="seo">SEO Services</label>
                 <div class="service-prices">
-                  <span class="fixed-price">$800 fixed</span>
-                  <span class="hourly-rate">$45/hour</span>
+                  <span class="basic-price">Basic: $500</span>
+                  <span class="intermediate-price">Intermediate: $800</span>
+                  <span class="advanced-price">Advanced: $1200</span>
                 </div>
               </div>
 
@@ -231,13 +239,15 @@
                   id="shopify"
                   name="services"
                   value="Shopify Development"
-                  data-fixed-price="1200"
-                  data-hourly-rate="55"
+                  data-basic-price="800"
+                  data-intermediate-price="1200"
+                  data-advanced-price="1800"
                 />
                 <label for="shopify">Shopify Development</label>
                 <div class="service-prices">
-                  <span class="fixed-price">$1200 fixed</span>
-                  <span class="hourly-rate">$55/hour</span>
+                  <span class="basic-price">Basic: $800</span>
+                  <span class="intermediate-price">Intermediate: $1200</span>
+                  <span class="advanced-price">Advanced: $1800</span>
                 </div>
               </div>
 
@@ -247,13 +257,15 @@
                   id="wordpress"
                   name="services"
                   value="WordPress Development"
-                  data-fixed-price="900"
-                  data-hourly-rate="45"
+                  data-basic-price="600"
+                  data-intermediate-price="900"
+                  data-advanced-price="1500"
                 />
                 <label for="wordpress">WordPress Development</label>
                 <div class="service-prices">
-                  <span class="fixed-price">$900 fixed</span>
-                  <span class="hourly-rate">$45/hour</span>
+                  <span class="basic-price">Basic: $600</span>
+                  <span class="intermediate-price">Intermediate: $900</span>
+                  <span class="advanced-price">Advanced: $1500</span>
                 </div>
               </div>
 
@@ -263,13 +275,15 @@
                   id="custom"
                   name="services"
                   value="Custom Coding"
-                  data-fixed-price="1000"
-                  data-hourly-rate="65"
+                  data-basic-price="700"
+                  data-intermediate-price="1000"
+                  data-advanced-price="1500"
                 />
                 <label for="custom">Custom Coding</label>
                 <div class="service-prices">
-                  <span class="fixed-price">$1000 fixed</span>
-                  <span class="hourly-rate">$65/hour</span>
+                  <span class="basic-price">Basic: $700</span>
+                  <span class="intermediate-price">Intermediate: $1000</span>
+                  <span class="advanced-price">Advanced: $1500</span>
                 </div>
               </div>
 
@@ -279,31 +293,39 @@
                   id="consulting"
                   name="services"
                   value="IT Consulting"
-                  data-fixed-price="700"
-                  data-hourly-rate="75"
+                  data-basic-price="500"
+                  data-intermediate-price="700"
+                  data-advanced-price="1000"
                 />
                 <label for="consulting">IT Consulting</label>
                 <div class="service-prices">
-                  <span class="fixed-price">$700 fixed</span>
-                  <span class="hourly-rate">$75/hour</span>
+                  <span class="basic-price">Basic: $500</span>
+                  <span class="intermediate-price">Intermediate: $700</span>
+                  <span class="advanced-price">Advanced: $1000</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="serviceType">Service Type*</label>
-            <select id="serviceType" name="serviceType" required>
-              <option value="">Select Service Type</option>
-              <option value="Fixed Price">Fixed Price</option>
-              <option value="Custom Plan">Custom Plan</option>
-              <option value="Hourly Rate">Hourly Rate</option>
-            </select>
-            <small class="form-text">
-              <strong>Fixed Price:</strong> Standard pricing for each service<br />
-              <strong>Custom Plan:</strong> Enter your own budget<br />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="serviceTier">Service Tier*</label>
+              <select id="serviceTier" name="serviceTier" required>
+                <option value="">Select Tier</option>
+                <option value="Basic">Basic</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
 
-            </small>
+            <div class="form-group">
+              <label for="pricingType">Pricing Type*</label>
+              <select id="pricingType" name="pricingType" required>
+                <option value="">Select Type</option>
+                <option value="Fixed">Fixed</option>
+                <option value="Custom">Custom</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-group">
@@ -315,26 +337,23 @@
               min="0"
               step="1"
               readonly
-              placeholder="Select services and type to calculate"
+              placeholder="Select services and options to calculate"
             />
             <small id="budgetHelp" class="form-text">
-              Budget will be calculated automatically based on your selections
+              Budget will be calculated based on your selections
             </small>
           </div>
 
-          <div class="form-group hidden" id="hoursEstimateContainer">
-            <label for="hoursEstimate">Estimated Hours</label>
+          <div class="form-group hidden" id="customBudgetContainer">
+            <label for="customBudget">Custom Budget Amount*</label>
             <input
               type="number"
-              id="hoursEstimate"
-              name="hoursEstimate"
-              min="1"
-              value="20"
+              id="customBudget"
+              name="customBudget"
+              min="0"
               step="1"
+              required
             />
-            <small class="form-text">
-              Adjust the hours estimate for hourly rate calculation
-            </small>
           </div>
 
           <div class="form-group">

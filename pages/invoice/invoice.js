@@ -5,7 +5,17 @@ let invoices = JSON.parse(localStorage.getItem("invoices")) || [];
 
 // Service pricing data
 const servicePricing = {
-  "Fixed Price": {
+  Basic: {
+    "Web Development": 1000,
+    "Mobile App Development": 1500,
+    "Graphic Design": 300,
+    "SEO Services": 500,
+    "Shopify Development": 800,
+    "WordPress Development": 600,
+    "Custom Coding": 700,
+    "IT Consulting": 500,
+  },
+  Intermediate: {
     "Web Development": 1500,
     "Mobile App Development": 2000,
     "Graphic Design": 500,
@@ -15,15 +25,15 @@ const servicePricing = {
     "Custom Coding": 1000,
     "IT Consulting": 700,
   },
-  "Hourly Rate": {
-    "Web Development": 50,
-    "Mobile App Development": 60,
-    "Graphic Design": 40,
-    "SEO Services": 45,
-    "Shopify Development": 55,
-    "WordPress Development": 45,
-    "Custom Coding": 65,
-    "IT Consulting": 75,
+  Advanced: {
+    "Web Development": 2500,
+    "Mobile App Development": 3000,
+    "Graphic Design": 800,
+    "SEO Services": 1200,
+    "Shopify Development": 1800,
+    "WordPress Development": 1500,
+    "Custom Coding": 1500,
+    "IT Consulting": 1000,
   },
 };
 
@@ -42,11 +52,27 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function setupEventListeners() {
-  // Service type change handler
+  // Service tier change handler
   document
-    .getElementById("serviceType")
+    .getElementById("serviceTier")
     .addEventListener("change", function () {
       updateBudgetField();
+    });
+
+  // Pricing type change handler
+  document
+    .getElementById("pricingType")
+    .addEventListener("change", function () {
+      const customBudgetContainer = document.getElementById(
+        "customBudgetContainer"
+      );
+      if (this.value === "Custom") {
+        customBudgetContainer.classList.remove("hidden");
+        document.getElementById("budget").value = "";
+      } else {
+        customBudgetContainer.classList.add("hidden");
+        updateBudgetField();
+      }
     });
 
   // Service selection change handler
@@ -56,22 +82,24 @@ function setupEventListeners() {
     });
   });
 
-  // Budget input change handler
-  document.getElementById("budget").addEventListener("input", function () {
-    if (document.getElementById("serviceType").value === "Hourly Rate") {
-      calculateInvoiceTotal();
-    }
-  });
-
-  // Hours estimate change handler
-  const hoursEstimate = document.getElementById("hoursEstimate");
-  if (hoursEstimate) {
-    hoursEstimate.addEventListener("input", function () {
-      if (document.getElementById("serviceType").value === "Hourly Rate") {
-        updateBudgetField();
+  // Custom budget input change handler
+  document
+    .getElementById("customBudget")
+    ?.addEventListener("input", function () {
+      if (document.getElementById("pricingType").value === "Custom") {
+        document.getElementById("budget").value = this.value;
+        calculateInvoiceTotal();
       }
     });
-  }
+
+  // Phone responsive burger icon
+  document.querySelector(".hamburger").addEventListener("click", toggleMenu);
+
+  // Navbar scroll effect
+  window.addEventListener("scroll", () => {
+    const navbar = document.querySelector(".navbar");
+    navbar.classList.toggle("scrolled", window.scrollY > 50);
+  });
 }
 
 // Navigation functions
@@ -121,15 +149,30 @@ function validateStep(step) {
       const selectedServices = document.querySelectorAll(
         'input[name="services"]:checked'
       );
+      const serviceTier = document.getElementById("serviceTier").value;
+      const pricingType = document.getElementById("pricingType").value;
 
       if (selectedServices.length === 0) {
         alert("Please select at least one service");
         return false;
       }
 
-      if (!servicesForm.serviceType.value) {
-        alert("Please select a service type");
+      if (!serviceTier) {
+        alert("Please select a service tier");
         return false;
+      }
+
+      if (!pricingType) {
+        alert("Please select a pricing type");
+        return false;
+      }
+
+      if (pricingType === "Custom") {
+        const customBudget = document.getElementById("customBudget").value;
+        if (!customBudget || customBudget <= 0) {
+          alert("Please enter a valid custom budget amount");
+          return false;
+        }
       }
 
       return true;
@@ -164,72 +207,64 @@ function saveStepData(step) {
       const selectedServices = Array.from(
         document.querySelectorAll('input[name="services"]:checked')
       ).map((el) => el.value);
+
       invoiceData.services = {
         list: selectedServices,
-        type: document.getElementById("serviceType").value,
-        budget: document.getElementById("budget").value || 0,
+        tier: document.getElementById("serviceTier").value,
+        pricingType: document.getElementById("pricingType").value,
         notes: document.getElementById("additionalNotes").value,
       };
 
-      if (document.getElementById("serviceType").value === "Hourly Rate") {
-        invoiceData.services.hourlyRate =
-          servicePricing["Hourly Rate"][selectedServices[0]] || 0;
-        invoiceData.services.hours =
-          document.getElementById("hoursEstimate").value || 20;
+      if (invoiceData.services.pricingType === "Custom") {
+        invoiceData.services.budget =
+          document.getElementById("customBudget").value || 0;
+      } else {
+        invoiceData.services.budget =
+          document.getElementById("budget").value || 0;
       }
       break;
   }
 }
 
 function updateBudgetField() {
-  const serviceType = document.getElementById("serviceType").value;
+  const serviceTier = document.getElementById("serviceTier").value;
+  const pricingType = document.getElementById("pricingType").value;
   const selectedServices = Array.from(
     document.querySelectorAll('input[name="services"]:checked')
   ).map((el) => el.value);
   const budgetInput = document.getElementById("budget");
-  const hoursEstimateContainer = document.getElementById(
-    "hoursEstimateContainer"
-  );
   const budgetHelp = document.getElementById("budgetHelp");
 
-  if (serviceType === "Fixed Price") {
-    // Calculate sum of fixed prices for selected services
-    let total = 0;
-    selectedServices.forEach((service) => {
-      total += servicePricing["Fixed Price"][service] || 0;
-    });
-    budgetInput.value = total;
+  if (pricingType === "Custom") {
+    // Custom pricing - don't auto-calculate
+    budgetInput.value = document.getElementById("customBudget").value || "";
     budgetInput.readOnly = true;
-    budgetHelp.textContent = "Budget calculated based on fixed service prices";
-    if (hoursEstimateContainer) hoursEstimateContainer.style.display = "none";
-    calculateInvoiceTotal();
-  } else if (serviceType === "Hourly Rate") {
-    // Show hourly rate calculation
-    if (selectedServices.length > 0) {
-      const hourlyRate =
-        servicePricing["Hourly Rate"][selectedServices[0]] || 0;
-      const hours = document.getElementById("hoursEstimate")
-        ? document.getElementById("hoursEstimate").value
-        : 20;
-      budgetInput.value = hourlyRate * hours;
-      budgetInput.readOnly = true;
-      budgetHelp.textContent = `Calculated at $${hourlyRate}/hour for ${hours} hours`;
-      if (hoursEstimateContainer)
-        hoursEstimateContainer.style.display = "block";
-      calculateInvoiceTotal();
-    } else {
-      budgetInput.value = "";
-      budgetInput.readOnly = true;
-      budgetHelp.textContent = "Please select at least one service";
-      if (hoursEstimateContainer) hoursEstimateContainer.style.display = "none";
-    }
-  } else if (serviceType === "Custom Plan") {
-    // Allow user to enter their own budget
-    budgetInput.value = "";
-    budgetInput.readOnly = false;
-    budgetHelp.textContent = "Enter your custom budget amount";
-    if (hoursEstimateContainer) hoursEstimateContainer.style.display = "none";
+    return;
   }
+
+  if (selectedServices.length === 0) {
+    budgetInput.value = "";
+    budgetInput.readOnly = true;
+    budgetHelp.textContent = "Please select at least one service";
+    return;
+  }
+
+  if (!serviceTier) {
+    budgetInput.value = "";
+    budgetInput.readOnly = true;
+    budgetHelp.textContent = "Please select a service tier";
+    return;
+  }
+
+  // Calculate sum of prices for selected services and tier
+  let total = 0;
+  selectedServices.forEach((service) => {
+    total += servicePricing[serviceTier][service] || 0;
+  });
+  budgetInput.value = total;
+  budgetInput.readOnly = true;
+  budgetHelp.textContent = `Budget calculated based on ${serviceTier} tier pricing`;
+  calculateInvoiceTotal();
 }
 
 function updateReviewSections() {
@@ -254,17 +289,8 @@ function updateReviewSections() {
   // Services Info
   let servicesInfoHTML = `
     <p><strong>Services:</strong> ${invoiceData.services.list.join(", ")}</p>
-    <p><strong>Service Type:</strong> ${invoiceData.services.type}</p>
-  `;
-
-  if (invoiceData.services.type === "Hourly Rate") {
-    servicesInfoHTML += `
-      <p><strong>Hourly Rate:</strong> $${invoiceData.services.hourlyRate}/hour</p>
-      <p><strong>Estimated Hours:</strong> ${invoiceData.services.hours}</p>
-    `;
-  }
-
-  servicesInfoHTML += `
+    <p><strong>Service Tier:</strong> ${invoiceData.services.tier}</p>
+    <p><strong>Pricing Type:</strong> ${invoiceData.services.pricingType}</p>
     <p><strong>Budget:</strong> $${parseFloat(
       invoiceData.services.budget
     ).toFixed(2)}</p>
@@ -279,35 +305,7 @@ function updateReviewSections() {
 }
 
 function calculateInvoiceTotal() {
-  const serviceType = document.getElementById("serviceType")
-    ? document.getElementById("serviceType").value
-    : invoiceData.services.type;
-  let subtotal = 0;
-
-  if (serviceType === "Fixed Price" || serviceType === "Custom Plan") {
-    subtotal =
-      parseFloat(invoiceData.services.budget) ||
-      parseFloat(document.getElementById("budget").value) ||
-      0;
-  } else if (serviceType === "Hourly Rate") {
-    const selectedServices = invoiceData.services
-      ? invoiceData.services.list
-      : Array.from(
-          document.querySelectorAll('input[name="services"]:checked')
-        ).map((el) => el.value);
-
-    if (selectedServices.length > 0) {
-      const hourlyRate =
-        servicePricing["Hourly Rate"][selectedServices[0]] || 0;
-      const hours = invoiceData.services
-        ? invoiceData.services.hours
-        : document.getElementById("hoursEstimate")
-        ? document.getElementById("hoursEstimate").value
-        : 20;
-      subtotal = hourlyRate * hours;
-    }
-  }
-
+  const subtotal = parseFloat(invoiceData.services.budget) || 0;
   const tax = subtotal * 0.1; // 10% tax
   const total = subtotal + tax;
 
@@ -390,33 +388,7 @@ function displayInvoice(invoice) {
 
   // Set invoice items
   let itemsHTML = "";
-  if (invoice.services.type === "Fixed Price") {
-    // Split fixed price equally among services
-    const pricePerService =
-      invoice.amounts.subtotal / invoice.services.list.length;
-    itemsHTML = invoice.services.list
-      .map(
-        (service) => `
-      <tr>
-        <td>${service}</td>
-        <td>Fixed Price</td>
-        <td>$${pricePerService.toFixed(2)}</td>
-      </tr>
-    `
-      )
-      .join("");
-  } else if (invoice.services.type === "Hourly Rate") {
-    itemsHTML = `
-      <tr>
-        <td>${invoice.services.list.join(", ")}</td>
-        <td>Hourly Rate (${invoice.services.hours} hours @ $${
-      invoice.services.hourlyRate
-    }/hr)</td>
-        <td>$${invoice.amounts.subtotal.toFixed(2)}</td>
-      </tr>
-    `;
-  } else {
-    // Custom Plan
+  if (invoice.services.pricingType === "Custom") {
     itemsHTML = `
       <tr>
         <td>${invoice.services.list.join(", ")}</td>
@@ -424,6 +396,21 @@ function displayInvoice(invoice) {
         <td>$${invoice.amounts.subtotal.toFixed(2)}</td>
       </tr>
     `;
+  } else {
+    // Split price equally among services for the tier
+    const pricePerService =
+      invoice.amounts.subtotal / invoice.services.list.length;
+    itemsHTML = invoice.services.list
+      .map(
+        (service) => `
+        <tr>
+          <td>${service} (${invoice.services.tier})</td>
+          <td>${invoice.services.tier} Tier</td>
+          <td>$${pricePerService.toFixed(2)}</td>
+        </tr>
+      `
+      )
+      .join("");
   }
 
   document.getElementById("invoiceItems").innerHTML = itemsHTML;
@@ -504,17 +491,17 @@ function startNewInvoice() {
   budgetInput.value = "";
   budgetInput.readOnly = false;
 
-  // Hide hours estimate if visible
-  const hoursEstimateContainer = document.getElementById(
-    "hoursEstimateContainer"
+  // Hide custom budget container if visible
+  const customBudgetContainer = document.getElementById(
+    "customBudgetContainer"
   );
-  if (hoursEstimateContainer) hoursEstimateContainer.style.display = "none";
+  if (customBudgetContainer) customBudgetContainer.classList.add("hidden");
 
   // Reset help text
   const budgetHelp = document.getElementById("budgetHelp");
   if (budgetHelp)
     budgetHelp.textContent =
-      "Budget will be calculated automatically based on service selection";
+      "Budget will be calculated based on your selections";
 
   // Scroll to top
   window.scrollTo(0, 0);
@@ -589,4 +576,8 @@ function displaySearchResults(results) {
 
 function viewInvoice(id) {
   searchInvoiceById(id);
+}
+
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("active");
 }
