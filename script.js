@@ -101,11 +101,16 @@ fetch("header.html")
     setupHeaderFunctions();
   });
 
-// phone responsive burger icon
 function toggleMenu() {
-  document.getElementById("navLinks").classList.toggle("active");
-}
+  const navLinks = document.getElementById("navLinks");
+  const hamburgers = document.querySelectorAll(".hamburger");
 
+  navLinks.classList.toggle("active");
+
+  hamburgers.forEach(hamburger => {
+    hamburger.classList.toggle("active");
+  });
+}
 window.addEventListener("scroll", () => {
   const navbar = document.querySelector(".navbar");
   navbar.classList.toggle("scrolled", window.scrollY > 50);
