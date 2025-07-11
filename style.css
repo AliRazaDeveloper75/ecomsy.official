@@ -647,13 +647,13 @@ body {
 .testimonial-author {
   font-weight: bold;
   font-size: 18px;
-  color: #343a40;
+  color: white;
   margin-bottom: 5px;
 }
 
 .testimonial-position {
   font-size: 14px;
-  color: #6c757d;
+  color: white;
 }
 
 .slider-nav {
