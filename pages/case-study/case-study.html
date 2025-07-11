@@ -76,48 +76,196 @@
     </header>
 
     <!--content section-->
-    <section>
-      <main class="about-us-container">
-        <h1>Welcome to About Page</h1>
-        <p>Scroll and resize the screen to test navbar behavior.</p>
-      </main>
-    </section>
-    <section>
-      <main class="about-us-container">
-        <h1>Welcome to About Page</h1>
-        <p>Scroll and resize the screen to test navbar behavior.</p>
-      </main>
+   
+
+    <header class="main-header">
+      <div class="container">
+        <h1>Our Success Stories</h1>
+        <p>
+          Discover how Ecomsy's digital solutions transformed businesses across
+          industries
+        </p>
+        <div class="stats-bar">
+          <div class="stat-item">
+            <span class="stat-number">87%</span>
+            <span class="stat-label">Client Retention</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">150+</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">$10M+</span>
+            <span class="stat-label">Client Revenue Generated</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="case-filters container">
+      <h2>Filter by Industry</h2>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">
+          All Industries
+        </button>
+        <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+        <button class="filter-btn" data-filter="realestate">Real Estate</button>
+        <button class="filter-btn" data-filter="saas">SaaS</button>
+        <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+      </div>
     </section>
 
-    <!--footer section-->
+    <section class="case-studies container">
+      <div class="case-study-card" data-category="ecommerce">
+        <div
+          class="case-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');
+          "
+        >
+          <span class="case-tag">E-Commerce</span>
+        </div>
+        <div class="case-content">
+          <h2>Dehleze Clothing - E-Commerce Launch</h2>
+          <p class="case-excerpt">
+            Transforming a local boutique into a national online brand
+          </p>
+
+          <div class="case-meta">
+            <span><i class="fas fa-calendar-alt"></i> 6 months project</span>
+            <span><i class="fas fa-dollar-sign"></i> $25k budget</span>
+          </div>
+          <button class="read-more-btn">Read Full Case Study</button>
+        </div>
+      </div>
+
+      <div class="case-study-card" data-category="realestate">
+        <div
+          class="case-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');
+          "
+        >
+          <span class="case-tag">Real Estate</span>
+        </div>
+        <div class="case-content">
+          <h2>UrbanSpace Real Estate Platform</h2>
+          <p class="case-excerpt">
+            Modern property management solution for a growing agency
+          </p>
+          <div class="case-meta">
+            <span><i class="fas fa-calendar-alt"></i> 4 months project</span>
+            <span><i class="fas fa-dollar-sign"></i> $42k budget</span>
+          </div>
+          <button class="read-more-btn">Read Full Case Study</button>
+        </div>
+      </div>
+
+      <div class="case-study-card" data-category="saas">
+        <div
+          class="case-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');
+          "
+        >
+          <span class="case-tag">SaaS</span>
+        </div>
+        <div class="case-content">
+          <h2>FreelancerPro Portfolio System</h2>
+          <p class="case-excerpt">
+            All-in-one platform for independent professionals
+          </p>
+
+          <div class="case-meta">
+            <span><i class="fas fa-calendar-alt"></i> 8 months project</span>
+            <span><i class="fas fa-dollar-sign"></i> $68k budget</span>
+          </div>
+          <button class="read-more-btn">Read Full Case Study</button>
+        </div>
+      </div>
+
+      <div class="case-study-card" data-category="healthcare">
+        <div
+          class="case-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');
+          "
+        >
+          <span class="case-tag">Healthcare</span>
+        </div>
+        <div class="case-content">
+          <h2>MediTrack Patient Portal</h2>
+          <p class="case-excerpt">
+            Digital transformation for a regional hospital network
+          </p>
+
+          <div class="case-meta">
+            <span><i class="fas fa-calendar-alt"></i> 9 months project</span>
+            <span><i class="fas fa-dollar-sign"></i> $120k budget</span>
+          </div>
+          <button class="read-more-btn">Read Full Case Study</button>
+        </div>
+      </div>
+
+      <div class="case-study-card" data-category="ecommerce">
+        <div
+          class="case-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');
+          "
+        >
+          <span class="case-tag">E-Commerce</span>
+        </div>
+        <div class="case-content">
+          <h2>Gourmet Foods Marketplace</h2>
+          <p class="case-excerpt">
+            Specialty food e-commerce with subscription model
+          </p>
+
+          <div class="case-meta">
+            <span><i class="fas fa-calendar-alt"></i> 5 months project</span>
+            <span><i class="fas fa-dollar-sign"></i> $55k budget</span>
+          </div>
+          <button class="read-more-btn">Read Full Case Study</button>
+        </div>
+      </div>
+      <div class="case-study-card" data-category="ecommerce">
+        <div
+          class="case-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          "
+        >
+          <span class="case-tag">I.T Service Solution</span>
+        </div>
+        <div class="case-content">
+          <h2>I.T Teck Solution</h2>
+          <p class="case-excerpt">
+            Specialty food e-commerce with subscription model
+          </p>
+
+          <div class="case-meta">
+            <span><i class="fas fa-calendar-alt"></i> 5 months project</span>
+            <span><i class="fas fa-dollar-sign"></i> $55k budget</span>
+          </div>
+          <button class="read-more-btn">Read Full Case Study</button>
+        </div>
+      </div>
+    </section>
+
+  
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Start Your Success Story?</h2>
+        <p>Let's discuss how we can help grow your business</p>
+        <button class="cta-button">Get a Free Consultation</button>
+      </div>
+    </section>
+
     <!--footer-->
 
     <footer class="footer">
-      <!-- Contact 
-  <div class="footer-section">
-    <div class="footer-heading-line">
-      <h3>CONTACT</h3>
-    </div>
-    <div class="footer-section-content">
-      <div class="footer-content">
-        <p>Whatsapp: +44 7743 140847‬</p>
-        <p>Whatsapp: +92 349 5573280‬</p>
-      </div>
-      <div class="footer-content">
-        <p>Info: info@ecomsy.co.uk</p>
-        <p>CEO: ceo@ecomsy.co.uk</p>
-        <p>Sale: sales@ecomsy.co.uk</p>
-      </div>
-      <div class="footer-content">
-        <p>
-          Freeland Park, Wareham Road, Poole,<br />
-          Dorset BH16 6FA, United Kingdom
-        </p>
-        <p>Khan Plaza, Kamra Road, Attock 43600, Pakistan</p>
-      </div>
-    </div>
-  </div>
-  -->
       <!-- Services -->
       <div class="footer-section">
         <div class="footer-heading-line">
