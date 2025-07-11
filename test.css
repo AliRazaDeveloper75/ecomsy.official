@@ -1,71 +1,75 @@
-.footer {
-  background-color: #000;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.7;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.header {
+  background-color: #0e1d34;
   color: #fff;
-  padding: 40px 20px;
-  font-family: Arial, sans-serif;
+  padding: 60px 0;
+  text-align: center;
 }
 
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 30px;
-  max-width: 1300px;
-  margin: 0 auto;
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
 
-.footer-column {
-  flex: 1 1 220px;
+.header p {
+  font-size: 1.2rem;
+  color: #ddd;
 }
 
-.footer-column h4 {
-  font-weight: bold;
+.testimonial-section {
+  padding: 40px 0;
+}
+
+.testimonial {
+  background: #fff;
+  border-left: 5px solid #0e1d34;
+  margin-bottom: 30px;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #0e1d34;
+}
+
+.testimonial .content {
+  font-size: 1.1rem;
+  color: #444;
   margin-bottom: 15px;
 }
 
-.footer-column p,
-.footer-column li {
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 8px;
+.testimonial .author {
+  font-weight: bold;
+  color: #222;
+  font-style: italic;
 }
 
-.footer-column a {
+.footer {
+  background-color: #0e1d34;
   color: #fff;
-  text-decoration: none;
-}
-
-.social-icons a img {
-  width: 24px;
-  height: 24px;
-  margin-right: 12px;
-  filter: brightness(0) invert(1);
-}
-
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.badges img {
-  height: 32px;
-  margin-right: 10px;
-  margin-top: 10px;
-}
-
-.footer-bottom {
-  border-top: 1px solid #333;
-  margin-top: 30px;
-  padding-top: 20px;
   text-align: center;
-  font-size: 13px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.flags img {
-  width: 20px;
-  margin-left: 10px;
+  padding: 20px 0;
+  margin-top: 40px;
 }
