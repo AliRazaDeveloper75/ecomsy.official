@@ -1106,7 +1106,7 @@ h2 {
   display: none;
 }
 .navbar-menu-btn {
-  gap: 12px;
+  gap: 20px;
   display: flex;
   align-items: center;
 }
