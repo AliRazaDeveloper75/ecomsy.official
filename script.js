@@ -107,7 +107,7 @@ function toggleMenu() {
 
   navLinks.classList.toggle("active");
 
-  hamburgers.forEach(hamburger => {
+  hamburgers.forEach((hamburger) => {
     hamburger.classList.toggle("active");
   });
 }
@@ -159,16 +159,19 @@ function runCounters() {
 }
 
 // Observer to trigger only when visible
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      runCounters();
-      observer.unobserve(entry.target); // only run once
-    }
-  });
-}, {
-  threshold: 0.5 // Adjust if needed
-});
+const observer = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        runCounters();
+        observer.unobserve(entry.target); // only run once
+      }
+    });
+  },
+  {
+    threshold: 0.5, // Adjust if needed
+  }
+);
 
 // Observe the section that contains counters
 const counterSection = document.querySelector(".counter-section");

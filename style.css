@@ -1374,7 +1374,7 @@ body {
 @media (max-width: 768px) {
   .count-section {
     flex-direction: column;
-    height: auto;
+    height: auto; 
     padding: 40px 20px;
     gap: 20px;
   }
