@@ -341,3 +341,75 @@ body {
     background-color: #444;
   }
 }
+
+
+/*  */
+/* About Section */
+.about-section,
+.services-section,
+.portfolio-section {
+  margin: 50px 0;
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* Services Section */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.service-card {
+  background: black;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.03);
+  transition: transform 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #1e293b;
+}
+
+/* Portfolio Section */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.portfolio-card {
+  background: #f8fafc;
+  border-left: 4px solid #2563eb;
+  padding: 18px 20px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.portfolio-card:hover {
+  background: #e0f2fe;
+}
+
+.portfolio-card h4 {
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+.portfolio-card p {
+  color: #555;
+  font-size: 0.95rem;
+}
