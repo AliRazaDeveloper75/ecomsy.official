@@ -136,7 +136,7 @@ h3::after {
 .navbar-menu-btn {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 /* Responsive Styles */
@@ -243,7 +243,8 @@ h3::after {
   margin: 0 auto;
   padding: 4rem 2rem;
   text-align: center;
-  background-color: #1e293b;
+  background-color: #00539c;
+  color: wheat;
 }
 
 .about-us-container h1 {
@@ -253,7 +254,7 @@ h3::after {
   background: linear-gradient(90deg, var(--primary), var(--success));
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: white;
 }
 .about-us-container p{
   color: white;

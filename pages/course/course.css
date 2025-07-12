@@ -42,7 +42,7 @@ body {
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  /* font-weight: bold; */
   transition: color 0.3s ease;
 }
 
@@ -83,7 +83,7 @@ body {
 .navbar-menu-btn {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 /* Responsive Styles */
@@ -473,13 +473,13 @@ body {
 
 /* Header */
 .main-header {
-  background-color: #1e293b;
+  background-color: #00539c;
   color: #fff;
   padding: 60px 0;
   text-align: center;
 }
 
-.main-header h1 {
+.main-header h1 { 
   font-size: 2.8rem;
   margin-bottom: 10px;
   margin-top: 50px;
@@ -489,16 +489,45 @@ body {
   font-size: 1.2rem;
   color: #cbd5e1;
 }
-
 /* Courses Section */
 .courses-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
   gap: 30px;
-  /* margin: 10px 20px; */
   margin: 5rem;
 }
 
+/* Make the last card full width */
+.courses-section .course-card:last-child:nth-child(3n+1) {
+  grid-column: 1 / -1; /* Span all columns */
+  max-width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .courses-section {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+  }
+  
+  /* Adjust last card for 2-column layout */
+  .courses-section .course-card:last-child:nth-child(2n+1) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-section {
+    grid-template-columns: 1fr; /* 1 column on small screens */
+    margin: 2rem;
+  }
+  
+  /* All cards full width on mobile */
+  .courses-section .course-card {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Course card styling */
 .course-card {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
@@ -516,7 +545,7 @@ body {
 .course-card h2 {
   font-size: 1.4rem;
   margin-bottom: 10px;
-  color: #1e293b;
+  color: #00539c;
 }
 
 .course-card p {
@@ -535,26 +564,4 @@ body {
 
 .course-card a:hover {
   color: #1d4ed8;
-}
-
-/* Footer */
-.main-footer {
-  text-align: center;
-  padding: 30px 0;
-  background-color: #f1f5f9;
-  color: #555;
-  font-size: 0.95rem;
-}
-
-/* Responsive Fixes */
-@media (max-width: 600px) {
-  .main-header h1 {
-    font-size: 2rem;
-  }
-  .main-header p {
-    font-size: 1rem;
-  }
-  .courses-section {
-    margin: 1rem;
-  }
 }

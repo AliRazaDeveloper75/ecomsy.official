@@ -8,7 +8,8 @@ body {
   font-family: "Arial", sans-serif;
   overflow-x: hidden;
   color: white;
-} /* Navbar */
+} 
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -42,7 +43,7 @@ body {
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  /* font-weight: bold; */
   transition: color 0.3s ease;
 }
 
@@ -83,7 +84,7 @@ body {
 .navbar-menu-btn {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 /* Responsive Styles */
@@ -188,8 +189,6 @@ body {
 }
 
 /* footer section */
-
-/* footer */
 .footer {
   background-color: #000;
   color: #fff;
@@ -348,7 +347,7 @@ body {
 /* card section */
 /* Header */
 .main-header {
-  background-color: #1e293b;
+  background-color: #00539c;
   color: #fff;
   padding: 60px 0;
   text-align: center;
@@ -411,7 +410,7 @@ body {
 
 .service-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9); /* More spread */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* More spread */
   transition: all 0.3s ease;
   cursor: pointer;
 }

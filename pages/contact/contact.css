@@ -42,7 +42,7 @@ body {
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  /* font-weight: bold; */
   transition: color 0.3s ease;
 }
 
@@ -83,7 +83,7 @@ body {
 .navbar-menu-btn {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 /* Responsive Styles */
@@ -345,7 +345,7 @@ body {
 /*  contact us style*/
 /* Header */
 .main-header {
-  background-color: #1e293b;
+  background-color: #00539c;
   color: #fff;
   padding: 60px 0;
   text-align: center;

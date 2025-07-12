@@ -76,7 +76,6 @@
     </header>
 
     <!--content section-->
-   
 
     <header class="main-header">
       <div class="container">
@@ -87,16 +86,16 @@
         </p>
         <div class="stats-bar">
           <div class="stat-item">
-            <span class="stat-number">87%</span>
-            <span class="stat-label">Client Retention</span>
+            <span class="stat-number">95%</span>
+            <span class="stat-label">Happy Customers</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">150+</span>
+            <span class="stat-number">1,150+</span>
             <span class="stat-label">Projects Completed</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">$10M+</span>
-            <span class="stat-label">Client Revenue Generated</span>
+            <span class="stat-number">200+</span>
+            <span class="stat-label">Clients</span>
           </div>
         </div>
       </div>
@@ -248,12 +247,12 @@
             <span><i class="fas fa-calendar-alt"></i> 5 months project</span>
             <span><i class="fas fa-dollar-sign"></i> $55k budget</span>
           </div>
-          <button class="read-more-btn">Read Full Case Study</button>
+          <button id="demoTrigger" class="read-more-btn">
+            Read Full Case Study
+          </button>
         </div>
       </div>
     </section>
-
-  
 
     <section class="cta-section">
       <div class="container">
@@ -347,6 +346,76 @@
       </div>
     </div>
 
+    <!-- Popup Structure -->
+    <div class="case-study-popup" id="caseStudyPopup">
+      <div class="popup-content">
+        <span class="close-popup">&times;</span>
+        <div class="popup-header">
+          <span class="popup-tag" id="popupTag">E-Commerce</span>
+          <h2 id="popupTitle">Dehleze Clothing - E-Commerce Launch</h2>
+        </div>
+        <div class="popup-body">
+          <div class="popup-image" id="popupImage"></div>
+          <div class="popup-details">
+            <div class="popup-meta">
+              <span
+                ><i class="fas fa-calendar-alt"></i>
+                <span id="popupDuration">6 months project</span></span
+              >
+              <span
+                ><i class="fas fa-dollar-sign"></i>
+                <span id="popupBudget">$25k budget</span></span
+              >
+            </div>
+            <div class="popup-text" id="popupContent">
+              <h3>Challenge</h3>
+              <p>
+                Dehleze Clothing, a boutique fashion retailer with two physical
+                stores, struggled to expand beyond their local market. Their
+                existing website was outdated, not mobile-friendly, and lacked
+                e-commerce functionality. They needed a complete digital
+                transformation to compete in the online fashion space.
+              </p>
+
+              <h3>Solution</h3>
+              <p>We developed a custom e-commerce platform with:</p>
+              <ul>
+                <li>Fully responsive design optimized for all devices</li>
+                <li>
+                  Integrated inventory management system synced with their POS
+                </li>
+                <li>Custom checkout flow with multiple payment options</li>
+                <li>Advanced product filtering and recommendation engine</li>
+                <li>SEO optimization that increased organic traffic by 180%</li>
+                <li>Content management system for easy updates</li>
+              </ul>
+
+              <h3>Results</h3>
+              <ul>
+                <li>300% increase in online sales within first 3 months</li>
+                <li>Expanded to serve customers in 5 new states</li>
+                <li>Reduced cart abandonment rate from 68% to 23%</li>
+                <li>40% of total revenue now comes from online channels</li>
+                <li>Recipient of "Best Emerging E-Commerce Site" award</li>
+              </ul>
+
+              <h3>Client Testimonial</h3>
+              <p>
+                <em
+                  >"Ecomsy transformed our business. What was once a local
+                  boutique is now a nationally recognized brand. Their team
+                  understood our vision and delivered beyond our expectations.
+                  The new platform has been instrumental in our growth,
+                  especially during the pandemic when physical stores were
+                  closed."</em
+                >
+                - Sarah Johnson, CEO of Dehleze Clothing
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
       function toggleMenu() {
         const navLinks = document.getElementById("navLinks");
@@ -361,6 +430,124 @@
       window.addEventListener("scroll", () => {
         const navbar = document.querySelector(".navbar");
         navbar.classList.toggle("scrolled", window.scrollY > 50);
+      });
+
+      // Add this script to your case-study.js or in a script tag
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const caseStudyCards = document.querySelectorAll(".case-study-card");
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            // Remove active class from all buttons
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+            // Add active class to clicked button
+            button.classList.add("active");
+
+            const filterValue = button.getAttribute("data-filter");
+
+            caseStudyCards.forEach((card) => {
+              if (
+                filterValue === "all" ||
+                card.getAttribute("data-category") === filterValue
+              ) {
+                card.style.display = "flex"; // or whatever display value you're using
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+      });
+
+      // Get DOM elements Popup display
+      const popup = document.getElementById("caseStudyPopup");
+      const closePopup = document.querySelector(".close-popup");
+      const demoTrigger = document.getElementById("demoTrigger");
+
+      // Open popup function
+      function openPopup() {
+        popup.style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+
+      // Close popup function
+      function closePopupFunc() {
+        popup.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      // Event listeners
+      demoTrigger.addEventListener("click", openPopup);
+      closePopup.addEventListener("click", closePopupFunc);
+
+      // Close when clicking outside content
+      window.addEventListener("click", (e) => {
+        if (e.target === popup) {
+          closePopupFunc();
+        }
+      });
+
+      // Close with ESC key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && popup.style.display === "block") {
+          closePopupFunc();
+        }
+      });
+
+      // Sample data for dynamic content (in a real app, this would come from your data source)
+      const caseStudyData = {
+        title: "Dehleze Clothing - E-Commerce Launch",
+        tag: "E-Commerce",
+        image:
+          "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+        duration: "6 months project",
+        budget: "$25k budget",
+        content: `
+                <h3>Challenge</h3>
+                <p>Dehleze Clothing, a boutique fashion retailer with two physical stores, struggled to expand beyond their local market. Their existing website was outdated, not mobile-friendly, and lacked e-commerce functionality. They needed a complete digital transformation to compete in the online fashion space.</p>
+                
+                <h3>Solution</h3>
+                <p>We developed a custom e-commerce platform with:</p>
+                <ul>
+                    <li>Fully responsive design optimized for all devices</li>
+                    <li>Integrated inventory management system synced with their POS</li>
+                    <li>Custom checkout flow with multiple payment options</li>
+                    <li>Advanced product filtering and recommendation engine</li>
+                    <li>SEO optimization that increased organic traffic by 180%</li>
+                    <li>Content management system for easy updates</li>
+                </ul>
+                
+                <h3>Results</h3>
+                <ul>
+                    <li>300% increase in online sales within first 3 months</li>
+                    <li>Expanded to serve customers in 5 new states</li>
+                    <li>Reduced cart abandonment rate from 68% to 23%</li>
+                    <li>40% of total revenue now comes from online channels</li>
+                    <li>Recipient of "Best Emerging E-Commerce Site" award</li>
+                </ul>
+                
+                <h3>Client Testimonial</h3>
+                <p><em>"Ecomsy transformed our business. What was once a local boutique is now a nationally recognized brand. Their team understood our vision and delivered beyond our expectations. The new platform has been instrumental in our growth, especially during the pandemic when physical stores were closed."</em> - Sarah Johnson, CEO of Dehleze Clothing</p>
+            `,
+      };
+
+      // In a real implementation, you would use this data to populate the popup dynamically
+      function populatePopup(data) {
+        document.getElementById("popupTitle").textContent = data.title;
+        document.getElementById("popupTag").textContent = data.tag;
+        document.getElementById(
+          "popupImage"
+        ).style.backgroundImage = `url(${data.image})`;
+        document.getElementById("popupDuration").textContent = data.duration;
+        document.getElementById("popupBudget").textContent = data.budget;
+        document.getElementById("popupContent").innerHTML = data.content;
+      }
+
+      // For demo purposes, populate with our sample data when opening
+      demoTrigger.addEventListener("click", () => {
+        populatePopup(caseStudyData);
       });
     </script>
   </body>

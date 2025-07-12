@@ -42,7 +42,7 @@ body {
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  /* font-weight: bold; */
   transition: color 0.3s ease;
 }
 
@@ -83,7 +83,7 @@ body {
 .navbar-menu-btn {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 /* Responsive Styles */
@@ -364,7 +364,7 @@ body {
 }
 
 .header {
-  background-color: #0e1d34;
+  background-color: #00539c;
   color: #fff;
   padding: 60px 0;
   text-align: center;
@@ -386,7 +386,7 @@ body {
 
 .testimonial {
   background: #fff;
-  border-left: 5px solid #0e1d34;
+  border-left: 5px solid #00539c;
   margin-bottom: 30px;
   padding: 25px;
   border-radius: 8px;
@@ -396,7 +396,7 @@ body {
 .testimonial h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #0e1d34;
+  color: #00539c;
 }
 
 .testimonial .content {

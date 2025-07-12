@@ -42,7 +42,7 @@ body {
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  /* font-weight: bold; */
   transition: color 0.3s ease;
 }
 
@@ -83,7 +83,7 @@ body {
 .navbar-menu-btn {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 /* Responsive Styles */
@@ -346,7 +346,7 @@ body {
 
 /* Base Styles */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: #f8fafc;
@@ -414,7 +414,7 @@ body {
 
 .case-filters h2 {
   font-size: 1.5rem;
-  color: #1e293b;
+  color: #00539c;
   margin-bottom: 20px;
 }
 
@@ -457,7 +457,7 @@ body {
   background-color: #fff;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -465,7 +465,7 @@ body {
 
 .case-study-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .case-image {
@@ -479,7 +479,7 @@ body {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   padding: 5px 12px;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -497,7 +497,7 @@ body {
 .case-study-card h2 {
   font-size: 1.4rem;
   margin-bottom: 10px;
-  color: #1e293b;
+  color: #00539c;
 }
 
 .case-excerpt {
@@ -569,14 +569,14 @@ body {
 .testimonial-section h2 {
   text-align: center;
   margin-bottom: 40px;
-  color: #1e293b;
+  color: #00539c;
 }
 
 .testimonial {
   background: white;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   max-width: 800px;
   margin: 0 auto;
 }
@@ -603,7 +603,7 @@ body {
 
 .client-info h4 {
   margin: 0;
-  color: #1e293b;
+  color: #00539c;
 }
 
 .client-info span {
@@ -645,5 +645,147 @@ body {
 
 .cta-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Popup Styles */
+.case-study-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  overflow-y: auto;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popup-content {
+  background: white;
+  margin: 5% auto;
+  padding: 30px;
+  width: 80%;
+  max-width: 900px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+}
+
+.close-popup {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.close-popup:hover {
+  color: #000;
+}
+
+.popup-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.popup-tag {
+  display: inline-block;
+  background: #4a6bff;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.popup-body {
+  display: flex;
+  gap: 30px;
+}
+
+.popup-image {
+  width: 45%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.popup-details {
+  width: 55%;
+}
+
+.popup-meta {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.popup-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #555;
+}
+
+.popup-text {
+  line-height: 1.6;
+  color: #444;
+}
+
+.popup-text h3 {
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.popup-text ul {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.popup-text li {
+  margin-bottom: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .popup-content {
+    width: 90%;
+    margin: 10% auto;
+    padding: 20px;
+  }
+
+  .popup-body {
+    flex-direction: column;
+  }
+
+  .popup-image,
+  .popup-details {
+    width: 100%;
+  }
+
+  .popup-image {
+    height: 200px;
+  }
+
+  .popup-meta {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
