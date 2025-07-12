@@ -349,7 +349,6 @@ body {
   font-size: 1.2rem;
   color: #cbd5e1;
 }
-/* course details style */
 /* Course Section Styles */
 .course-details {
   padding: 60px 0;
@@ -618,3 +617,99 @@ body {
         margin: 0 auto;
     }
 }
+/* Remove default list styling and add custom markers */
+.tab-content#overview ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.tab-content#overview ul li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+}
+
+.tab-content#overview ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #00539c;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* Improved Overview Section Styles */
+/* Remove default list styling and add custom markers */
+.tab-content#overview ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.tab-content#overview ul li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+}
+
+.tab-content#overview ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #00539c;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.tab-content#overview {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+}
+
+.tab-content#overview h3 {
+  color: #00539c;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.tab-content#overview h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #00539c, #4da8da);
+}
+
+.tab-content#overview p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 25px;
+}
+
+.tab-content#overview ul {
+  margin-bottom: 30px;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .tab-content#overview {
+    padding: 25px 20px;
+  }
+  
+  .tab-content#overview h3 {
+    font-size: 1.5rem;
+  }
+  
+  .tab-content#overview p,
+  .tab-content#overview ul li {
+    font-size: 1rem;
+  }
+}
+

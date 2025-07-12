@@ -535,6 +535,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .course-card:hover {
@@ -551,7 +552,7 @@ body {
 .course-card p {
   font-size: 1rem;
   color: #555;
-  margin-bottom: 15px;
+  margin-bottom: 35px;
   line-height: 1.6;
 }
 
@@ -560,8 +561,11 @@ body {
   color: #2563eb;
   font-weight: 600;
   transition: color 0.3s;
+  padding: 5px 10px;
+  border: 2px solid black;
 }
 
 .course-card a:hover {
-  color: #1d4ed8;
+  color: white;
+  background-color: black;
 }
