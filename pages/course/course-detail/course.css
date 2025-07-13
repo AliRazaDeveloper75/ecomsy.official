@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   background-color: #f5f7fa;
 }
 
@@ -334,20 +334,162 @@ body {
 /* Header */
 .main-header {
   background-color: #00539c;
+  background-image: linear-gradient(135deg, #00539c 0%, #003366 100%);
   color: #fff;
-  padding: 60px 0;
+  padding: 120px 0 40px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.main-header h1 { 
-  font-size: 2.8rem;
-  margin-bottom: 10px;
-  margin-top: 50px;
+.main-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
 }
 
-.main-header p {
-  font-size: 1.2rem;
+.course-meta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 40px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.meta-item {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  flex: 1;
+  min-width: 180px;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.meta-item i {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 3px;
+}
+
+.meta-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
   color: #cbd5e1;
+  font-size: 0.9rem;
+}
+
+.meta-value {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.course-price {
+  margin-top: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.course-price span {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.apply-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  color: #00539c;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.apply-btn:hover {
+  background: #f0f0f0;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.apply-btn i {
+  transition: transform 0.3s ease;
+}
+
+.apply-btn:hover i {
+  transform: translateX(3px);
+}
+
+/* Decorative elements */
+.main-header::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+.main-header::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    padding: 70px 0 30px;
+  }
+
+  .main-header h1 {
+    font-size: 1.8rem;
+    padding: 0 15px;
+  }
+
+  .course-meta {
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 15px;
+  }
+
+  .meta-item {
+    min-width: 100%;
+  }
+
+  .course-price span {
+    font-size: 1.8rem;
+  }
 }
 /* Course Section Styles */
 .course-details {
@@ -403,7 +545,7 @@ body {
   background: white;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   text-align: center;
   transition: transform 0.3s ease;
 }
@@ -445,7 +587,7 @@ body {
 }
 
 .tab-btn.active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -1px;
   left: 0;
@@ -468,7 +610,7 @@ body {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .module h4 {
@@ -551,7 +693,7 @@ body {
   .course-highlights {
     flex-direction: column;
   }
-  
+
   .tab-btn {
     padding: 10px 15px;
     font-size: 14px;
@@ -559,63 +701,63 @@ body {
 }
 /* Instructor Profiles */
 .instructor-profile {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 40px;
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .instructor-img img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #00539c;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00539c;
 }
 
 .instructor-info {
-    flex: 1;
+  flex: 1;
 }
 
 .instructor-info h3 {
-    color: #00539c;
-    margin-bottom: 5px;
+  color: #00539c;
+  margin-bottom: 5px;
 }
 
 .instructor-info .title {
-    font-weight: bold;
-    color: #666;
-    margin-bottom: 15px;
-    font-size: 15px;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 15px;
+  font-size: 15px;
 }
 
 /* FAQ Items */
 .faq-item {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .faq-item h3 {
-    color: #00539c;
-    margin-bottom: 10px;
+  color: #00539c;
+  margin-bottom: 10px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .instructor-profile {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .instructor-img {
-        margin: 0 auto;
-    }
+  .instructor-profile {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .instructor-img {
+    margin: 0 auto;
+  }
 }
 /* Remove default list styling and add custom markers */
 .tab-content#overview ul {
@@ -630,7 +772,7 @@ body {
 }
 
 .tab-content#overview ul li::before {
-  content: '✓';
+  content: "✓";
   position: absolute;
   left: 0;
   color: #00539c;
@@ -652,7 +794,7 @@ body {
 }
 
 .tab-content#overview ul li::before {
-  content: '✓';
+  content: "✓";
   position: absolute;
   left: 0;
   color: #00539c;
@@ -676,7 +818,7 @@ body {
 }
 
 .tab-content#overview h3::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -696,20 +838,18 @@ body {
   margin-bottom: 30px;
 }
 
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .tab-content#overview {
     padding: 25px 20px;
   }
-  
+
   .tab-content#overview h3 {
     font-size: 1.5rem;
   }
-  
+
   .tab-content#overview p,
   .tab-content#overview ul li {
     font-size: 1rem;
   }
 }
-
