@@ -352,8 +352,7 @@ body {
 
 /* Form Styles */
 form#consultationForm {
-  max-width: 800px;
-  margin: 80px auto;
+  margin: 40px 60px;
   background: white;
   padding: 40px;
   border-radius: 10px;

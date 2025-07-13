@@ -155,6 +155,64 @@
           <input type="text" required />
         </div>
       </div>
+      <!-- Add these form rows before the submit button -->
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Payment Mode<span>*</span></label>
+          <select required>
+            <option value="">Select Payment Mode</option>
+            <option value="Easy Paisa Online">Easy Paisa Online</option>
+            <option value="Bank Account">Bank Account</option>
+            <option value="On Campus">On Campus</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Training Mode<span>*</span></label>
+          <select required>
+            <option value="">Select Training Mode</option>
+            <option value="Online">Online</option>
+            <option value="On Campus">On Campus</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Identification<span>*</span></label>
+          <select id="idType" required onchange="toggleIdField()">
+            <option value="">Select ID Type</option>
+            <option value="CNIC">CNIC</option>
+            <option value="Passport">Passport</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label id="idNumberLabel">ID Number<span>*</span></label>
+          <input type="text" id="idNumber" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Gender<span>*</span></label>
+          <select required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>How did you hear about us?<span>*</span></label>
+          <select required>
+            <option value="">Select Option</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Friend/Family">Friend/Family</option>
+            <option value="Advertisement">Advertisement</option>
+            <option value="Search Engine">Search Engine</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
 
       <div class="form-row">
         <div class="form-group full-width">
@@ -251,6 +309,8 @@
       </div>
     </div>
     <script>
+      
+      // mobile menu functionaly
       function toggleMenu() {
         const navLinks = document.getElementById("navLinks");
         const hamburgers = document.querySelectorAll(".hamburger");
@@ -284,8 +344,7 @@
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
       }
-    </script>
-    <script>
+    // course name with price functionality 
       const prices = {
         "Amazon FBA Wholesale": "PKR 35,000",
         "Shopify Local & International E-Commerce": "PKR 30,000",
@@ -323,6 +382,19 @@ Note: If you do not find the email in your inbox, check your spam or junk folder
         window.location.href = `success.html?message=${encodeURIComponent(
           message
         )}`;
+      }
+
+      function toggleIdField() {
+        const idType = document.getElementById("idType").value;
+        const label = document.getElementById("idNumberLabel");
+
+        if (idType === "CNIC") {
+          label.textContent = "CNIC Number*";
+        } else if (idType === "Passport") {
+          label.textContent = "Passport Number*";
+        } else {
+          label.textContent = "ID Number*";
+        }
       }
     </script>
   </body>
