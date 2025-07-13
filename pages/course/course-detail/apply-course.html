@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon FBA Wholesale Course | Ecomsy</title>
+    <link rel="stylesheet" href="apply-course.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="icon" type="assets/fav.ico" href="../../../assets/fav.ico" />
+  </head>
+  <body>
+    <!--navbar-->
+    <header class="navbar">
+      <div class="logo">
+        <a href="../../../index.html">
+          <img src="../../../assets/ecomsy.png" alt="Ecomsy Logo" />
+        </a>
+      </div>
+
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="nav-links" id="navLinks">
+        <div class="menu-for-phone">
+          <div class="logo">
+            <a href="../../../index.html">
+              <img src="../../../assets/ecomsy.png" alt="Ecomsy Logo" />
+            </a>
+          </div>
+
+          <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="navbar-menu-btn">
+          <a href="../../../pages/service/service.html">Services</a>
+          <a href="../../../pages/course/course.html">Courses</a>
+          <a href="../../../pages/our-work/our-work.html">Our Work</a>
+          <a href="../../../pages/case-study/case-study.html">Case Studies</a>
+          <a href="../../../pages/about/about.html">About</a>
+          <a href="../../../pages/testimonial/testimonial.html">Testimonials</a>
+          <a href="../../../pages/contact/contact.html">Contacts</a>
+          <a href="../../../pages/invoice/invoice.html">Invoice</a>
+          <a href="../../../pages/invoice/invoice.html">
+            <button class="get-touch-btn">GET IN TOUCH</button>
+          </a>
+          <div class="navbar-menu-btn-text">
+            <p>
+              <strong>United Kingdom: </strong>Freeland Park, Wareham Road,
+              Poole, Dorset BH16 6FA, United Kingdom
+              <br />
+              <br />
+              <strong>Pakistan: </strong>Khan Plaza, Kamra Road, Attock 43600,
+              Pakistan
+            </p>
+          </div>
+          <div class="navbar-menu-btn-text">
+            <p>
+              <strong>Whatsapp: </strong>+44 7743 140847‬<br />
+              <strong>Whatsapp: </strong>+92 349 5573280‬
+              <br />
+              <br />
+              <strong>Info: </strong> info@ecomsy.co.uk<br />
+              <strong>CEO: </strong> ceo@ecomsy.co.uk<br />
+              <strong>Sales: </strong> sales@ecomsy.co.uk<br />
+            </p>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!--main section-->
+    <header class="main-header">
+      <div class="container">
+        <h1>Ready to Talk With Us</h1>
+        <p>Grow your skills with our expert-designed programs</p>
+      </div>
+    </header>
+
+    <form id="consultationForm" onsubmit="submitForm(event)">
+      <h2>Kindly Fill Form To Book Consultation</h2>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label>Enrollment For Training<span>*</span></label>
+          <select id="courseSelect" required onchange="updatePrice()">
+            <option value="">Select Course</option>
+            <option value="Amazon FBA Wholesale">Amazon FBA Wholesale</option>
+            <option value="Shopify Local & International E-Commerce">
+              Shopify Local & International E-Commerce
+            </option>
+            <option value="Amazon Private Label">Amazon Private Label</option>
+            <option value="Full Stack Web Development">
+              Full Stack Web Development
+            </option>
+            <option value="Facebook Ads Course">Facebook Ads Course</option>
+            <option value="TikTok Ads Course">TikTok Ads Course</option>
+            <option value="Google Ads Course">Google Ads Course</option>
+            <option value="Graphic Designing">Graphic Designing</option>
+            <option value="Freelancing">Freelancing</option>
+            <option value="Business Seminars, Live Q&A & Certifications">
+              Business Seminars, Live Q&A & Certifications
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label>Course Price</label>
+          <input
+            type="text"
+            id="coursePrice"
+            readonly
+            placeholder="Price will appear here"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Name<span>*</span></label>
+          <input type="text" required />
+        </div>
+        <div class="form-group">
+          <label>Father Name<span>*</span></label>
+          <input type="text" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email Address<span>*</span></label>
+          <input type="email" required />
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Number<span>*</span></label>
+          <input type="text" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>City<span>*</span></label>
+          <input type="text" required />
+        </div>
+        <div class="form-group">
+          <label>Country<span>*</span></label>
+          <input type="text" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label>Address<span>*</span></label>
+          <textarea required></textarea>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+    <!--footer section-->
+    <footer class="footer">
+      <!-- Services -->
+      <div class="footer-section">
+        <div class="footer-heading-line">
+          <h3>Services</h3>
+        </div>
+
+        <div class="left-space-footer">
+          <div class="left-width" style="width: 11%; color: #000">width</div>
+
+          <div class="footer-section-content">
+            <div class="footer-content">
+              <p>UI/UX Design</p>
+              <p>Software Development</p>
+              <p>Shopify Store Design & Development</p>
+              <p>WordPress + WooCommerce Development</p>
+              <p>Custom-Coded Websites (HTML, CSS, JavaScript, PHP, etc.)</p>
+            </div>
+            <div class="footer-content">
+              <p>Branding & Creative Design</p>
+              <p>Business Website Development</p>
+              <p>Android & iOS App Development</p>
+              <p>Technical Support & Integrations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Social Media -->
+      <div class="footer-section">
+        <div class="footer-heading-line">
+          <h3>Social Media</h3>
+        </div>
+        <div class="left-space-footer">
+          <div class="left-width" style="width: 11%; color: #000">width</div>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-section">
+        <div class="footer-heading-line">
+          <h3>Company</h3>
+        </div>
+        <div class="left-space-footer">
+          <div class="left-width" style="width: 11%; color: #000">width</div>
+          <div class="footer-section-content">
+            <div class="footer-content">
+              <p>Home</p>
+              <p>Courses</p>
+              <p>Services</p>
+              <p>Our Work</p>
+              <p>Get In Touch</p>
+              <p style="color: #000">
+                Custom-Coded Websites (HTML, CSS, JavaScript, PHP, etc.)
+              </p>
+            </div>
+            <div class="footer-content">
+              <p>About</p>
+              <p>Invoice</p>
+              <p>Contacts</p>
+              <p>Testimonials</p>
+              <p>Case Studies</p>
+            </div>
+            <div class="footer-content">
+              <img src="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="footer-divider"></div>
+    <div class="copy-right-section">
+      <div>
+        © Copyright 2024-2025 ECOMSY (SMC-PRIVATE) LIMITED. All rights reserved.
+      </div>
+    </div>
+    <script>
+      function toggleMenu() {
+        const navLinks = document.getElementById("navLinks");
+        const hamburgers = document.querySelectorAll(".hamburger");
+
+        navLinks.classList.toggle("active");
+
+        hamburgers.forEach((hamburger) => {
+          hamburger.classList.toggle("active");
+        });
+      }
+
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
+      });
+
+      function openTab(evt, tabName) {
+        // Hide all tab content
+        const tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) {
+          tabContents[i].classList.remove("active");
+        }
+
+        // Remove active class from all buttons
+        const tabButtons = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < tabButtons.length; i++) {
+          tabButtons[i].classList.remove("active");
+        }
+
+        // Show the current tab and add active class to the button
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+      }
+    </script>
+    <script>
+      const prices = {
+        "Amazon FBA Wholesale": "PKR 35,000",
+        "Shopify Local & International E-Commerce": "PKR 30,000",
+        "Amazon Private Label": "PKR 40,000",
+        "Full Stack Web Development": "PKR 50,000",
+        "Facebook Ads Course": "PKR 20,000",
+        "TikTok Ads Course": "PKR 18,000",
+        "Google Ads Course": "PKR 25,000",
+        "Graphic Designing": "PKR 28,000",
+        Freelancing: "PKR 15,000",
+        "Business Seminars, Live Q&A & Certifications": "PKR 10,000",
+      };
+
+      function updatePrice() {
+        const course = document.getElementById("courseSelect").value;
+        document.getElementById("coursePrice").value = prices[course] || "";
+      }
+
+      function submitForm(event) {
+        event.preventDefault();
+        const course = document.getElementById("courseSelect").value;
+        const regNumber = "O2OSA-07-25-119258";
+
+        const message = `
+Thank you for signing up on ${course}
+(15 to 20 Mins)
+
+Your Registration Number is:
+${regNumber}
+
+Bank Account Details has been sent to your registered email address. Please upload your Payment Proof. You will get a confirmation email within 1 working day after submitting payment proof.
+
+Note: If you do not find the email in your inbox, check your spam or junk folder or raise the concern through Support.
+`;
+        window.location.href = `success.html?message=${encodeURIComponent(
+          message
+        )}`;
+      }
+    </script>
+  </body>
+</html>
