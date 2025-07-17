@@ -355,6 +355,82 @@ h3::after {
   border-color: var(--success);
 }
 
+/* ============ PROGRESS BAR - RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .progress-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin: 1.5rem 0 2rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .progress-bar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 3px;
+    height: 100%;
+    transform: none;
+    background-color: #f0f0f0;
+  }
+
+  .progress-step {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: auto;
+  }
+
+  .progress-step::before {
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .progress-step::after {
+    text-align: left;
+    text-transform: none;
+    font-size: 0.95rem;
+    padding-top: 2px;
+  }
+
+  /* Active and completed states */
+  .progress-step.active::before,
+  .progress-step.completed::before {
+    transform: scale(1.1);
+  }
+
+  /* Line between steps */
+  .progress-step:not(:last-child)::after {
+    position: relative;
+  }
+
+  /* Hide the default number for completed steps on mobile */
+  .progress-step.completed::before {
+    content: "✓";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* For very small screens (below 400px) */
+@media (max-width: 400px) {
+  .progress-step::after {
+    font-size: 0.85rem;
+  }
+  
+  .progress-step::before {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+}
+
 /* ============ FORM STYLES ============ */
 .form-group {
   margin-bottom: 1.75rem;
@@ -439,8 +515,16 @@ h3::after {
 .service-card.selected label {
   color: var(--primary);
 }
-
-
+.service-card {
+  border: 1px solid #e0e0e0;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--white);
+}
 
 .service-card:hover {
   border-color: var(--primary);
