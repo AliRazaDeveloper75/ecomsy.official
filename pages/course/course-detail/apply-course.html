@@ -309,7 +309,6 @@
       </div>
     </div>
     <script>
-      
       // mobile menu functionaly
       function toggleMenu() {
         const navLinks = document.getElementById("navLinks");
@@ -344,7 +343,101 @@
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
       }
-    // course name with price functionality 
+
+
+      // form-handler.js
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('consultationForm');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                course: document.getElementById('courseSelect').value,
+                coursePrice: document.getElementById('coursePrice').value,
+                name: form.querySelector('input[type="text"]').value,
+                fatherName: form.querySelectorAll('input[type="text"]')[1].value,
+                email: form.querySelector('input[type="email"]').value,
+                whatsapp: form.querySelectorAll('input[type="text"]')[2].value,
+                city: form.querySelectorAll('input[type="text"]')[3].value,
+                country: form.querySelectorAll('input[type="text"]')[4].value,
+                paymentMode: form.querySelectorAll('select')[1].value,
+                trainingMode: form.querySelectorAll('select')[2].value,
+                idType: document.getElementById('idType').value,
+                idNumber: document.getElementById('idNumber').value,
+                gender: form.querySelectorAll('select')[3].value,
+                referralSource: form.querySelectorAll('select')[4].value,
+                address: form.querySelector('textarea').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Generate registration number
+            const regNumber = generateRegistrationNumber();
+            formData.registrationNumber = regNumber;
+            
+            // Store data in localStorage
+            localStorage.setItem('courseRegistrationData', JSON.stringify(formData));
+            
+            // Redirect to payment page
+            window.location.href = 'payment.html';
+        });
+    }
+    
+    function generateRegistrationNumber() {
+        const date = new Date();
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear().toString().substr(-2);
+        const randomNum = Math.floor(100000 + Math.random() * 900000);
+        return `EC${day}${month}${year}-${randomNum}`;
+    }
+    
+    // Update price when course selection changes
+    const courseSelect = document.getElementById('courseSelect');
+    if (courseSelect) {
+        courseSelect.addEventListener('change', updatePrice);
+    }
+    
+    // Toggle ID field label
+    const idType = document.getElementById('idType');
+    if (idType) {
+        idType.addEventListener('change', toggleIdField);
+    }
+});
+
+function updatePrice() {
+    const prices = {
+        "Amazon FBA Wholesale": "PKR 35,000",
+        "Shopify Local & International E-Commerce": "PKR 30,000",
+        "Amazon Private Label": "PKR 40,000",
+        "Full Stack Web Development": "PKR 50,000",
+        "Facebook Ads Course": "PKR 20,000",
+        "TikTok Ads Course": "PKR 18,000",
+        "Google Ads Course": "PKR 25,000",
+        "Graphic Designing": "PKR 28,000",
+        "Freelancing": "PKR 15,000",
+        "Business Seminars, Live Q&A & Certifications": "PKR 10,000",
+    };
+    
+    const course = document.getElementById('courseSelect').value;
+    document.getElementById('coursePrice').value = prices[course] || "";
+}
+
+function toggleIdField() {
+    const idType = document.getElementById('idType').value;
+    const label = document.getElementById('idNumberLabel');
+    
+    if (idType === "CNIC") {
+        label.textContent = "CNIC Number*";
+    } else if (idType === "Passport") {
+        label.textContent = "Passport Number*";
+    } else {
+        label.textContent = "ID Number*";
+    }
+}
+      // course name with price functionality
       const prices = {
         "Amazon FBA Wholesale": "PKR 35,000",
         "Shopify Local & International E-Commerce": "PKR 30,000",
