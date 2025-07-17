@@ -88,11 +88,61 @@ function setupEventListeners() {
     });
 
   // Service selection change handler
-  document.querySelectorAll('input[name="services"]').forEach((checkbox) => {
-    checkbox.addEventListener("change", function () {
-      updateBudgetField();
+ // Modify the service selection event listeners
+document.querySelectorAll('input[name="services"]').forEach((radio) => {
+  radio.addEventListener("change", function() {
+    // Remove selected class from all cards
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.classList.remove('selected');
     });
+    
+    // Add selected class to the clicked card
+    if (this.checked) {
+      this.closest('.service-card').classList.add('selected');
+    }
+    
+    updateBudgetField();
   });
+});
+
+// Update the updateBudgetField function to handle radio buttons
+function updateBudgetField() {
+  const serviceTier = document.getElementById("serviceTier").value;
+  const pricingType = document.getElementById("pricingType").value;
+  const selectedService = document.querySelector('input[name="services"]:checked');
+  const budgetInput = document.getElementById("budget");
+  const budgetHelp = document.getElementById("budgetHelp");
+
+  if (pricingType === "Custom") {
+    // Custom pricing - don't auto-calculate
+    budgetInput.value = document.getElementById("customBudget").value || "";
+    budgetInput.readOnly = true;
+    return;
+  }
+
+  if (!selectedService) {
+    budgetInput.value = "";
+    budgetInput.readOnly = true;
+    budgetHelp.textContent = "Please select a service";
+    return;
+  }
+
+  if (!serviceTier) {
+    budgetInput.value = "";
+    budgetInput.readOnly = true;
+    budgetHelp.textContent = "Please select a service tier";
+    return;
+  }
+
+  // Get the price for the selected service and tier
+  const serviceName = selectedService.value;
+  const price = servicePricing[serviceTier][serviceName] || 0;
+  
+  budgetInput.value = price;
+  budgetInput.readOnly = true;
+  budgetHelp.textContent = `Budget calculated based on ${serviceTier} tier pricing`;
+  calculateInvoiceTotal();
+}
 
   // Custom budget input change handler
   document
@@ -238,46 +288,7 @@ function saveStepData(step) {
   }
 }
 
-function updateBudgetField() {
-  const serviceTier = document.getElementById("serviceTier").value;
-  const pricingType = document.getElementById("pricingType").value;
-  const selectedServices = Array.from(
-    document.querySelectorAll('input[name="services"]:checked')
-  ).map((el) => el.value);
-  const budgetInput = document.getElementById("budget");
-  const budgetHelp = document.getElementById("budgetHelp");
 
-  if (pricingType === "Custom") {
-    // Custom pricing - don't auto-calculate
-    budgetInput.value = document.getElementById("customBudget").value || "";
-    budgetInput.readOnly = true;
-    return;
-  }
-
-  if (selectedServices.length === 0) {
-    budgetInput.value = "";
-    budgetInput.readOnly = true;
-    budgetHelp.textContent = "Please select at least one service";
-    return;
-  }
-
-  if (!serviceTier) {
-    budgetInput.value = "";
-    budgetInput.readOnly = true;
-    budgetHelp.textContent = "Please select a service tier";
-    return;
-  }
-
-  // Calculate sum of prices for selected services and tier
-  let total = 0;
-  selectedServices.forEach((service) => {
-    total += servicePricing[serviceTier][service] || 0;
-  });
-  budgetInput.value = total;
-  budgetInput.readOnly = true;
-  budgetHelp.textContent = `Budget calculated based on ${serviceTier} tier pricing`;
-  calculateInvoiceTotal();
-}
 
 function updateReviewSections() {
   // User Info

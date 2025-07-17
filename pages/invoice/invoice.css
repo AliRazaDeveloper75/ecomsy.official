@@ -414,6 +414,7 @@ h3::after {
   margin: 2rem 0;
 }
 
+/* Update the service card styles */
 .service-card {
   border: 1px solid #e0e0e0;
   border-radius: var(--border-radius);
@@ -424,6 +425,22 @@ h3::after {
   overflow: hidden;
   background-color: var(--white);
 }
+
+.service-card.selected {
+  border: 2px solid var(--primary);
+  background-color: rgba(67, 97, 238, 0.05);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+.service-card input[type="radio"]:checked + label {
+  color: var(--primary);
+}
+
+.service-card.selected label {
+  color: var(--primary);
+}
+
+
 
 .service-card:hover {
   border-color: var(--primary);
