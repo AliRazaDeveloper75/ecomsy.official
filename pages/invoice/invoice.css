@@ -594,8 +594,8 @@ h3::after {
 
 .btn-next,
 .btn-generate {
-  background-color: var(--primary);
-  color: var(--white);
+  background-color: white;
+  color: var(--dark);
   border: 2px solid black;
   border-radius: 0px;
   padding: 10px 30px;
@@ -643,6 +643,7 @@ h3::after {
 .btn-generate:hover {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
+  color: white;
   box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
 }
 
