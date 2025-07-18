@@ -252,8 +252,8 @@ function saveStepData(step) {
         email: document.getElementById("email").value,
         phone: document.getElementById("phone").value,
         address: document.getElementById("address").value,
-        state: document.getElementById("state").value,
-        postalCode: document.getElementById("postalCode").value,
+        // state: document.getElementById("state").value,
+        // postalCode: document.getElementById("postalCode").value,
       };
       break;
 

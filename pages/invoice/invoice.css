@@ -31,7 +31,12 @@ body {
 }
 
 /* ============ TYPOGRAPHY ============ */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -50,7 +55,7 @@ h3 {
   padding-bottom: 0.5rem;
 }
 
-h3::after {
+/* h3::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -58,7 +63,7 @@ h3::after {
   width: 50px;
   height: 3px;
   background: linear-gradient(90deg, var(--primary), var(--success));
-}
+} */
 
 /* ============ HEADER & NAVIGATION ============ */
 /* Navbar */
@@ -256,7 +261,7 @@ h3::after {
   background-clip: text;
   color: white;
 }
-.about-us-container p{
+.about-us-container p {
   color: white;
   margin: 0;
   font-size: 16px;
@@ -327,6 +332,7 @@ h3::after {
 }
 
 .progress-step::after {
+  display: none;
   content: attr(data-step);
   font-size: 0.85rem;
   color: var(--gray);
@@ -362,12 +368,12 @@ h3::after {
     align-items: flex-start;
     gap: 1.5rem;
     margin: 1.5rem 0 2rem;
-    
+
     position: relative;
   }
 
   .progress-bar::before {
-   display: none;
+    display: none;
   }
 
   .progress-step {
@@ -415,7 +421,7 @@ h3::after {
   .progress-step::after {
     font-size: 0.85rem;
   }
-  
+
   .progress-step::before {
     width: 32px;
     height: 32px;
@@ -584,23 +590,24 @@ h3::after {
 .btn-prev {
   background-color: #f8f9fa;
   color: var(--dark);
-  border: 2px solid #e0e0e0;
   border: 2px solid black;
-  border-radius: 0px;
-  padding: 10px 30px;
+  padding: 12px 30px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
   font-size: 18px;
   cursor: pointer;
 }
 
 .btn-next,
 .btn-generate {
-  background-color: white;
   color: var(--dark);
   border: 2px solid black;
-  border-radius: 0px;
-  padding: 10px 30px;
   font-size: 18px;
   cursor: pointer;
+  background: transparent;
+  padding: 12px 30px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
 }
 
 .btn-pay,
@@ -608,19 +615,23 @@ h3::after {
   background-color: var(--success);
   color: var(--white);
   border: 2px solid black;
-  border-radius: 0px;
-  padding: 10px 30px;
+  
+  
   font-size: 18px;
   cursor: pointer;
+  padding: 12px 30px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
 }
 
 .btn-print {
   background-color: var(--info);
   color: var(--white);
   border: 2px solid black;
-  border-radius: 0px;
-  padding: 10px 30px;
   font-size: 18px;
+  padding: 12px 30px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
@@ -628,10 +639,12 @@ h3::after {
   background-color: var(--secondary);
   color: var(--white);
   border: 2px solid black;
-  border-radius: 0px;
-  padding: 10px 30px;
+  padding: 12px 30px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
   font-size: 18px;
   cursor: pointer;
+
 }
 
 .btn-prev:hover {
@@ -848,11 +861,13 @@ h3::after {
   margin-bottom: 3rem;
 }
 
-.invoice-from, .invoice-to {
+.invoice-from,
+.invoice-to {
   line-height: 1.7;
 }
 
-.invoice-from h4, .invoice-to h4 {
+.invoice-from h4,
+.invoice-to h4 {
   color: var(--primary);
   margin-bottom: 1rem;
   font-size: 1.1rem;
@@ -947,11 +962,21 @@ h3::after {
 }
 
 @keyframes text-blink {
-  0% { color: var(--dark); }
-  25% { color: var(--primary); }
-  50% { color: var(--success); }
-  75% { color: var(--warning); }
-  100% { color: var(--danger); }
+  0% {
+    color: var(--dark);
+  }
+  25% {
+    color: var(--primary);
+  }
+  50% {
+    color: var(--success);
+  }
+  75% {
+    color: var(--warning);
+  }
+  100% {
+    color: var(--danger);
+  }
 }
 
 /* ============ FOOTER ============ */
@@ -1116,15 +1141,31 @@ h3::after {
   text-align: center;
 }
 
-.mt-1 { margin-top: 0.5rem; }
-.mt-2 { margin-top: 1rem; }
-.mt-3 { margin-top: 1.5rem; }
-.mt-4 { margin-top: 2rem; }
+.mt-1 {
+  margin-top: 0.5rem;
+}
+.mt-2 {
+  margin-top: 1rem;
+}
+.mt-3 {
+  margin-top: 1.5rem;
+}
+.mt-4 {
+  margin-top: 2rem;
+}
 
-.mb-1 { margin-bottom: 0.5rem; }
-.mb-2 { margin-bottom: 1rem; }
-.mb-3 { margin-bottom: 1.5rem; }
-.mb-4 { margin-bottom: 2rem; }
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 1rem;
+}
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+.mb-4 {
+  margin-bottom: 2rem;
+}
 
 /* ============ ANIMATIONS ============ */
 @keyframes fadeIn {
@@ -1143,9 +1184,15 @@ h3::after {
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .floating {
