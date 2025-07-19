@@ -1392,3 +1392,15 @@ body {
 }
 
 
+
+
+
+.footer-heading-line h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background:white;
+}
