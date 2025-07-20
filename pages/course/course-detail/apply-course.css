@@ -454,4 +454,11 @@ form#consultationForm button[type="submit"]:hover {
     padding: 25px;
     margin: 60px 20px;
   }
+  /* term-&-condition */
+.term-and-condition{
+  font-size: 10px;
 }
+}
+
+
+

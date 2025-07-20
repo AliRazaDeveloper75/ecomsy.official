@@ -191,7 +191,7 @@ h3 {
 
   .nav-links.active .navbar-menu-btn {
     gap: 18px;
-font-size: 24px;
+    font-size: 24px;
     padding-right: 12px;
     padding-top: 6rem;
     flex-direction: column;
@@ -490,37 +490,14 @@ font-size: 24px;
 }
 
 /* Update the service card styles */
+/* Improved Service Card Selection UI */
 .service-card {
+  position: relative;
   border: 1px solid #e0e0e0;
   border-radius: var(--border-radius);
   padding: 1.5rem;
   transition: var(--transition);
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  background-color: var(--white);
-}
-
-.service-card.selected {
-  border: 2px solid var(--primary);
-  background-color: rgba(67, 97, 238, 0.05);
-  box-shadow: 0 0 0 1px var(--primary);
-}
-
-.service-card input[type="radio"]:checked + label {
-  color: var(--primary);
-}
-
-.service-card.selected label {
-  color: var(--primary);
-}
-.service-card {
-  border: 1px solid #e0e0e0;
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  transition: var(--transition);
-  cursor: pointer;
-  position: relative;
   overflow: hidden;
   background-color: var(--white);
 }
@@ -531,44 +508,63 @@ font-size: 24px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.service-card input[type="checkbox"] {
+.service-card input[type="radio"] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.service-card label {
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  font-weight: 500;
-  color: #333;
-  margin-bottom: 0.75rem;
+/* Custom radio button */
+.service-card label::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  background-color: white;
+  transition: var(--transition);
 }
 
-.service-card .service-prices {
-  font-size: 0.85rem;
-  color: var(--gray);
-  line-height: 1.6;
-}
-
-.service-card .service-prices span {
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.service-card input[type="checkbox"]:checked + label {
-  color: var(--primary);
-}
-
-.service-card input[type="checkbox"]:checked ~ .service-card {
+.service-card.selected label::before,
+.service-card input[type="radio"]:checked + label::before {
   border-color: var(--primary);
-  background-color: rgba(67, 97, 238, 0.03);
+  background-color: var(--primary);
+  box-shadow: inset 0 0 0 3px white;
 }
 
-.service-card input[type="checkbox"]:checked {
+.service-card.selected {
   border: 2px solid var(--primary);
+  background-color: rgba(67, 97, 238, 0.05);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+.service-card.selected label {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Add checkmark animation */
+.service-card.selected::after {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 10px;
+  height: 5px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(-45deg);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.service-card.selected::after {
+  opacity: 1;
+  transform: translateY(0) rotate(-45deg);
 }
 
 /* ============ BUTTONS ============ */
@@ -616,8 +612,7 @@ font-size: 24px;
   background-color: var(--success);
   color: var(--white);
   border: 2px solid black;
-  
-  
+
   font-size: 18px;
   cursor: pointer;
   padding: 12px 30px;
@@ -645,7 +640,6 @@ font-size: 24px;
   transition: all 0.3s ease;
   font-size: 18px;
   cursor: pointer;
-
 }
 
 .btn-prev:hover {
