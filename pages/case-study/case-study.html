@@ -135,7 +135,7 @@
             <span><i class="fas fa-dollar-sign"></i> $25k budget</span>
           </div>
 
-          <a href="https://dehleze.com/" target='blank'>
+          <a href="#" class="read-case-study" data-case="dehleze">
             <button class="read-more-btn">Read Full Case Study</button>
           </a>
         </div>
@@ -159,7 +159,7 @@
             <span><i class="fas fa-calendar-alt"></i> 4 months project</span>
             <span><i class="fas fa-dollar-sign"></i> $42k budget</span>
           </div>
-          <a href="https://www.urbanspacerealtors.com/" target='blank'>
+          <a href="#" class="read-case-study" data-case="urbanspace">
             <button class="read-more-btn">Read Full Case Study</button>
           </a>
         </div>
@@ -184,7 +184,7 @@
             <span><i class="fas fa-calendar-alt"></i> 8 months project</span>
             <span><i class="fas fa-dollar-sign"></i> $68k budget</span>
           </div>
-          <a href="https://pangea.app/" target='blank'>
+          <a href="#" class="read-case-study" data-case="freelancerpro">
             <button class="read-more-btn">Read Full Case Study</button>
           </a>
         </div>
@@ -209,7 +209,7 @@
             <span><i class="fas fa-calendar-alt"></i> 9 months project</span>
             <span><i class="fas fa-dollar-sign"></i> $120k budget</span>
           </div>
-          <a href="https://www.medaire.com/" target='blank'>
+          <a href="#" class="read-case-study" data-case="meditrack">
             <button class="read-more-btn">Read Full Case Study</button>
           </a>
         </div>
@@ -234,7 +234,7 @@
             <span><i class="fas fa-calendar-alt"></i> 5 months project</span>
             <span><i class="fas fa-dollar-sign"></i> $55k budget</span>
           </div>
-          <a href="https://gourmetfoods.pk/guest" target='blank'>
+          <a href="#" class="read-case-study" data-case="gourmet">
             <button class="read-more-btn">Read Full Case Study</button>
           </a>
         </div>
@@ -258,7 +258,9 @@
             <span><i class="fas fa-calendar-alt"></i> 5 months project</span>
             <span><i class="fas fa-dollar-sign"></i> $55k budget</span>
           </div>
-          <a href="https://www.atlassian.com/" target='blank'>
+          
+
+          <a href="#" class="read-case-study" data-case="itteck">
             <button class="read-more-btn">Read Full Case Study</button>
           </a>
         </div>
@@ -427,139 +429,7 @@
         </div>
       </div>
     </div>
-    <script>
-      function toggleMenu() {
-        const navLinks = document.getElementById("navLinks");
-        const hamburgers = document.querySelectorAll(".hamburger");
-
-        navLinks.classList.toggle("active");
-
-        hamburgers.forEach((hamburger) => {
-          hamburger.classList.toggle("active");
-        });
-      }
-      window.addEventListener("scroll", () => {
-        const navbar = document.querySelector(".navbar");
-        navbar.classList.toggle("scrolled", window.scrollY > 50);
-      });
-
-      // Add this script to your case-study.js or in a script tag
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const filterButtons = document.querySelectorAll(".filter-btn");
-        const caseStudyCards = document.querySelectorAll(".case-study-card");
-
-        filterButtons.forEach((button) => {
-          button.addEventListener("click", () => {
-            // Remove active class from all buttons
-            filterButtons.forEach((btn) => btn.classList.remove("active"));
-            // Add active class to clicked button
-            button.classList.add("active");
-
-            const filterValue = button.getAttribute("data-filter");
-
-            caseStudyCards.forEach((card) => {
-              if (
-                filterValue === "all" ||
-                card.getAttribute("data-category") === filterValue
-              ) {
-                card.style.display = "flex"; // or whatever display value you're using
-              } else {
-                card.style.display = "none";
-              }
-            });
-          });
-        });
-      });
-
-      // Get DOM elements Popup display
-      const popup = document.getElementById("caseStudyPopup");
-      const closePopup = document.querySelector(".close-popup");
-      const demoTrigger = document.getElementById("demoTrigger");
-
-      // Open popup function
-      function openPopup() {
-        popup.style.display = "block";
-        document.body.style.overflow = "hidden";
-      }
-
-      // Close popup function
-      function closePopupFunc() {
-        popup.style.display = "none";
-        document.body.style.overflow = "auto";
-      }
-
-      // Event listeners
-      demoTrigger.addEventListener("click", openPopup);
-      closePopup.addEventListener("click", closePopupFunc);
-
-      // Close when clicking outside content
-      window.addEventListener("click", (e) => {
-        if (e.target === popup) {
-          closePopupFunc();
-        }
-      });
-
-      // Close with ESC key
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && popup.style.display === "block") {
-          closePopupFunc();
-        }
-      });
-
-      // Sample data for dynamic content (in a real app, this would come from your data source)
-      const caseStudyData = {
-        title: "Dehleze Clothing - E-Commerce Launch",
-        tag: "E-Commerce",
-        image:
-          "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-        duration: "6 months project",
-        budget: "$25k budget",
-        content: `
-                <h3>Challenge</h3>
-                <p>Dehleze Clothing, a boutique fashion retailer with two physical stores, struggled to expand beyond their local market. Their existing website was outdated, not mobile-friendly, and lacked e-commerce functionality. They needed a complete digital transformation to compete in the online fashion space.</p>
-                
-                <h3>Solution</h3>
-                <p>We developed a custom e-commerce platform with:</p>
-                <ul>
-                    <li>Fully responsive design optimized for all devices</li>
-                    <li>Integrated inventory management system synced with their POS</li>
-                    <li>Custom checkout flow with multiple payment options</li>
-                    <li>Advanced product filtering and recommendation engine</li>
-                    <li>SEO optimization that increased organic traffic by 180%</li>
-                    <li>Content management system for easy updates</li>
-                </ul>
-                
-                <h3>Results</h3>
-                <ul>
-                    <li>300% increase in online sales within first 3 months</li>
-                    <li>Expanded to serve customers in 5 new states</li>
-                    <li>Reduced cart abandonment rate from 68% to 23%</li>
-                    <li>40% of total revenue now comes from online channels</li>
-                    <li>Recipient of "Best Emerging E-Commerce Site" award</li>
-                </ul>
-                
-                <h3>Client Testimonial</h3>
-                <p><em>"Ecomsy transformed our business. What was once a local boutique is now a nationally recognized brand. Their team understood our vision and delivered beyond our expectations. The new platform has been instrumental in our growth, especially during the pandemic when physical stores were closed."</em> - Sarah Johnson, CEO of Dehleze Clothing</p>
-            `,
-      };
-
-      // In a real implementation, you would use this data to populate the popup dynamically
-      function populatePopup(data) {
-        document.getElementById("popupTitle").textContent = data.title;
-        document.getElementById("popupTag").textContent = data.tag;
-        document.getElementById(
-          "popupImage"
-        ).style.backgroundImage = `url(${data.image})`;
-        document.getElementById("popupDuration").textContent = data.duration;
-        document.getElementById("popupBudget").textContent = data.budget;
-        document.getElementById("popupContent").innerHTML = data.content;
-      }
-
-      // For demo purposes, populate with our sample data when opening
-      demoTrigger.addEventListener("click", () => {
-        populatePopup(caseStudyData);
-      });
+    <script src='case-study.js'> 
     </script>
   </body>
 </html>
