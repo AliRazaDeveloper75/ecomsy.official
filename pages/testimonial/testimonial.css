@@ -125,6 +125,8 @@ body {
     display: flex;
     margin-bottom: 5px;
     width: 100%;
+        font-size: 20px;
+    color: white;
   }
 
   .nav-links.active .navbar-menu-btn-text p {
