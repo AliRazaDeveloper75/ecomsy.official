@@ -125,7 +125,7 @@ body {
     display: flex;
     margin-bottom: 5px;
     width: 100%;
-        font-size: 20px;
+    font-size: 10px;
     color: white;
   }
 
@@ -135,7 +135,7 @@ body {
 
   .nav-links.active .navbar-menu-btn {
     gap: 18px;
-font-size: 24px;
+    font-size: 24px;
     padding-right: 12px;
     padding-top: 6rem;
     flex-direction: column;
@@ -338,7 +338,7 @@ font-size: 24px;
     margin: 0;
   }
   .footer-heading-line::after {
-display: none;
+    display: none;
   }
 }
 
@@ -350,7 +350,7 @@ display: none;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5f7fa;
   color: #333;
   line-height: 1.7;
