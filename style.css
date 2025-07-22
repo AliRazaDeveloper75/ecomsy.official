@@ -1096,10 +1096,7 @@ h2 {
   margin: 0;
 }
 .footer-heading-line::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background-color: #444;
+  display: none;
 }
 }
 .navbar-menu-btn-text {
