@@ -336,10 +336,7 @@ font-size: 24px;
     margin: 0;
   }
   .footer-heading-line::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background-color: #444;
+display: none;
   }
 }
 
