@@ -1094,7 +1094,6 @@ h3 {
     gap: 10px;
     display: flex;
     flex-direction: column;
-    padding: 0px 20px;
   }
   .left-width {
     display: none;
@@ -1102,6 +1101,7 @@ h3 {
   .copy-right-section {
     padding: 20px 20px;
     flex-direction: column;
+    text-align: center;
   }
   .social-icons {
     display: flex;
