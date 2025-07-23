@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 // Case study data for all projects
 const caseStudiesData = {
   dehleze: {
@@ -117,7 +116,7 @@ const caseStudiesData = {
     title: "FreelancerPro Portfolio System",
     tag: "SaaS",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      "https://plus.unsplash.com/premium_photo-1683543124672-6cbc571d1f31?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     duration: "8 months project",
     budget: "$68k budget",
     content: `
@@ -245,8 +244,193 @@ const caseStudiesData = {
       <p><em>"Our new platform has become a competitive differentiator. Clients appreciate the transparency into our services and capabilities. Ecomsy delivered a solution that perfectly balances technical depth with user-friendly design."</em> - Sarah Johnson, CTO of I.T Teck Solution</p>
     `,
   },
-};
 
+  crmpro: {
+    title: "CRM Pro Enterprise Solution",
+    tag: "SaaS",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    duration: "7 months project",
+    budget: "$85k budget",
+    content: `
+      <h3>Challenge</h3>
+      <p>Mid-sized businesses were struggling with generic CRM solutions that didn't adapt to their specific workflows. They needed a customizable platform that could grow with their business while maintaining ease of use.</p>
+      
+      <h3>Solution</h3>
+      <p>We developed CRM Pro with:</p>
+      <ul>
+          <li>Modular design for industry-specific customization</li>
+          <li>Automated workflow builder with drag-and-drop interface</li>
+          <li>Advanced analytics and reporting dashboard</li>
+          <li>Native mobile apps for iOS and Android</li>
+          <li>Integration with popular business tools</li>
+      </ul>
+      
+      <h3>Results</h3>
+      <ul>
+          <li>Adopted by 150+ businesses in first year</li>
+          <li>Average user reported 40% increase in sales productivity</li>
+          <li>Reduced customer onboarding time by 60%</li>
+          <li>Recognized as "Best CRM for Mid-Market" by BusinessTech</li>
+      </ul>
+    `,
+  },
+
+  medischeduler: {
+    title: "MediScheduler Appointment System",
+    tag: "Healthcare",
+    image:
+      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    duration: "5 months project",
+    budget: "$65k budget",
+    content: `
+      <h3>Challenge</h3>
+      <p>Healthcare providers were losing revenue due to inefficient scheduling systems that led to high no-show rates and underutilized appointment slots.</p>
+      
+      <h3>Solution</h3>
+      <p>We created MediScheduler featuring:</p>
+      <ul>
+          <li>Intelligent scheduling algorithms to optimize provider time</li>
+          <li>Automated patient reminders via SMS and email</li>
+          <li>Waitlist management for last-minute cancellations</li>
+          <li>HIPAA-compliant telemedicine integration</li>
+          <li>Real-time analytics on practice performance</li>
+      </ul>
+      
+      <h3>Results</h3>
+      <ul>
+          <li>Reduced no-show rates by 55%</li>
+          <li>Increased provider utilization by 30%</li>
+          <li>Saved 15+ hours weekly on administrative tasks</li>
+          <li>Integrated with 50+ EHR systems</li>
+      </ul>
+    `,
+  },
+
+  techgadgets: {
+    title: "TechGadgets Online Store",
+    tag: "E-Commerce",
+    image:
+      "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    duration: "4 months project",
+    budget: "$48k budget",
+    content: `
+      <h3>Challenge</h3>
+      <p>A tech retailer needed to transition from brick-and-mortar to e-commerce while maintaining their reputation for expert advice and high-quality products.</p>
+      
+      <h3>Solution</h3>
+      <p>We built TechGadgets with:</p>
+      <ul>
+          <li>Interactive product comparison tools</li>
+          <li>Expert advice chat system</li>
+          <li>Augmented reality product preview</li>
+          <li>Loyalty program integration</li>
+          <li>Advanced search with technical filters</li>
+      </ul>
+      
+      <h3>Results</h3>
+      <ul>
+          <li>Online sales exceeded physical stores within 6 months</li>
+          <li>Average order value 35% higher than industry standard</li>
+          <li>Repeat customer rate of 45%</li>
+          <li>Featured in "Top Tech Stores" by Gadget Magazine</li>
+      </ul>
+    `,
+  },
+
+  luxuryhomes: {
+    title: "LuxuryHomes Virtual Tours",
+    tag: "Real Estate",
+    image:
+      "https://images.unsplash.com/photo-1644057501622-dfa7dd26dbfb?q=80&w=1081&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    duration: "6 months project",
+    budget: "$72k budget",
+    content: `
+      <h3>Challenge</h3>
+      <p>High-end real estate listings weren't effectively showcasing properties online, leading to fewer qualified leads and longer time on market.</p>
+      
+      <h3>Solution</h3>
+      <p>We developed LuxuryHomes featuring:</p>
+      <ul>
+          <li>Interactive 3D property tours</li>
+          <li>Virtual staging capabilities</li>
+          <li>Neighborhood exploration tools</li>
+          <li>AI-powered buyer matching</li>
+          <li>Secure document sharing for qualified buyers</li>
+      </ul>
+      
+      <h3>Results</h3>
+      <ul>
+          <li>Reduced average selling time by 40%</li>
+          <li>Increased qualified leads by 65%</li>
+          <li>25% of sales completed remotely</li>
+          <li>Won "Innovation in Real Estate" award</li>
+      </ul>
+    `,
+  },
+
+  teamflow: {
+    title: "TeamFlow Collaboration Platform",
+    tag: "SaaS",
+    image:
+      "https://images.unsplash.com/photo-1649957909636-10a8b37d052e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    duration: "9 months project",
+    budget: "$110k budget",
+    content: `
+      <h3>Challenge</h3>
+      <p>Remote teams were struggling with disconnected tools that hindered collaboration and reduced productivity.</p>
+      
+      <h3>Solution</h3>
+      <p>We created TeamFlow with:</p>
+      <ul>
+          <li>Unified workspace combining chat, video, and project management</li>
+          <li>Smart notifications to reduce distractions</li>
+          <li>Automated meeting summaries and action items</li>
+          <li>Real-time document collaboration</li>
+          <li>Productivity analytics and insights</li>
+      </ul>
+      
+      <h3>Results</h3>
+      <ul>
+          <li>Adopted by 500+ teams in first year</li>
+          <li>Users reported 30% less time spent in meetings</li>
+          <li>90% reduction in context-switching between apps</li>
+          <li>Named "Top Collaboration Tool" by RemoteWork Magazine</li>
+      </ul>
+    `,
+  },
+
+  healthtrack: {
+    title: "HealthTrack Wellness App",
+    tag: "Healthcare",
+    image:
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    duration: "8 months project",
+    budget: "$95k budget",
+    content: `
+      <h3>Challenge</h3>
+      <p>Patients lacked a comprehensive tool to track all aspects of their health in one place and share data securely with providers.</p>
+      
+      <h3>Solution</h3>
+      <p>We developed HealthTrack featuring:</p>
+      <ul>
+          <li>Unified health dashboard integrating wearables and medical records</li>
+          <li>Personalized health insights and recommendations</li>
+          <li>Secure provider messaging and data sharing</li>
+          <li>Medication tracking with reminders</li>
+          <li>Symptom checker with AI analysis</li>
+      </ul>
+      
+      <h3>Results</h3>
+      <ul>
+          <li>500,000+ downloads in first year</li>
+          <li>Average user engagement of 15+ minutes daily</li>
+          <li>Integrated with 100+ health devices and EHR systems</li>
+          <li>Featured by Apple as "App of the Day"</li>
+      </ul>
+    `,
+  },
+};
 
 // Get DOM elements
 const popup = document.getElementById("caseStudyPopup");
@@ -273,14 +457,16 @@ function closePopupFunc() {
 function populatePopup(data) {
   document.getElementById("popupTitle").textContent = data.title;
   document.getElementById("popupTag").textContent = data.tag;
-  document.getElementById("popupImage").style.backgroundImage = `url(${data.image})`;
+  document.getElementById(
+    "popupImage"
+  ).style.backgroundImage = `url(${data.image})`;
   document.getElementById("popupDuration").textContent = data.duration;
   document.getElementById("popupBudget").textContent = data.budget;
   document.getElementById("popupContent").innerHTML = data.content;
 }
 
 // Event listeners for case study buttons
-caseStudyButtons.forEach(button => {
+caseStudyButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
     e.preventDefault();
     const caseId = button.getAttribute("data-case");
