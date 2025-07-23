@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code Huddle Clone</title>
     <link rel="stylesheet" href="style.css" />
-      <link rel="icon" type="assets/fav.ico" href="assets/fav.ico">
+    <link rel="icon" type="assets/fav.ico" href="assets/fav.ico" />
 
     <link
       rel="stylesheet"
@@ -46,17 +46,6 @@
       align-items: center;
     }
 
-    .nav-links a {
-      color: gray;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      font-weight:bold;
-    }
-
-    .nav-links a:hover {
-      color: #ccc;
-    }
-
     /* Hamburger (hidden on desktop) */
     .hamburger {
       display: none;
@@ -65,17 +54,15 @@
       gap: 5px;
     }
 
-
-
     .get-touch-btn {
-     padding: 12px 18px;
-    background: transparent;
-    border: 2px solid white;
-    color: white;
-    border-radius:25px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+      padding: 12px 18px;
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      border-radius: 25px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
       cursor: pointer;
     }
     .get-touch-btn:hover {
@@ -86,10 +73,9 @@
 
     /* Responsive Styles */
     @media (max-width: 768px) {
-      .navbar{
+      .navbar {
         padding: 22px 15px;
       }
-     
 
       .nav-links {
         display: none;
@@ -104,13 +90,13 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       }
 
-      .nav-links.active .navbar{
-        display:none;
+      .nav-links.active .navbar {
+        display: none;
       }
       .nav-links.active {
         display: flex;
         width: 100%;
-        height:100vh;
+        height: 100vh;
         padding: 22px 15px;
         align-items: normal;
       }
@@ -118,67 +104,65 @@
       .logo img {
         width: 160px;
       }
-      .nav-links.active  .navbar-menu-btn-text {
-    display: flex;
-    margin-bottom: 5px;
-    width:100%;
-    font-size: 16px;
-  }
-  .nav-links.active  .navbar-menu-btn-text p{
-    margin-top:25px;
-  }
-      .nav-links.active   .navbar-menu-btn {
-    gap: 18px;
-    font-size:24px;
-    padding-right:12px;
-    padding-top:6rem;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-        .nav-links.active .menu-for-phone{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+      .nav-links.active .navbar-menu-btn-text {
+        display: flex;
+        margin-bottom: 5px;
+        width: 100%;
+        font-size: 16px;
+      }
+      .nav-links.active .navbar-menu-btn-text p {
+        margin-top: 25px;
+      }
+      .nav-links.active .navbar-menu-btn {
+        gap: 18px;
+        font-size: 24px;
+        padding-right: 12px;
+        padding-top: 6rem;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      .nav-links.active .menu-for-phone {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
+      .hamburger {
+        width: 30px;
+        height: 21px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        z-index: 1001;
+      }
 
-   .hamburger {
-  width: 30px;
-  height: 21px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  z-index: 1001;
-}
+      .hamburger span {
+        display: block;
+        height: 3px;
+        background: white;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+      }
 
-.hamburger span {
-  display: block;
-  height: 3px;
-  background: white;
-  transition: all 0.3s ease;
-  border-radius: 2px;
-}
+      /* Transform hamburger to X */
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
 
-/* Transform hamburger to X */
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
 
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(8px, -8px);
-}
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+      }
     }
   </style>
   <style>
-
     .partners-section {
       background-color: #f4f4f4;
-      padding:20px 20px;
+      padding: 20px 20px;
       margin: auto;
     }
 
@@ -188,18 +172,18 @@
       font-size: 16px;
       text-transform: uppercase;
       margin-bottom: 10px;
-      display:flex;
-      flex-direction:row;
+      display: flex;
+      flex-direction: row;
     }
-    .partners-icon-box-icon{
-      margin-left:5px;
+    .partners-icon-box-icon {
+      margin-left: 5px;
     }
 
     .main-heading {
       font-size: 36px;
       font-weight: bold;
       margin-bottom: 40px;
-      color:black;
+      color: black;
     }
 
     .partners {
@@ -209,25 +193,23 @@
     }
 
     .partner-box {
-       
       padding: 20px;
       border-radius: 10px;
       flex: 1;
       min-width: 300px;
-      color:black;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      background:white;
+      color: black;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      background: white;
     }
 
-    .partner-logo-wvip{
+    .partner-logo-wvip {
       height: 50px;
-     
     }
     .partner-logo {
       height: 50px;
       margin-bottom: 20px;
-        filter: brightness(100) saturate(100%) invert(100%) sepia(100%) saturate(10000%) hue-rotate(0deg);
-
+      filter: brightness(100) saturate(100%) invert(100%) sepia(100%)
+        saturate(10000%) hue-rotate(0deg);
     }
 
     .partner-text {
@@ -249,8 +231,8 @@
       font-size: 12px;
       padding: 10px 16px;
       display: inline-block;
-    margin-top: 5%;
-    margin-bottom: 5%;
+      margin-top: 5%;
+      margin-bottom: 5%;
     }
 
     @media (max-width: 768px) {
@@ -266,15 +248,21 @@
           </div>
           -->
     <div id="header-Container"></div>
-    <div class='min-hero-sec'>
-    <!-- Load header here -->
-    <section class="hero">
-      <div class="hero-text">
-        <h1>
-          <br />Let's <br />
-        </h1>
-        <h1><span class="highlight typing" id="type-text" style="margin-right: 10px;"></span> Your <br /></h1>
-        <h1>Vision Together</h1>
+    <div class="min-hero-sec">
+      <!-- Load header here -->
+      <section class="hero">
+        <div class="hero-text">
+          <h1><br /><span class="hero-span">Let's </span><br /></h1>
+          <h1>
+            <span
+              class="highlight typing"
+              id="type-text"
+              style="margin-right: 10px"
+            ></span>
+            Your <br />
+          </h1>
+          <h1>Vision Together</h1>
+          <!--
         <p>
           At Ecomsy, we bring together expert engineers, bold thinking, and
           unstoppable passion to solve real-world business problems through
@@ -282,34 +270,87 @@
           SMEs, turning complex ideas into powerful, scalable solutions. We
           listen closely, build with precision, and deliver software that fuels
           your growth, not just solves your problems. 
-        </br>
-        <strong>We turn solutions into
-          forward momentum.</strong>
-        </p>
-        <button class="cta-button">Get in Touch </button>
-      </div>
-<!--
+          </br>
+          </p>
+          -->
+          <div class="hero-sect-text">
+            <strong>We turn solutions intoforward momentum.</strong>
+          </div>
+          <a href="https://api.whatsapp.com/send?phone=447743140847">
+            <button class="cta-button">Get in Touch</button>
+          </a>
+        </div>
+        <!--
       <div class="hero-logo">
         <img src="assets/logo.png" alt="Code Huddle Logo" />
       </div>
-      -->
-    </section>
-    
-    <div class="trusted-section">
-      <h2 class="trusted-heading">Trusted by industry leaders</h2>
-      <div class="trusted-logos">
-    <img class='on-phone'src="https://megadigital.ai/wp-content/uploads/2023/02/TikTok.svg" alt="TikTok" width="83" height="24" />
-    <img class='on-phone'src="https://megadigital.ai/wp-content/uploads/2023/02/Google.svg" alt="Google" width="71" height="24" />
-    <img class=''src="https://megadigital.ai/wp-content/uploads/2023/02/Shopify.svg" alt="Shopify" width="85" height="24" />
-    <img class=''src="assets/word.png" alt="Woocommerce" width="" height="56" />
-    <img class=''src="assets/woo.png" alt="Woocommerce" width="120" height="56" />
-    <img class='on-phone'src="https://megadigital.ai/wp-content/uploads/2023/02/Payoneer.svg" alt="Payoneer" width="104" height="20" class="hide-on-mobile" />
-    <img class='on-phone'src="https://megadigital.ai/wp-content/uploads/2023/02/PayPal.svg" alt="PayPal" width="91" height="24" class="hide-on-mobile" />
-    <img class='on-phone'src="https://megadigital.ai/wp-content/uploads/2023/02/Stripe.svg" alt="Stripe" width="58" height="24" class="hide-on-mobile" />
-  </div>
-</div>
-</div>
+      --></section>
 
+      <div class="trusted-section">
+        <h2 class="trusted-heading">Trusted by industry leaders</h2>
+        <div class="trusted-logos">
+          <img
+            class="on-phone"
+            src="https://megadigital.ai/wp-content/uploads/2023/02/TikTok.svg"
+            alt="TikTok"
+            width="83"
+            height="24"
+          />
+          <img
+            class="on-phone"
+            src="https://megadigital.ai/wp-content/uploads/2023/02/Google.svg"
+            alt="Google"
+            width="71"
+            height="24"
+          />
+          <img
+            class=""
+            src="https://megadigital.ai/wp-content/uploads/2023/02/Shopify.svg"
+            alt="Shopify"
+            width="85"
+            height="24"
+          />
+          <img
+            class=""
+            src="assets/word.png"
+            alt="Woocommerce"
+            width=""
+            height="56"
+          />
+          <img
+            class=""
+            src="assets/woo.png"
+            alt="Woocommerce"
+            width="120"
+            height="56"
+          />
+          <img
+            class="on-phone"
+            src="https://megadigital.ai/wp-content/uploads/2023/02/Payoneer.svg"
+            alt="Payoneer"
+            width="104"
+            height="20"
+            class="hide-on-mobile"
+          />
+          <img
+            class="on-phone"
+            src="https://megadigital.ai/wp-content/uploads/2023/02/PayPal.svg"
+            alt="PayPal"
+            width="91"
+            height="24"
+            class="hide-on-mobile"
+          />
+          <img
+            class="on-phone"
+            src="https://megadigital.ai/wp-content/uploads/2023/02/Stripe.svg"
+            alt="Stripe"
+            width="58"
+            height="24"
+            class="hide-on-mobile"
+          />
+        </div>
+      </div>
+    </div>
 
     <!--service card
     <section class="services-section-title">
@@ -321,8 +362,8 @@
         <div class="service-icon"><img src="assets/course/2.gif" /></div>
         <div class="service-title">Custom-Coded WebSites</div>
         <div class="service-description">
-          We develop fully custom WebSites using modern tech stacks to
-          ensure speed, control, and seamless user experience.
+          We develop fully custom WebSites using modern tech stacks to ensure
+          speed, control, and seamless user experience.
         </div>
       </div>
 
@@ -373,15 +414,27 @@
       </div>
     </section>
     <section class="services-section-title">
-      <button class="service-section-button">More Services</button>
+      <a href='pages/service/service.html'>
+        <button class="service-section-button">More Services</button>
+      </a>
     </section>
 
     <div class="partners-section">
-      <div class="partners-section-title">Strategic Partners 
+      <div class="partners-section-title">
+        Strategic Partners
         <div class="partners-icon-box-icon">
           <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
-              <path d="M12 5L7.41641 10L9.80836e-07 10L1.41795e-06 -5.24537e-07L7.41641 6.50947e-05L12 5Z" fill="#00539c"></path>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="10"
+              viewBox="0 0 12 10"
+              fill="none"
+            >
+              <path
+                d="M12 5L7.41641 10L9.80836e-07 10L1.41795e-06 -5.24537e-07L7.41641 6.50947e-05L12 5Z"
+                fill="#00539c"
+              ></path>
             </svg>
           </span>
         </div>
@@ -395,7 +448,7 @@
             src="assets/shopify.png"
             alt="TikTok Marketing Partners"
           />
-          <br/>
+          <br />
           <div class="google-label">Shopify Plus Partner</div>
           <!--
           <div class="partner-text">
@@ -410,8 +463,8 @@
             src="assets/wpvip.svg"
             alt="Google Partner"
           />
-          <br/>
-          <div class="google-label">WordPress VIP Silver Agency partner </div>
+          <br />
+          <div class="google-label">WordPress VIP Silver Agency partner</div>
           <!--
             <div class="partner-text">
               WordPress is a free, open-source content management system (CMS) that powers over 40% of all websites on the internet. Originally built for blogging, WordPress has evolved into a flexible and powerful platform for building any type of website — from personal blogs and portfolios to business websites, e-commerce stores, and enterprise-level solutions.
@@ -425,10 +478,9 @@
             src="assets/woo.png"
             alt="Microsoft Partner"
           />
-          <br/>
-          <div class="google-label">Platinum Certified WooExpert
-            </div>
-          
+          <br />
+          <div class="google-label">Platinum Certified WooExpert</div>
+
           <!--
             <div class="partner-text">
               A Platinum Certified WooExpert is a top-tier partner officially recognized by WooCommerce (the leading e-commerce plugin for WordPress) for their exceptional expertise, proven results, and advanced technical capabilities in building and scaling WooCommerce stores.
@@ -437,33 +489,43 @@
         </div>
       </div>
     </div>
-<div class="counter-section">
-
-     <div class='count-section'>
-      <div class="stat">
-        <div class="PerNumber" data-target-per="95">0</div>
-        <div class="label">HAPPY CUSTOMERS</div>
+    <div class="counter-section">
+      <div class="count-section">
+        <div class="stat">
+          <div class="PerNumber" data-target-per="95">0</div>
+          <div class="label">HAPPY CUSTOMERS</div>
+        </div>
+        <div class="stat">
+          <div class="number" data-target="200">0</div>
+          <div class="label">CLIENTS</div>
+        </div>
+        <div class="stat">
+          <div class="number" data-target="1150">0</div>
+          <div class="label">PROJECTS COMPLETED</div>
+        </div>
       </div>
-      <div class="stat">
-        <div class="number" data-target="200">0</div>
-        <div class="label">CLIENTS</div>
-      </div>
-      <div class="stat">
-        <div class="number" data-target="1150">0</div>
-        <div class="label">PROJECTS COMPLETED</div>
-      </div>
-    </div>
     </div>
     <!--about-->
     <div class="about-title">
-      <h1>About 
+      <h1>
+        About
         <div class="about-icon-box-icon">
-    <span class="icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
-        <path d="M12 5L7.41641 10L9.80836e-07 10L1.41795e-06 -5.24537e-07L7.41641 6.50947e-05L12 5Z" fill="#00539c"></path>
-      </svg>
-    </span>
-  </div></h1>
+          <span class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="10"
+              viewBox="0 0 12 10"
+              fill="none"
+            >
+              <path
+                d="M12 5L7.41641 10L9.80836e-07 10L1.41795e-06 -5.24537e-07L7.41641 6.50947e-05L12 5Z"
+                fill="#00539c"
+              ></path>
+            </svg>
+          </span>
+        </div>
+      </h1>
     </div>
     <div class="about">
       <div class="about-left">
@@ -490,8 +552,6 @@
       </div>
     </div>
 
-
-    
     <!--imga icon 
     <div class="stats-container">
       <div class="stat-item">
@@ -549,30 +609,22 @@
         <!-- First Marquee Row -->
         <div class="marquee">
           <div class="marquee-content">
-            <div class="brand-logo">
-              NISHAT
-            </div>
+            <div class="brand-logo">NISHAT</div>
             <div class="brand-logo">
               <img src="assets/brands-logo/b-logo1.png" />
             </div>
             <div class="brand-logo">
               <img src="assets/brands-logo/b-logo3.png" />
             </div>
-            <div class="brand-logo">
-              LIME LIGHT
-            </div>
+            <div class="brand-logo">LIME LIGHT</div>
             <div class="brand-logo">
               <img src="assets/brands-logo/b-logo7.png" />
             </div>
-            <div class="brand-logo">
-              OUT FITTERS
-            </div>
+            <div class="brand-logo">OUT FITTERS</div>
             <div class="brand-logo">
               <img src="assets/brands-logo/b-logo8.png" />
             </div>
-            <div class="brand-logo">
-              DeCLEAR
-            </div>
+            <div class="brand-logo">DeCLEAR</div>
           </div>
         </div>
 
@@ -632,20 +684,27 @@
       </div>
     </section>
 
-
-
     <!--section how-it-works-->
     <section class="how-it-works">
       <div class="intro">
-        <h5>How It Works 
+        <h5>
+          How It Works
           <div class="intro-icon-box-icon">
-    <span class="icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
-        <path d="M12 5L7.41641 10L9.80836e-07 10L1.41795e-06 -5.24537e-07L7.41641 6.50947e-05L12 5Z" fill="#00539c"></path>
-      </svg>
-    </span>
-  </div>
-
+            <span class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="10"
+                viewBox="0 0 12 10"
+                fill="none"
+              >
+                <path
+                  d="M12 5L7.41641 10L9.80836e-07 10L1.41795e-06 -5.24537e-07L7.41641 6.50947e-05L12 5Z"
+                  fill="#00539c"
+                ></path>
+              </svg>
+            </span>
+          </div>
         </h5>
         <h2>
           At Ecomsy, we don’t just build products — We believe in your vision
@@ -709,14 +768,24 @@
     <!--testimonial-->
 
     <section class="testimonial-section">
-      <h2 class="section-title">TESTIMONIALS
+      <h2 class="section-title">
+        TESTIMONIALS
         <div class="section-title-icon-box-icon">
-    <span class="icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
-        <path d="M12 5L7.41641 10L9.80836e-07 10L1.41795e-06 -5.24537e-07L7.41641 6.50947e-05L12 5Z" fill="#00539c"></path>
-      </svg>
-    </span>
-  </div>
+          <span class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="10"
+              viewBox="0 0 12 10"
+              fill="none"
+            >
+              <path
+                d="M12 5L7.41641 10L9.80836e-07 10L1.41795e-06 -5.24537e-07L7.41641 6.50947e-05L12 5Z"
+                fill="#00539c"
+              ></path>
+            </svg>
+          </span>
+        </div>
       </h2>
       <h3 class="section-subtitle">
         Don't just take our words for it, take our customers
@@ -727,7 +796,9 @@
 
         <div class="testimonial-slide active">
           <p class="testimonial-text">
-           Reliable, efficient, and incredibly helpful. Their support team answered all my questions quickly. Would definitely work with them again.
+            Reliable, efficient, and incredibly helpful. Their support team
+            answered all my questions quickly. Would definitely work with them
+            again.
           </p>
           <h4 class="testimonial-author">— John Doe</h4>
           <p class="testimonial-position">
@@ -737,7 +808,8 @@
 
         <div class="testimonial-slide">
           <p class="testimonial-text">
-            This service saved us so much time and effort. It’s user-friendly and delivers real value. Five stars!
+            This service saved us so much time and effort. It’s user-friendly
+            and delivers real value. Five stars!
           </p>
           <h4 class="testimonial-author">— Ayesha Khan</h4>
           <p class="testimonial-position">
@@ -747,7 +819,8 @@
 
         <div class="testimonial-slide">
           <p class="testimonial-text">
-            Professional and attentive to detail. They truly care about customer satisfaction. Highly recommended!
+            Professional and attentive to detail. They truly care about customer
+            satisfaction. Highly recommended!
           </p>
           <h4 class="testimonial-author">— Liam T.</h4>
           <p class="testimonial-position">
@@ -765,84 +838,124 @@
       </div>
     </section>
     <section class="blog-section">
-  <div class="blog-header">
-    <div class="blog-heading">
-      <span class="blog-label">CASE STUDIES<div class="blog-label-icon-box-icon">
-    <span class="icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
-        <path d="M12 5L7.41641 10L9.80836e-07 10L1.41795e-06 -5.24537e-07L7.41641 6.50947e-05L12 5Z" fill="#00539c"></path>
-      </svg>
-    </span>
-  </div></span>
-      <h2>Explore our case studies and see the impact we’ve made</h2>
-    </div>
-    <a href="#" class="read-all-button">READ CASE STUDIES </a>
-  </div>
+      <div class="blog-header">
+        <div class="blog-heading">
+          <span class="blog-label"
+            >CASE STUDIES
+            <div class="blog-label-icon-box-icon">
+              <span class="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="10"
+                  viewBox="0 0 12 10"
+                  fill="none"
+                >
+                  <path
+                    d="M12 5L7.41641 10L9.80836e-07 10L1.41795e-06 -5.24537e-07L7.41641 6.50947e-05L12 5Z"
+                    fill="#00539c"
+                  ></path>
+                </svg>
+              </span></div
+          ></span>
+          <h2>Explore our case studies and see the impact we’ve made</h2>
+        </div>
+        <a href="pages/case-study/case-study.html" class="read-all-button"
+          >READ CASE STUDIES
+        </a>
+      </div>
 
-<div class="blog-cards">
-    <!-- Card 1 -->
-    <div class="blog-card">
-      <img src="https://picsum.photos/600/400?random=1" alt="Real Estate Platform" />
-      <h3>Real Estate Platform for NestFind</h3>
-      <p class="date">June 25, 2025</p>
-      <p class="date">Revolutionizing property searches with AI-powered recommendations and virtual tours.</p>
-    </div>
+      <div class="blog-cards">
+        <!-- Card 1 -->
+        <div class="blog-card">
+          <img src="assets/case-study/r.jpg" alt="Real Estate Platform" />
+          <h3>Real Estate Platform for NestFind</h3>
+          <p class="date">June 25, 2025</p>
+          <p class="date">
+            Revolutionizing property searches with AI-powered recommendations
+            and virtual tours.
+          </p>
+        </div>
 
-    <!-- Card 2 -->
-    <div class="blog-card">
-      <img src="https://picsum.photos/600/400?random=2" alt="Ecommerce Store" />
-      <h3>Ecomsy Online Store Revamp</h3>
-      <p class="date">June 18, 2025</p>
-      <p class="date">Boosted conversions by 40% with a complete UX overhaul and personalized shopping experience.</p>
-    </div>
+        <!-- Card 2 -->
+        <div class="blog-card">
+          <img src="assets/case-study/s.jpg" alt="Ecommerce Store" />
+          <h3>Ecomsy Online Store Revamp</h3>
+          <p class="date">June 18, 2025</p>
+          <p class="date">
+            Boosted conversions by 40% with a complete UX overhaul and
+            personalized shopping experience.
+          </p>
+        </div>
 
-    <!-- Card 3 -->
-    <div class="blog-card">
-      <img src="https://picsum.photos/600/400?random=3" alt="Logistics App" />
-      <h3>Logistics App for FastMove</h3>
-      <p class="date">June 11, 2025</p>
-      <p class="date">Streamlined delivery operations with real-time tracking and route optimization.</p>
-    </div>
+        <!-- Card 3 -->
+        <div class="blog-card">
+          <img src="assets/case-study/ss.jpg" alt="Logistics App" />
+          <h3>Logistics App for FastMove</h3>
+          <p class="date">June 11, 2025</p>
+          <p class="date">
+            Streamlined delivery operations with real-time tracking and route
+            optimization.
+          </p>
+        </div>
 
-    <!-- Card 4 -->
-    <div class="blog-card">
-      <img src="https://picsum.photos/600/400?random=7" alt="Healthcare Platform" />
-      <h3>Telemedicine Solution HealthConnect</h3>
-      <p class="date">June 4, 2025</p>
-      <p class="date">Connecting patients with doctors through secure video consultations and AI diagnostics.</p>
-    </div>
+        <!-- Card 4 -->
+        <div class="blog-card">
+          <img src="assets/case-study/m.jpg" alt="Healthcare Platform" />
+          <h3>Telemedicine Solution HealthConnect</h3>
+          <p class="date">June 4, 2025</p>
+          <p class="date">
+            Connecting patients with doctors through secure video consultations
+            and AI diagnostics.
+          </p>
+        </div>
 
-    <!-- Card 5 -->
-    <div class="blog-card">
-      <img src="https://picsum.photos/600/400?random=4" alt="Fitness App" />
-      <h3>WorkoutPro Fitness Application</h3>
-      <p class="date">May 28, 2025</p>
-      <p class="date">Personalized workout plans with motion tracking and live coaching features.</p>
-    </div>
+        <!-- Card 5 -->
+        <div class="blog-card">
+          <img src="assets/case-study/h.jpg" alt="Fitness App" />
+          <h3>WorkoutPro Fitness Application</h3>
+          <p class="date">May 28, 2025</p>
+          <p class="date">
+            Personalized workout plans with motion tracking and live coaching
+            features.
+          </p>
+        </div>
 
-    <!-- Card 6 -->
-    <div class="blog-card">
-      <img src="https://picsum.photos/600/400?random=5" alt="Banking System" />
-      <h3>Digital Banking Platform for NeoBank</h3>
-      <p class="date">May 21, 2025</p>
-      <p class="date">Modern mobile banking with biometric authentication and financial insights.</p>
-    </div>
-</div>
-</section>
-
-
-
+        <!-- Card 6 -->
+        <div class="blog-card">
+          <img src="assets/case-study/bbb.jpg" alt="Banking System" />
+          <h3>Digital Banking Platform for NeoBank</h3>
+          <p class="date">May 21, 2025</p>
+          <p class="date">
+            Modern mobile banking with biometric authentication and financial
+            insights.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <!--contact us-->
     <div class="contacts-container">
       <div class="contacts-header">
-        <div class="section-tag">CONTACTS <div class="section-tag-icon-box-icon">
-    <span class="icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
-        <path d="M12 5L7.41641 10L9.80836e-07 10L1.41795e-06 -5.24537e-07L7.41641 6.50947e-05L12 5Z" fill="#00539c"></path>
-      </svg>
-    </span>
-  </div></div>
+        <div class="section-tag">
+          CONTACTS
+          <div class="section-tag-icon-box-icon">
+            <span class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="10"
+                viewBox="0 0 12 10"
+                fill="none"
+              >
+                <path
+                  d="M12 5L7.41641 10L9.80836e-07 10L1.41795e-06 -5.24537e-07L7.41641 6.50947e-05L12 5Z"
+                  fill="#00539c"
+                ></path>
+              </svg>
+            </span>
+          </div>
+        </div>
         <h2 class="contact-section-title">
           Have questions? Ecomsy is here to listen and support you every step of
           the way!
@@ -853,22 +966,19 @@
         <!-- Phone Card -->
         <div class="contact-section-card">
           <div class="contact-section-card-icon">
-            <img src='assets/phone.png' />
+            <img src="assets/phone.png" />
           </div>
           <h3 class="contact-section-card-title">Phone Number</h3>
           <p class="contact-section-card-content">
             Whatsapp: +44 7743 140847‬
             <br />
             Whatsapp: +92 349 5573280‬
-            
-
           </p>
         </div>
         <!-- Location Card -->
         <div class="contact-section-card">
           <div class="contact-section-card-icon">
-            
-            <img src='assets/map.png' />
+            <img src="assets/map.png" />
           </div>
           <h3 class="contact-section-card-title">Location</h3>
           <p class="contact-section-card-content">
@@ -882,17 +992,13 @@
         <!-- Email Card -->
         <div class="contact-section-card">
           <div class="contact-section-card-icon">
-            <img src='assets/plane.png' />
+            <img src="assets/plane.png" />
           </div>
           <h3 class="contact-section-card-title">Email</h3>
           <p class="contact-section-card-content">
-
-Info: info@ecomsy.co.uk<br />
-CEO: ceo@ecomsy.co.uk<br />
-Sale: sales@ecomsy.co.uk
-            
-            
-            
+            Info: info@ecomsy.co.uk<br />
+            CEO: ceo@ecomsy.co.uk<br />
+            Sale: sales@ecomsy.co.uk
           </p>
         </div>
       </div>
@@ -934,8 +1040,8 @@ Sale: sales@ecomsy.co.uk
 
     <!--footer-->
 
-<footer class="footer">
-  <!-- Contact 
+    <footer class="footer">
+      <!-- Contact 
   <div class="footer-section">
     <div class="footer-heading-line">
       <h3>CONTACT</h3>
@@ -960,84 +1066,86 @@ Sale: sales@ecomsy.co.uk
     </div>
   </div>
   -->
-  <!-- Services -->
-  <div class="footer-section">
-    <div class="footer-heading-line">
-      <h3>Services</h3>
-    </div>
-    
-    <div class="left-space-footer">
-      <div class='left-width' style="width: 11%; color: #000;">width</div>
+      <!-- Services -->
+      <div class="footer-section">
+        <div class="footer-heading-line">
+          <h3>Services</h3>
+        </div>
 
-    <div class="footer-section-content">
-      <div class="footer-content">
-        <p>UI/UX Design </p>
-        <p>Software Development</p>
-        <p>Shopify Store Design & Development</p>
-        <p>WordPress + WooCommerce Development</p>
-        <p>Custom-Coded Websites (HTML, CSS, JavaScript, PHP, etc.)</p>
-      </div>
-      <div class="footer-content">
-        <p>Branding & Creative Design</p>
-        <p>Business Website Development</p>
-        <p>Android & iOS App Development</p>
-        <p>Technical Support & Integrations</p>
-      </div>
-    </div>
-    </div>
-  </div>
-  <!-- Social Media -->
-  <div class="footer-section">
-    <div class="footer-heading-line">
-      <h3>Social Media</h3>
-    </div>
-    <div class="left-space-footer">
-      <div class='left-width' style="width: 11%; color: #000;">width</div>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-tiktok"></i></a> 
-        <a href="#"><i class="fab fa-linkedin"></i></a> 
-      </div>
-    </div>
-  </div>
+        <div class="left-space-footer">
+          <div class="left-width" style="width: 11%; color: #000">width</div>
 
-  <!-- Company -->
-  <div class="footer-section">
-    <div class="footer-heading-line">
-      <h3>Company</h3>
-    </div>
-    <div class="left-space-footer">
-      <div class='left-width' style="width: 11%; color: #000;">width</div>
-    <div class="footer-section-content">
-      <div class="footer-content">
-        <p>Home</p>
-        <p>Courses</p>
-        <p>Services</p>
-        <p>Our Work</p>
-        <p>Get In Touch</p>
-        <p style="color: #000;">Custom-Coded Websites (HTML, CSS, JavaScript, PHP, etc.)</p>
-        
+          <div class="footer-section-content">
+            <div class="footer-content">
+              <p>UI/UX Design</p>
+              <p>Software Development</p>
+              <p>Shopify Store Design & Development</p>
+              <p>WordPress + WooCommerce Development</p>
+              <p>Custom-Coded Websites (HTML, CSS, JavaScript, PHP, etc.)</p>
+            </div>
+            <div class="footer-content">
+              <p>Branding & Creative Design</p>
+              <p>Business Website Development</p>
+              <p>Android & iOS App Development</p>
+              <p>Technical Support & Integrations</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="footer-content">
-        <p>About</p>
-        <p>Invoice</p>
-        <p>Contacts</p>
-        <p>Testimonials</p>
-        <p>Case Studies</p>        
+      <!-- Social Media -->
+      <div class="footer-section">
+        <div class="footer-heading-line">
+          <h3>Social Media</h3>
+        </div>
+        <div class="left-space-footer">
+          <div class="left-width" style="width: 11%; color: #000">width</div>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
       </div>
-      <div class="footer-content">
-        <img src='' />
+
+      <!-- Company -->
+      <div class="footer-section">
+        <div class="footer-heading-line">
+          <h3>Company</h3>
+        </div>
+        <div class="left-space-footer">
+          <div class="left-width" style="width: 11%; color: #000">width</div>
+          <div class="footer-section-content">
+            <div class="footer-content">
+              <p>Home</p>
+              <p>Courses</p>
+              <p>Services</p>
+              <p>Our Work</p>
+              <p>Get In Touch</p>
+              <p style="color: #000">
+                Custom-Coded Websites (HTML, CSS, JavaScript, PHP, etc.)
+              </p>
+            </div>
+            <div class="footer-content">
+              <p>About</p>
+              <p>Invoice</p>
+              <p>Contacts</p>
+              <p>Testimonials</p>
+              <p>Case Studies</p>
+            </div>
+            <div class="footer-content">
+              <img src="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="footer-divider"></div>
+    <div class="copy-right-section">
+      <div>
+        © Copyright 2024-2025 ECOMSY (SMC-PRIVATE) LIMITED. All Rights Reserved.
       </div>
     </div>
-    </div>
-  </div>
-</footer>
-<div class="footer-divider"></div>
-  <div class="copy-right-section">
-    <div>© Copyright 2024-2025 ECOMSY (SMC-PRIVATE) LIMITED. All rights reserved.</div>
-  </div>
     <script src="script.js"></script>
-   
   </body>
 </html>

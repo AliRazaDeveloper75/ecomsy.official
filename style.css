@@ -1,3 +1,9 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  color: white;
+}
+
 .phone-hero-logo {
   display: none;
 }
@@ -44,12 +50,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow-x: hidden;
-  color: white;
 }
 
 /* hero section */
@@ -982,10 +982,10 @@ h2 {
   white-space: nowrap;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
-.left-space-footer{
-    display: flex;
-    justify-content: left;
-    align-items: center;
+.left-space-footer {
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
 .footer-heading-line::after {
@@ -1070,7 +1070,7 @@ h2 {
     display: flex;
     flex-direction: column;
   }
-  .left-width{
+  .left-width {
     display: none;
   }
   .copy-right-section {
@@ -1090,14 +1090,14 @@ h2 {
     margin-bottom: 5px;
   }
   .footer-heading-line h3 {
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  margin: 0;
-}
-.footer-heading-line::after {
-  display: none;
-}
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+  }
+  .footer-heading-line::after {
+    display: none;
+  }
 }
 .navbar-menu-btn-text {
   display: none;
@@ -1213,10 +1213,6 @@ h2 {
 }
 /* banner logos */
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap");
-
-body {
-  font-family: "Outfit", sans-serif;
-}
 
 .brands-section {
   background-color: #111111;
@@ -1367,11 +1363,26 @@ body {
   font-size: 20px;
   margin-top: 10px;
 }
+/* navbar  */
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #ccc;
+}
+
+.hero-text .hero-sect-text {
+  padding: 10px;
+}
 
 @media (max-width: 768px) {
   .count-section {
     flex-direction: column;
-    height: auto; 
+    height: auto;
     padding: 40px 20px;
     gap: 20px;
   }
@@ -1386,23 +1397,27 @@ body {
   .stat .label {
     font-size: 18px;
   }
+  .nav-links a {
+    color: gray;
+  }
 }
 
-
-
-
-
 .footer-heading-line h3::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 50px;
   height: 3px;
-  background:white;
+  background: white;
 }
 
-
-.m-whatsapp{
+.m-whatsapp {
   color: white;
+}
+
+.hero-span {
+  margin-top: 3rem;
+  font-size: 23px;
+  margin-bottom: 15px;
 }
