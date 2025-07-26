@@ -250,7 +250,18 @@
     <div id="header-Container"></div>
     <div class="min-hero-sec">
       <!-- Load header here -->
+      <div class="video-background">
+        <video autoplay muted loop playsinline>
+          <source src="assets/1.mp4" type="video/mp4" />
+          <!-- Fallback image if video doesn't load -->
+          <img src="assets/hero.jpg" alt="Fallback image" />
+        </video>
+        <div class="video-overlay"></div>
+      </div>
+
+      <!-- Load header here -->
       <section class="hero">
+        <!-- Rest of your existing hero content remains the same -->
         <div class="hero-text">
           <h1><br /><span class="hero-span">Let's </span><br /></h1>
           <h1>
@@ -262,29 +273,14 @@
             Your <br />
           </h1>
           <h1>Vision Together</h1>
-          <!--
-        <p>
-          At Ecomsy, we bring together expert engineers, bold thinking, and
-          unstoppable passion to solve real-world business problems through
-          custom software. We specialize in digitally empowering startups and
-          SMEs, turning complex ideas into powerful, scalable solutions. We
-          listen closely, build with precision, and deliver software that fuels
-          your growth, not just solves your problems. 
-          </br>
-          </p>
-          -->
           <div class="hero-sect-text">
-            <strong>We turn solutions intoforward momentum.</strong>
+            <strong>We turn solutions into forward momentum.</strong>
           </div>
           <a href="https://api.whatsapp.com/send?phone=447743140847">
             <button class="cta-button">Get in Touch</button>
           </a>
         </div>
-        <!--
-      <div class="hero-logo">
-        <img src="assets/logo.png" alt="Code Huddle Logo" />
-      </div>
-      --></section>
+      </section>
 
       <div class="trusted-section">
         <h2 class="trusted-heading">Trusted by industry leaders</h2>
@@ -414,7 +410,7 @@
       </div>
     </section>
     <section class="services-section-title">
-      <a href='pages/service/service.html'>
+      <a href="pages/service/service.html">
         <button class="service-section-button">More Services</button>
       </a>
     </section>
@@ -792,110 +788,106 @@
       </h3>
 
       <div class="testimonial-slider">
-  <div class="slider-arrow prev">&#10094;</div>
+        <div class="slider-arrow prev">&#10094;</div>
 
-  <div class="testimonial-slide active">
-    <p class="testimonial-text">
-      Reliable, efficient, and incredibly helpful. Their support team
-      answered all my questions quickly. Would definitely work with them
-      again.
-    </p>
-    <h4 class="testimonial-author">— John Doe</h4>
-    <p class="testimonial-position">
-      Marketing Manager <br />Creative Solutions, USA
-    </p>
-  </div>
+        <div class="testimonial-slide active">
+          <p class="testimonial-text">
+            Reliable, efficient, and incredibly helpful. Their support team
+            answered all my questions quickly. Would definitely work with them
+            again.
+          </p>
+          <h4 class="testimonial-author">— John Doe</h4>
+          <p class="testimonial-position">
+            Marketing Manager <br />Creative Solutions, USA
+          </p>
+        </div>
 
-  <div class="testimonial-slide">
-    <p class="testimonial-text">
-      This service saved us so much time and effort. It's user-friendly
-      and delivers real value. Five stars!
-    </p>
-    <h4 class="testimonial-author">— Ayesha Khan</h4>
-    <p class="testimonial-position">
-      CEO - TechSolutions<br />New York, USA
-    </p>
-  </div>
+        <div class="testimonial-slide">
+          <p class="testimonial-text">
+            This service saved us so much time and effort. It's user-friendly
+            and delivers real value. Five stars!
+          </p>
+          <h4 class="testimonial-author">— Ayesha Khan</h4>
+          <p class="testimonial-position">
+            CEO - TechSolutions<br />New York, USA
+          </p>
+        </div>
 
-  <div class="testimonial-slide">
-    <p class="testimonial-text">
-      Professional and attentive to detail. They truly care about customer
-      satisfaction. Highly recommended!
-    </p>
-    <h4 class="testimonial-author">— Liam T.</h4>
-    <p class="testimonial-position">
-      Founder - StartupHub<br />Texas, USA
-    </p>
-  </div>
+        <div class="testimonial-slide">
+          <p class="testimonial-text">
+            Professional and attentive to detail. They truly care about customer
+            satisfaction. Highly recommended!
+          </p>
+          <h4 class="testimonial-author">— Liam T.</h4>
+          <p class="testimonial-position">
+            Founder - StartupHub<br />Texas, USA
+          </p>
+        </div>
 
-  <div class="testimonial-slide">
-    <p class="testimonial-text">
-      We've seen a 40% increase in productivity since implementing their solution.
-      The onboarding process was seamless and their team was fantastic.
-    </p>
-    <h4 class="testimonial-author">— Maria Gonzalez</h4>
-    <p class="testimonial-position">
-      Director of Operations<br />Global Enterprises Inc.
-    </p>
-  </div>
+        <div class="testimonial-slide">
+          <p class="testimonial-text">
+            We've seen a 40% increase in productivity since implementing their
+            solution. The onboarding process was seamless and their team was
+            fantastic.
+          </p>
+          <h4 class="testimonial-author">— Maria Gonzalez</h4>
+          <p class="testimonial-position">
+            Director of Operations<br />Global Enterprises Inc.
+          </p>
+        </div>
 
-  <div class="testimonial-slide">
-    <p class="testimonial-text">
-      Outstanding customer service and innovative approach to problem-solving.
-      They went above and beyond to meet our specific needs.
-    </p>
-    <h4 class="testimonial-author">— David Chen</h4>
-    <p class="testimonial-position">
-      CTO<br />NextGen Technologies
-    </p>
-  </div>
+        <div class="testimonial-slide">
+          <p class="testimonial-text">
+            Outstanding customer service and innovative approach to
+            problem-solving. They went above and beyond to meet our specific
+            needs.
+          </p>
+          <h4 class="testimonial-author">— David Chen</h4>
+          <p class="testimonial-position">CTO<br />NextGen Technologies</p>
+        </div>
 
-  <div class="testimonial-slide">
-    <p class="testimonial-text">
-      As a small business owner, I appreciate how affordable yet powerful their
-      tools are. It's leveled the playing field for us.
-    </p>
-    <h4 class="testimonial-author">— Sarah Johnson</h4>
-    <p class="testimonial-position">
-      Owner<br />Main Street Boutique
-    </p>
-  </div>
+        <div class="testimonial-slide">
+          <p class="testimonial-text">
+            As a small business owner, I appreciate how affordable yet powerful
+            their tools are. It's leveled the playing field for us.
+          </p>
+          <h4 class="testimonial-author">— Sarah Johnson</h4>
+          <p class="testimonial-position">Owner<br />Main Street Boutique</p>
+        </div>
 
-  <div class="testimonial-slide">
-    <p class="testimonial-text">
-      Their platform integrates perfectly with our existing systems. The
-      implementation team was knowledgeable and efficient.
-    </p>
-    <h4 class="testimonial-author">— Robert Fitzgerald</h4>
-    <p class="testimonial-position">
-      IT Director<br />Fortune 500 Company
-    </p>
-  </div>
+        <div class="testimonial-slide">
+          <p class="testimonial-text">
+            Their platform integrates perfectly with our existing systems. The
+            implementation team was knowledgeable and efficient.
+          </p>
+          <h4 class="testimonial-author">— Robert Fitzgerald</h4>
+          <p class="testimonial-position">
+            IT Director<br />Fortune 500 Company
+          </p>
+        </div>
 
-  <div class="testimonial-slide">
-    <p class="testimonial-text">
-      We evaluated several competitors but none matched the combination of
-      features and support that this company offers.
-    </p>
-    <h4 class="testimonial-author">— Emily Wilson</h4>
-    <p class="testimonial-position">
-      VP of Product<br />Innovate Corp
-    </p>
-  </div>
+        <div class="testimonial-slide">
+          <p class="testimonial-text">
+            We evaluated several competitors but none matched the combination of
+            features and support that this company offers.
+          </p>
+          <h4 class="testimonial-author">— Emily Wilson</h4>
+          <p class="testimonial-position">VP of Product<br />Innovate Corp</p>
+        </div>
 
-  <div class="slider-arrow next">&#10095;</div>
+        <div class="slider-arrow next">&#10095;</div>
 
-  <div class="slider-nav">
-    <div class="slider-dot active" data-index="0"></div>
-    <div class="slider-dot" data-index="1"></div>
-    <div class="slider-dot" data-index="2"></div>
-    <div class="slider-dot" data-index="3"></div>
-    <div class="slider-dot" data-index="4"></div>
-    <div class="slider-dot" data-index="5"></div>
-    <div class="slider-dot" data-index="6"></div>
-    <div class="slider-dot" data-index="7"></div>
-  </div>
-</div>
+        <div class="slider-nav">
+          <div class="slider-dot active" data-index="0"></div>
+          <div class="slider-dot" data-index="1"></div>
+          <div class="slider-dot" data-index="2"></div>
+          <div class="slider-dot" data-index="3"></div>
+          <div class="slider-dot" data-index="4"></div>
+          <div class="slider-dot" data-index="5"></div>
+          <div class="slider-dot" data-index="6"></div>
+          <div class="slider-dot" data-index="7"></div>
+        </div>
+      </div>
     </section>
     <section class="blog-section">
       <div class="blog-header">
