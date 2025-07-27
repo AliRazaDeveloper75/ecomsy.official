@@ -841,6 +841,10 @@ body {
   line-height: 1.6;
   color: #718096;
 }
+.link-contact-section-card-content{
+  text-decoration: none;
+  color: black;
+}
 /* Existing styles ... */
 
 @media (max-width: 768px) {
