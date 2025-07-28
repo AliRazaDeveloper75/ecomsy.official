@@ -604,3 +604,60 @@ function viewInvoice(id) {
 function toggleMenu() {
   document.getElementById("navLinks").classList.toggle("active");
 }
+
+
+
+
+// 
+// Update your searchInvoiceById function to this:
+function searchInvoiceById(id) {
+  if (!id) {
+    alert("Please enter an invoice ID");
+    return;
+  }
+
+  const invoice = invoices.find(inv => inv.id === id);
+  
+  if (invoice) {
+    // Hide all steps and search section
+    document.querySelectorAll(".invoice-step").forEach(step => {
+      step.classList.add("hidden");
+    });
+    document.getElementById("invoiceSearch").classList.add("hidden");
+    
+    // Show and display the invoice
+    document.getElementById("invoiceGenerated").classList.remove("hidden");
+    displayInvoice(invoice);
+  } else {
+    alert("Invoice not found. Please check the ID and try again.");
+  }
+}
+
+// Add this function to display search results
+function displaySearchResults(results) {
+  const resultsContainer = document.getElementById("searchResults");
+  
+  if (results.length === 0) {
+    resultsContainer.innerHTML = "<p>No invoices found matching your search.</p>";
+    resultsContainer.classList.remove("hidden");
+    return;
+  }
+
+  const resultsHTML = results.map(invoice => `
+    <div class="invoice-result">
+      <h4>Invoice #${invoice.id}</h4>
+      <p><strong>Client:</strong> ${invoice.user.name}</p>
+      <p><strong>Date:</strong> ${invoice.date}</p>
+      <p><strong>Status:</strong> <span class="status ${invoice.status}">
+        ${invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)}
+      </span></p>
+      <p><strong>Amount:</strong> $${invoice.amounts.total.toFixed(2)}</p>
+      <button onclick="searchInvoiceById('${invoice.id}')">
+        View & Download
+      </button>
+    </div>
+  `).join("");
+
+  resultsContainer.innerHTML = resultsHTML;
+  resultsContainer.classList.remove("hidden");
+}

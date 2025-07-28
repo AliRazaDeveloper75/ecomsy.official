@@ -87,6 +87,24 @@
     </section>
 
     <!-- Invoice Section -->
+    <!-- Add this section at the top of your invoice-container section -->
+    <section class="invoice-search" id="invoiceSearch">
+      <h2>Search Existing Invoice</h2>
+      <div class="search-box">
+        <input
+          type="text"
+          id="searchInvoiceId"
+          placeholder="Enter Invoice ID (e.g., INV-123456)"
+        />
+        <button
+          onclick="searchInvoiceById(document.getElementById('searchInvoiceId').value)"
+        >
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+      <div id="searchResults" class="search-results hidden"></div>
+    </section>
+    <!-- Invoice Section -->
     <section class="invoice-container">
       <!-- Step 1: User Information -->
       <div class="invoice-step" id="step1">
