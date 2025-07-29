@@ -1,15 +1,16 @@
-// Initialize variables
+// ======================
+// INITIALIZATION & DATA
+// ======================
 let currentStep = 1;
 let invoiceData = {};
 let invoices = JSON.parse(localStorage.getItem("invoices")) || [];
 
-// Service pricing data
 const servicePricing = {
   Basic: {
     "Custom-Coded Websites": 299,
     "Web Development": 1000,
     "Mobile App Development": 1999,
-    "Graphic Design": 300, 
+    "Graphic Design": 300,
     "SEO Services": 500,
     "Shopify Development": 349,
     "WordPress Development": 600,
@@ -18,7 +19,6 @@ const servicePricing = {
     "(SEO)": 599,
     "digital marketing": 399,
     "business consultation": 120,
-    
   },
   Intermediate: {
     "Custom-Coded Websites": 499,
@@ -49,29 +49,37 @@ const servicePricing = {
   },
 };
 
-// Initialize the page
+// ======================
+// PAGE INITIALIZATION
+// ======================
 document.addEventListener("DOMContentLoaded", function () {
-  // Check if there's an invoice ID in the URL
+  // Check for invoice ID in URL
   const urlParams = new URLSearchParams(window.location.search);
   const invoiceId = urlParams.get("id");
+  if (invoiceId) searchInvoiceById(invoiceId);
 
-  if (invoiceId) {
-    searchInvoiceById(invoiceId);
-  }
-
-  // Set up event listeners
   setupEventListeners();
 });
 
+// ======================
+// EVENT HANDLERS
+// ======================
 function setupEventListeners() {
-  // Service tier change handler
-  document
-    .getElementById("serviceTier")
-    .addEventListener("change", function () {
+  // Service selection
+  document.querySelectorAll('input[name="services"]').forEach((radio) => {
+    radio.addEventListener("change", function () {
+      document.querySelectorAll(".service-card").forEach((card) => {
+        card.classList.remove("selected");
+      });
+      if (this.checked) this.closest(".service-card").classList.add("selected");
       updateBudgetField();
     });
+  });
 
-  // Pricing type change handler
+  // Form controls
+  document
+    .getElementById("serviceTier")
+    .addEventListener("change", updateBudgetField);
   document
     .getElementById("pricingType")
     .addEventListener("change", function () {
@@ -87,64 +95,6 @@ function setupEventListeners() {
       }
     });
 
-  // Service selection change handler
- // Modify the service selection event listeners
-document.querySelectorAll('input[name="services"]').forEach((radio) => {
-  radio.addEventListener("change", function() {
-    // Remove selected class from all cards
-    document.querySelectorAll('.service-card').forEach(card => {
-      card.classList.remove('selected');
-    });
-    
-    // Add selected class to the clicked card
-    if (this.checked) {
-      this.closest('.service-card').classList.add('selected');
-    }
-    
-    updateBudgetField();
-  });
-});
-
-// Update the updateBudgetField function to handle radio buttons
-function updateBudgetField() {
-  const serviceTier = document.getElementById("serviceTier").value;
-  const pricingType = document.getElementById("pricingType").value;
-  const selectedService = document.querySelector('input[name="services"]:checked');
-  const budgetInput = document.getElementById("budget");
-  const budgetHelp = document.getElementById("budgetHelp");
-
-  if (pricingType === "Custom") {
-    // Custom pricing - don't auto-calculate
-    budgetInput.value = document.getElementById("customBudget").value || "";
-    budgetInput.readOnly = true;
-    return;
-  }
-
-  if (!selectedService) {
-    budgetInput.value = "";
-    budgetInput.readOnly = true;
-    budgetHelp.textContent = "Please select a service";
-    return;
-  }
-
-  if (!serviceTier) {
-    budgetInput.value = "";
-    budgetInput.readOnly = true;
-    budgetHelp.textContent = "Please select a service tier";
-    return;
-  }
-
-  // Get the price for the selected service and tier
-  const serviceName = selectedService.value;
-  const price = servicePricing[serviceTier][serviceName] || 0;
-  
-  budgetInput.value = price;
-  budgetInput.readOnly = true;
-  budgetHelp.textContent = `Budget calculated based on ${serviceTier} tier pricing`;
-  calculateInvoiceTotal();
-}
-
-  // Custom budget input change handler
   document
     .getElementById("customBudget")
     ?.addEventListener("input", function () {
@@ -154,21 +104,20 @@ function updateBudgetField() {
       }
     });
 
-  // Phone responsive burger icon
+  // Navigation
   document.querySelector(".hamburger").addEventListener("click", toggleMenu);
-
-  // Navbar scroll effect
   window.addEventListener("scroll", () => {
-    const navbar = document.querySelector(".navbar");
-    navbar.classList.toggle("scrolled", window.scrollY > 50);
+    document
+      .querySelector(".navbar")
+      .classList.toggle("scrolled", window.scrollY > 50);
   });
 }
 
-// Navigation functions
+// ======================
+// FORM NAVIGATION
+// ======================
 function nextStep(step) {
-  if (!validateStep(currentStep)) {
-    return;
-  }
+  if (!validateStep(currentStep)) return;
 
   saveStepData(currentStep);
   document.getElementById(`step${currentStep}`).classList.add("hidden");
@@ -188,6 +137,9 @@ function prevStep(step) {
   document.getElementById(`step${currentStep}`).classList.remove("hidden");
 }
 
+// ======================
+// FORM VALIDATION
+// ======================
 function validateStep(step) {
   switch (step) {
     case 1:
@@ -218,17 +170,14 @@ function validateStep(step) {
         alert("Please select at least one service");
         return false;
       }
-
       if (!serviceTier) {
         alert("Please select a service tier");
         return false;
       }
-
       if (!pricingType) {
         alert("Please select a pricing type");
         return false;
       }
-
       if (pricingType === "Custom") {
         const customBudget = document.getElementById("customBudget").value;
         if (!customBudget || customBudget <= 0) {
@@ -236,7 +185,6 @@ function validateStep(step) {
           return false;
         }
       }
-
       return true;
 
     default:
@@ -244,6 +192,9 @@ function validateStep(step) {
   }
 }
 
+// ======================
+// DATA MANAGEMENT
+// ======================
 function saveStepData(step) {
   switch (step) {
     case 1:
@@ -252,8 +203,6 @@ function saveStepData(step) {
         email: document.getElementById("email").value,
         phone: document.getElementById("phone").value,
         address: document.getElementById("address").value,
-        // state: document.getElementById("state").value,
-        // postalCode: document.getElementById("postalCode").value,
       };
       break;
 
@@ -266,104 +215,76 @@ function saveStepData(step) {
       break;
 
     case 3:
-      const selectedServices = Array.from(
-        document.querySelectorAll('input[name="services"]:checked')
-      ).map((el) => el.value);
-
       invoiceData.services = {
-        list: selectedServices,
+        list: Array.from(
+          document.querySelectorAll('input[name="services"]:checked')
+        ).map((el) => el.value),
         tier: document.getElementById("serviceTier").value,
         pricingType: document.getElementById("pricingType").value,
         notes: document.getElementById("additionalNotes").value,
+        budget:
+          document.getElementById("pricingType").value === "Custom"
+            ? document.getElementById("customBudget").value || 0
+            : document.getElementById("budget").value || 0,
       };
-
-      if (invoiceData.services.pricingType === "Custom") {
-        invoiceData.services.budget =
-          document.getElementById("customBudget").value || 0;
-      } else {
-        invoiceData.services.budget =
-          document.getElementById("budget").value || 0;
-      }
       break;
   }
 }
 
+function updateBudgetField() {
+  const serviceTier = document.getElementById("serviceTier").value;
+  const pricingType = document.getElementById("pricingType").value;
+  const selectedService = document.querySelector(
+    'input[name="services"]:checked'
+  );
+  const budgetInput = document.getElementById("budget");
+  const budgetHelp = document.getElementById("budgetHelp");
 
-
-function updateReviewSections() {
-  // User Info
-  const userInfoHTML = `
-    <p><strong>Name:</strong> ${invoiceData.user.name}</p>
-    <p><strong>Email:</strong> ${invoiceData.user.email}</p>
-    <p><strong>Phone:</strong> ${invoiceData.user.phone}</p>
-    <p><strong>Address:</strong> ${invoiceData.user.address}</p>
-    <p><strong>State/Postal:</strong> ${invoiceData.user.state}, ${invoiceData.user.postalCode}</p>
-  `;
-  document.getElementById("reviewUserInfo").innerHTML = userInfoHTML;
-
-  // Project Info
-  const projectInfoHTML = `
-    <p><strong>Project Name:</strong> ${invoiceData.project.name}</p>
-    <p><strong>Description:</strong> ${invoiceData.project.description}</p>
-    <p><strong>Timeline:</strong> ${invoiceData.project.timeline}</p>
-  `;
-  document.getElementById("reviewProjectInfo").innerHTML = projectInfoHTML;
-
-  // Services Info
-  let servicesInfoHTML = `
-    <p><strong>Services:</strong> ${invoiceData.services.list.join(", ")}</p>
-    <p><strong>Service Tier:</strong> ${invoiceData.services.tier}</p>
-    <p><strong>Pricing Type:</strong> ${invoiceData.services.pricingType}</p>
-    <p><strong>Budget:</strong> $${parseFloat(
-      invoiceData.services.budget
-    ).toFixed(2)}</p>
-    ${
-      invoiceData.services.notes
-        ? `<p><strong>Notes:</strong> ${invoiceData.services.notes}</p>`
-        : ""
-    }
-  `;
-
-  document.getElementById("reviewServicesInfo").innerHTML = servicesInfoHTML;
-}
-
-function calculateInvoiceTotal() {
-  const subtotal = parseFloat(invoiceData.services.budget) || 0;
-  const tax = subtotal * 0.1; // 10% tax
-  const total = subtotal + tax;
-
-  // Update review section
-  if (document.getElementById("subtotal")) {
-    document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
-    document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
-    document.getElementById("total").textContent = `$${total.toFixed(2)}`;
+  if (pricingType === "Custom") {
+    budgetInput.value = document.getElementById("customBudget").value || "";
+    budgetInput.readOnly = true;
+    return;
   }
 
-  return { subtotal, tax, total };
+  if (!selectedService) {
+    budgetInput.value = "";
+    budgetInput.readOnly = true;
+    budgetHelp.textContent = "Please select a service";
+    return;
+  }
+
+  if (!serviceTier) {
+    budgetInput.value = "";
+    budgetInput.readOnly = true;
+    budgetHelp.textContent = "Please select a service tier";
+    return;
+  }
+
+  const serviceName = selectedService.value;
+  const price = servicePricing[serviceTier][serviceName] || 0;
+
+  budgetInput.value = price;
+  budgetInput.readOnly = true;
+  budgetHelp.textContent = `Budget calculated based on ${serviceTier} tier pricing`;
+  calculateInvoiceTotal();
 }
 
+// ======================
+// INVOICE GENERATION
+// ======================
 function generateInvoice() {
-  // Generate invoice ID
   const invoiceId = "INV-" + Date.now().toString().slice(-6);
-
-  // Get current date
   const today = new Date();
   const dueDate = new Date();
-  dueDate.setDate(today.getDate() + 15); // Due in 15 days
+  dueDate.setDate(today.getDate() + 15);
 
-  // Format dates
   const options = { year: "numeric", month: "long", day: "numeric" };
-  const formattedDate = today.toLocaleDateString("en-US", options);
-  const formattedDueDate = dueDate.toLocaleDateString("en-US", options);
-
-  // Calculate amounts
   const amounts = calculateInvoiceTotal();
 
-  // Create invoice object
   const invoice = {
     id: invoiceId,
-    date: formattedDate,
-    dueDate: formattedDueDate,
+    date: today.toLocaleDateString("en-US", options),
+    dueDate: dueDate.toLocaleDateString("en-US", options),
     status: "unpaid",
     user: invoiceData.user,
     project: invoiceData.project,
@@ -374,20 +295,16 @@ function generateInvoice() {
     createdAt: new Date().toISOString(),
   };
 
-  // Save to local storage
   invoices.push(invoice);
   localStorage.setItem("invoices", JSON.stringify(invoices));
-
-  // Display the generated invoice
   displayInvoice(invoice);
 
-  // Hide the form and show the invoice
   document.getElementById("step4").classList.add("hidden");
   document.getElementById("invoiceGenerated").classList.remove("hidden");
 }
 
 function displayInvoice(invoice) {
-  // Set invoice header info
+  // Header info
   document.getElementById("invoiceNumber").textContent = invoice.id;
   document.getElementById("invoiceStatus").textContent =
     invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1);
@@ -395,21 +312,19 @@ function displayInvoice(invoice) {
     "invoiceStatus"
   ).className = `invoice-status ${invoice.status}`;
 
-  // Set invoice dates
+  // Dates
   document.getElementById("invoiceDate").textContent = invoice.date;
   document.getElementById("dueDate").textContent = invoice.dueDate;
 
-  // Set invoice to info
-  const invoiceToHTML = `
+  // Client info
+  document.getElementById("invoiceTo").innerHTML = `
     <p>${invoice.user.name}</p>
     <p>${invoice.user.address}</p>
-    <p>${invoice.user.state}, ${invoice.user.postalCode}</p>
     <p>${invoice.user.email}</p>
     <p>${invoice.user.phone}</p>
   `;
-  document.getElementById("invoiceTo").innerHTML = invoiceToHTML;
 
-  // Set invoice items
+  // Items
   let itemsHTML = "";
   if (invoice.services.pricingType === "Custom") {
     itemsHTML = `
@@ -420,25 +335,23 @@ function displayInvoice(invoice) {
       </tr>
     `;
   } else {
-    // Split price equally among services for the tier
     const pricePerService =
       invoice.amounts.subtotal / invoice.services.list.length;
     itemsHTML = invoice.services.list
       .map(
         (service) => `
-        <tr>
-          <td>${service} (${invoice.services.tier})</td>
-          <td>${invoice.services.tier} Tier</td>
-          <td>$${pricePerService.toFixed(2)}</td>
-        </tr>
-      `
+      <tr>
+        <td>${service} (${invoice.services.tier})</td>
+        <td>${invoice.services.tier} Tier</td>
+        <td>$${pricePerService.toFixed(2)}</td>
+      </tr>
+    `
       )
       .join("");
   }
-
   document.getElementById("invoiceItems").innerHTML = itemsHTML;
 
-  // Set invoice totals
+  // Totals
   document.getElementById(
     "invoiceSubtotal"
   ).textContent = `$${invoice.amounts.subtotal.toFixed(2)}`;
@@ -449,37 +362,28 @@ function displayInvoice(invoice) {
     "invoiceTotal"
   ).textContent = `$${invoice.amounts.total.toFixed(2)}`;
 
-  // Show/hide pay button based on status
+  // Payment button
   const payLaterBtn = document.getElementById("payLaterBtn");
   if (payLaterBtn) {
-    if (invoice.status === "unpaid") {
-      payLaterBtn.classList.remove("hidden");
-    } else {
-      payLaterBtn.classList.add("hidden");
-    }
+    payLaterBtn.classList.toggle("hidden", invoice.status !== "unpaid");
   }
 }
 
+// ======================
+// PAYMENT & DOWNLOAD
+// ======================
 function processPayment() {
-  // Find the current invoice
   const invoiceId = document.getElementById("invoiceNumber").textContent;
   const invoice = invoices.find((inv) => inv.id === invoiceId);
-
   if (!invoice) return;
 
-  // Update status to paid
   invoice.status = "paid";
   localStorage.setItem("invoices", JSON.stringify(invoices));
-
-  // Update the displayed invoice
   displayInvoice(invoice);
-
-  // Show success message
   alert("Payment processed successfully! Thank you for your business.");
 }
 
 function downloadInvoice() {
-  // Use html2canvas and jsPDF to generate PDF
   const { jsPDF } = window.jspdf;
   const element = document.getElementById("invoiceGenerated");
 
@@ -497,167 +401,94 @@ function downloadInvoice() {
   });
 }
 
-function startNewInvoice() {
-  // Reset form and show step 1
-  document.getElementById("invoiceGenerated").classList.add("hidden");
-  document.getElementById("step1").classList.remove("hidden");
-  currentStep = 1;
-  invoiceData = {};
-
-  // Reset all form fields
-  document.getElementById("userInfoForm").reset();
-  document.getElementById("projectInfoForm").reset();
-  document.getElementById("servicesForm").reset();
-
-  // Reset budget field
-  const budgetInput = document.getElementById("budget");
-  budgetInput.value = "";
-  budgetInput.readOnly = false;
-
-  // Hide custom budget container if visible
-  const customBudgetContainer = document.getElementById(
-    "customBudgetContainer"
-  );
-  if (customBudgetContainer) customBudgetContainer.classList.add("hidden");
-
-  // Reset help text
-  const budgetHelp = document.getElementById("budgetHelp");
-  if (budgetHelp)
-    budgetHelp.textContent =
-      "Budget will be calculated based on your selections";
-
-  // Scroll to top
-  window.scrollTo(0, 0);
-}
-
-// Search functionality
-function searchInvoice() {
-  const searchTerm = document.getElementById("searchInvoiceId").value.trim();
-  if (!searchTerm) {
-    alert("Please enter an invoice number");
-    return;
-  }
-
-  const results = invoices.filter(
-    (invoice) =>
-      invoice.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      invoice.user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      invoice.user.email.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  displaySearchResults(results);
-}
-
-function searchInvoiceById(id) {
-  const invoice = invoices.find((inv) => inv.id === id);
-  if (invoice) {
-    // Hide all steps and search section
-    document.querySelectorAll(".invoice-step").forEach((step) => {
-      step.classList.add("hidden");
-    });
-    document.getElementById("invoiceSearch").classList.add("hidden");
-
-    // Show and display the invoice
-    document.getElementById("invoiceGenerated").classList.remove("hidden");
-    displayInvoice(invoice);
-  } else {
-    alert("Invoice not found");
-  }
-}
-
-function displaySearchResults(results) {
-  const resultsContainer = document.getElementById("searchResults");
-
-  if (results.length === 0) {
-    resultsContainer.innerHTML =
-      "<p>No invoices found matching your search.</p>";
-    resultsContainer.classList.remove("hidden");
-    return;
-  }
-
-  const resultsHTML = results
-    .map(
-      (invoice) => `
-    <div class="invoice-result">
-      <h4>Invoice #${invoice.id} - ${invoice.user.name}</h4>
-      <p><strong>Date:</strong> ${
-        invoice.date
-      } | <strong>Status:</strong> <span class="status ${invoice.status}">${
-        invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)
-      }</span></p>
-      <p><strong>Project:</strong> ${invoice.project.name}</p>
-      <p><strong>Total:</strong> $${invoice.amounts.total.toFixed(2)}</p>
-      <button onclick="viewInvoice('${invoice.id}')">View Invoice</button>
-    </div>
-  `
-    )
-    .join("");
-
-  resultsContainer.innerHTML = resultsHTML;
-  resultsContainer.classList.remove("hidden");
-}
-
-function viewInvoice(id) {
-  searchInvoiceById(id);
-}
-
-function toggleMenu() {
-  document.getElementById("navLinks").classList.toggle("active");
-}
-
-
-
-
-// 
-// Update your searchInvoiceById function to this:
+// ======================
+// SEARCH FUNCTIONALITY
+// ======================
 function searchInvoiceById(id) {
   if (!id) {
     alert("Please enter an invoice ID");
     return;
   }
 
-  const invoice = invoices.find(inv => inv.id === id);
-  
+  const invoice = invoices.find((inv) => inv.id === id);
   if (invoice) {
-    // Hide all steps and search section
-    document.querySelectorAll(".invoice-step").forEach(step => {
-      step.classList.add("hidden");
-    });
+    document
+      .querySelectorAll(".invoice-step")
+      .forEach((step) => step.classList.add("hidden"));
     document.getElementById("invoiceSearch").classList.add("hidden");
-    
-    // Show and display the invoice
     document.getElementById("invoiceGenerated").classList.remove("hidden");
     displayInvoice(invoice);
-  } else {
+  } else { 
     alert("Invoice not found. Please check the ID and try again.");
   }
 }
 
-// Add this function to display search results
-function displaySearchResults(results) {
-  const resultsContainer = document.getElementById("searchResults");
-  
-  if (results.length === 0) {
-    resultsContainer.innerHTML = "<p>No invoices found matching your search.</p>";
-    resultsContainer.classList.remove("hidden");
-    return;
+// ======================
+// UTILITY FUNCTIONS
+// ======================
+function calculateInvoiceTotal() {
+  const subtotal = parseFloat(invoiceData.services.budget) || 0;
+  const tax = subtotal * 0.1;
+  const total = subtotal + tax;
+
+  if (document.getElementById("subtotal")) {
+    document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
+    document.getElementById("total").textContent = `$${total.toFixed(2)}`;
   }
 
-  const resultsHTML = results.map(invoice => `
-    <div class="invoice-result">
-      <h4>Invoice #${invoice.id}</h4>
-      <p><strong>Client:</strong> ${invoice.user.name}</p>
-      <p><strong>Date:</strong> ${invoice.date}</p>
-      <p><strong>Status:</strong> <span class="status ${invoice.status}">
-        ${invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)}
-      </span></p>
-      <p><strong>Amount:</strong> $${invoice.amounts.total.toFixed(2)}</p>
-      <button onclick="searchInvoiceById('${invoice.id}')">
-        View & Download
-      </button>
-    </div>
-  `).join("");
+  return { subtotal, tax, total };
+}
 
-  resultsContainer.innerHTML = resultsHTML;
-  resultsContainer.classList.remove("hidden");
+function updateReviewSections() {
+  document.getElementById("reviewUserInfo").innerHTML = `
+    <p><strong>Name:</strong> ${invoiceData.user.name}</p>
+    <p><strong>Email:</strong> ${invoiceData.user.email}</p>
+    <p><strong>Phone:</strong> ${invoiceData.user.phone}</p>
+    <p><strong>Address:</strong> ${invoiceData.user.address}</p>
+  `;
+
+  document.getElementById("reviewProjectInfo").innerHTML = `
+    <p><strong>Project Name:</strong> ${invoiceData.project.name}</p>
+    <p><strong>Description:</strong> ${invoiceData.project.description}</p>
+    <p><strong>Timeline:</strong> ${invoiceData.project.timeline}</p>
+  `;
+
+  document.getElementById("reviewServicesInfo").innerHTML = `
+    <p><strong>Services:</strong> ${invoiceData.services.list.join(", ")}</p>
+    <p><strong>Service Tier:</strong> ${invoiceData.services.tier}</p>
+    <p><strong>Pricing Type:</strong> ${invoiceData.services.pricingType}</p>
+    <p><strong>Budget:</strong> $${parseFloat(
+      invoiceData.services.budget
+    ).toFixed(2)}</p>
+    ${
+      invoiceData.services.notes
+        ? `<p><strong>Notes:</strong> ${invoiceData.services.notes}</p>`
+        : ""
+    }
+  `;
+}
+
+function startNewInvoice() {
+  document.getElementById("invoiceGenerated").classList.add("hidden");
+  document.getElementById("step1").classList.remove("hidden");
+  currentStep = 1;
+  invoiceData = {};
+
+  document.getElementById("userInfoForm").reset();
+  document.getElementById("projectInfoForm").reset();
+  document.getElementById("servicesForm").reset();
+
+  const budgetInput = document.getElementById("budget");
+  budgetInput.value = "";
+  budgetInput.readOnly = false;
+
+  document.getElementById("customBudgetContainer")?.classList.add("hidden");
+  document.getElementById("budgetHelp").textContent =
+    "Budget will be calculated based on your selections";
+  window.scrollTo(0, 0);
+}
+
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("active");
 }
