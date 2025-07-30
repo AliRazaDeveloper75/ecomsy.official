@@ -9,7 +9,7 @@ body {
 }
 .trusted-section {
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px 25px;
   /* background-color: #111111; */
   border-end-end-radius: 45px;
   border-end-start-radius: 45px;
@@ -47,7 +47,7 @@ body {
   .hero-text {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 5px;
   }
   .trusted-heading{
     margin-top: 5rem;
@@ -1439,7 +1439,7 @@ h2 {
 }
 
 .footer-heading-line h3::after {
-  content: "";
+  /* content: ""; */
   position: absolute;
   bottom: 0;
   left: 0;
