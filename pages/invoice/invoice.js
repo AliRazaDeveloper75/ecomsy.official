@@ -492,3 +492,70 @@ function startNewInvoice() {
 function toggleMenu() {
   document.getElementById("navLinks").classList.toggle("active");
 }
+
+
+
+// ======================
+// PAYMENT POPUP FUNCTIONALITY
+// ======================
+function processPayment() {
+  // Create payment popup
+  const popup = document.createElement('div');
+  popup.className = 'payment-popup';
+  popup.innerHTML = `
+    <div class="payment-popup-content">
+      <span class="close-popup" onclick="this.parentElement.parentElement.remove()">&times;</span>
+      <h4>Complete Your Payment</h4>
+      <div class="payment-instructions">
+        <p><strong>Please transfer the payment to:</strong></p>
+        <p>Bank Name: United Bank Limited (UBL)</p>
+        <p>Account Title: ECOMSY SMC PVT LTD</p>
+        <p>Account Number: 334242866</p>
+        <p>Branch Code: 0936</p>
+        <p><strong>Amount:</strong> $${document.getElementById('invoiceTotal').textContent}</p>
+      </div>
+      <form id="paymentProofForm">
+        <div class="form-group">
+          <label for="transactionId">Transaction ID*</label>
+          <input type="text" id="transactionId" required>
+        </div>
+        <div class="form-group">
+          <label for="paymentScreenshot">Upload Payment Screenshot*</label>
+          <input type="file" id="paymentScreenshot" accept="image/*" required>
+        </div>
+        <button type="button" class="btn-submit" onclick="submitPaymentProof()">Submit Payment Proof</button>
+      </form>
+    </div>
+  `;
+  
+  document.body.appendChild(popup);
+}
+
+function submitPaymentProof() {
+  const transactionId = document.getElementById('transactionId').value;
+  const screenshot = document.getElementById('paymentScreenshot').files[0];
+  
+  if (!transactionId || !screenshot) {
+    alert('Please provide both Transaction ID and Payment Screenshot');
+    return;
+  }
+  
+  // In a real implementation, you would upload this to your server
+  alert('Payment proof submitted successfully! We will verify your payment shortly.');
+  
+  // Close popup
+  document.querySelector('.payment-popup').remove();
+  
+  // Update invoice status
+  const invoiceId = document.getElementById('invoiceNumber').textContent;
+  const invoice = invoices.find(inv => inv.id === invoiceId);
+  if (invoice) {
+    invoice.status = 'pending';
+    invoice.transactionId = transactionId;
+    localStorage.setItem('invoices', JSON.stringify(invoices));
+    displayInvoice(invoice);
+  }
+}
+
+
+

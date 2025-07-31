@@ -435,16 +435,16 @@ h3 {
 
 /* ============ FORM STYLES ============ */
 .form-group {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1rem;
   position: relative;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.1rem;
   font-weight: 500;
-  color: #444;
-  font-size: 0.95rem;
+  color: black;
+  font-size: 0.8rem;
 }
 
 .form-group input,
@@ -1287,4 +1287,67 @@ display: none;
 .status.unpaid {
   background: #ff9800;
   color: white;
+}
+
+
+/* // Add this CSS to your invoice.css file: */
+
+.payment-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.payment-popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.payment-instructions {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.payment-instructions p {
+  margin: 5px 0;
+}
+
+.btn-submit {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+ .payment-instructions p {
+    font-size: 12px;
+  }
+  .btn-submit {
+    padding: 8px 12px;
+  }
 }
