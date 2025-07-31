@@ -100,7 +100,7 @@ h3 {
 .nav-links a {
   color: white;
   text-decoration: none;
-  /* font-weight: bold; */
+  font-weight: bold;
   transition: color 0.3s ease;
 }
 
@@ -273,7 +273,7 @@ h3 {
 /* ============ INVOICE CONTAINER ============ */
 .invoice-container {
   /* max-width: 1200px; */
-  margin: 2rem auto;
+  margin: 2rem 5rem;
   padding: 0 2rem;
 }
 
@@ -1203,7 +1203,7 @@ display: none;
 /* search box css */
 .invoice-search {
   background: #f9f9f9;
-  padding: 1rem 2.2rem;
+  padding: 2rem 8rem;
   border-radius: 8px;
   margin-bottom: 30px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -1228,7 +1228,7 @@ display: none;
   background: white;
   color: black;
   border: 2px solid black;
-  border-radius: 4px;
+  border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
   transition: 0.8s;
@@ -1289,6 +1289,19 @@ display: none;
   color: white;
 }
 
+@media (max-width: 768px) {
+  .invoice-search h2 {
+    font-size: 1rem;
+
+  }
+  .invoice-search {
+  background: #f9f9f9;
+  padding: 1rem 0.8rem;
+}
+.search-box button{
+  font-size: 10px;
+}
+}
 
 /* // Add this CSS to your invoice.css file: */
 
