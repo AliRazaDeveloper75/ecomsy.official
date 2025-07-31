@@ -89,6 +89,12 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+    .nav-links a {
+  color: gray;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
   .navbar {
     padding: 22px 15px;
   }
@@ -457,4 +463,6 @@ display: none;
   .service-icon img {
     width: 70px;
   }
+}.m-whatsapp {
+  color: white;
 }
