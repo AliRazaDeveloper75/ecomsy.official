@@ -1371,11 +1371,24 @@ display: none;
  .payment-instructions p {
     font-size: 12px;
   }
-  .btn-submit {
+  .btn-submit { 
     padding: 8px 12px;
   }
 }
 .m-whatsapp {
   color: white;
   font-weight: 100;
+}
+
+
+select {
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
+  background-color: #fff;
+  padding: 10px;
+  padding-right: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }

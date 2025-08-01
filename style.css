@@ -68,9 +68,14 @@ body {
   position: relative;
   overflow: hidden;
   height: 100vh;
+  background-image: url('assets/D.png');
+  background-size: cover;
+  /* background-position: center;   */
+  height: 100%;
+   background-repeat: no-repeat; /* Prevents tiling */
   
 }
-
+/* 
 .video-background {
   position: absolute;
   top: 0;
@@ -78,7 +83,7 @@ body {
   width: 100%;
   height: 100%;
   z-index: 0;
-  /* filter: blur(3px); */
+  filter: blur(3px);
 }
 
 .video-background video {
@@ -90,16 +95,16 @@ body {
   min-height: 100%;
   width: auto;
   height: auto;
-}
+} */
 
-.video-overlay {
+/* .video-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* Adjust opacity as needed */
-}
+  background: rgba(0, 0, 0, 0.3); 
+} */
 
 /* Update the blur effect to work with video */
 .min-hero-sec::before {
@@ -110,7 +115,7 @@ body {
   right: -10px;
   bottom: -10px;
   background: inherit;
-  filter: blur(8px);
+  /* filter: blur(8px); */
   z-index: 0;
   pointer-events: none;
 }
@@ -220,6 +225,14 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .min-hero-sec {
+    height: 100vh;
+    background-image: url('assets/M.png');
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-size: cover;
+    background-position: center;
+  }
+
   .hero {
     flex-direction: column;
     padding: 0 25px;
