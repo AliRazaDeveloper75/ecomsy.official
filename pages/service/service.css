@@ -8,7 +8,7 @@ body {
   font-family: "Arial", sans-serif;
   overflow-x: hidden;
   color: white;
-} 
+}
 /* Navbar */
 .navbar {
   display: flex;
@@ -89,12 +89,12 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .nav-links a {
-  color: gray;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
+  .nav-links a {
+    color: gray;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
   .navbar {
     padding: 22px 15px;
   }
@@ -132,7 +132,7 @@ body {
     display: flex;
     margin-bottom: 5px;
     width: 100%;
-        font-size: 20px;
+    font-size: 20px;
     color: white;
   }
 
@@ -142,7 +142,7 @@ body {
 
   .nav-links.active .navbar-menu-btn {
     gap: 18px;
-        font-size: 24px;
+    font-size: 24px;
     padding-right: 12px;
     padding-top: 6rem;
     flex-direction: column;
@@ -343,12 +343,9 @@ body {
     margin: 0;
   }
   .footer-heading-line::after {
-display: none;
+    display: none;
   }
 }
-
-
-
 
 /* card section */
 /* Header */
@@ -370,12 +367,12 @@ display: none;
   color: #cbd5e1;
 }
 /* <!--service card-- >  */
-.service-section-title{
+.service-section-title {
   display: flex;
   justify-content: center;
   padding: 25px;
 }
-.service-section-title h1{
+.service-section-title h1 {
   color: #000;
 }
 .services-section-title {
@@ -463,6 +460,8 @@ display: none;
   .service-icon img {
     width: 70px;
   }
-}.m-whatsapp {
+}
+.m-whatsapp {
   color: white;
+  font-weight: 300;
 }
