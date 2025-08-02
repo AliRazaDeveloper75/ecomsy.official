@@ -12,342 +12,100 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
-  <style>
-    /* Reset and Base Styles */
-
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      background-color: transparent;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      transition: background-color 0.3s ease;
-    }
-
-    /* Scroll effect */
-    .navbar.scrolled {
-      background-color: rgba(14, 14, 14, 0.95);
-    }
-
-    /* Logo */
-    .logo img {
-      width: 170px;
-    }
-
-    /* Nav links */
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    /* Hamburger (hidden on desktop) */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-    }
-
-    .get-touch-btn {
-      padding: 12px 18px;
-      background: transparent;
-      border: 2px solid white;
-      color: white;
-      border-radius: 25px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .get-touch-btn:hover {
-      color: black;
-      background: white;
-      transition: 0.7sec;
-    }
-
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 22px 15px;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        align-items: left;
-        top: 0px;
-        right: 0px;
-        background-color: #111111;
-        flex-direction: column;
-        width: 100%;
-        padding: 20px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      }
-
-      .nav-links.active .navbar {
-        display: none;
-      }
-      .nav-links.active {
-        display: flex;
-        width: 100%;
-        height: 100vh;
-        padding: 22px 15px;
-        align-items: normal;
-      }
-
-      .logo img {
-        width: 160px;
-      }
-      .nav-links.active .navbar-menu-btn-text {
-        display: flex;
-        margin-bottom: 5px;
-        width: 100%;
-        font-size: 16px;
-      }
-      .nav-links.active .navbar-menu-btn-text p {
-        margin-top: 25px;
-      }
-      .nav-links.active .navbar-menu-btn {
-        gap: 18px;
-        font-size: 24px;
-        padding-right: 12px;
-        padding-top: 6rem;
-        flex-direction: column;
-        align-items: flex-end;
-      }
-      .nav-links.active .menu-for-phone {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .hamburger {
-        width: 30px;
-        height: 21px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        cursor: pointer;
-        z-index: 1001;
-      }
-
-      .hamburger span {
-        display: block;
-        height: 3px;
-        background: white;
-        transition: all 0.3s ease;
-        border-radius: 2px;
-      }
-
-      /* Transform hamburger to X */
-      .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-
-      .hamburger.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(8px, -8px);
-      }
-    }
-  </style>
-  <style>
-    .partners-section {
-      background-color: #f4f4f4;
-      padding: 20px 20px;
-      margin: auto;
-    }
-
-    .partners-section-title {
-      color: #00539c;
-      font-weight: bold;
-      font-size: 16px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      display: flex;
-      flex-direction: row;
-    }
-    .partners-icon-box-icon {
-      margin-left: 5px;
-    }
-
-    .main-heading {
-      font-size: 36px;
-      font-weight: bold;
-      margin-bottom: 40px;
-      color: black;
-    }
-
-    .partners {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .partner-box {
-      padding: 20px;
-      border-radius: 10px;
-      flex: 1;
-      min-width: 300px;
-      color: black;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      background: white;
-    }
-
-    .partner-logo-wvip {
-      height: 50px;
-    }
-    .partner-logo {
-      height: 50px;
-      margin-bottom: 20px;
-      filter: brightness(100) saturate(100%) invert(100%) sepia(100%)
-        saturate(10000%) hue-rotate(0deg);
-    }
-
-    .partner-text {
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    .google-partner-logo {
-      display: block;
-      margin: auto;
-      height: 80px;
-    }
-
-    .google-label {
-      text-align: center;
-      margin-top: 5px;
-      background: #333;
-      color: #fff;
-      font-size: 12px;
-      padding: 10px 16px;
-      display: inline-block;
-      margin-top: 5%;
-      margin-bottom: 5%;
-    }
-
-    @media (max-width: 768px) {
-      .main-heading {
-        font-size: 28px;
-      }
-    }
-  </style>
   <body>
+    <section class="new-hero-section">
+      <div class="hero-left-section">
+        <div class="hero-left-content">
+          <h1 class="left-hero-heading">
+            All-in-One I.T. Services to Power Your Business Transforming Ideas
+            into Scalable, Secure, and Smart Digital Solutions
+          </h1>
+          <p class="left-hero-subheading">
+            Looking to launch scalable Mobile apps or streamline your operations
+            with seamless cloud integration? We are a trusted web development
+            company in Islamabad, specializing in innovative, user-friendly
+            websites that deliver results. With over 200 projects completed in
+            2024, we create tailored solutions to meet your business needs
+            whether it’s a corporate site or an e-commerce platform ensuring
+            scalability, performance, and future-readiness.
+          </p>
+          <div class='left-hero-buttons'>
+            <a href="https://api.whatsapp.com/send?phone=447743140847">
+              <button class="cta-button">Get in Touch</button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right-section">
+        <div>
+          <form class="hero-form-group">
+            <div class="new-hero-form-group">
+              <label class="hero-new-form-label">Name *</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter Your Name"
+                required
+              />
+            </div>
+
+            <div class="new-hero-form-group">
+              <label class="hero-new-form-label">Email *</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter Your Email"
+                required
+              />
+            </div>
+
+            <div class="new-hero-form-group">
+              <label class="hero-new-form-label">Phone Number *</label>
+              <div class="phone-group">
+                <select class="country-code" name="country-code" required>
+                  <option value="+1">US +1</option>
+                  <option value="+44">GB +44</option>
+                  <option value="+91">IN +91</option>
+                  <option value="+92" selected>PK +92</option>
+                </select>
+                <input
+                  type="text"
+                  name="phone"
+                  class="phone-number"
+                  placeholder="Phone number"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="new-hero-form-group">
+              <label class="hero-new-form-label">Approximate Budget *</label>
+              <select name="budget" required>
+                <option value="">Please Select</option>
+                <option value="below-1k">Below $1,000</option>
+                <option value="1k-5k">$1,000 – $5,000</option>
+                <option value="5k-10k">$5,000 – $10,000</option>
+                <option value="10k+">$10,000+</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="hero-new-form-label">Your Message</label>
+              <textarea name="message" placeholder="Your Message"></textarea>
+            </div>
+
+            <button type="submit" class="new-hero-form-button">Schedule Consultation</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <!--
     <div class="phone-hero-logo">
             <img src="assets/logo.png" alt="Code Huddle Logo" />
           </div>
           -->
     <div id="header-Container"></div>
-
-    <div class="min-hero-sec">
-      <!--      
-      <div class="video-background">
-        <video autoplay muted loop playsinline>
-          <source src="assets/1.mp4" type="video/mp4" />
-        </video>
-        <div class="video-overlay"></div>
-      </div>
-      -->
-      <!-- Load header here -->
-      <div class="hero-sectino-diverder">
-        <section class="hero">
-          <!-- Rest of your existing hero content remains the same -->
-          <div class="hero-text">
-            <h1><br /><span class="hero-span">Let's </span><br /></h1>
-            <h1>
-              <span
-                class="highlight typing"
-                id="type-text"
-                style="margin-right: 10px"
-              ></span>
-              Your <br />
-            </h1>
-            <h1>Vision Together</h1>
-            <div class="hero-sect-text">
-              <strong>We turn solutions into forward momentum.</strong>
-            </div>
-            <a href="https://api.whatsapp.com/send?phone=447743140847">
-              <button class="cta-button">Get in Touch</button>
-            </a>
-          </div>
-        </section>
-
-        <div class="trusted-section">
-          <h2 class="trusted-heading">Trusted by industry leaders</h2>
-          <div class="trusted-logos">
-            <img
-              class="on-phone"
-              src="https://megadigital.ai/wp-content/uploads/2023/02/TikTok.svg"
-              alt="TikTok"
-              width="83"
-              height="24"
-            />
-            <img
-              class="on-phone"
-              src="https://megadigital.ai/wp-content/uploads/2023/02/Google.svg"
-              alt="Google"
-              width="71"
-              height="24"
-            />
-            <img
-              class=""
-              src="https://megadigital.ai/wp-content/uploads/2023/02/Shopify.svg"
-              alt="Shopify"
-              width="85"
-              height="24"
-            />
-            <img
-              class=""
-              src="assets/word.png"
-              alt="Woocommerce"
-              width=""
-              height="56"
-            />
-            <img
-              class=""
-              src="assets/woo.png"
-              alt="Woocommerce"
-              width="120"
-              height="56"
-            />
-            <img
-              class="on-phone"
-              src="https://megadigital.ai/wp-content/uploads/2023/02/Payoneer.svg"
-              alt="Payoneer"
-              width="104"
-              height="20"
-              class="hide-on-mobile"
-            />
-            <img
-              class="on-phone"
-              src="https://megadigital.ai/wp-content/uploads/2023/02/PayPal.svg"
-              alt="PayPal"
-              width="91"
-              height="24"
-              class="hide-on-mobile"
-            />
-            <img
-              class="on-phone"
-              src="https://megadigital.ai/wp-content/uploads/2023/02/Stripe.svg"
-              alt="Stripe"
-              width="58"
-              height="24"
-              class="hide-on-mobile"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!--service card
     <section class="services-section-title">
