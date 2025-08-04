@@ -791,7 +791,6 @@ body {
   min-width: 300px; /* Minimum width before wrapping */
   max-width: 100%; /* Ensure items don't overflow */
 }
-
 .service-card {
   background: #fff;
   border-radius: 8px;
@@ -800,13 +799,36 @@ body {
   width: 300px;
   text-align: left;
   transition: transform 0.3s;
+  position: relative; /* Add this */
+  overflow: hidden; /* Add this to contain the pseudo-element */
+  z-index: 1; /* Add this to ensure content stays above the fill */
+  cursor: pointer;
 }
 
+.service-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  background: #1C1C25;
+  transition: all 0.4s ease-out;
+  z-index: -1;
+}
+
+.service-card:hover::before {
+  right: 0;
+}
+
+/* Optional: Add these to improve the text visibility on hover */
 .service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* More spread */
-  transition: all 0.3s ease;
-  cursor: pointer;
+  color: white; /* Change text color on hover */
+}
+
+.service-card:hover .service-title,
+.service-card:hover .service-description {
+  color: inherit; /* Ensure child elements inherit the color */
 }
 
 .service-icon {
@@ -816,6 +838,9 @@ body {
 .service-icon img {
   width: 70px;
   mix-blend-mode: hard-light;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .service-title {
@@ -1496,7 +1521,7 @@ h2 {
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap");
 
 .new-moving-brands-section {
-  background-color: #111111;
+  background-color: #1C1C25;
   /* padding: 3rem 2rem; */
   /* border-radius: 1rem; */
   padding-top: 3rem;
@@ -1507,7 +1532,7 @@ h2 {
   /* border-radius: 20px; */
 }
 .brands-section {
-  background-color: #111111;
+  background-color: #1C1C25;
   /* padding: 3rem 2rem; */
   /* border-radius: 1rem; */
   padding-top: 3rem;
@@ -1551,12 +1576,12 @@ h2 {
 
 .gradient-overlay-left {
   left: 0;
-  background: linear-gradient(to right, #111111, transparent);
+  background: linear-gradient(to right, #1C1C25, transparent);
 }
 
 .gradient-overlay-right {
   right: 0;
-  background: linear-gradient(to left, #111111, transparent);
+  background: linear-gradient(to left, #1C1C25, transparent);
 }
 
 .marquee {
@@ -1626,14 +1651,16 @@ h2 {
 
 /* count down section css */
 .count-section {
-  background-color: #111111;
+  background-color: #1C1C25;
   color: white;
   font-family: Arial, sans-serif;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  margin: 0;
+  margin: 20px;
+  border-radius: 20px;
+
 }
 
 .stat {
@@ -1902,4 +1929,8 @@ select {
   padding-right: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+a{
+  text-decoration: none;
 }
