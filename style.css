@@ -1494,6 +1494,17 @@ h2 {
 /* banner logos */
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap");
 
+.new-moving-brands-section {
+  background-color: #111111;
+  /* padding: 3rem 2rem; */
+  /* border-radius: 1rem; */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+  /* margin: 20px; */
+  /* border-radius: 20px; */
+}
 .brands-section {
   background-color: #111111;
   /* padding: 3rem 2rem; */
@@ -1706,7 +1717,8 @@ h2 {
 .new-hero-section {
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(135deg, #6e6e6e, #000000); /* violet-blue blend */
+  /* background: linear-gradient(135deg, #6e6e6e, #000000); */
+  background-color: #1C1C25;
   text-align: left;
   align-items: center;
   padding: 80px 50px;
@@ -1727,17 +1739,19 @@ h2 {
 
 .left-hero-heading {
   display: flex;
-  font-size: 30px;
-  color: white;
+  font-size: 50px;
+  color: #FFFFFF;
   font-weight: 700;
   flex-direction: row;
   text-transform: capitalize;
+  line-height: 60px;
 }
 .left-hero-subheading {
   display: flex;
-  font-size: 20px;
-  color: white;
+  font-size: 16px;
+  color: #737887;
   font-weight: 400;
+  line-height: 25px;
   flex-direction: row;
 }
 .left-hero-buttons{
