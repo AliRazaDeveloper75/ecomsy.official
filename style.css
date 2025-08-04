@@ -1861,8 +1861,10 @@ select {
   }
   .left-hero-heading {
   display: flex;
-  font-size: 15px;
+  font-size: 22px;
+  text-align: center;
   color: white;
+  line-height: 30px;
   font-weight: 700;
   flex-direction: row;
   text-transform: capitalize;
