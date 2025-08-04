@@ -856,7 +856,7 @@ body {
 /* testimonial section */
 
 .testimonial-section {
-  background: black;
+  background: #1C1C25;
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
@@ -1389,8 +1389,8 @@ h2 {
 }
 /* blog css */
 .blog-section {
-  background-color: #111;
-  color: #fff;
+  background-color:white;
+  color: black;
   padding: 60px 20px;
   font-family: "Arial", sans-serif;
 }
@@ -1407,7 +1407,7 @@ h2 {
   font-size: 32px;
   font-weight: bold;
   margin: 10px 0 0;
-  color: white;
+  color: black;
   text-align: left;
 }
 
@@ -1424,8 +1424,8 @@ h2 {
 
 .read-all-button {
   background: transparent;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid black;
+  color: black;
   padding: 10px 20px;
   border-radius: 30px;
   font-size: 14px;
@@ -1434,8 +1434,8 @@ h2 {
 }
 
 .read-all-button:hover {
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
 }
 
 .blog-cards {
@@ -1445,7 +1445,7 @@ h2 {
 }
 
 .blog-card {
-  background-color: #1a1a1a;
+  background-color: #1C1C25;
   border-radius: 16px;
   overflow: hidden;
   flex: 1 1 calc(33.333% - 20px);
@@ -1463,10 +1463,11 @@ h2 {
   font-size: 18px;
   margin: 16px;
   margin-bottom: 10px;
+  color: white;
 }
 
 .blog-card .date {
-  color: #aaa;
+  color: white;
   font-size: 14px;
   margin: 0 16px 20px;
 }
@@ -1887,4 +1888,18 @@ select {
     width: 100%;
     justify-content: center;
   }
+}
+
+
+/* dropdown icon css  */
+select {
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
+  background-color: #fff;
+  padding: 10px;
+  padding-right: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
