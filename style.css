@@ -16,7 +16,8 @@
 
 /* Scroll effect */
 .navbar.scrolled {
-  background-color: rgba(14, 14, 14, 0.95);
+  /* background-color: rgba(14, 14, 14, 0.95); */
+  background-color: #1C1C25;
 }
 
 /* Logo */
@@ -667,7 +668,7 @@ body {
 }
 
 .step.dark {
-  background-color: black;
+  background-color: #1C1C25;
   color: white;
 }
 
@@ -1258,7 +1259,7 @@ h2 {
 
 /* footer */
 .footer {
-  background-color: #000;
+  background-color: #1C1C25;
   color: #fff;
   padding: 40px 20px;
 }
@@ -1363,7 +1364,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000;
+  background-color: #1C1C25;
   padding: 20px 20px;
 }
 .menu-for-phone {
