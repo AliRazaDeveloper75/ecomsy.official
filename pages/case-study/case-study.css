@@ -368,7 +368,8 @@ body {
 
 /* Header */
 .main-header {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  /* background: linear-gradient(135deg, #4f46e5, #7c3aed); */
+  background-color: #1C1C25;
   color: white;
   padding: 80px 0 60px;
   text-align: center;
@@ -548,6 +549,15 @@ body {
   margin-right: 5px;
 }
 
+.two-case-buttons{
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+a{
+  text-decoration: none;
+}
+
 .read-more-btn {
   margin-top: 20px;
   padding: 12px 20px;
@@ -621,7 +631,8 @@ body {
 .cta-section {
   text-align: center;
   padding: 60px 0;
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  /* background: linear-gradient(135deg, #4f46e5, #7c3aed); */
+  background-color: #1C1C25;
   color: white;
 }
 
