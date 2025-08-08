@@ -1876,7 +1876,7 @@ select {
 }
 
 .new-hero-form-button:hover {
-  background: black;
+  background: #1C1C25;
   color: white;
 }
 @media (max-width: 768px) {
