@@ -679,7 +679,7 @@ body {
 
 .step.dark .step-number {
   color: white;
-  opacity: 35%;
+  opacity: 0.1;
 }
 
 .step.light .step-number {
@@ -1795,6 +1795,7 @@ h2 {
   display: flex;
   color: white;
   width: 40%;
+  padding-right: 2rem;
   justify-content: end;
 }
 /* form  */
