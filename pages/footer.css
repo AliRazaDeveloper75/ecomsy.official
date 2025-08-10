@@ -1,0 +1,150 @@
+/* footer */
+.footer {
+  background-color: #1c1c25;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.footer-section {
+  margin-bottom: 30px;
+}
+.footer-section-content {
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+}
+
+.footer-heading-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.footer-heading-line h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  width: 10%;
+  white-space: nowrap;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+.left-space-footer {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.footer-heading-line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #444;
+}
+
+.footer-content p,
+.footer-content a,
+.footer-list li {
+  font-size: 14px;
+  color: #ccc;
+  margin: 6px 0;
+  text-decoration: none;
+}
+
+.footer-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.footer-divider {
+  height: 1px;
+  background-color: #333;
+  /* margin: 30px 0; */
+}
+
+.social-icons {
+  display: flex;
+  gap: 5rem;
+  font-size: 20px;
+  margin-top: 10px;
+  justify-content: center;
+}
+.social-icons a {
+  color: #fff;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #00bfff;
+}
+.copyright-social-icons {
+  display: flex;
+  gap: 15px;
+  font-size: 20px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.copyright-social-icons a {
+  color: #fff;
+  transition: 0.3s;
+  padding: 5px;
+}
+
+.copyright-social-icons a:hover {
+  color: black;
+  background: white;
+  border: 2px solid white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.copy-right-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1c25;
+  padding: 20px 20px;
+  color: white;
+}
+.menu-for-phone {
+  display: none;
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+  .footer-section-content {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .left-width {
+    display: none;
+  }
+  .copy-right-section {
+    padding: 20px 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+  .social-icons {
+    display: flex;
+    gap: 50px;
+    font-size: 20px;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  .navbar-menu-btn-text {
+    display: flex;
+    margin-bottom: 5px;
+  }
+  .footer-heading-line h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+  }
+  .footer-heading-line::after {
+    display: none;
+  }
+}
