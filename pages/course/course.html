@@ -121,6 +121,15 @@
         <p class="starting-date"></p>
         <a href="course-detail/business-seminars.html">Apply Now</a>
       </div>
+
+      <div class="course-card">
+        <h2>Amazon FBA Mastery – Private Label + Wholesale Combined</h2>
+        <p>
+          Your complete roadmap to mastering Amazon Private Label and Wholesale FBA – from zero to store launch and management.
+        </p>
+        <p class="starting-date"></p>
+        <a href="course-detail/combine-amazon.html">Apply Now</a>
+      </div>
     </section>
 
     <!--footer section-->
@@ -144,22 +153,25 @@
       });
 
       // Set the starting date dynamically
-       const today = new Date();
-    const month = today.getMonth(); // 0 = Jan, 7 = Aug
-    const year = today.getFullYear();
+      const today = new Date();
+      const month = today.getMonth(); // 0 = Jan, 7 = Aug
+      const year = today.getFullYear();
 
-    // Select all elements with class "starting-date"
-    const dateElements = document.querySelectorAll(".starting-date");
+      // Select all elements with class "starting-date"
+      const dateElements = document.querySelectorAll(".starting-date");
 
-    if (month === 7) { // Only show in August
+      if (month === 7) {
+        // Only show in August
         const nextMonthDate = new Date(year, month + 1, 1);
-        const options = { day: 'numeric', month: 'short', year: 'numeric' };
-        const formattedDate = nextMonthDate.toLocaleDateString('en-GB', options).replace(/^1/, '1st');
+        const options = { day: "numeric", month: "short", year: "numeric" };
+        const formattedDate = nextMonthDate
+          .toLocaleDateString("en-GB", options)
+          .replace(/^1/, "1st");
 
-        dateElements.forEach(el => {
-            el.innerHTML = `<strong>Starting From:</strong> ${formattedDate}`;
+        dateElements.forEach((el) => {
+          el.innerHTML = `<strong>Starting From:</strong> ${formattedDate}`;
         });
-    }
+      }
     </script>
   </body>
 </html>
