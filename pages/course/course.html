@@ -6,7 +6,7 @@
     <title>Responsive Navbar</title>
     <link rel="stylesheet" href="course.css" />
     <link rel="stylesheet" href="../../pages/navbar.css" />
-<link rel="stylesheet" href="../../pages/footer.css" />
+    <link rel="stylesheet" href="../../pages/footer.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -28,7 +28,7 @@
           Learn how to start and scale a wholesale business on Amazon using
           proven strategies.
         </p>
-        <p><strong>Starting From:</strong> 1st August 2025</p>
+        <p class="starting-date"></p>
         <a href="course-detail/amazon-fba.html">Apply Now</a>
       </div>
 
@@ -38,7 +38,7 @@
           Build and manage successful online stores using Shopify for local and
           global markets.
         </p>
-        <p><strong>Starting From:</strong> 1st August 2025</p>
+        <p class="starting-date"></p>
         <a href="course-detail/shopify.html">Apply Now</a>
       </div>
 
@@ -48,7 +48,7 @@
           Create your own brand and launch private label products successfully
           on Amazon.
         </p>
-        <p><strong>Starting From:</strong> 1st August 2025</p>
+        <p class="starting-date"></p>
         <a href="course-detail/amazon-private-label.html">Apply Now</a>
       </div>
 
@@ -58,7 +58,7 @@
           Become a full stack developer by mastering frontend and backend web
           technologies.
         </p>
-        <p><strong>Starting From:</strong> 1st August 2025</p>
+        <p class="starting-date"></p>
         <a href="course-detail/full-stack-web-development.html">Apply Now</a>
       </div>
 
@@ -68,7 +68,7 @@
           Learn to run high-converting ad campaigns on Facebook and Instagram
           for any niche.
         </p>
-        <p><strong>Starting From:</strong> 1st August 2025</p>
+        <p class="starting-date"></p>
         <a href="course-detail/facebook-ads-course.html">Apply Now</a>
       </div>
 
@@ -78,7 +78,7 @@
           Master TikTok advertising and reach millions with powerful video ads
           and strategies.
         </p>
-        <p><strong>Starting From:</strong> 1st August 2025</p>
+        <p class="starting-date"></p>
         <a href="course-detail/tiktok-ads-course.html">Apply Now</a>
       </div>
 
@@ -88,7 +88,7 @@
           Discover how to drive traffic and sales using Google Search, Display,
           and YouTube Ads.
         </p>
-        <p><strong>Starting From:</strong> 1st August 2025</p>
+        <p class="starting-date"></p>
         <a href="course-detail/google-ads-course.html">Apply Now</a>
       </div>
 
@@ -98,7 +98,7 @@
           Design impactful visuals using Adobe tools and build your creative
           design portfolio.
         </p>
-        <p><strong>Starting From:</strong> 1st August 2025</p>
+        <p class="starting-date"></p>
         <a href="course-detail/graphic-designing.html">Apply Now</a>
       </div>
 
@@ -108,7 +108,7 @@
           Learn how to start and grow your freelancing career on platforms like
           Fiverr & Upwork.
         </p>
-        <p><strong>Starting From:</strong> 1st August 2025</p>
+        <p class="starting-date"></p>
         <a href="course-detail/freelancing.html">Apply Now</a>
       </div>
 
@@ -118,14 +118,14 @@
           Attend live business sessions, get expert answers, and earn valuable
           certifications.
         </p>
-        <p><strong>Starting From:</strong> 1st August 2025</p>
+        <p class="starting-date"></p>
         <a href="course-detail/business-seminars.html">Apply Now</a>
       </div>
     </section>
 
     <!--footer section-->
     <div id="pages-footer-Container"></div>
-<script src="../../pages/script.js"></script>
+    <script src="../../pages/script.js"></script>
 
     <script>
       function toggleMenu() {
@@ -142,6 +142,24 @@
         const navbar = document.querySelector(".navbar");
         navbar.classList.toggle("scrolled", window.scrollY > 50);
       });
+
+      // Set the starting date dynamically
+       const today = new Date();
+    const month = today.getMonth(); // 0 = Jan, 7 = Aug
+    const year = today.getFullYear();
+
+    // Select all elements with class "starting-date"
+    const dateElements = document.querySelectorAll(".starting-date");
+
+    if (month === 7) { // Only show in August
+        const nextMonthDate = new Date(year, month + 1, 1);
+        const options = { day: 'numeric', month: 'short', year: 'numeric' };
+        const formattedDate = nextMonthDate.toLocaleDateString('en-GB', options).replace(/^1/, '1st');
+
+        dateElements.forEach(el => {
+            el.innerHTML = `<strong>Starting From:</strong> ${formattedDate}`;
+        });
+    }
     </script>
   </body>
 </html>

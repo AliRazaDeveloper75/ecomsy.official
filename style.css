@@ -1325,7 +1325,7 @@ h2 {
 
 .social-icons {
   display: flex;
-  gap: 5rem;
+  gap: 2rem;
   font-size: 20px;
   margin-top: 10px;
   justify-content: center;
@@ -1333,10 +1333,13 @@ h2 {
 .social-icons a {
   color: #fff;
   transition: 0.3s;
+  padding: 5px;
 }
 
 .social-icons a:hover {
-  color: #00bfff;
+  color: #1C1C25;
+  background-color: white;
+  padding: 5px;
 }
 .copyright-social-icons {
   display: flex;

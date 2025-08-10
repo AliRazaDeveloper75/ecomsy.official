@@ -66,18 +66,21 @@
 
 .social-icons {
   display: flex;
-  gap: 5rem;
+  gap: 2rem;
   font-size: 20px;
   margin-top: 10px;
   justify-content: center;
 }
 .social-icons a {
   color: #fff;
+  padding: 5px;
   transition: 0.3s;
 }
 
 .social-icons a:hover {
-  color: #00bfff;
+  color: #1c1c25;
+  background-color: white;
+  padding: 5px;
 }
 .copyright-social-icons {
   display: flex;
