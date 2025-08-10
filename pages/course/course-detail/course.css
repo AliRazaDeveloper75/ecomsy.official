@@ -335,8 +335,8 @@ body {
 
 /* Header */
 .main-header {
-  background-color: #00539c;
-  background-image: linear-gradient(135deg, #00539c 0%, #003366 100%);
+  background-color: #1C1C25;
+  /* background-image: linear-gradient(135deg, #1C1C25 0%, #003366 100%); */
   color: #fff;
   padding: 120px 0 40px;
   text-align: center;
@@ -420,7 +420,7 @@ body {
   align-items: center;
   gap: 10px;
   background: #fff;
-  color: #00539c;
+  color: #1C1C25;
   padding: 12px 30px;
   border-radius: 50px;
   font-weight: 600;
@@ -512,7 +512,7 @@ body {
 
 .course-category {
   display: inline-block;
-  background-color: #00539c;
+  background-color: #1C1C25;
   color: white;
   padding: 5px 15px;
   border-radius: 20px;
@@ -558,7 +558,7 @@ body {
 
 .highlight-card i {
   font-size: 2.5rem;
-  color: #00539c;
+  color: #1C1C25;
   margin-bottom: 15px;
 }
 
@@ -584,7 +584,7 @@ body {
 }
 
 .tab-btn.active {
-  color: #00539c;
+  color: #1C1C25;
   font-weight: bold;
 }
 
@@ -595,7 +595,7 @@ body {
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: #00539c;
+  background-color: #1C1C25;
 }
 
 .tab-content {
@@ -616,7 +616,7 @@ body {
 }
 
 .module h4 {
-  color: #00539c;
+  color: #1C1C25;
   margin-bottom: 15px;
 }
 
@@ -630,7 +630,7 @@ body {
 }
 
 .enrollment-box {
-  background: #00539c;
+  background: #1C1C25;
   padding: 30px;
   border-radius: 8px;
   color: white;
@@ -663,7 +663,7 @@ body {
 
 .enroll-btn {
   background: white;
-  color: #00539c;
+  color: #1C1C25;
   border: none;
   padding: 15px 40px;
   font-size: 1.1rem;
@@ -717,7 +717,7 @@ body {
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #00539c;
+  border: 3px solid #1C1C25;
 }
 
 .instructor-info {
@@ -725,7 +725,7 @@ body {
 }
 
 .instructor-info h3 {
-  color: #00539c;
+  color: #1C1C25;
   margin-bottom: 5px;
 }
 
@@ -746,7 +746,7 @@ body {
 }
 
 .faq-item h3 {
-  color: #00539c;
+  color: #1C1C25;
   margin-bottom: 10px;
 }
 
@@ -777,7 +777,7 @@ body {
   content: "✓";
   position: absolute;
   left: 0;
-  color: #00539c;
+  color: #1C1C25;
   font-weight: bold;
   font-size: 1.2em;
 }
@@ -799,7 +799,7 @@ body {
   content: "✓";
   position: absolute;
   left: 0;
-  color: #00539c;
+  color: #1C1C25;
   font-weight: bold;
   font-size: 1.2em;
 }
@@ -812,7 +812,7 @@ body {
 }
 
 .tab-content#overview h3 {
-  color: #00539c;
+  color: #1C1C25;
   font-size: 1.8rem;
   margin-bottom: 20px;
   position: relative;
@@ -826,7 +826,7 @@ body {
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #00539c, #4da8da);
+  background: linear-gradient(90deg, #1C1C25, #4da8da);
 }
 
 .tab-content#overview p {
