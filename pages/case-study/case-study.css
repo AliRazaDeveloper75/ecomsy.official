@@ -75,7 +75,7 @@ body {
 
 .case-filters h2 {
   font-size: 1.5rem;
-  color: #1C1C25;
+  color: #00539c;
   margin-bottom: 20px;
 }
 
@@ -101,7 +101,7 @@ body {
 }
 
 .filter-btn.active {
-  background: #1C1C25;
+  background: #00539c;
   color: white;
   border-color: #1C1C25;
 }
@@ -292,7 +292,7 @@ a{
   /* background: linear-gradient(135deg, #4f46e5, #7c3aed); */
   /* background-color: #1C1C25; */
   background-color: white;
-  color: black;
+  color: #00539c;
 }
 
 .cta-section h2 {
@@ -322,7 +322,7 @@ a{
 .cta-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  background-color: #1C1C25;
+  background-color: #00539c;
   color: white;
 }
 

@@ -104,6 +104,7 @@ a:hover {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   position: relative;
+  color: #00539c;
 }
 
 .about-section h2::after {
@@ -111,7 +112,7 @@ a:hover {
   display: block;
   width: 80px;
   height: 4px;
-  background: #1C1C25;
+  background: #00539c;
   margin: 1rem auto;
   border-radius: 2px;
 }
@@ -149,7 +150,7 @@ a:hover {
 }
 
 .mv-card h2 {
-  color: var(--primary-color);
+  color: #00539c;
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 1rem;
@@ -162,7 +163,7 @@ a:hover {
   left: 0;
   width: 50px;
   height: 3px;
-  background: #1C1C25;
+  background: #00539c;
 }
 
 /* Values Section */
@@ -175,6 +176,7 @@ a:hover {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
+  color: #00539c;
 }
 
 .values-grid {
@@ -198,7 +200,7 @@ a:hover {
 
 .value-card i {
   font-size: 2.5rem;
-  color: #1C1C25;
+  color: #00539c;
   margin-bottom: 1.5rem;
 }
 
@@ -286,6 +288,7 @@ a:hover {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
+  color: #00539c;
 }
 
 .team-points {
@@ -300,7 +303,7 @@ a:hover {
 }
 
 .point-number {
-  background: #1C1C25;
+  background: #00539c;
   color: var(--white);
   width: 40px;
   height: 40px;
@@ -314,7 +317,7 @@ a:hover {
 }
 
 .point-content h3 {
-  color: var(--primary-color);
+  color: #00539c;
   margin-bottom: 0.5rem;
 }
 
