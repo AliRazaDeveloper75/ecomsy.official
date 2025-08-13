@@ -309,8 +309,8 @@ a{
 
 .cta-button {
   padding: 15px 30px;
-  background: white;
-  color: #1C1C25;
+  background: black;
+  color: white;
   border: 2px solid #1C1C25;
   border-radius: 6px;
   font-size: 1rem;
@@ -322,8 +322,8 @@ a{
 .cta-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  background-color: #00539c;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 
