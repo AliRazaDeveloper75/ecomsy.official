@@ -1,83 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Invoice Page</title>
-    <link rel="stylesheet" href="invoice.css" />
-    <link rel="stylesheet" href="../../pages/navbar.css" />
-<link rel="stylesheet" href="../../pages/footer.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-  </head>
-  <body>
-    <!--Header-->
-    <div id="pages-header-Container"></div>
 
-    <section>
-      <main class="about-us-container">
-        <h1>Welcome to Our Invoice Page</h1>
-        <p>
-          Easily view and manage all your billing details in one place.
-          Download, print, or share your invoices with just a click.
-        </p>
-      </main>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice Page</title>
+  <link rel="stylesheet" href="invoice.css" />
+  <link rel="stylesheet" href="../../pages/navbar.css" />
+  <link rel="stylesheet" href="../../pages/footer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
 
-    <!-- Invoice Section -->
-    <!-- Add this section at the top of your invoice-container section -->
-    <section class="invoice-search" id="invoiceSearch">
-      <h2>Search Existing Invoice</h2>
-      <div class="search-box">
-        <input
-          type="text"
-          id="searchInvoiceId"
-          placeholder="Enter Invoice ID (e.g., INV-123456)"
-        />
-        <button
-          onclick="searchInvoiceById(document.getElementById('searchInvoiceId').value)"
-        >
-          <i class="fas fa-search"></i> Search
-        </button>
+<body>
+  <!--Header-->
+  <div id="pages-header-Container"></div>
+
+  <section>
+    <main class="about-us-container">
+      <h1>Welcome to Our Invoice Page</h1>
+      <p>
+        Easily view and manage all your billing details in one place.
+        Download, print, or share your invoices with just a click.
+      </p>
+    </main>
+  </section>
+
+  <!-- Invoice Section -->
+  <!-- Add this section at the top of your invoice-container section -->
+  <section class="invoice-search" id="invoiceSearch">
+    <h2>Search Existing Invoice</h2>
+    <div class="search-box">
+      <input type="text" id="searchInvoiceId" placeholder="Enter Invoice ID (e.g., INV-123456)" />
+      <button onclick="searchInvoiceById(document.getElementById('searchInvoiceId').value)">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+    <div id="searchResults" class="search-results hidden"></div>
+  </section>
+  <!-- Invoice Section -->
+  <section class="invoice-container">
+    <!-- Step 1: User Information -->
+    <div class="invoice-step" id="step1">
+      <h2>Create New Invoice</h2>
+      <div class="progress-bar">
+        <div class="progress-step active" data-step="1">User Info</div>
+        <div class="progress-step" data-step="2">Project Info</div>
+        <div class="progress-step" data-step="3">Services</div>
+        <div class="progress-step" data-step="4">Review & Pay</div>
       </div>
-      <div id="searchResults" class="search-results hidden"></div>
-    </section>
-    <!-- Invoice Section -->
-    <section class="invoice-container">
-      <!-- Step 1: User Information -->
-      <div class="invoice-step" id="step1">
-        <h2>Create New Invoice</h2>
-        <div class="progress-bar">
-          <div class="progress-step active" data-step="1">User Info</div>
-          <div class="progress-step" data-step="2">Project Info</div>
-          <div class="progress-step" data-step="3">Services</div>
-          <div class="progress-step" data-step="4">Review & Pay</div>
+
+      <h3>User Information</h3>
+      <form id="userInfoForm">
+        <div class="form-group">
+          <label for="name">Full Name*</label>
+          <input type="text" id="name" name="name" required />
         </div>
 
-        <h3>User Information</h3>
-        <form id="userInfoForm">
-          <div class="form-group">
-            <label for="name">Full Name*</label>
-            <input type="text" id="name" name="name" required />
-          </div>
+        <div class="form-group">
+          <label for="email">Email*</label>
+          <input type="email" id="email" name="email" required />
+        </div>
 
-          <div class="form-group">
-            <label for="email">Email*</label>
-            <input type="email" id="email" name="email" required />
-          </div>
+        <div class="form-group">
+          <label for="phone">Phone Number*</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
 
-          <div class="form-group">
-            <label for="phone">Phone Number*</label>
-            <input type="tel" id="phone" name="phone" required />
-          </div>
-
-          <div class="form-group">
-            <label for="address">Address*</label>
-            <textarea id="address" name="address" rows="3" required></textarea>
-          </div>
-          <!--
+        <div class="form-group">
+          <label for="address">Address*</label>
+          <textarea id="address" name="address" rows="3" required></textarea>
+        </div>
+        <!--
           <div class="form-row">
             <div class="form-group">
               <label for="state">State*</label>
@@ -90,578 +83,427 @@
             </div>
           </div>
           -->
-          <div class="form-actions">
-            <button type="button" class="btn-next" onclick="nextStep(2)">
-              Next
-            </button>
-          </div>
-        </form>
+        <div class="form-actions">
+          <button type="button" class="btn-next" onclick="nextStep(2)">
+            Next
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Step 2: Project Information -->
+    <div class="invoice-step hidden" id="step2">
+      <h2>Create New Invoice</h2>
+      <div class="progress-bar">
+        <div class="progress-step completed" data-step="1">User Info</div>
+        <div class="progress-step active" data-step="2">Project Info</div>
+        <div class="progress-step" data-step="3">Services</div>
+        <div class="progress-step" data-step="4">Review & Pay</div>
       </div>
 
-      <!-- Step 2: Project Information -->
-      <div class="invoice-step hidden" id="step2">
-        <h2>Create New Invoice</h2>
-        <div class="progress-bar">
-          <div class="progress-step completed" data-step="1">User Info</div>
-          <div class="progress-step active" data-step="2">Project Info</div>
-          <div class="progress-step" data-step="3">Services</div>
-          <div class="progress-step" data-step="4">Review & Pay</div>
+      <h3>Project Information</h3>
+      <form id="projectInfoForm">
+        <div class="form-group">
+          <label for="projectName">Project Name*</label>
+          <input type="text" id="projectName" name="projectName" required />
         </div>
 
-        <h3>Project Information</h3>
-        <form id="projectInfoForm">
-          <div class="form-group">
-            <label for="projectName">Project Name*</label>
-            <input type="text" id="projectName" name="projectName" required />
-          </div>
-
-          <div class="form-group">
-            <label for="projectDescription">Project Description*</label>
-            <textarea
-              id="projectDescription"
-              name="projectDescription"
-              rows="5"
-              required
-            ></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="projectTimeline">Project Timeline*</label>
-            <select id="projectTimeline" name="projectTimeline" required>
-              <option value="">Select Timeline</option>
-              <option value="less than 1 month">Less than 1 month</option>
-              <option value="1-3 months">1-3 months</option>
-              <option value="3-6 months">3-6 months</option>
-              <option value="More than 6 months">More than 6 months</option>
-            </select>
-          </div>
-
-          <div class="form-actions">
-            <button type="button" class="btn-prev" onclick="prevStep(1)">
-              Previous
-            </button>
-            <button type="button" class="btn-next" onclick="nextStep(3)">
-              Next
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <!-- Step 3: Services Information -->
-      <div class="invoice-step hidden" id="step3">
-        <p class="blinking-text">
-          *Select "Custom Budget" if you need different service types. For a
-          single service type, pick from the fixed options below.*
-        </p>
-        <h2>Create New Invoice</h2>
-        <div class="progress-bar">
-          <div class="progress-step completed" data-step="1">User Info</div>
-          <div class="progress-step completed" data-step="2">Project Info</div>
-          <div class="progress-step active" data-step="3">Services</div>
-          <div class="progress-step" data-step="4">Review & Pay</div>
+        <div class="form-group">
+          <label for="projectDescription">Project Description*</label>
+          <textarea id="projectDescription" name="projectDescription" rows="5" required></textarea>
         </div>
 
-        <h3>Services Information</h3>
-        <form id="servicesForm">
-          <div class="form-group">
-            <label>Select Services*</label>
-            <div class="services-grid">
-              <div class="service-card">
-                <input
-                  type="radio"
-                  id="web"
-                  name="services"
-                  value="Custom-Coded Websites"
-                  data-basic-price="299"
-                  data-intermediate-price="499"
-                  data-advanced-price="799"
-                />
-                <label for="web">Custom-Coded Websites</label>
-                <div class="service-prices">
-                  <span class="basic-price">Basic: $299</span>
-                  <span class="intermediate-price">Intermediate: $499</span>
-                  <span class="advanced-price">Advanced: $799</span>
-                </div>
-              </div>
-
-              <div class="service-card">
-                <input
-                  type="radio"
-                  id="mobile"
-                  name="services"
-                  value="Shopify Store Design & Development"
-                  data-basic-price="349"
-                  data-intermediate-price="549"
-                  data-advanced-price="899"
-                />
-                <label for="mobile">Shopify Store Design & Development</label>
-                <div class="service-prices">
-                  <span class="basic-price">Basic: $349</span>
-                  <span class="intermediate-price">Intermediate: $549</span>
-                  <span class="advanced-price">Advanced: $899</span>
-                </div>
-              </div>
-
-              <div class="service-card">
-                <input
-                  type="radio"
-                  id="graphic"
-                  name="services"
-                  value="Graphic Design"
-                  data-basic-price="399"
-                  data-intermediate-price="649"
-                  data-advanced-price="999"
-                />
-                <label for="graphic">WordPress + E-Commerce Development</label>
-                <div class="service-prices">
-                  <span class="basic-price">Basic: $399</span>
-                  <span class="intermediate-price">Intermediate: $649</span>
-                  <span class="advanced-price">Advanced: $999</span>
-                </div>
-              </div>
-
-              <div class="service-card">
-                <input
-                  type="radio"
-                  id="seo"
-                  name="services"
-                  value="SEO Services"
-                  data-basic-price="499"
-                  data-intermediate-price="749"
-                  data-advanced-price="1199"
-                />
-                <label for="seo">Business Website Development</label>
-                <div class="service-prices">
-                  <span class="basic-price">Basic: $499</span>
-                  <span class="intermediate-price">Intermediate: $749</span>
-                  <span class="advanced-price">Advanced: $1199</span>
-                </div>
-              </div>
-
-              <div class="service-card">
-                <input
-                  type="radio"
-                  id="Mobile-App-Development"
-                  name="services"
-                  value="Mobile App Development"
-                  data-basic-price="1999"
-                  data-intermediate-price="2999"
-                  data-advanced-price="3999"
-                />
-                <label for="Mobile-App-Development"
-                  >Android & iOS App Development</label
-                >
-                <div class="service-prices">
-                  <span class="basic-price">Basic: $1999</span>
-                  <span class="intermediate-price">Intermediate: $2999</span>
-                  <span class="advanced-price">Advanced: $3999</span>
-                </div>
-              </div>
-
-              <div class="service-card">
-                <input
-                  type="radio"
-                  id="wordpress"
-                  name="services"
-                  value="WordPress Development"
-                  data-basic-price="1499"
-                  data-intermediate-price="2499"
-                  data-advanced-price="3499"
-                />
-                <label for="wordpress">Software Development</label>
-                <div class="service-prices">
-                  <span class="basic-price">Basic: $600</span>
-                  <span class="intermediate-price">Intermediate: $2499</span>
-                  <span class="advanced-price">Advanced: $3499</span>
-                </div>
-              </div>
-
-              <div class="service-card">
-                <input
-                  type="radio"
-                  id="custom"
-                  name="services"
-                  value="Custom Coding"
-                  data-basic-price="899"
-                  data-intermediate-price="1499"
-                  data-advanced-price="2499"
-                />
-                <label for="custom">UI/UX Designing & Development</label>
-                <div class="service-prices">
-                  <span class="basic-price">Basic: $899</span>
-                  <span class="intermediate-price">Intermediate: $1499</span>
-                  <span class="advanced-price">Advanced: $2499</span>
-                </div>
-              </div>
-
-              <div class="service-card">
-                <input
-                  type="radio"
-                  id="consulting"
-                  name="services"
-                  value="IT Consulting"
-                  data-basic-price="1199"
-                  data-intermediate-price="1699"
-                  data-advanced-price="1999"
-                />
-                <label for="consulting"
-                  >Branding & Strategic Marketing Plan</label
-                >
-                <div class="service-prices">
-                  <span class="basic-price">Basic: $1199</span>
-                  <span class="intermediate-price">Intermediate: $1699</span>
-                  <span class="advanced-price">Advanced: $1999</span>
-                </div>
-              </div>
-              <div class="service-card">
-                <input
-                  type="radio"
-                  id="seo-service"
-                  name="services"
-                  value="(SEO)"
-                  data-basic-price="599"
-                  data-intermediate-price="899"
-                  data-advanced-price="1399"
-                />
-                <label for="seo-service"
-                  >Search Engine Optimization (SEO)</label
-                >
-                <div class="service-prices">
-                  <span class="basic-price">Basic: $599</span>
-                  <span class="intermediate-price">Intermediate: $899</span>
-                  <span class="advanced-price">Advanced: $1399</span>
-                </div>
-              </div>
-              <div class="service-card">
-                <input
-                  type="radio"
-                  id="digital-marketing"
-                  name="services"
-                  value="digital marketing"
-                  data-basic-price="399"
-                  data-intermediate-price="399"
-                  data-advanced-price="399"
-                />
-                <label for="digital-marketing">Digital Marketing</label>
-                <div class="service-prices">
-                  <span class="basic-price"
-                    >Basic: $399 Per Month/Platform</span
-                  >
-                </div>
-              </div>
-              <div class="service-card">
-                <input
-                  type="radio"
-                  id="business-consultation"
-                  name="services"
-                  value="business consultation"
-                  data-basic-price="120"
-                  data-intermediate-price="120"
-                  data-advanced-price="120"
-                />
-                <label for="business-consultation">Business Consultation</label>
-                <div class="service-prices">
-                  <span class="basic-price">$120 Per Hour</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="serviceTier">Service Tier*</label>
-              <select id="serviceTier" name="serviceTier" required>
-                <option value="">Select Tier</option>
-                <option value="Basic">Basic</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advanced">Advanced</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="pricingType">Pricing Type*</label>
-              <select id="pricingType" name="pricingType" required>
-                <option value="">Select Type</option>
-                <option value="Fixed">Fixed</option>
-                <option value="Custom">Custom</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="budget">Estimated Budget (USD)</label>
-            <input
-              type="number"
-              id="budget"
-              name="budget"
-              min="0"
-              step="1"
-              readonly
-              placeholder="Select services and options to calculate"
-            />
-            <small id="budgetHelp" class="form-text">
-              Budget will be calculated based on your selections
-            </small>
-          </div>
-
-          <div class="form-group hidden" id="customBudgetContainer">
-            <label for="customBudget">Custom Budget Amount*</label>
-            <input
-              type="number"
-              id="customBudget"
-              name="customBudget"
-              min="0"
-              step="1"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="additionalNotes">Additional Notes</label>
-            <textarea
-              id="additionalNotes"
-              name="additionalNotes"
-              rows="3"
-              placeholder="Any special requirements or instructions..."
-            ></textarea>
-          </div>
-
-          <div class="form-actions">
-            <button type="button" class="btn-prev" onclick="prevStep(2)">
-              Previous
-            </button>
-            <button type="button" class="btn-next" onclick="nextStep(4)">
-              Next
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <!-- Step 4: Review & Payment -->
-      <div class="invoice-step hidden" id="step4">
-        <h2>Create New Invoice</h2>
-        <div class="progress-bar">
-          <div class="progress-step completed" data-step="1">User Info</div>
-          <div class="progress-step completed" data-step="2">Project Info</div>
-          <div class="progress-step completed" data-step="3">Services</div>
-          <div class="progress-step active" data-step="4">Review & Pay</div>
-        </div>
-
-        <h3>Review Your Information</h3>
-        <div class="review-section">
-          <div class="review-column">
-            <h4>User Information</h4>
-            <div id="reviewUserInfo"></div>
-          </div>
-
-          <div class="review-column">
-            <h4>Project Information</h4>
-            <div id="reviewProjectInfo"></div>
-          </div>
-
-          <div class="review-column">
-            <h4>Services Information</h4>
-            <div id="reviewServicesInfo"></div>
-          </div>
-        </div>
-
-        <div class="invoice-summary">
-          <h4>Invoice Summary</h4>
-          <div class="summary-details">
-            <div class="summary-row">
-              <span>Subtotal:</span>
-              <span id="subtotal">$0.00</span>
-            </div>
-            <div class="summary-row">
-              <span>Tax (10%):</span>
-              <span id="tax">$0.00</span>
-            </div>
-            <div class="summary-row total">
-              <span>Total:</span>
-              <span id="total">$0.00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="payment-options">
-          <h4>Payment Options</h4>
-          <div class="payment-methods">
-            <div class="payment-method">
-              <input
-                type="radio"
-                id="paypal"
-                name="paymentMethod"
-                value="PayPal"
-                checked
-              />
-              <label for="paypal"><i class="fab fa-paypal"></i> PayPal</label>
-            </div>
-            <div class="payment-method">
-              <input
-                type="radio"
-                id="creditCard"
-                name="paymentMethod"
-                value="Credit Card"
-              />
-              <label for="creditCard"
-                ><i class="far fa-credit-card"></i> Credit Card</label
-              >
-            </div>
-            <div class="payment-method">
-              <input
-                type="radio"
-                id="bankTransfer"
-                name="paymentMethod"
-                value="Bank Transfer"
-              />
-              <label for="bankTransfer"
-                ><i class="fas fa-university"></i> Bank Transfer</label
-              >
-            </div>
-          </div>
+        <div class="form-group">
+          <label for="projectTimeline">Project Timeline*</label>
+          <select id="projectTimeline" name="projectTimeline" required>
+            <option value="">Select Timeline</option>
+            <option value="less than 1 month">Less than 1 month</option>
+            <option value="1-3 months">1-3 months</option>
+            <option value="3-6 months">3-6 months</option>
+            <option value="More than 6 months">More than 6 months</option>
+          </select>
         </div>
 
         <div class="form-actions">
-          <button type="button" class="btn-prev" onclick="prevStep(3)">
+          <button type="button" class="btn-prev" onclick="prevStep(1)">
             Previous
           </button>
-          <button
-            type="button"
-            class="btn-generate"
-            onclick="generateInvoice()"
-          >
-            Generate Invoice
+          <button type="button" class="btn-next" onclick="nextStep(3)">
+            Next
           </button>
-          <button
-            type="button"
-            class="btn-pay hidden"
-            id="payNowBtn"
-            onclick="processPayment()"
-          >
-            Pay Now
+        </div>
+      </form>
+    </div>
+
+    <!-- Step 3: Services Information -->
+    <div class="invoice-step hidden" id="step3">
+      <p class="blinking-text">
+        *Select "Custom Budget" if you need different service types. For a
+        single service type, pick from the fixed options below.*
+      </p>
+      <h2>Create New Invoice</h2>
+      <div class="progress-bar">
+        <div class="progress-step completed" data-step="1">User Info</div>
+        <div class="progress-step completed" data-step="2">Project Info</div>
+        <div class="progress-step active" data-step="3">Services</div>
+        <div class="progress-step" data-step="4">Review & Pay</div>
+      </div>
+
+      <h3>Services Information</h3>
+      <form id="servicesForm">
+        <div class="form-group">
+          <label>Select Services*</label>
+          <div class="services-grid">
+            <div class="service-card">
+              <input type="radio" id="web" name="services" value="Custom-Coded Websites" data-basic-price="299"
+                data-intermediate-price="499" data-advanced-price="799" />
+              <label for="web">Custom-Coded Websites</label>
+              <div class="service-prices">
+                <span class="basic-price">Basic: $299</span>
+                <span class="intermediate-price">Intermediate: $499</span>
+                <span class="advanced-price">Advanced: $799</span>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <input type="radio" id="mobile" name="services" value="Shopify Store Design & Development"
+                data-basic-price="349" data-intermediate-price="549" data-advanced-price="899" />
+              <label for="mobile">Shopify Store Design & Development</label>
+              <div class="service-prices">
+                <span class="basic-price">Basic: $349</span>
+                <span class="intermediate-price">Intermediate: $549</span>
+                <span class="advanced-price">Advanced: $899</span>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <input type="radio" id="graphic" name="services" value="Graphic Design" data-basic-price="399"
+                data-intermediate-price="649" data-advanced-price="999" />
+              <label for="graphic">WordPress + E-Commerce Development</label>
+              <div class="service-prices">
+                <span class="basic-price">Basic: $399</span>
+                <span class="intermediate-price">Intermediate: $649</span>
+                <span class="advanced-price">Advanced: $999</span>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <input type="radio" id="seo" name="services" value="SEO Services" data-basic-price="499"
+                data-intermediate-price="749" data-advanced-price="1199" />
+              <label for="seo">Business Website Development</label>
+              <div class="service-prices">
+                <span class="basic-price">Basic: $499</span>
+                <span class="intermediate-price">Intermediate: $749</span>
+                <span class="advanced-price">Advanced: $1199</span>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <input type="radio" id="Mobile-App-Development" name="services" value="Mobile App Development"
+                data-basic-price="1999" data-intermediate-price="2999" data-advanced-price="3999" />
+              <label for="Mobile-App-Development">Android & iOS App Development</label>
+              <div class="service-prices">
+                <span class="basic-price">Basic: $1999</span>
+                <span class="intermediate-price">Intermediate: $2999</span>
+                <span class="advanced-price">Advanced: $3999</span>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <input type="radio" id="wordpress" name="services" value="WordPress Development" data-basic-price="1499"
+                data-intermediate-price="2499" data-advanced-price="3499" />
+              <label for="wordpress">Software Development</label>
+              <div class="service-prices">
+                <span class="basic-price">Basic: $600</span>
+                <span class="intermediate-price">Intermediate: $2499</span>
+                <span class="advanced-price">Advanced: $3499</span>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <input type="radio" id="custom" name="services" value="Custom Coding" data-basic-price="899"
+                data-intermediate-price="1499" data-advanced-price="2499" />
+              <label for="custom">UI/UX Designing & Development</label>
+              <div class="service-prices">
+                <span class="basic-price">Basic: $899</span>
+                <span class="intermediate-price">Intermediate: $1499</span>
+                <span class="advanced-price">Advanced: $2499</span>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <input type="radio" id="consulting" name="services" value="IT Consulting" data-basic-price="1199"
+                data-intermediate-price="1699" data-advanced-price="1999" />
+              <label for="consulting">Branding & Strategic Marketing Plan</label>
+              <div class="service-prices">
+                <span class="basic-price">Basic: $1199</span>
+                <span class="intermediate-price">Intermediate: $1699</span>
+                <span class="advanced-price">Advanced: $1999</span>
+              </div>
+            </div>
+            <div class="service-card">
+              <input type="radio" id="seo-service" name="services" value="(SEO)" data-basic-price="599"
+                data-intermediate-price="899" data-advanced-price="1399" />
+              <label for="seo-service">Search Engine Optimization (SEO)</label>
+              <div class="service-prices">
+                <span class="basic-price">Basic: $599</span>
+                <span class="intermediate-price">Intermediate: $899</span>
+                <span class="advanced-price">Advanced: $1399</span>
+              </div>
+            </div>
+            <div class="service-card">
+              <input type="radio" id="digital-marketing" name="services" value="digital marketing"
+                data-basic-price="399" data-intermediate-price="399" data-advanced-price="399" />
+              <label for="digital-marketing">Digital Marketing</label>
+              <div class="service-prices">
+                <span class="basic-price">Basic: $399 Per Month/Platform</span>
+              </div>
+            </div>
+            <div class="service-card">
+              <input type="radio" id="business-consultation" name="services" value="business consultation"
+                data-basic-price="120" data-intermediate-price="120" data-advanced-price="120" />
+              <label for="business-consultation">Business Consultation</label>
+              <div class="service-prices">
+                <span class="basic-price">$120 Per Hour</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="serviceTier">Service Tier*</label>
+            <select id="serviceTier" name="serviceTier" required>
+              <option value="">Select Tier</option>
+              <option value="Basic">Basic</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="pricingType">Pricing Type*</label>
+            <select id="pricingType" name="pricingType" required>
+              <option value="">Select Type</option>
+              <option value="Fixed">Fixed</option>
+              <option value="Custom">Custom</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="budget">Estimated Budget (USD)</label>
+          <input type="number" id="budget" name="budget" min="0" step="1" readonly
+            placeholder="Select services and options to calculate" />
+          <small id="budgetHelp" class="form-text">
+            Budget will be calculated based on your selections
+          </small>
+        </div>
+
+        <div class="form-group hidden" id="customBudgetContainer">
+          <label for="customBudget">Custom Budget Amount*</label>
+          <input type="number" id="customBudget" name="customBudget" min="0" step="1" required />
+        </div>
+
+        <div class="form-group">
+          <label for="additionalNotes">Additional Notes</label>
+          <textarea id="additionalNotes" name="additionalNotes" rows="3"
+            placeholder="Any special requirements or instructions..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-prev" onclick="prevStep(2)">
+            Previous
           </button>
+          <button type="button" class="btn-next" onclick="nextStep(4)">
+            Next
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Step 4: Review & Payment -->
+    <div class="invoice-step hidden" id="step4">
+      <h2>Create New Invoice</h2>
+      <div class="progress-bar">
+        <div class="progress-step completed" data-step="1">User Info</div>
+        <div class="progress-step completed" data-step="2">Project Info</div>
+        <div class="progress-step completed" data-step="3">Services</div>
+        <div class="progress-step active" data-step="4">Review & Pay</div>
+      </div>
+
+      <h3>Review Your Information</h3>
+      <div class="review-section">
+        <div class="review-column">
+          <h4>User Information</h4>
+          <div id="reviewUserInfo"></div>
+        </div>
+
+        <div class="review-column">
+          <h4>Project Information</h4>
+          <div id="reviewProjectInfo"></div>
+        </div>
+
+        <div class="review-column">
+          <h4>Services Information</h4>
+          <div id="reviewServicesInfo"></div>
         </div>
       </div>
 
-      <!-- Invoice Generated View -->
-      <div class="invoice-generated hidden" id="invoiceGenerated">
-        <div class="invoice-header">
-          <h2>Invoice #<span id="invoiceNumber"></span></h2>
-          <div class="invoice-status unpaid" id="invoiceStatus">Unpaid</div>
-        </div>
-
-        <div class="invoice-details">
-          <div class="invoice-from">
-            <h4>From:</h4>
-            <p>Ecomsy IT Services</p>
-            <p>123 Tech Street, Silicon Valley</p>
-            <p>California, USA</p>
-            <p>contact@ecomsy.com</p>
+      <div class="invoice-summary">
+        <h4>Invoice Summary</h4>
+        <div class="summary-details">
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span id="subtotal">$0.00</span>
           </div>
-
-          <div class="invoice-to">
-            <h4>To:</h4>
-            <div id="invoiceTo"></div>
+          <div class="summary-row">
+            <span>Tax (10%):</span>
+            <span id="tax">$0.00</span>
           </div>
-
-          <div class="invoice-meta">
-            <p><strong>Date:</strong> <span id="invoiceDate"></span></p>
-            <p><strong>Due Date:</strong> <span id="dueDate"></span></p>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span id="total">$0.00</span>
           </div>
-        </div>
-
-        <div class="invoice-items">
-          <table>
-            <thead>
-              <tr>
-                <th>Description</th>
-                <th>Type</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-            <tbody id="invoiceItems">
-              <!-- Items will be added here -->
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="2">Subtotal</td>
-                <td id="invoiceSubtotal">$0.00</td>
-              </tr>
-              <tr>
-                <td colspan="2">Tax (10%)</td>
-                <td id="invoiceTax">$0.00</td>
-              </tr>
-              <tr class="total">
-                <td colspan="2">Total</td>
-                <td id="invoiceTotal">$0.00</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-
-        <div class="invoice-notes">
-          <h4>Notes</h4>
-          <p>
-            Payment is due within 15 days. Please make checks payable to Ecomsy
-            IT Services.
-          </p>
-          <p>
-            For any questions regarding this invoice, please contact our
-            accounting department at accounting@ecomsy.com.
-          </p>
-        </div>
-
-        <div class="invoice-actions">
-          <button class="btn-download" onclick="downloadInvoice()">
-            <i class="fas fa-download"></i> Download PDF
-          </button>
-          <button class="btn-print" onclick="window.print()">
-            <i class="fas fa-print"></i> Print Invoice
-          </button>
-          <button class="btn-pay" id="payLaterBtn" onclick="processPayment()">
-            <i class="fas fa-credit-card"></i> Pay Now
-          </button>
-          <button class="btn-new" onclick="startNewInvoice()">
-            <i class="fas fa-file-invoice"></i> New Invoice
-          </button>
         </div>
       </div>
-    </section>
 
-    <!--footer-->
-<div id="pages-footer-Container"></div>
-    <script src="../../pages/script.js"></script>
+      <div class="payment-options">
+        <h4>Payment Options</h4>
+        <div class="payment-methods">
+          <div class="payment-method">
+            <input type="radio" id="paypal" name="paymentMethod" value="PayPal" checked />
+            <label for="paypal"><i class="fab fa-paypal"></i> PayPal</label>
+          </div>
+          <div class="payment-method">
+            <input type="radio" id="creditCard" name="paymentMethod" value="Credit Card" />
+            <label for="creditCard"><i class="far fa-credit-card"></i> Credit Card</label>
+          </div>
+          <div class="payment-method">
+            <input type="radio" id="bankTransfer" name="paymentMethod" value="Bank Transfer" />
+            <label for="bankTransfer"><i class="fas fa-university"></i> Bank Transfer</label>
+          </div>
+        </div>
+      </div>
 
-    <script>
-      function toggleMenu() {
-        const navLinks = document.getElementById("navLinks");
-        const hamburgers = document.querySelectorAll(".hamburger");
+      <div class="form-actions">
+        <button type="button" class="btn-prev" onclick="prevStep(3)">
+          Previous
+        </button>
+        <button type="button" class="btn-generate" onclick="generateInvoice()">
+          Generate Invoice
+        </button>
+        <button type="button" class="btn-pay hidden" id="payNowBtn" onclick="processPayment()">
+          Pay Now
+        </button>
+      </div>
+    </div>
 
-        navLinks.classList.toggle("active");
+    <!-- Invoice Generated View -->
+    <div class="invoice-generated hidden" id="invoiceGenerated">
+      <div class="invoice-header">
+        <h2>Invoice #<span id="invoiceNumber"></span></h2>
+        <div class="invoice-status unpaid" id="invoiceStatus">Unpaid</div>
+      </div>
 
-        hamburgers.forEach((hamburger) => {
-          hamburger.classList.toggle("active");
-        });
-      }
-      window.addEventListener("scroll", () => {
-        const navbar = document.querySelector(".navbar");
-        navbar.classList.toggle("scrolled", window.scrollY > 50);
-      });
-    </script>
+      <div class="invoice-details">
+        <div class="invoice-from">
+          <h4>From:</h4>
+          <p>Ecomsy IT Services</p>
+          <p>123 Tech Street, Silicon Valley</p>
+          <p>California, USA</p>
+          <p>contact@ecomsy.com</p>
+        </div>
 
-    <script src="invoice.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script>
-      // phone responsive burger icon
-      function toggleMenu() {
-        document.getElementById("navLinks").classList.toggle("active");
-      }
+        <div class="invoice-to">
+          <h4>To:</h4>
+          <div id="invoiceTo"></div>
+        </div>
 
-      window.addEventListener("scroll", () => {
-        const navbar = document.querySelector(".navbar");
-        navbar.classList.toggle("scrolled", window.scrollY > 50);
-      });
-    </script>
-  </body>
+        <div class="invoice-meta">
+          <p><strong>Date:</strong> <span id="invoiceDate"></span></p>
+          <p><strong>Due Date:</strong> <span id="dueDate"></span></p>
+        </div>
+      </div>
+
+      <div class="invoice-items">
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody id="invoiceItems">
+            <!-- Items will be added here -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2">Subtotal</td>
+              <td id="invoiceSubtotal">$0.00</td>
+            </tr>
+            <tr>
+              <td colspan="2">Tax (10%)</td>
+              <td id="invoiceTax">$0.00</td>
+            </tr>
+            <tr class="total">
+              <td colspan="2">Total</td>
+              <td id="invoiceTotal">$0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="invoice-notes">
+        <h4>Notes</h4>
+        <p>
+          Payment is due within 15 days. Please make checks payable to Ecomsy
+          IT Services.
+        </p>
+        <p>
+          For any questions regarding this invoice, please contact our
+          accounting department at accounting@ecomsy.com.
+        </p>
+      </div>
+
+      <div class="invoice-actions">
+        <button class="btn-download" onclick="downloadInvoice()">
+          <i class="fas fa-download"></i> Download PDF
+        </button>
+        <button class="btn-print" onclick="window.print()">
+          <i class="fas fa-print"></i> Print Invoice
+        </button>
+        <button class="btn-pay" id="payLaterBtn" onclick="processPayment()">
+          <i class="fas fa-credit-card"></i> Pay Now
+        </button>
+        <button class="btn-new" onclick="startNewInvoice()">
+          <i class="fas fa-file-invoice"></i> New Invoice
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!--footer-->
+  <div id="pages-footer-Container"></div>
+  <script src="../../pages/script.js"></script>
+
+ 
+
+  <script src="invoice.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    // phone responsive burger icon
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    window.addEventListener("scroll", () => {
+      const navbar = document.querySelector(".navbar");
+      navbar.classList.toggle("scrolled", window.scrollY > 50);
+    });
+  </script>
+</body>
+
 </html>
