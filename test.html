@@ -1,85 +1,86 @@
+<div class="form-group">
+    <label>Identification Type<span>*</span></label>
+    <select id="idType" required onchange="toggleIdField()">
+        <option value="">Select ID Type</option>
+        <option value="CNIC">CNIC</option>
+        <option value="Passport">Passport</option>
+    </select>
+</div>
 
+<div class="form-group" id="idNumberGroup">
+    <label>ID Number<span>*</span></label>
+    <input type="number" id="idNumber" placeholder="Enter ID number" required oninput="validateIdNumber(this)" />
+    <small id="idError" class="error-message" style="display: none; color: red;"></small>
+</div>
 
+<script>
+    function toggleIdField() {
+        const idType = document.getElementById('idType').value;
+        const idNumberInput = document.getElementById('idNumber');
+        const errorElement = document.getElementById('idError');
 
+        // Reset field and error
+        idNumberInput.value = '';
+        errorElement.style.display = 'none';
+        idNumberInput.setCustomValidity('');
 
+        // Update placeholder based on selection
+        if (idType === 'CNIC') {
+            idNumberInput.placeholder = 'Enter 13-digit CNIC';
+        } else if (idType === 'Passport') {
+            idNumberInput.placeholder = 'Enter 9-digit Passport';
+        }
+    }
 
-<div id="pages-footer-Container"></div>
+    function validateIdNumber(input) {
+        const idType = document.getElementById('idType').value;
+        const errorElement = document.getElementById('idError');
+        const value = input.value;
 
+        // Check if ID type is selected first
+        if (!idType) {
+            errorElement.textContent = 'Please select an ID type first';
+            errorElement.style.display = 'block';
+            input.setCustomValidity('Please select an ID type first');
+            return;
+        }
 
-<div id="pages-header-Container"></div>
+        // Validate based on ID type
+        if (idType === 'CNIC' && value.length !== 13) {
+            errorElement.textContent = 'CNIC must be exactly 13 digits';
+            errorElement.style.display = 'block';
+            input.setCustomValidity('CNIC must be exactly 13 digits');
+        }
+        else if (idType === 'Passport' && value.length !== 9) {
+            errorElement.textContent = 'Passport must be exactly 9 digits';
+            errorElement.style.display = 'block';
+            input.setCustomValidity('Passport must be exactly 9 digits');
+        }
+        else {
+            errorElement.style.display = 'none';
+            input.setCustomValidity('');
+        }
 
-<link rel="stylesheet" href="../../pages/navbar.css" />
-<link rel="stylesheet" href="../../pages/footer.css" />
+        // Prevent input from exceeding max digits
+        const maxLength = idType === 'CNIC' ? 13 : 9;
+        if (value.length > maxLength) {
+            input.value = value.slice(0, maxLength);
+        }
+    }
 
-<script src="../../pages/script.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-.blinking-text {
-  font-size: 24px;
-  font-weight: bold;
-  animation: text-blink 3.5s infinite;
-}
-
-@keyframes text-blink {
-  0% { color: back; }
-  25% { color: blue; }
-  50% { color: green; }
-  75% { color: orange; }
-  100% { color: red; }
-}
-</style>
-</head>
-<body>
-
-<p class="blinking-text">*This text changes color continuously!*</p>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="pages-footer-Container"></div>
-
-<script src="../../pages/script.js"></script>
-
-<div id="pages-header-Container"></div>
-
-<link rel="stylesheet" href="../../pages/navbar.css" />
-<link rel="stylesheet" href="../../pages/footer.css" />
+    // Hide number input spinners
+    document.addEventListener('DOMContentLoaded', function () {
+        const style = document.createElement('style');
+        style.textContent = `
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  `;
+        document.head.appendChild(style);
+    });
+</script>
