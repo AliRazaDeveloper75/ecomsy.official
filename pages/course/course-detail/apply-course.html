@@ -174,20 +174,21 @@
       </div>
     </div>
 
-    <div class="form-row">
-      <div class="form-group">
-        <label>Identification<span>*</span></label>
-        <select id="idType" required onchange="toggleIdField()">
-          <option value="">Select ID Type</option>
-          <option value="CNIC">CNIC</option>
-          <option value="Passport">Passport</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label id="idNumberLabel">ID Number<span>*</span></label>
-        <input type="number" id="idNumber" placeholder="Enter your id" required />
-      </div>
+    <!-- ID Type -->
+    <div class="form-group">
+      <label>Identification<span>*</span></label>
+      <select id="idType" required onchange="toggleIdField()">
+        <option value="">Select ID Type</option>
+        <option value="CNIC">CNIC</option>
+        <option value="Passport">Passport</option>
+      </select>
     </div>
+    <div class="form-group">
+      <label id="idNumberLabel">ID Number<span>*</span></label>
+      <input type="number" id="idNumber" placeholder="Enter your ID" required oninput="validateIdNumber()" />
+      <small id="idError" class="error-message"></small>
+    </div>
+
 
     <div class="form-row">
       <div class="form-group">
@@ -317,6 +318,54 @@
       © Copyright 2024-2025 ECOMSY (SMC-PRIVATE) LIMITED. All rights reserved.
     </div>
   </div>
+
+
+  <script>
+  // Update price based on selected course
+  function updatePrice() {
+    const select = document.getElementById("courseSelect");
+    const selectedOption = select.options[select.selectedIndex];
+    const price = selectedOption.getAttribute("data-price");
+    document.getElementById("coursePrice").value = price ? `PKR ${price}` : "";
+  }
+
+  // Validate CNIC (13 digits) or Passport (9 digits)
+  function validateIdNumber() {
+    const idType = document.getElementById("idType").value;
+    const idNumber = document.getElementById("idNumber").value;
+    const errorElement = document.getElementById("idError");
+
+    if (idType === "CNIC") {
+      if (idNumber.length !== 13) {
+        errorElement.textContent = "CNIC must be exactly 13 digits";
+        errorElement.style.display = "block";
+        document.getElementById("idNumber").setCustomValidity("Invalid CNIC");
+      } else {
+        errorElement.style.display = "none";
+        document.getElementById("idNumber").setCustomValidity("");
+      }
+      if (idNumber.length > 13) {
+        document.getElementById("idNumber").value = idNumber.slice(0, 13);
+      }
+    }
+
+    if (idType === "Passport") {
+      if (idNumber.length !== 9) {
+        errorElement.textContent = "Passport must be exactly 9 digits";
+        errorElement.style.display = "block";
+        document.getElementById("idNumber").setCustomValidity("Invalid Passport");
+      } else {
+        errorElement.style.display = "none";
+        document.getElementById("idNumber").setCustomValidity("");
+      }
+      if (idNumber.length > 9) {
+        document.getElementById("idNumber").value = idNumber.slice(0, 9);
+      }
+    }
+  }
+</script>
+
+
   <script>
     // mobile menu functionaly
     function toggleMenu() {
@@ -428,7 +477,7 @@
         "TikTok Ads Course": "PKR 18,000",
         "Google Ads Course": "PKR 25,000",
         "Graphic Designing": "PKR 28,000",
-        Freelancing: "PKR 15,000",
+        "Freelancing": "PKR 15,000",
         "Business Seminars, Live Q&A & Certifications": "PKR 10,000",
       };
 
