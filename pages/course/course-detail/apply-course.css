@@ -247,7 +247,7 @@ body {
 
 .social-icons {
   display: flex;
-  gap: 5rem;
+  gap: 2rem;
   font-size: 20px;
   margin-top: 10px;
   justify-content: center;
@@ -255,10 +255,12 @@ body {
 .social-icons a {
   color: #fff;
   transition: 0.3s;
+  padding: 5px;
 }
 
 .social-icons a:hover {
-  color: #00bfff;
+  color: black;
+  background-color: white;
 }
 .copyright-social-icons {
   display: flex;
@@ -288,6 +290,7 @@ body {
   background-color: #1C1C25;
   padding: 20px 20px;
   color: white;
+  text-align: center;
 }
 .menu-for-phone {
   display: none;
@@ -323,12 +326,14 @@ body {
     font-weight: bold;
     color: #fff;
     margin: 0;
+    /* display: none; */
   }
   .footer-heading-line::after {
     content: "";
     flex: 1;
     height: 1px;
     background-color: #444;
+    display: none;
   }
 }
 
