@@ -295,11 +295,15 @@ body {
 }
 /* Responsive styles */
 @media (max-width: 768px) {
+  .footer-content{
+    padding: 0px 0px;
+  }
+
   .footer-section-content {
     gap: 10px;
     display: flex;
     flex-direction: column;
-    padding: 0px 20px;
+    padding: 0px 0px;
   }
   .left-width {
     display: none;
@@ -330,6 +334,7 @@ body {
     flex: 1;
     height: 1px;
     background-color: #444;
+    display: none;
   }
 }
 
