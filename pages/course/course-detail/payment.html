@@ -6,101 +6,9 @@
     <title>Payment | Ecomsy</title>
     <!-- Stripe.js library -->
     <script src="https://js.stripe.com/v3/"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-       <style>
-      /* Previous styles remain the same, add these new styles */
-
-      .scan-section {
-        text-align: center;
-        margin: 20px 0;
-      }
-
-      #qr-reader {
-        width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
-        border: 2px solid var(--primary-color);
-        border-radius: 8px;
-        overflow: hidden;
-      }
-
-      .scan-btn {
-        background: var(--accent-color);
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        margin: 10px 0;
-        cursor: pointer;
-        font-weight: bold;
-      }
-
-      .scan-btn:hover {
-        background: #e05a00;
-      }
-
-      .status-checking {
-        display: none;
-        background: #f8f9fa;
-        padding: 15px;
-        border-radius: 5px;
-        margin-top: 15px;
-        text-align: center;
-        border-left: 4px solid var(--primary-color);
-      }
-
-      .status-message {
-        font-weight: 600;
-        margin-bottom: 10px;
-      }
-
-      .status-progress {
-        height: 5px;
-        background: #ddd;
-        border-radius: 5px;
-        overflow: hidden;
-        margin-bottom: 10px;
-      }
-
-      .status-progress-bar {
-        height: 100%;
-        width: 0%;
-        background: var(--primary-color);
-        animation: progress 2s infinite;
-      }
-
-      @keyframes progress {
-        0% {
-          width: 0%;
-          margin-left: 0;
-        }
-        50% {
-          width: 100%;
-          margin-left: 0;
-        }
-        100% {
-          width: 0%;
-          margin-left: 100%;
-        }
-      }
-
-      .manual-entry {
-        margin-top: 15px;
-        font-size: 14px;
-        color: #666;
-      }
-
-      .transaction-id-input {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-      }
-    </style>
+    <!-- HTML5 QR Code Scanner library -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
       :root {
         --primary-color: #00539c;
@@ -339,6 +247,95 @@
         display: none;
       }
 
+      /* New styles for QR scanning */
+      .scan-section {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      #qr-reader {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        border: 2px solid var(--primary-color);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .scan-btn {
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin: 10px 0;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .scan-btn:hover {
+        background: #e05a00;
+      }
+
+      .status-checking {
+        display: none;
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 15px;
+        text-align: center;
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .status-message {
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .status-progress {
+        height: 5px;
+        background: #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+
+      .status-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: var(--primary-color);
+        animation: progress 2s infinite;
+      }
+
+      @keyframes progress {
+        0% {
+          width: 0%;
+          margin-left: 0;
+        }
+        50% {
+          width: 100%;
+          margin-left: 0;
+        }
+        100% {
+          width: 0%;
+          margin-left: 100%;
+        }
+      }
+
+      .manual-entry {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #666;
+      }
+
+      .transaction-id-input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
       @media (max-width: 768px) {
         .payment-container {
           flex-direction: column;
@@ -375,10 +372,7 @@
               </div>
             </div>
 
-            <div
-              class="payment-method"
-              onclick="selectPaymentMethod('easypaisa')"
-            >
+            <div class="payment-method" onclick="selectPaymentMethod('easypaisa')">
               <i class="fas fa-mobile-alt"></i>
               <div class="method-info">
                 <div class="method-name">EasyPaisa</div>
@@ -388,10 +382,7 @@
               </div>
             </div>
 
-            <div
-              class="payment-method"
-              onclick="selectPaymentMethod('jazzcash')"
-            >
+            <div class="payment-method" onclick="selectPaymentMethod('jazzcash')">
               <i class="fas fa-wallet"></i>
               <div class="method-info">
                 <div class="method-name">JazzCash</div>
@@ -428,7 +419,7 @@
             <div class="qr-code-section">
               <p>Scan this QR code with your EasyPaisa app</p>
               <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=EASYPAISA_ACCOUNT_123456789_AMOUNT_${getPriceNumber()}"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=EASYPAISA_ACCOUNT_123456789_AMOUNT_34500"
                 alt="EasyPaisa QR Code"
                 class="qr-code-img"
               />
@@ -458,7 +449,7 @@
             <div class="account-details">
               <p><strong>EasyPaisa Account Number:</strong> 1234 5678 90</p>
               <p><strong>Account Name:</strong> Ecomsy Education</p>
-              <p><strong>Amount:</strong> ${storedData.coursePrice}</p>
+              <p><strong>Amount:</strong> PKR 34,500</p>
             </div>
 
             <div class="status-checking" id="easypaisa-status">
@@ -482,7 +473,7 @@
             <div class="qr-code-section">
               <p>Scan this QR code with your JazzCash app</p>
               <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=JAZZCASH_ACCOUNT_987654321_AMOUNT_${getPriceNumber()}"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=JAZZCASH_ACCOUNT_987654321_AMOUNT_34500"
                 alt="JazzCash QR Code"
                 class="qr-code-img"
               />
@@ -512,7 +503,7 @@
             <div class="account-details">
               <p><strong>JazzCash Account Number:</strong> 9876 5432 10</p>
               <p><strong>Account Name:</strong> Ecomsy Education</p>
-              <p><strong>Amount:</strong> ${storedData.coursePrice}</p>
+              <p><strong>Amount:</strong> PKR 34,500</p>
             </div>
 
             <div class="status-checking" id="jazzcash-status">
@@ -554,11 +545,101 @@
 
     <script>
       // Retrieve stored data
-      const storedData = JSON.parse(
-        localStorage.getItem("courseRegistrationData")
-      );
+      let storedData;
+      try {
+        const data = localStorage.getItem("courseRegistrationData");
+        if (data) {
+          storedData = JSON.parse(data);
+        } else {
+          // If no data in localStorage, check if we have URL parameters
+          const urlParams = new URLSearchParams(window.location.search);
+          const course = urlParams.get('course');
+          const price = urlParams.get('price');
+          const name = urlParams.get('name');
+          const email = urlParams.get('email');
+          const whatsapp = urlParams.get('whatsapp');
+          const regNumber = urlParams.get('regNumber');
+          
+          if (course && price) {
+            storedData = {
+              course: course,
+              coursePrice: price,
+              name: name || 'Not provided',
+              email: email || 'Not provided',
+              whatsapp: whatsapp || 'Not provided',
+              registrationNumber: regNumber || 'EC' + new Date().getDate() + (new Date().getMonth()+1) + new Date().getFullYear().toString().substr(-2) + '-' + Math.floor(100000 + Math.random() * 900000)
+            };
+          } else {
+            // Fallback to sample data for demonstration
+            storedData = {
+              course: "N/A",
+              coursePrice: "N/A",
+              name: "N/A",
+              email: "N/A",
+              whatsapp: "N/A",
+              registrationNumber: "N/A"
+            };
+          }
+        }
+      } catch (e) {
+        console.error("Error retrieving stored data:", e);
+        // Fallback to sample data
+        storedData = {
+          course: "Amazon FBA Mastery – Private Label + Wholesale Combined",
+          coursePrice: "PKR 34,500",
+          name: "Kashaf Allah Ditta",
+          email: "kashafallahditta@gmail.com",
+          whatsapp: "Not provided",
+          registrationNumber: "EC200825-318928"
+        };
+      }
+
       let selectedPaymentMethod = "";
       let stripe, card;
+      let html5QrCode;
+
+      // Initialize the page
+      document.addEventListener('DOMContentLoaded', function() {
+        displayOrderDetails();
+      });
+
+      // Display order details
+      function displayOrderDetails() {
+        const orderDetails = document.getElementById("orderDetails");
+
+        if (storedData) {
+          orderDetails.innerHTML = `
+            <div class="order-item">
+                <span class="label">Course:</span>
+                <span class="value">${storedData.course || "Not specified"}</span>
+            </div>
+            <div class="order-item">
+                <span class="label">Registration Number:</span>
+                <span class="value">${storedData.registrationNumber || "Not assigned"}</span>
+            </div>
+            <div class="order-item">
+                <span class="label">Student Name:</span>
+                <span class="value">${storedData.name || "Not provided"}</span>
+            </div>
+            <div class="order-item">
+                <span class="label">Email:</span>
+                <span class="value">${storedData.email || "Not provided"}</span>
+            </div>
+            <div class="order-item">
+                <span class="label">WhatsApp:</span>
+                <span class="value">${storedData.whatsapp || "Not provided"}</span>
+            </div>
+            <div class="order-item total">
+                <span class="label">Total Amount:</span>
+                <span class="value">${storedData.coursePrice || "PKR 0"}</span>
+            </div>
+          `;
+        } else {
+          orderDetails.innerHTML = `<p>No order data found. Please complete the registration form first.</p>`;
+        }
+      }
+
+      console.log("data", storedData)
 
       // Initialize Stripe (replace with your publishable key)
       function initStripe() {
@@ -655,42 +736,6 @@
         }, 1500);
       }
 
-      // Display order details
-      if (storedData) {
-        const orderDetails = document.getElementById("orderDetails");
-
-        // Extract numeric price from "PKR 35,000" format
-        const priceText = storedData.coursePrice.replace(/[^\d]/g, "");
-        const price = parseInt(priceText) || 0;
-
-        orderDetails.innerHTML = `
-                <div class="order-item">
-                    <span class="label">Course:</span>
-                    <span class="value">${storedData.course}</span>
-                </div>
-                <div class="order-item">
-                    <span class="label">Registration Number:</span>
-                    <span class="value">${storedData.registrationNumber}</span>
-                </div>
-                <div class="order-item">
-                    <span class="label">Student Name:</span>
-                    <span class="value">${storedData.name}</span>
-                </div>
-                <div class="order-item">
-                    <span class="label">Email:</span>
-                    <span class="value">${storedData.email}</span>
-                </div>
-                <div class="order-item">
-                    <span class="label">WhatsApp:</span>
-                    <span class="value">${storedData.whatsapp}</span>
-                </div>
-                <div class="order-item total">
-                    <span class="label">Total Amount:</span>
-                    <span class="value">${storedData.coursePrice}</span>
-                </div>
-            `;
-      }
-
       function selectPaymentMethod(method) {
         selectedPaymentMethod = method;
 
@@ -710,13 +755,11 @@
         // Show selected payment form
         switch (method) {
           case "card":
-            document.getElementById("card-payment-form").style.display =
-              "block";
+            document.getElementById("card-payment-form").style.display = "block";
             if (!stripe) initStripe();
             break;
           case "easypaisa":
-            document.getElementById("easypaisa-payment").style.display =
-              "block";
+            document.getElementById("easypaisa-payment").style.display = "block";
             break;
           case "jazzcash":
             document.getElementById("jazzcash-payment").style.display = "block";
@@ -731,27 +774,20 @@
         // Show processing indicator
         const button = event.currentTarget;
         button.disabled = true;
-        button.innerHTML =
-          '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
 
         // Simulate payment processing
         setTimeout(function () {
           // Store payment confirmation
           const paymentData = {
             method: method,
-            transactionId:
-              method.toUpperCase() +
-              "_" +
-              Math.random().toString(36).substr(2, 10),
+            transactionId: method.toUpperCase() + "_" + Math.random().toString(36).substr(2, 10),
             timestamp: new Date().toISOString(),
           };
 
           // Update stored data with payment info
           storedData.payment = paymentData;
-          localStorage.setItem(
-            "courseRegistrationData",
-            JSON.stringify(storedData)
-          );
+          localStorage.setItem("courseRegistrationData", JSON.stringify(storedData));
 
           // Show success message
           document.getElementById(method + "-success").style.display = "block";
@@ -763,10 +799,6 @@
           }, 2000);
         }, 1500);
       }
-    </script>
-
-     <script>
-      // Previous JavaScript remains the same until the new functions
 
       // Get numeric price from stored data
       function getPriceNumber() {
@@ -775,8 +807,6 @@
       }
 
       // Initialize barcode scanner
-      let html5QrCode;
-
       function startScanner(paymentMethod) {
         const scannerId = `${paymentMethod}-scanner`;
         const scannerElement = document.getElementById(scannerId);
@@ -800,9 +830,7 @@
             .start({ facingMode: "environment" }, config, qrCodeSuccessCallback)
             .catch((err) => {
               console.error("Scanner error:", err);
-              alert(
-                "Error starting scanner. Please try again or enter manually."
-              );
+              alert("Error starting scanner. Please try again or enter manually.");
             });
         } else {
           stopScanner();
@@ -838,17 +866,14 @@
         }
 
         // Show the transaction ID in the manual input field
-        document.getElementById(`${paymentMethod}-transaction-id`).value =
-          transactionId;
+        document.getElementById(`${paymentMethod}-transaction-id`).value = transactionId;
 
         // Verify the payment
         verifyPayment(paymentMethod, transactionId);
       }
 
       function verifyManualPayment(paymentMethod) {
-        const transactionId = document
-          .getElementById(`${paymentMethod}-transaction-id`)
-          .value.trim();
+        const transactionId = document.getElementById(`${paymentMethod}-transaction-id`).value.trim();
 
         if (!transactionId) {
           alert("Please enter a transaction ID");
@@ -860,12 +885,10 @@
 
       function verifyPayment(paymentMethod, transactionId) {
         // Show status checking UI
-        document.getElementById(`${paymentMethod}-status`).style.display =
-          "block";
+        document.getElementById(`${paymentMethod}-status`).style.display = "block";
 
         // Hide the verify button to prevent duplicate submissions
-        document.querySelector(`#${paymentMethod}-payment .btn`).style.display =
-          "none";
+        document.querySelector(`#${paymentMethod}-payment .btn`).style.display = "none";
 
         // In a real app, you would send this to your backend for verification
         // This simulates the verification process
@@ -884,26 +907,26 @@
           } else {
             // Payment not verified yet
             document.getElementById(`${paymentMethod}-status`).innerHTML = `
-                        <div class="status-message">Payment not yet received</div>
-                        <p>We couldn't verify your payment yet. This usually takes 5-60 minutes.</p>
-                        <p>Your transaction ID: <strong>${transactionId}</strong></p>
-                        <button class="btn" onclick="retryVerification('${paymentMethod}', '${transactionId}')">
-                            <i class="fas fa-sync-alt"></i> Check Again
-                        </button>
-                        <p>We'll also notify you by WhatsApp when received.</p>
-                    `;
+              <div class="status-message">Payment not yet received</div>
+              <p>We couldn't verify your payment yet. This usually takes 5-60 minutes.</p>
+              <p>Your transaction ID: <strong>${transactionId}</strong></p>
+              <button class="btn" onclick="retryVerification('${paymentMethod}', '${transactionId}')">
+                  <i class="fas fa-sync-alt"></i> Check Again
+              </button>
+              <p>We'll also notify you by WhatsApp when received.</p>
+            `;
           }
         }, 3000);
       }
 
       function retryVerification(paymentMethod, transactionId) {
         document.getElementById(`${paymentMethod}-status`).innerHTML = `
-                <div class="status-message">Checking payment status...</div>
-                <div class="status-progress">
-                    <div class="status-progress-bar"></div>
-                </div>
-                <p>Please wait while we verify your payment.</p>
-            `;
+          <div class="status-message">Checking payment status...</div>
+          <div class="status-progress">
+              <div class="status-progress-bar"></div>
+          </div>
+          <p>Please wait while we verify your payment.</p>
+        `;
 
         simulatePaymentVerification(paymentMethod, transactionId);
       }
@@ -919,16 +942,11 @@
 
         // Update stored data with payment info
         storedData.payment = paymentData;
-        localStorage.setItem(
-          "courseRegistrationData",
-          JSON.stringify(storedData)
-        );
+        localStorage.setItem("courseRegistrationData", JSON.stringify(storedData));
 
         // Show success message
-        document.getElementById(`${paymentMethod}-status`).style.display =
-          "none";
-        document.getElementById(`${paymentMethod}-success`).style.display =
-          "block";
+        document.getElementById(`${paymentMethod}-status`).style.display = "none";
+        document.getElementById(`${paymentMethod}-success`).style.display = "block";
 
         // In a real app, you might send a confirmation WhatsApp message here
 
