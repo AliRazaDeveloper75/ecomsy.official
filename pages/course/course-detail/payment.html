@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment | Ecomsy</title>
     <!-- Stripe.js library -->
     <script src="https://js.stripe.com/v3/"></script>
@@ -10,954 +10,1057 @@
     <script src="https://unpkg.com/html5-qrcode"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
-      :root {
-        --primary-color: #00539c;
-        --secondary-color: #003f7d;
-        --accent-color: #ff6b00;
-        --light-gray: #f5f7fa;
-        --dark-gray: #333;
-        --success-color: #28a745;
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background-color: var(--light-gray);
-      }
-
-      .container {
-        max-width: 1000px;
-        margin: 30px auto;
-        padding: 0 20px;
-      }
-
-      .payment-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 30px;
-        margin-top: 20px;
-      }
-
-      .order-summary {
-        flex: 1;
-        min-width: 300px;
-        background: white;
-        border-radius: 10px;
-        padding: 25px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      }
-
-      .payment-section {
-        flex: 1;
-        min-width: 300px;
-        background: white;
-        border-radius: 10px;
-        padding: 25px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      }
-
-      h1 {
-        color: var(--primary-color);
-        margin-bottom: 20px;
-        font-size: 28px;
-        text-align: center;
-      }
-
-      h2 {
-        color: var(--primary-color);
-        margin-bottom: 15px;
-        font-size: 22px;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 10px;
-      }
-
-      .order-item {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
-        padding: 10px 0;
-        border-bottom: 1px dashed #eee;
-      }
-
-      .order-item:last-child {
-        border-bottom: none;
-      }
-
-      .order-item .label {
-        font-weight: 600;
-        color: var(--dark-gray);
-      }
-
-      .order-item .value {
-        text-align: right;
-      }
-
-      .total {
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 20px;
-        padding-top: 15px;
-        border-top: 2px solid var(--primary-color);
-      }
-
-      .payment-methods {
-        margin-top: 20px;
-      }
-
-      .payment-method {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .payment-method:hover {
-        border-color: var(--primary-color);
-        background-color: #f8f9fa;
-      }
-
-      .payment-method.selected {
-        border-color: var(--primary-color);
-        background-color: #f0f7ff;
-      }
-
-      .payment-method i {
-        font-size: 24px;
-        margin-right: 15px;
-        color: var(--primary-color);
-      }
-
-      .payment-method .method-info {
-        flex-grow: 1;
-      }
-
-      .payment-method .method-name {
-        font-weight: 600;
-        margin-bottom: 5px;
-      }
-
-      .payment-method .method-description {
-        font-size: 14px;
-        color: #666;
-      }
-
-      /* Stripe Element styles */
-      .StripeElement {
-        box-sizing: border-box;
-        height: 40px;
-        padding: 10px 12px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        background-color: white;
-        margin-bottom: 15px;
-      }
-
-      .StripeElement--focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 1px var(--primary-color);
-      }
-
-      .StripeElement--invalid {
-        border-color: #fa755a;
-      }
-
-      .StripeElement--webkit-autofill {
-        background-color: #fefde5 !important;
-      }
-
-      #card-errors {
-        color: #fa755a;
-        margin-bottom: 15px;
-        font-size: 14px;
-      }
-
-      .btn {
-        display: block;
-        width: 100%;
-        padding: 12px;
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 20px;
-        transition: all 0.3s;
-      }
-
-      .btn:hover {
-        background: var(--secondary-color);
-        transform: translateY(-2px);
-      }
-
-      .btn:disabled {
-        background: #ccc;
-        cursor: not-allowed;
-        transform: none;
-      }
-
-      .btn i {
-        margin-right: 8px;
-      }
-
-      .qr-code-section {
-        text-align: center;
-        margin-top: 20px;
-        display: none;
-      }
-
-      .qr-code-img {
-        max-width: 200px;
-        margin: 15px auto;
-        border: 1px solid #eee;
-        padding: 10px;
-        border-radius: 5px;
-      }
-
-      .account-details {
-        background: #f9f9f9;
-        padding: 15px;
-        border-radius: 5px;
-        margin-top: 15px;
-        font-size: 14px;
-        display: none;
-      }
-
-      .account-details p {
-        margin-bottom: 8px;
-      }
-
-      .success-message {
-        color: var(--success-color);
-        text-align: center;
-        margin-top: 20px;
-        font-weight: 600;
-        display: none;
-      }
-
-      /* New styles for QR scanning */
-      .scan-section {
-        text-align: center;
-        margin: 20px 0;
-      }
-
-      #qr-reader {
-        width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
-        border: 2px solid var(--primary-color);
-        border-radius: 8px;
-        overflow: hidden;
-      }
-
-      .scan-btn {
-        background: var(--accent-color);
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        margin: 10px 0;
-        cursor: pointer;
-        font-weight: bold;
-      }
-
-      .scan-btn:hover {
-        background: #e05a00;
-      }
-
-      .status-checking {
-        display: none;
-        background: #f8f9fa;
-        padding: 15px;
-        border-radius: 5px;
-        margin-top: 15px;
-        text-align: center;
-        border-left: 4px solid var(--primary-color);
-      }
-
-      .status-message {
-        font-weight: 600;
-        margin-bottom: 10px;
-      }
-
-      .status-progress {
-        height: 5px;
-        background: #ddd;
-        border-radius: 5px;
-        overflow: hidden;
-        margin-bottom: 10px;
-      }
-
-      .status-progress-bar {
-        height: 100%;
-        width: 0%;
-        background: var(--primary-color);
-        animation: progress 2s infinite;
-      }
-
-      @keyframes progress {
-        0% {
-          width: 0%;
-          margin-left: 0;
+        :root {
+            --primary-color: #00539c;
+            --secondary-color: #003f7d;
+            --accent-color: #ff6b00;
+            --light-gray: #f5f7fa;
+            --dark-gray: #333;
+            --success-color: #28a745;
         }
-        50% {
-          width: 100%;
-          margin-left: 0;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        100% {
-          width: 0%;
-          margin-left: 100%;
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light-gray);
         }
-      }
 
-      .manual-entry {
-        margin-top: 15px;
-        font-size: 14px;
-        color: #666;
-      }
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
 
-      .transaction-id-input {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-      }
-
-      @media (max-width: 768px) {
         .payment-container {
-          flex-direction: column;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
         }
 
-        .order-summary,
+        .order-summary {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
         .payment-section {
-          min-width: 100%;
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
-      }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-item .label {
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .order-item .value {
+            text-align: right;
+        }
+
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        .payment-methods {
+            margin-top: 20px;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-method:hover {
+            border-color: var(--primary-color);
+            background-color: #f8f9fa;
+        }
+
+        .payment-method.selected {
+            border-color: var(--primary-color);
+            background-color: #f0f7ff;
+        }
+
+        .payment-method i {
+            font-size: 24px;
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+
+        .payment-method .method-info {
+            flex-grow: 1;
+        }
+
+        .payment-method .method-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .payment-method .method-description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Stripe Element styles */
+        .StripeElement {
+            box-sizing: border-box;
+            height: 40px;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            margin-bottom: 15px;
+        }
+
+        .StripeElement--focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 1px var(--primary-color);
+        }
+
+        .StripeElement--invalid {
+            border-color: #fa755a;
+        }
+
+        .StripeElement--webkit-autofill {
+            background-color: #fefde5 !important;
+        }
+
+        #card-errors {
+            color: #fa755a;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .qr-code-section {
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .qr-code-img {
+            max-width: 200px;
+            margin: 15px auto;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .account-details {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .account-details p {
+            margin-bottom: 8px;
+        }
+
+        .success-message {
+            color: var(--success-color);
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+            display: none;
+        }
+
+        /* New styles for QR scanning */
+        .scan-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #qr-reader {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .scan-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 10px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .scan-btn:hover {
+            background: #e05a00;
+        }
+
+        .status-checking {
+            display: none;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: center;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .status-message {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .status-progress {
+            height: 5px;
+            background: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .status-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--primary-color);
+            animation: progress 2s infinite;
+        }
+
+        @keyframes progress {
+            0% {
+                width: 0%;
+                margin-left: 0;
+            }
+            50% {
+                width: 100%;
+                margin-left: 0;
+            }
+            100% {
+                width: 0%;
+                margin-left: 100%;
+            }
+        }
+
+        .manual-entry {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .transaction-id-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Bank transfer specific styles */
+        .upload-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #eee;
+        }
+
+        .upload-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 10px 0;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .upload-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .preview-container {
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 200px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            background: #c82333;
+        }
+
+        @media (max-width: 768px) {
+            .payment-container {
+                flex-direction: column;
+            }
+
+            .order-summary,
+            .payment-section {
+                min-width: 100%;
+            }
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <h1>Complete Your Payment</h1>
+        <h1>Complete Your Payment</h1>
 
-      <div class="payment-container">
-        <div class="order-summary">
-          <h2>Order Summary</h2>
-          <div id="orderDetails"></div>
+        <div class="payment-container">
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div id="orderDetails"></div>
+            </div>
+
+            <div class="payment-section">
+                <h2>Payment Method</h2>
+
+                <div class="payment-methods">
+                    <div class="payment-method" onclick="selectPaymentMethod('card')">
+                        <i class="far fa-credit-card"></i>
+                        <div class="method-info">
+                            <div class="method-name">Credit/Debit Card</div>
+                            <div class="method-description">
+                                Pay securely with your Visa, Mastercard, or other cards
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-method" onclick="selectPaymentMethod('easypaisa')">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div class="method-info">
+                            <div class="method-name">EasyPaisa</div>
+                            <div class="method-description">
+                                Mobile Account or Bank Transfer
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-method" onclick="selectPaymentMethod('jazzcash')">
+                        <i class="fas fa-wallet"></i>
+                        <div class="method-info">
+                            <div class="method-name">JazzCash</div>
+                            <div class="method-description">
+                                Mobile Account or Bank Transfer
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-method" onclick="selectPaymentMethod('bank')">
+                        <i class="fas fa-university"></i>
+                        <div class="method-info">
+                            <div class="method-name">Bank Transfer</div>
+                            <div class="method-description">Direct bank transfer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Payment Form (Stripe Elements) -->
+                <div id="card-payment-form" style="display: none">
+                    <form id="payment-form">
+                        <div id="card-element">
+                            <!-- Stripe Card Element will be inserted here -->
+                        </div>
+                        <div id="card-errors" role="alert"></div>
+                        <button type="submit" class="btn" id="submit-button">
+                            <i class="fas fa-lock"></i> Pay Now
+                        </button>
+                    </form>
+                </div>
+
+                <!-- EasyPaisa Payment -->
+                <div id="easypaisa-payment" style="display: none">
+                    <div class="qr-code-section">
+                        <p>Scan this QR code with your EasyPaisa app</p>
+                        <img
+                            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=EASYPAISA_ACCOUNT_123456789_AMOUNT_34500"
+                            alt="EasyPaisa QR Code"
+                            class="qr-code-img"
+                        />
+                    </div>
+
+                    <div class="scan-section">
+                        <p>Or scan your payment receipt:</p>
+                        <button class="scan-btn" onclick="startScanner('easypaisa')">
+                            <i class="fas fa-qrcode"></i> Scan Payment Receipt
+                        </button>
+                        <div id="easypaisa-scanner" style="display: none"></div>
+
+                        <div class="manual-entry">
+                            <p>Or enter transaction ID manually:</p>
+                            <input
+                                type="text"
+                                id="easypaisa-transaction-id"
+                                class="transaction-id-input"
+                                placeholder="Enter Transaction ID"
+                            />
+                            <button class="btn" onclick="verifyManualPayment('easypaisa')">
+                                <i class="fas fa-check"></i> Verify Payment
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="account-details">
+                        <p><strong>EasyPaisa Account Number:</strong> 1234 5678 90</p>
+                        <p><strong>Account Name:</strong> Ecomsy Education</p>
+                        <p><strong>Amount:</strong> PKR 34,500</p>
+                    </div>
+
+                    <div class="status-checking" id="easypaisa-status">
+                        <div class="status-message">Checking payment status...</div>
+                        <div class="status-progress">
+                            <div class="status-progress-bar"></div>
+                        </div>
+                        <p>
+                            Please wait while we verify your payment. This may take a few
+                            minutes.
+                        </p>
+                    </div>
+
+                    <div class="success-message" id="easypaisa-success">
+                        Payment verified successfully! Redirecting to confirmation...
+                    </div>
+                </div>
+
+                <!-- JazzCash Payment -->
+                <div id="jazzcash-payment" style="display: none">
+                    <div class="qr-code-section">
+                        <p>Scan this QR code with your JazzCash app</p>
+                        <img
+                            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=JAZZCASH_ACCOUNT_987654321_AMOUNT_34500"
+                            alt="JazzCash QR Code"
+                            class="qr-code-img"
+                        />
+                    </div>
+
+                    <div class="scan-section">
+                        <p>Or scan your payment receipt:</p>
+                        <button class="scan-btn" onclick="startScanner('jazzcash')">
+                            <i class="fas fa-qrcode"></i> Scan Payment Receipt
+                        </button>
+                        <div id="jazzcash-scanner" style="display: none"></div>
+
+                        <div class="manual-entry">
+                            <p>Or enter transaction ID manually:</p>
+                            <input
+                                type="text"
+                                id="jazzcash-transaction-id"
+                                class="transaction-id-input"
+                                placeholder="Enter Transaction ID"
+                            />
+                            <button class="btn" onclick="verifyManualPayment('jazzcash')">
+                                <i class="fas fa-check"></i> Verify Payment
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="account-details">
+                        <p><strong>JazzCash Account Number:</strong> 9876 5432 10</p>
+                        <p><strong>Account Name:</strong> Ecomsy Education</p>
+                        <p><strong>Amount:</strong> PKR 34,500</p>
+                    </div>
+
+                    <div class="status-checking" id="jazzcash-status">
+                        <div class="status-message">Checking payment status...</div>
+                        <div class="status-progress">
+                            <div class="status-progress-bar"></div>
+                        </div>
+                        <p>
+                            Please wait while we verify your payment. This may take a few
+                            minutes.
+                        </p>
+                    </div>
+
+                    <div class="success-message" id="jazzcash-success">
+                        Payment verified successfully! Redirecting to confirmation...
+                    </div>
+                </div>
+
+                <!-- Bank Transfer -->
+                <div id="bank-payment" style="display: none">
+                    <div class="account-details">
+                        <p><strong>Bank Name:</strong> Habib Bank Limited</p>
+                        <p><strong>Account Title:</strong> Ecomsy Education</p>
+                        <p><strong>Account Number:</strong> 1234 5678 9012 3456</p>
+                        <p><strong>IBAN:</strong> PK36HABB0012345678901234</p>
+                        <p><strong>Branch Code:</strong> 1234</p>
+                        <p><strong>Branch Name:</strong> Main Branch, Attock</p>
+                        <p><strong>Amount:</strong> PKR 34,500</p>
+                    </div>
+                    
+                    <div class="upload-section">
+                        <p><strong>Upload Payment Proof:</strong></p>
+                        <p class="manual-entry">Please upload a screenshot of your bank transfer confirmation</p>
+                        <input type="file" id="bank-receipt" class="file-input" accept="image/*">
+                        <label for="bank-receipt" class="upload-btn">
+                            <i class="fas fa-upload"></i> Select Screenshot
+                        </label>
+                        
+                        <div class="preview-container" id="receipt-preview">
+                            <img src="#" alt="Receipt preview" class="preview-image" id="preview-image">
+                            <button type="button" class="remove-btn" onclick="removeReceipt()">
+                                <i class="fas fa-times"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="completeManualPayment('bank')">
+                        <i class="fas fa-check-circle"></i> I've Sent Payment
+                    </button>
+                    <div class="success-message" id="bank-success">
+                        Payment received! Redirecting to confirmation...
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="payment-section">
-          <h2>Payment Method</h2>
-
-          <div class="payment-methods">
-            <div class="payment-method" onclick="selectPaymentMethod('card')">
-              <i class="far fa-credit-card"></i>
-              <div class="method-info">
-                <div class="method-name">Credit/Debit Card</div>
-                <div class="method-description">
-                  Pay securely with your Visa, Mastercard, or other cards
-                </div>
-              </div>
-            </div>
-
-            <div class="payment-method" onclick="selectPaymentMethod('easypaisa')">
-              <i class="fas fa-mobile-alt"></i>
-              <div class="method-info">
-                <div class="method-name">EasyPaisa</div>
-                <div class="method-description">
-                  Mobile Account or Bank Transfer
-                </div>
-              </div>
-            </div>
-
-            <div class="payment-method" onclick="selectPaymentMethod('jazzcash')">
-              <i class="fas fa-wallet"></i>
-              <div class="method-info">
-                <div class="method-name">JazzCash</div>
-                <div class="method-description">
-                  Mobile Account or Bank Transfer
-                </div>
-              </div>
-            </div>
-
-            <div class="payment-method" onclick="selectPaymentMethod('bank')">
-              <i class="fas fa-university"></i>
-              <div class="method-info">
-                <div class="method-name">Bank Transfer</div>
-                <div class="method-description">Direct bank transfer</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card Payment Form (Stripe Elements) -->
-          <div id="card-payment-form" style="display: none">
-            <form id="payment-form">
-              <div id="card-element">
-                <!-- Stripe Card Element will be inserted here -->
-              </div>
-              <div id="card-errors" role="alert"></div>
-              <button type="submit" class="btn" id="submit-button">
-                <i class="fas fa-lock"></i> Pay Now
-              </button>
-            </form>
-          </div>
-
-          <!-- EasyPaisa Payment -->
-          <div id="easypaisa-payment" style="display: none">
-            <div class="qr-code-section">
-              <p>Scan this QR code with your EasyPaisa app</p>
-              <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=EASYPAISA_ACCOUNT_123456789_AMOUNT_34500"
-                alt="EasyPaisa QR Code"
-                class="qr-code-img"
-              />
-            </div>
-
-            <div class="scan-section">
-              <p>Or scan your payment receipt:</p>
-              <button class="scan-btn" onclick="startScanner('easypaisa')">
-                <i class="fas fa-qrcode"></i> Scan Payment Receipt
-              </button>
-              <div id="easypaisa-scanner" style="display: none"></div>
-
-              <div class="manual-entry">
-                <p>Or enter transaction ID manually:</p>
-                <input
-                  type="text"
-                  id="easypaisa-transaction-id"
-                  class="transaction-id-input"
-                  placeholder="Enter Transaction ID"
-                />
-                <button class="btn" onclick="verifyManualPayment('easypaisa')">
-                  <i class="fas fa-check"></i> Verify Payment
-                </button>
-              </div>
-            </div>
-
-            <div class="account-details">
-              <p><strong>EasyPaisa Account Number:</strong> 1234 5678 90</p>
-              <p><strong>Account Name:</strong> Ecomsy Education</p>
-              <p><strong>Amount:</strong> PKR 34,500</p>
-            </div>
-
-            <div class="status-checking" id="easypaisa-status">
-              <div class="status-message">Checking payment status...</div>
-              <div class="status-progress">
-                <div class="status-progress-bar"></div>
-              </div>
-              <p>
-                Please wait while we verify your payment. This may take a few
-                minutes.
-              </p>
-            </div>
-
-            <div class="success-message" id="easypaisa-success">
-              Payment verified successfully! Redirecting to confirmation...
-            </div>
-          </div>
-
-          <!-- JazzCash Payment -->
-          <div id="jazzcash-payment" style="display: none">
-            <div class="qr-code-section">
-              <p>Scan this QR code with your JazzCash app</p>
-              <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=JAZZCASH_ACCOUNT_987654321_AMOUNT_34500"
-                alt="JazzCash QR Code"
-                class="qr-code-img"
-              />
-            </div>
-
-            <div class="scan-section">
-              <p>Or scan your payment receipt:</p>
-              <button class="scan-btn" onclick="startScanner('jazzcash')">
-                <i class="fas fa-qrcode"></i> Scan Payment Receipt
-              </button>
-              <div id="jazzcash-scanner" style="display: none"></div>
-
-              <div class="manual-entry">
-                <p>Or enter transaction ID manually:</p>
-                <input
-                  type="text"
-                  id="jazzcash-transaction-id"
-                  class="transaction-id-input"
-                  placeholder="Enter Transaction ID"
-                />
-                <button class="btn" onclick="verifyManualPayment('jazzcash')">
-                  <i class="fas fa-check"></i> Verify Payment
-                </button>
-              </div>
-            </div>
-
-            <div class="account-details">
-              <p><strong>JazzCash Account Number:</strong> 9876 5432 10</p>
-              <p><strong>Account Name:</strong> Ecomsy Education</p>
-              <p><strong>Amount:</strong> PKR 34,500</p>
-            </div>
-
-            <div class="status-checking" id="jazzcash-status">
-              <div class="status-message">Checking payment status...</div>
-              <div class="status-progress">
-                <div class="status-progress-bar"></div>
-              </div>
-              <p>
-                Please wait while we verify your payment. This may take a few
-                minutes.
-              </p>
-            </div>
-
-            <div class="success-message" id="jazzcash-success">
-              Payment verified successfully! Redirecting to confirmation...
-            </div>
-          </div>
-
-          <!-- Bank Transfer -->
-          <div id="bank-payment" style="display: none">
-            <div class="account-details">
-              <p><strong>Bank Name:</strong> Habib Bank Limited</p>
-              <p><strong>Account Title:</strong> Ecomsy Education</p>
-              <p><strong>Account Number:</strong> 1234 5678 9012 3456</p>
-              <p><strong>IBAN:</strong> PK36HABB0012345678901234</p>
-              <p><strong>Branch Code:</strong> 1234</p>
-              <p><strong>Branch Name:</strong> Main Branch, Attock</p>
-            </div>
-            <button class="btn" onclick="completeManualPayment('bank')">
-              <i class="fas fa-check-circle"></i> I've Sent Payment
-            </button>
-            <div class="success-message" id="bank-success">
-              Payment received! Redirecting to confirmation...
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <script>
-      // Retrieve stored data
-      let storedData;
-      try {
-        const data = localStorage.getItem("courseRegistrationData");
-        if (data) {
-          storedData = JSON.parse(data);
-        } else {
-          // If no data in localStorage, check if we have URL parameters
-          const urlParams = new URLSearchParams(window.location.search);
-          const course = urlParams.get('course');
-          const price = urlParams.get('price');
-          const name = urlParams.get('name');
-          const email = urlParams.get('email');
-          const whatsapp = urlParams.get('whatsapp');
-          const regNumber = urlParams.get('regNumber');
-          
-          if (course && price) {
-            storedData = {
-              course: course,
-              coursePrice: price,
-              name: name || 'Not provided',
-              email: email || 'Not provided',
-              whatsapp: whatsapp || 'Not provided',
-              registrationNumber: regNumber || 'EC' + new Date().getDate() + (new Date().getMonth()+1) + new Date().getFullYear().toString().substr(-2) + '-' + Math.floor(100000 + Math.random() * 900000)
-            };
-          } else {
-            // Fallback to sample data for demonstration
-            storedData = {
-              course: "N/A",
-              coursePrice: "N/A",
-              name: "N/A",
-              email: "N/A",
-              whatsapp: "N/A",
-              registrationNumber: "N/A"
-            };
-          }
-        }
-      } catch (e) {
-        console.error("Error retrieving stored data:", e);
-        // Fallback to sample data
-        storedData = {
-          course: "Amazon FBA Mastery – Private Label + Wholesale Combined",
-          coursePrice: "PKR 34,500",
-          name: "Kashaf Allah Ditta",
-          email: "kashafallahditta@gmail.com",
-          whatsapp: "Not provided",
-          registrationNumber: "EC200825-318928"
-        };
-      }
-
-      let selectedPaymentMethod = "";
-      let stripe, card;
-      let html5QrCode;
-
-      // Initialize the page
-      document.addEventListener('DOMContentLoaded', function() {
-        displayOrderDetails();
-      });
-
-      // Display order details
-      function displayOrderDetails() {
-        const orderDetails = document.getElementById("orderDetails");
-
-        if (storedData) {
-          orderDetails.innerHTML = `
-            <div class="order-item">
-                <span class="label">Course:</span>
-                <span class="value">${storedData.course || "Not specified"}</span>
-            </div>
-            <div class="order-item">
-                <span class="label">Registration Number:</span>
-                <span class="value">${storedData.registrationNumber || "Not assigned"}</span>
-            </div>
-            <div class="order-item">
-                <span class="label">Student Name:</span>
-                <span class="value">${storedData.name || "Not provided"}</span>
-            </div>
-            <div class="order-item">
-                <span class="label">Email:</span>
-                <span class="value">${storedData.email || "Not provided"}</span>
-            </div>
-            <div class="order-item">
-                <span class="label">WhatsApp:</span>
-                <span class="value">${storedData.whatsapp || "Not provided"}</span>
-            </div>
-            <div class="order-item total">
-                <span class="label">Total Amount:</span>
-                <span class="value">${storedData.coursePrice || "PKR 0"}</span>
-            </div>
-          `;
-        } else {
-          orderDetails.innerHTML = `<p>No order data found. Please complete the registration form first.</p>`;
-        }
-      }
-
-      console.log("data", storedData)
-
-      // Initialize Stripe (replace with your publishable key)
-      function initStripe() {
-        stripe = Stripe("pk_test_your_publishable_key_here");
-        const elements = stripe.elements();
-
-        // Create card element
-        card = elements.create("card", {
-          style: {
-            base: {
-              fontSize: "16px",
-              color: "#32325d",
-              "::placeholder": {
-                color: "#aab7c4",
-              },
-            },
-            invalid: {
-              color: "#fa755a",
-              iconColor: "#fa755a",
-            },
-          },
-        });
-
-        card.mount("#card-element");
-
-        // Handle real-time validation errors
-        card.addEventListener("change", function (event) {
-          const displayError = document.getElementById("card-errors");
-          if (event.error) {
-            displayError.textContent = event.error.message;
-          } else {
-            displayError.textContent = "";
-          }
-        });
-
-        // Handle form submission
-        const form = document.getElementById("payment-form");
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
-
-          const submitButton = document.getElementById("submit-button");
-          submitButton.disabled = true;
-
-          stripe
-            .createPaymentMethod({
-              type: "card",
-              card: card,
-              billing_details: {
-                name: storedData.name,
-                email: storedData.email,
-                phone: storedData.whatsapp,
-              },
-            })
-            .then(function (result) {
-              if (result.error) {
-                // Show error
-                const errorElement = document.getElementById("card-errors");
-                errorElement.textContent = result.error.message;
-                submitButton.disabled = false;
-              } else {
-                // PaymentMethod created successfully
-                processPayment(result.paymentMethod.id);
-              }
-            });
-        });
-      }
-
-      // Process payment with Stripe
-      function processPayment(paymentMethodId) {
-        // In a real implementation, you would call your backend to create a PaymentIntent
-        // For demo, we'll simulate a successful payment
-
-        // Simulate API call
-        setTimeout(function () {
-          // Show success
-          alert("Payment successful!");
-
-          // Store payment confirmation
-          const paymentData = {
-            method: "card",
-            transactionId: "ch_" + Math.random().toString(36).substr(2, 17),
-            timestamp: new Date().toISOString(),
-          };
-
-          // Update stored data with payment info
-          storedData.payment = paymentData;
-          localStorage.setItem(
-            "courseRegistrationData",
-            JSON.stringify(storedData)
-          );
-
-          // Redirect to success page
-          window.location.href = "success.html";
-        }, 1500);
-      }
-
-      function selectPaymentMethod(method) {
-        selectedPaymentMethod = method;
-
-        // Update UI
-        document.querySelectorAll(".payment-method").forEach((el) => {
-          el.classList.remove("selected");
-        });
-
-        event.currentTarget.classList.add("selected");
-
-        // Hide all payment forms
-        document.getElementById("card-payment-form").style.display = "none";
-        document.getElementById("easypaisa-payment").style.display = "none";
-        document.getElementById("jazzcash-payment").style.display = "none";
-        document.getElementById("bank-payment").style.display = "none";
-
-        // Show selected payment form
-        switch (method) {
-          case "card":
-            document.getElementById("card-payment-form").style.display = "block";
-            if (!stripe) initStripe();
-            break;
-          case "easypaisa":
-            document.getElementById("easypaisa-payment").style.display = "block";
-            break;
-          case "jazzcash":
-            document.getElementById("jazzcash-payment").style.display = "block";
-            break;
-          case "bank":
-            document.getElementById("bank-payment").style.display = "block";
-            break;
-        }
-      }
-
-      function completeManualPayment(method) {
-        // Show processing indicator
-        const button = event.currentTarget;
-        button.disabled = true;
-        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-
-        // Simulate payment processing
-        setTimeout(function () {
-          // Store payment confirmation
-          const paymentData = {
-            method: method,
-            transactionId: method.toUpperCase() + "_" + Math.random().toString(36).substr(2, 10),
-            timestamp: new Date().toISOString(),
-          };
-
-          // Update stored data with payment info
-          storedData.payment = paymentData;
-          localStorage.setItem("courseRegistrationData", JSON.stringify(storedData));
-
-          // Show success message
-          document.getElementById(method + "-success").style.display = "block";
-          button.style.display = "none";
-
-          // Redirect after delay
-          setTimeout(function () {
-            window.location.href = "success.html";
-          }, 2000);
-        }, 1500);
-      }
-
-      // Get numeric price from stored data
-      function getPriceNumber() {
-        if (!storedData || !storedData.coursePrice) return 0;
-        return storedData.coursePrice.replace(/[^\d]/g, "");
-      }
-
-      // Initialize barcode scanner
-      function startScanner(paymentMethod) {
-        const scannerId = `${paymentMethod}-scanner`;
-        const scannerElement = document.getElementById(scannerId);
-
-        // Toggle scanner visibility
-        if (scannerElement.style.display === "none") {
-          scannerElement.style.display = "block";
-
-          // Initialize scanner
-          html5QrCode = new Html5Qrcode(scannerId);
-          const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-            if (decodedText) {
-              handleScannedPayment(paymentMethod, decodedText);
-              stopScanner();
+        // Retrieve stored data
+        let storedData;
+        try {
+            const data = localStorage.getItem("courseRegistrationData");
+            if (data) {
+                storedData = JSON.parse(data);
+            } else {
+                // If no data in localStorage, check if we have URL parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                const course = urlParams.get('course');
+                const price = urlParams.get('price');
+                const name = urlParams.get('name');
+                const email = urlParams.get('email');
+                const whatsapp = urlParams.get('whatsapp');
+                const regNumber = urlParams.get('regNumber');
+                
+                if (course && price) {
+                    storedData = {
+                        course: course,
+                        coursePrice: price,
+                        name: name || 'Not provided',
+                        email: email || 'Not provided',
+                        whatsapp: whatsapp || 'Not provided',
+                        registrationNumber: regNumber || 'EC' + new Date().getDate() + (new Date().getMonth()+1) + new Date().getFullYear().toString().substr(-2) + '-' + Math.floor(100000 + Math.random() * 900000)
+                    };
+                } else {
+                    // Fallback to sample data for demonstration
+                    storedData = {
+                        course: "Amazon FBA Mastery – Private Label + Wholesale Combined",
+                        coursePrice: "PKR 34,500",
+                        name: "Kashaf Allah Ditta",
+                        email: "kashafallahditta@gmail.com",
+                        whatsapp: "Not provided",
+                        registrationNumber: "EC200825-318928"
+                    };
+                }
             }
-          };
-
-          const config = { fps: 10, qrbox: 250 };
-
-          html5QrCode
-            .start({ facingMode: "environment" }, config, qrCodeSuccessCallback)
-            .catch((err) => {
-              console.error("Scanner error:", err);
-              alert("Error starting scanner. Please try again or enter manually.");
-            });
-        } else {
-          stopScanner();
-        }
-      }
-
-      function stopScanner() {
-        if (html5QrCode) {
-          html5QrCode
-            .stop()
-            .then(() => {
-              console.log("Scanner stopped");
-            })
-            .catch((err) => {
-              console.error("Error stopping scanner:", err);
-            });
+        } catch (e) {
+            console.error("Error retrieving stored data:", e);
+            // Fallback to sample data
+            storedData = {
+                course: "Amazon FBA Mastery – Private Label + Wholesale Combined",
+                coursePrice: "PKR 34,500",
+                name: "Kashaf Allah Ditta",
+                email: "kashafallahditta@gmail.com",
+                whatsapp: "Not provided",
+                registrationNumber: "EC200825-318928"
+            };
         }
 
-        // Hide all scanners
-        document.querySelectorAll('[id$="-scanner"]').forEach((el) => {
-          el.style.display = "none";
+        let selectedPaymentMethod = "";
+        let stripe, card;
+        let html5QrCode;
+        let bankReceiptFile = null;
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayOrderDetails();
+            setupReceiptUpload();
         });
-      }
 
-      function handleScannedPayment(paymentMethod, scanData) {
-        // Extract transaction ID from scan data
-        let transactionId = scanData;
+        // Display order details
+        function displayOrderDetails() {
+            const orderDetails = document.getElementById("orderDetails");
 
-        // In a real app, you would parse the QR code data properly
-        // This is a simplified version
-        if (scanData.includes("TransactionID=")) {
-          transactionId = scanData.split("TransactionID=")[1].split("&")[0];
+            if (storedData) {
+                orderDetails.innerHTML = `
+                    <div class="order-item">
+                        <span class="label">Course:</span>
+                        <span class="value">${storedData.course || "Not specified"}</span>
+                    </div>
+                    <div class="order-item">
+                        <span class="label">Registration Number:</span>
+                        <span class="value">${storedData.registrationNumber || "Not assigned"}</span>
+                    </div>
+                    <div class="order-item">
+                        <span class="label">Student Name:</span>
+                        <span class="value">${storedData.name || "Not provided"}</span>
+                    </div>
+                    <div class="order-item">
+                        <span class="label">Email:</span>
+                        <span class="value">${storedData.email || "Not provided"}</span>
+                    </div>
+                    <div class="order-item">
+                        <span class="label">WhatsApp:</span>
+                        <span class="value">${storedData.whatsapp || "Not provided"}</span>
+                    </div>
+                    <div class="order-item total">
+                        <span class="label">Total Amount:</span>
+                        <span class="value">${storedData.coursePrice || "PKR 0"}</span>
+                    </div>
+                `;
+            } else {
+                orderDetails.innerHTML = `<p>No order data found. Please complete the registration form first.</p>`;
+            }
         }
 
-        // Show the transaction ID in the manual input field
-        document.getElementById(`${paymentMethod}-transaction-id`).value = transactionId;
-
-        // Verify the payment
-        verifyPayment(paymentMethod, transactionId);
-      }
-
-      function verifyManualPayment(paymentMethod) {
-        const transactionId = document.getElementById(`${paymentMethod}-transaction-id`).value.trim();
-
-        if (!transactionId) {
-          alert("Please enter a transaction ID");
-          return;
+        // Setup receipt upload functionality
+        function setupReceiptUpload() {
+            const receiptInput = document.getElementById('bank-receipt');
+            
+            receiptInput.addEventListener('change', function(event) {
+                if (event.target.files && event.target.files[0]) {
+                    bankReceiptFile = event.target.files[0];
+                    
+                    // Preview image
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('preview-image').src = e.target.result;
+                        document.getElementById('receipt-preview').style.display = 'block';
+                    }
+                    reader.readAsDataURL(event.target.files[0]);
+                }
+            });
         }
 
-        verifyPayment(paymentMethod, transactionId);
-      }
+        // Remove receipt function
+        function removeReceipt() {
+            bankReceiptFile = null;
+            document.getElementById('bank-receipt').value = '';
+            document.getElementById('receipt-preview').style.display = 'none';
+        }
 
-      function verifyPayment(paymentMethod, transactionId) {
-        // Show status checking UI
-        document.getElementById(`${paymentMethod}-status`).style.display = "block";
+        // Initialize Stripe (replace with your publishable key)
+        function initStripe() {
+            stripe = Stripe("pk_test_your_publishable_key_here");
+            const elements = stripe.elements();
 
-        // Hide the verify button to prevent duplicate submissions
-        document.querySelector(`#${paymentMethod}-payment .btn`).style.display = "none";
+            // Create card element
+            card = elements.create("card", {
+                style: {
+                    base: {
+                        fontSize: "16px",
+                        color: "#32325d",
+                        "::placeholder": {
+                            color: "#aab7c4",
+                        },
+                    },
+                    invalid: {
+                        color: "#fa755a",
+                        iconColor: "#fa755a",
+                    },
+                },
+            });
 
-        // In a real app, you would send this to your backend for verification
-        // This simulates the verification process
-        simulatePaymentVerification(paymentMethod, transactionId);
-      }
+            card.mount("#card-element");
 
-      function simulatePaymentVerification(paymentMethod, transactionId) {
-        // Simulate API call delay
-        setTimeout(() => {
-          // In a real app, this would be the response from your backend
-          const isVerified = Math.random() > 0.2; // 80% chance of success for demo
+            // Handle real-time validation errors
+            card.addEventListener("change", function (event) {
+                const displayError = document.getElementById("card-errors");
+                if (event.error) {
+                    displayError.textContent = event.error.message;
+                } else {
+                    displayError.textContent = "";
+                }
+            });
 
-          if (isVerified) {
-            // Payment verified successfully
-            completePayment(paymentMethod, transactionId);
-          } else {
-            // Payment not verified yet
+            // Handle form submission
+            const form = document.getElementById("payment-form");
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const submitButton = document.getElementById("submit-button");
+                submitButton.disabled = true;
+
+                stripe
+                    .createPaymentMethod({
+                        type: "card",
+                        card: card,
+                        billing_details: {
+                            name: storedData.name,
+                            email: storedData.email,
+                            phone: storedData.whatsapp,
+                        },
+                    })
+                    .then(function (result) {
+                        if (result.error) {
+                            // Show error
+                            const errorElement = document.getElementById("card-errors");
+                            errorElement.textContent = result.error.message;
+                            submitButton.disabled = false;
+                        } else {
+                            // PaymentMethod created successfully
+                            processPayment(result.paymentMethod.id);
+                        }
+                    });
+            });
+        }
+
+        // Process payment with Stripe
+        function processPayment(paymentMethodId) {
+            // In a real implementation, you would call your backend to create a PaymentIntent
+            // For demo, we'll simulate a successful payment
+
+            // Simulate API call
+            setTimeout(function () {
+                // Show success
+                alert("Payment successful!");
+
+                // Store payment confirmation
+                const paymentData = {
+                    method: "card",
+                    transactionId: "ch_" + Math.random().toString(36).substr(2, 17),
+                    timestamp: new Date().toISOString(),
+                };
+
+                // Update stored data with payment info
+                storedData.payment = paymentData;
+                localStorage.setItem(
+                    "courseRegistrationData",
+                    JSON.stringify(storedData)
+                );
+
+                // Redirect to success page
+                window.location.href = "success.html";
+            }, 1500);
+        }
+
+        function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
+
+            // Update UI
+            document.querySelectorAll(".payment-method").forEach((el) => {
+                el.classList.remove("selected");
+            });
+
+            event.currentTarget.classList.add("selected");
+
+            // Hide all payment forms
+            document.getElementById("card-payment-form").style.display = "none";
+            document.getElementById("easypaisa-payment").style.display = "none";
+            document.getElementById("jazzcash-payment").style.display = "none";
+            document.getElementById("bank-payment").style.display = "none";
+
+            // Show selected payment form
+            switch (method) {
+                case "card":
+                    document.getElementById("card-payment-form").style.display = "block";
+                    if (!stripe) initStripe();
+                    break;
+                case "easypaisa":
+                    document.getElementById("easypaisa-payment").style.display = "block";
+                    break;
+                case "jazzcash":
+                    document.getElementById("jazzcash-payment").style.display = "block";
+                    break;
+                case "bank":
+                    document.getElementById("bank-payment").style.display = "block";
+                    break;
+            }
+        }
+
+        function completeManualPayment(method) {
+            // For bank transfers, require a receipt
+            if (method === 'bank' && !bankReceiptFile) {
+                alert('Please upload a screenshot of your bank transfer confirmation');
+                return;
+            }
+
+            // Show processing indicator
+            const button = event.currentTarget;
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+            // Simulate payment processing
+            setTimeout(function() {
+                // Store payment confirmation
+                const paymentData = {
+                    method: method,
+                    transactionId: method.toUpperCase() + "_" + Math.random().toString(36).substr(2, 10),
+                    timestamp: new Date().toISOString(),
+                    receipt: method === 'bank' ? URL.createObjectURL(bankReceiptFile) : null
+                };
+
+                // Update stored data with payment info
+                storedData.payment = paymentData;
+                localStorage.setItem("courseRegistrationData", JSON.stringify(storedData));
+
+                // Show success message
+                document.getElementById(method + "-success").style.display = "block";
+                button.style.display = "none";
+
+                // Redirect after delay
+                setTimeout(function() {
+                    window.location.href = "success.html";
+                }, 2000);
+            }, 1500);
+        }
+
+        // Get numeric price from stored data
+        function getPriceNumber() {
+            if (!storedData || !storedData.coursePrice) return 0;
+            return storedData.coursePrice.replace(/[^\d]/g, "");
+        }
+
+        // Initialize barcode scanner
+        function startScanner(paymentMethod) {
+            const scannerId = `${paymentMethod}-scanner`;
+            const scannerElement = document.getElementById(scannerId);
+
+            // Toggle scanner visibility
+            if (scannerElement.style.display === "none") {
+                scannerElement.style.display = "block";
+
+                // Initialize scanner
+                html5QrCode = new Html5Qrcode(scannerId);
+                const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+                    if (decodedText) {
+                        handleScannedPayment(paymentMethod, decodedText);
+                        stopScanner();
+                    }
+                };
+
+                const config = { fps: 10, qrbox: 250 };
+
+                html5QrCode
+                    .start({ facingMode: "environment" }, config, qrCodeSuccessCallback)
+                    .catch((err) => {
+                        console.error("Scanner error:", err);
+                        alert("Error starting scanner. Please try again or enter manually.");
+                    });
+            } else {
+                stopScanner();
+            }
+        }
+
+        function stopScanner() {
+            if (html5QrCode) {
+                html5QrCode
+                    .stop()
+                    .then(() => {
+                        console.log("Scanner stopped");
+                    })
+                    .catch((err) => {
+                        console.error("Error stopping scanner:", err);
+                    });
+            }
+
+            // Hide all scanners
+            document.querySelectorAll('[id$="-scanner"]').forEach((el) => {
+                el.style.display = "none";
+            });
+        }
+
+        function handleScannedPayment(paymentMethod, scanData) {
+            // Extract transaction ID from scan data
+            let transactionId = scanData;
+
+            // In a real app, you would parse the QR code data properly
+            // This is a simplified version
+            if (scanData.includes("TransactionID=")) {
+                transactionId = scanData.split("TransactionID=")[1].split("&")[0];
+            }
+
+            // Show the transaction ID in the manual input field
+            document.getElementById(`${paymentMethod}-transaction-id`).value = transactionId;
+
+            // Verify the payment
+            verifyPayment(paymentMethod, transactionId);
+        }
+
+        function verifyManualPayment(paymentMethod) {
+            const transactionId = document.getElementById(`${paymentMethod}-transaction-id`).value.trim();
+
+            if (!transactionId) {
+                alert("Please enter a transaction ID");
+                return;
+            }
+
+            verifyPayment(paymentMethod, transactionId);
+        }
+
+        function verifyPayment(paymentMethod, transactionId) {
+            // Show status checking UI
+            document.getElementById(`${paymentMethod}-status`).style.display = "block";
+
+            // Hide the verify button to prevent duplicate submissions
+            document.querySelector(`#${paymentMethod}-payment .btn`).style.display = "none";
+
+            // In a real app, you would send this to your backend for verification
+            // This simulates the verification process
+            simulatePaymentVerification(paymentMethod, transactionId);
+        }
+
+        function simulatePaymentVerification(paymentMethod, transactionId) {
+            // Simulate API call delay
+            setTimeout(() => {
+                // In a real app, this would be the response from your backend
+                const isVerified = Math.random() > 0.2; // 80% chance of success for demo
+
+                if (isVerified) {
+                    // Payment verified successfully
+                    completePayment(paymentMethod, transactionId);
+                } else {
+                    // Payment not verified yet
+                    document.getElementById(`${paymentMethod}-status`).innerHTML = `
+                        <div class="status-message">Payment not yet received</div>
+                        <p>We couldn't verify your payment yet. This usually takes 5-60 minutes.</p>
+                        <p>Your transaction ID: <strong>${transactionId}</strong></p>
+                        <button class="btn" onclick="retryVerification('${paymentMethod}', '${transactionId}')">
+                            <i class="fas fa-sync-alt"></i> Check Again
+                        </button>
+                        <p>We'll also notify you by WhatsApp when received.</p>
+                    `;
+                }
+            }, 3000);
+        }
+
+        function retryVerification(paymentMethod, transactionId) {
             document.getElementById(`${paymentMethod}-status`).innerHTML = `
-              <div class="status-message">Payment not yet received</div>
-              <p>We couldn't verify your payment yet. This usually takes 5-60 minutes.</p>
-              <p>Your transaction ID: <strong>${transactionId}</strong></p>
-              <button class="btn" onclick="retryVerification('${paymentMethod}', '${transactionId}')">
-                  <i class="fas fa-sync-alt"></i> Check Again
-              </button>
-              <p>We'll also notify you by WhatsApp when received.</p>
+                <div class="status-message">Checking payment status...</div>
+                <div class="status-progress">
+                    <div class="status-progress-bar"></div>
+                </div>
+                <p>Please wait while we verify your payment.</p>
             `;
-          }
-        }, 3000);
-      }
 
-      function retryVerification(paymentMethod, transactionId) {
-        document.getElementById(`${paymentMethod}-status`).innerHTML = `
-          <div class="status-message">Checking payment status...</div>
-          <div class="status-progress">
-              <div class="status-progress-bar"></div>
-          </div>
-          <p>Please wait while we verify your payment.</p>
-        `;
+            simulatePaymentVerification(paymentMethod, transactionId);
+        }
 
-        simulatePaymentVerification(paymentMethod, transactionId);
-      }
+        function completePayment(paymentMethod, transactionId) {
+            // Store payment confirmation
+            const paymentData = {
+                method: paymentMethod,
+                transactionId: transactionId,
+                timestamp: new Date().toISOString(),
+                status: "completed",
+            };
 
-      function completePayment(paymentMethod, transactionId) {
-        // Store payment confirmation
-        const paymentData = {
-          method: paymentMethod,
-          transactionId: transactionId,
-          timestamp: new Date().toISOString(),
-          status: "completed",
-        };
+            // Update stored data with payment info
+            storedData.payment = paymentData;
+            localStorage.setItem("courseRegistrationData", JSON.stringify(storedData));
 
-        // Update stored data with payment info
-        storedData.payment = paymentData;
-        localStorage.setItem("courseRegistrationData", JSON.stringify(storedData));
+            // Show success message
+            document.getElementById(`${paymentMethod}-status`).style.display = "none";
+            document.getElementById(`${paymentMethod}-success`).style.display = "block";
 
-        // Show success message
-        document.getElementById(`${paymentMethod}-status`).style.display = "none";
-        document.getElementById(`${paymentMethod}-success`).style.display = "block";
+            // In a real app, you might send a confirmation WhatsApp message here
 
-        // In a real app, you might send a confirmation WhatsApp message here
+            // Redirect after delay
+            setTimeout(() => {
+                window.location.href = "success.html";
+            }, 2000);
+        }
 
-        // Redirect after delay
-        setTimeout(() => {
-          window.location.href = "success.html";
-        }, 2000);
-      }
-
-      // When leaving the page, stop the scanner
-      window.addEventListener("beforeunload", stopScanner);
+        // When leaving the page, stop the scanner
+        window.addEventListener("beforeunload", stopScanner);
     </script>
-  </body>
+</body>
 </html>
