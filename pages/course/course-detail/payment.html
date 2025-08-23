@@ -471,7 +471,7 @@
                     <div class="qr-code-section">
                         <p>Scan this QR code with your EasyPaisa app</p>
                         <img
-                            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=EASYPAISA_ACCOUNT_123456789_AMOUNT_34500"
+                            id="easypaisa-qr-code"
                             alt="EasyPaisa QR Code"
                             class="qr-code-img"
                         />
@@ -501,7 +501,7 @@
                     <div class="account-details">
                         <p><strong>EasyPaisa Account Number:</strong> 1234 5678 90</p>
                         <p><strong>Account Name:</strong> Ecomsy Education</p>
-                        <p><strong>Amount:</strong> PKR 34,500</p>
+                        <p><strong>Amount:</strong> <span id="easypaisa-amount"></span></p>
                     </div>
 
                     <div class="status-checking" id="easypaisa-status">
@@ -525,7 +525,7 @@
                     <div class="qr-code-section">
                         <p>Scan this QR code with your JazzCash app</p>
                         <img
-                            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=JAZZCASH_ACCOUNT_987654321_AMOUNT_34500"
+                            id="jazzcash-qr-code"
                             alt="JazzCash QR Code"
                             class="qr-code-img"
                         />
@@ -555,7 +555,7 @@
                     <div class="account-details">
                         <p><strong>JazzCash Account Number:</strong> 9876 5432 10</p>
                         <p><strong>Account Name:</strong> Ecomsy Education</p>
-                        <p><strong>Amount:</strong> PKR 34,500</p>
+                        <p><strong>Amount:</strong> <span id="jazzcash-amount"></span></p>
                     </div>
 
                     <div class="status-checking" id="jazzcash-status">
@@ -582,7 +582,7 @@
                         <p><strong>Account Number:</strong> 334242866</p>
                         <p><strong>IBAN:</strong> N/A</p>
                         <p><strong>Branch Code:</strong> 0936</p>
-                        <p><strong>Amount:</strong> PKR 34,500</p>
+                        <p><strong>Amount:</strong> <span id="bank-amount"></span></p>
                     </div>
                     
                     <div class="upload-section">
@@ -672,6 +672,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             displayOrderDetails();
             setupReceiptUpload();
+            updatePaymentAmounts();
         });
 
         // Display order details
@@ -708,6 +709,27 @@
             } else {
                 orderDetails.innerHTML = `<p>No order data found. Please complete the registration form first.</p>`;
             }
+        }
+
+        // Update payment amounts based on stored data
+        function updatePaymentAmounts() {
+            const amount = storedData.coursePrice || "PKR 0";
+            
+            // Update EasyPaisa section
+            document.getElementById("easypaisa-amount").textContent = amount;
+            
+            // Update JazzCash section
+            document.getElementById("jazzcash-amount").textContent = amount;
+            
+            // Update Bank Transfer section
+            document.getElementById("bank-amount").textContent = amount;
+            
+            // Update QR codes with the actual amount
+            const priceNumber = getPriceNumber();
+            document.getElementById("easypaisa-qr-code").src = 
+                `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=EASYPAISA_ACCOUNT_123456789_AMOUNT_${priceNumber}`;
+            document.getElementById("jazzcash-qr-code").src = 
+                `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=JAZZCASH_ACCOUNT_987654321_AMOUNT_${priceNumber}`;
         }
 
         // Setup receipt upload functionality
