@@ -163,27 +163,41 @@
       navbar.classList.toggle("scrolled", window.scrollY > 50);
     });
 
-    // Set the starting date dynamically
-    const today = new Date();
-    const month = today.getMonth(); // 0 = Jan, 7 = Aug
-    const year = today.getFullYear();
 
-    // Select all elements with class "starting-date"
-    const dateElements = document.querySelectorAll(".starting-date");
-
-    if (month === 7) {
-      // Only show in August
-      const nextMonthDate = new Date(year, month + 1, 1);
-      const options = { day: "numeric", month: "short", year: "numeric" };
-      const formattedDate = nextMonthDate
-        .toLocaleDateString("en-GB", options)
-        .replace(/^1/, "1st");
-
-      dateElements.forEach((el) => {
-        el.innerHTML = `<strong>Starting From:</strong> ${formattedDate}`;
-      });
-    }
+    
   </script>
+  <span class="starting-date"></span>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const today = new Date();
+  const month = today.getMonth(); // 0 = Jan
+  const year = today.getFullYear();
+
+  // Set to 1st of next month
+  const firstOfNextMonth = new Date(year, month + 1, 1);
+  const day = firstOfNextMonth.getDate(); // always 1
+
+  // ordinal suffix (1st, 2nd, 3rd, 4th…)
+  function ordinal(n) {
+    if (n % 100 >= 11 && n % 100 <= 13) return n + 'th';
+    switch (n % 10) {
+      case 1: return n + 'st';
+      case 2: return n + 'nd';
+      case 3: return n + 'rd';
+      default: return n + 'th';
+    }
+  }
+
+  const monthShort = firstOfNextMonth.toLocaleString('en-GB', { month: 'short' });
+  const formatted = `${ordinal(day)} ${monthShort} ${firstOfNextMonth.getFullYear()}`;
+
+  document.querySelectorAll('.starting-date').forEach(el => {
+    el.innerHTML = `<strong>Starting From:</strong> ${formatted}`;
+  });
+});
+</script>
+
 </body>
 
 </html>
