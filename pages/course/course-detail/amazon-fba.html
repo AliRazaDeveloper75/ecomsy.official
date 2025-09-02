@@ -15,7 +15,7 @@
   <body>
     <div id="course-header"></div>
 
-     <script src="../../../pages/course/course-detail/headfooter.js"></script>
+    <script src="../../../pages/course/course-detail/headfooter.js"></script>
 
     <header class="main-header">
       <div class="container">
@@ -26,7 +26,7 @@
             <div>
               <span class="meta-label">Starting From</span>
               <span class="meta-value">
-                <p id="starting-date"></p>
+                <p class="starting-date"></p>
               </span>
             </div>
           </div>
@@ -374,9 +374,7 @@
 
           <div class="enrollment-box">
             <h3>Enroll Today</h3>
-            <p class="price">
-              29,500 PKR 
-            </p>
+            <p class="price">29,500 PKR</p>
             <p class="offer">Limited time offer</p>
             <a href="apply-course.html"
               ><button class="enroll-btn">Enroll Now!</button></a
@@ -507,25 +505,43 @@
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
       }
-      // auto time update
-      // Get today's date
-      const today = new Date();
-      const month = today.getMonth(); // 0 = Jan, 7 = Aug
-      const year = today.getFullYear();
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const today = new Date();
+        const month = today.getMonth(); // 0 = Jan
+        const year = today.getFullYear();
 
-      // Check if current month is August
-      if (month === 7) {
-        // Next month will be September (month 8 in JS)
-        const nextMonthDate = new Date(year, month + 1, 1);
+        // Set to 1st of next month
+        const firstOfNextMonth = new Date(year, month + 1, 1);
+        const day = firstOfNextMonth.getDate(); // always 1
 
-        // Format: "1st Sep 2025"
-        const options = { day: "numeric", month: "short", year: "numeric" };
-        const formattedDate = nextMonthDate
-          .toLocaleDateString("en-GB", options)
-          .replace(/^1/, "1st");
+        // ordinal suffix (1st, 2nd, 3rd, 4th…)
+        function ordinal(n) {
+          if (n % 100 >= 11 && n % 100 <= 13) return n + "th";
+          switch (n % 10) {
+            case 1:
+              return n + "st";
+            case 2:
+              return n + "nd";
+            case 3:
+              return n + "rd";
+            default:
+              return n + "th";
+          }
+        }
 
-        document.getElementById("starting-date").innerHTML = `${formattedDate}`;
-      }
+        const monthShort = firstOfNextMonth.toLocaleString("en-GB", {
+          month: "short",
+        });
+        const formatted = `${ordinal(
+          day
+        )} ${monthShort} ${firstOfNextMonth.getFullYear()}`;
+
+        document.querySelectorAll(".starting-date").forEach((el) => {
+          el.innerHTML = `<strong></strong> ${formatted}`;
+        });
+      });
     </script>
   </body>
 </html>
