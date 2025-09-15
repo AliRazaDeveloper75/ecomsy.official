@@ -348,7 +348,6 @@
       id="email-form"
       style="display: none"
       action="https://formspree.io/f/xrbaoond"
-
       method="POST"
     >
       <input type="text" name="name" id="formspree-name" />
@@ -360,6 +359,8 @@
         name="registrationNumber"
         id="formspree-registration"
       />
+      <input type="text" name="whatsapp" id="formspree-whatsapp" />
+      <!-- Added this field -->
       <input type="text" name="accountTitle" id="formspree-account-title" />
       <input type="text" name="transactionId" id="formspree-transaction-id" />
       <input type="text" name="paymentDate" id="formspree-payment-date" />
@@ -523,6 +524,8 @@
           storedData.coursePrice || "PKR 0";
         document.getElementById("formspree-registration").value =
           storedData.registrationNumber || "Not assigned";
+        document.getElementById("formspree-whatsapp").value =
+          storedData.whatsapp || "Not provided"; // Added this line
         document.getElementById("formspree-account-title").value = accountTitle;
         document.getElementById("formspree-transaction-id").value =
           transactionId;
